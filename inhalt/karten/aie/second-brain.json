@@ -1,0 +1,222 @@
+{
+  "track": "aie",
+  "thema": "Second Brain",
+  "karten": [
+    {
+      "id": "aie-brain-schichten",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Welche fünf Schichten hat ein Second Brain?",
+      "antwort": "Einsammeln, Verdichten, Ordnen und Datieren, Finden, Pflegen.",
+      "quelle": "session Brain"
+    },
+    {
+      "id": "aie-vault-import",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Was ist ein Vault-Import?",
+      "antwort": "Ein Massenimport eines fertigen Markdown-Ordners (z. B. Obsidian) mit Frontmatter und Links, ohne die Verdichtungs-Pipeline. Der Graph entsteht aus den Links, die Farbe macht erst die Oberfläche.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-brain-connector-claude",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 3,
+      "frage": "Wie kommen Claude-Code-Sitzungen in Lucs Brain?",
+      "antwort": "Der Connector liest die gespeicherten Sitzungsprotokolle (~/.claude/projects/*.jsonl) nachträglich ein, nicht über MCP. Live aus einer Sitzung schreiben ginge über das MCP-Tool write, das als Vorschlag in der Freigabe landet.",
+      "quelle": "~/dev/rb/brain/packages/connectors/src/sources/claude-code.ts"
+    },
+    {
+      "id": "aie-animation-ergebnis",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 3,
+      "frage": "Wie verhindert man, dass die Such-Spinne das Brain langsamer wirken lässt?",
+      "antwort": "Die Animation zeigt nur echte Fortschrittsereignisse (per SSE). Das Ergebnis erscheint, sobald es fertig ist. Hinkt die Animation hinterher, läuft sie in unter 300 ms zum Ziel durch.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-s-sb-postgres",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Welche Rolle spielt Postgres in Lucs Brain?",
+      "antwort": "Es ist die einzige Quelle der Wahrheit: Notizen, Revisionen, Chunks mit Vektoren, Suchindizes, Beziehungen, Job-Queue und Läufe liegen dort.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-revisionen",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 1,
+      "frage": "Was ist eine Revision im Brain?",
+      "antwort": "Eine unveränderliche Fassung einer Notiz. Neues wird angehängt, nichts wird still überschrieben, daher ist jede Antwort bis zur Quelle zurückverfolgbar.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-approval",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Welche Freigabemodi gibt es im Brain, und was entscheiden sie?",
+      "antwort": "review_all, review_changes und auto. Sie bestimmen, ob ein Mensch neue Revisionen bestätigen muss.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-receive",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 1,
+      "frage": "Was passiert im Ingest-Schritt „receive“?",
+      "antwort": "Das Originalmaterial wird entgegengenommen und unverändert aufbewahrt. Damit bleibt die Herkunft später belegbar.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-convert",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 1,
+      "frage": "Was passiert im Ingest-Schritt „convert“?",
+      "antwort": "Das Material wird in Markdown umgewandelt. Agenten und Menschen arbeiten nur mit dieser Fassung, die auf das Original verweist.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-gate",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 1,
+      "frage": "Was macht der Schritt „gate“ in Lucs Ingest-Pipeline?",
+      "antwort": "Er entscheidet, ob Material behalten oder verworfen wird. So landet nicht alles ungefiltert im Brain.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-distill",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 1,
+      "frage": "Was macht der Schritt „distill“?",
+      "antwort": "Ein Sprachmodell zieht die wesentlichen Fakten aus dem Material heraus. Aus einem langen Dokument werden prüfbare Kernaussagen.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-resolve",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Was ist Entity Resolution im Schritt „resolve“?",
+      "antwort": "Namen im neuen Material werden den schon bekannten Personen, Firmen oder Dokumenten zugeordnet. So ist „Hr. Müller“ dieselbe Person wie in der bestehenden Notiz.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-reconcile",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Welche vier Ergebnisse kann der Schritt „reconcile“ je Fakt haben?",
+      "antwort": "Neu, bestätigt, widerspricht oder ersetzt. Der Fakt wird also mit dem verglichen, was das Brain schon weiß.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-propose",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Was passiert im letzten Ingest-Schritt „propose“?",
+      "antwort": "Aus den Fakten wird eine Revision vorgeschlagen und geht je nach Freigabemodus zur Bestätigung. Erst danach wird sie indexiert.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-aktualitaet",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Wie behandelt das Brain, was heute gilt und was überholt ist?",
+      "antwort": "Notizen tragen Status und Gültigkeitsdatum (valid_from), und ersetzte Fakten rutschen im Ranking nach unten. Laut README fehlt allerdings noch vieles, etwa Gültigkeitsdaten beim Ingest.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-stufen",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Welche Stufen durchläuft eine Suche im Brain?",
+      "antwort": "Kandidaten per Stichwort, Vektor, Graph und Aktualität, dann Fusion, dann die Top 20. Danach bewertet das Entscheidungsmodell Jev die Kandidaten, das Ergebnis wird mit dem Fusionsscore gemischt.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-blend",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 3,
+      "frage": "Warum mischt das Brain den Reranker-Score mit dem Fusionsscore, statt ihn allein zu nehmen?",
+      "antwort": "Jeder Reranker allein verschlechterte mindestens ein Szenario, der lokale Cross-Encoder etwa SciFact von 0,750 auf 0,719. Die Mischung behält das Suchsignal und verbessert trotzdem alle Suiten.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-holdout",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Was ist der Unterschied zwischen Tuning-Daten und Hold-out im Benchmark des Brains?",
+      "antwort": "Parameter werden nur auf Tuning-Daten gewählt. Eine Änderung bleibt nur, wenn der Gewinn auch auf Hold-out-Daten hält, die nie zum Abstimmen dienten.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-regeln",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 3,
+      "frage": "Welche Regeln verhindern im Brain-Benchmark Selbsttäuschung?",
+      "antwort": "Eine Änderung muss mindestens +0,005 im Zielszenario bringen und darf kein anderes um mehr als 0,01 verschlechtern. Die Hypothese wird vor dem Messen notiert, und es gilt eine Konfiguration für alle Suiten.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-mandate",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Was bedeuten die Mandate read, propose und commit im Brain?",
+      "antwort": "read darf nur lesen. propose schreibt nur als wartende Revision, commit übernimmt direkt innerhalb von Grenzen und sonst wartend.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-schwaeche-nichtgefunden",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Was ist laut README die größte Schwäche des Brains für Agenten?",
+      "antwort": "Es fehlt ein „nicht gefunden“-Signal: die Suche liefert immer zehn Treffer ohne Relevanzscore. Irrelevante Notizen können so als Beleg zitiert werden.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-schwaeche-unmarkiert",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 3,
+      "frage": "Welches Risiko entsteht, weil abgerufener Text im Brain ungekennzeichnet beim Agenten ankommt?",
+      "antwort": "Ein Text in einer Notiz könnte Anweisungen enthalten, die der Agent für echte hält (Prompt Injection). Geplant ist, Notiztext als nicht vertrauenswürdig zu markieren.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-schwaeche-schreiben",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Was heißt „Writes sind nicht read-your-writes“ in Lucs README?",
+      "antwort": "Schreibt ein Agent eine Notiz, wird sie erst asynchron indexiert und ist kurz nicht auffindbar. Er kann also nicht sofort wiederfinden, was er gerade gespeichert hat.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-sb-schwaeche-zeit",
+      "track": "aie",
+      "thema": "Second Brain",
+      "stufe": 2,
+      "frage": "Welche Schwäche hat das Brain bei der Zeit?",
+      "antwort": "Es gibt keinen „Stand zum Datum“-Filter, der Ingest setzt keine Gültigkeitsdaten, und überholte Fakten bleiben bis zur Prüfung aktiv. Ob eine Antwort aktuell ist, hängt daher teils vom Zufall ab.",
+      "quelle": "~/dev/rb/brain/README.md"
+    }
+  ]
+}

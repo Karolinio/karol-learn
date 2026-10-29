@@ -1,0 +1,78 @@
+{
+  "track": "fde",
+  "thema": "Business Case",
+  "karten": [
+    {
+      "id": "fde-k-bc-roi",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 1,
+      "frage": "Was ist ROI?",
+      "antwort": "Return on Investment: was ein Projekt einbringt im Verhältnis zu dem, was es kostet. Eingespartes oder zusätzlich verdientes Geld geteilt durch die Kosten.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-bc-tco",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 1,
+      "frage": "Was ist TCO?",
+      "antwort": "Total Cost of Ownership: alle Kosten über die Lebensdauer, nicht nur der Kaufpreis. Dazu zählen Betrieb, Pflege, Schulung und Modellkosten.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-bc-stundenersparnis",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 2,
+      "frage": "Wie rechnest du die Stunden-Ersparnis eines Agenten?",
+      "antwort": "Fälle pro Monat mal gesparte Minuten pro Fall, umgerechnet in Stunden, mal Stundenkosten der Mitarbeiter. Davon ziehe ich die Kosten des Agenten ab.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-bc-rechenbeispiel",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 3,
+      "frage": "Der Kunde bearbeitet 500 Anfragen im Monat, je 10 Minuten. Der Agent spart die Hälfte. Wie viel Zeit ist das?",
+      "antwort": "500 mal 5 Minuten sind 2.500 Minuten, also gut 41 Stunden im Monat. Mal den Stundensatz ergibt die Ersparnis, die ich den Betriebskosten gegenüberstelle.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-bc-kosten-pro-lauf",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 2,
+      "frage": "Was sind Kosten pro Lauf?",
+      "antwort": "Was ein einzelner Durchlauf des Agenten kostet, vor allem Modell-Tokens und Tool-Aufrufe. Mal Läufe pro Monat ergibt die laufenden Kosten.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-bc-risiko",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 2,
+      "frage": "Wie preist man Risiko in einen Business Case ein?",
+      "antwort": "Man schätzt, was ein Fehler kostet und wie oft er vorkommt. Dazu rechnet man Kontrollen, etwa menschliche Freigabe, als laufende Kosten dazu.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-bc-lohnt-nicht",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 3,
+      "frage": "Der Ablauf kommt zweimal im Monat vor und dauert 15 Minuten. Der Kunde will einen Agenten. Was sagst du?",
+      "antwort": "Das lohnt sich nicht: Bauen und Betrieb kosten mehr als die gesparte halbe Stunde. Ich schlage eine einfache Checkliste vor.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-bc-wann-nicht",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 2,
+      "frage": "Wann lohnt sich ein Agent eher nicht?",
+      "antwort": "Bei seltenen Abläufen, bei sehr hohen Fehlerkosten ohne Kontrolle oder bei schlechter Datenlage. Auch wenn der Ablauf selbst noch unklar ist.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}

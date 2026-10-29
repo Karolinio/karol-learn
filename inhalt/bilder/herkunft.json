@@ -1,0 +1,320 @@
+{
+  "hinweis": "Alle Illustrationen sind KI-generiert (Higgsfield, gpt_image_2_5). Prompt = stil + motiv + farben aus motive.json.",
+  "bilder": [
+    {
+      "datei": "themen/aie-modelle.webp",
+      "track": "aie",
+      "thema": "Modelle",
+      "modell": "gpt_image_2_5",
+      "job": "2e158d8c-4fea-4b7d-8c53-527023651d4b",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-kosten.webp",
+      "track": "aie",
+      "thema": "Kosten",
+      "modell": "gpt_image_2_5",
+      "job": "d172675a-e652-4496-b18b-f4e998cca4f1",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-prompting.webp",
+      "track": "aie",
+      "thema": "Prompting",
+      "modell": "gpt_image_2_5",
+      "job": "1037d7a3-9799-45d0-bf29-14697f81901c",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-kontext.webp",
+      "track": "aie",
+      "thema": "Kontext",
+      "modell": "gpt_image_2_5",
+      "job": "136e064e-3531-4348-93e2-f950b879d70d",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-schnittstellen.webp",
+      "track": "aie",
+      "thema": "Schnittstellen",
+      "modell": "gpt_image_2_5",
+      "job": "be142f67-a204-49c6-959a-75e5e567655c",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-agent.webp",
+      "track": "aie",
+      "thema": "Agent",
+      "modell": "gpt_image_2_5",
+      "job": "0d8b6caa-f720-427b-b700-08aebb634dcc",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-tools.webp",
+      "track": "aie",
+      "thema": "Tools",
+      "modell": "gpt_image_2_5",
+      "job": "6740a316-686b-4cbb-b51a-0823bc058b4e",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-tool-schleife.webp",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "modell": "gpt_image_2_5",
+      "job": "51aafd21-985f-4da4-a949-6f08ed412b68",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-harness.webp",
+      "track": "aie",
+      "thema": "Harness",
+      "modell": "gpt_image_2_5",
+      "job": "2a14b913-58dc-419f-b15c-6d8437608ef7",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-runtime.webp",
+      "track": "aie",
+      "thema": "Runtime",
+      "modell": "gpt_image_2_5",
+      "job": "319a36cb-c60f-4f68-8f33-106a80c37c52",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-sdk.webp",
+      "track": "aie",
+      "thema": "SDK",
+      "modell": "gpt_image_2_5",
+      "job": "55d49ee8-781d-4156-8457-f4bf9e3d56af",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-mcp.webp",
+      "track": "aie",
+      "thema": "MCP",
+      "modell": "gpt_image_2_5",
+      "job": "67a6d214-9149-4c68-a330-dcec16379513",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-wissen-und-rag.webp",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "modell": "gpt_image_2_5",
+      "job": "049687f0-06d4-49ae-bfbd-2e63467652c9",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-memory.webp",
+      "track": "aie",
+      "thema": "Memory",
+      "modell": "gpt_image_2_5",
+      "job": "e2cc3a78-c6b7-4ee9-9d44-72fe2a269e0d",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-second-brain.webp",
+      "track": "aie",
+      "thema": "Second Brain",
+      "modell": "gpt_image_2_5",
+      "job": "c74825f3-4890-474c-8a23-21e944d568a5",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-multi-agent.webp",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "modell": "gpt_image_2_5",
+      "job": "36cda623-6b4e-4269-9fc2-e82434c5ca8d",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-testen.webp",
+      "track": "aie",
+      "thema": "Testen",
+      "modell": "gpt_image_2_5",
+      "job": "eebbc834-07f5-4aa3-8652-98212aaf7630",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-observability.webp",
+      "track": "aie",
+      "thema": "Observability",
+      "modell": "gpt_image_2_5",
+      "job": "e9f39a63-eb00-4ff4-ac99-91888473cae8",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/aie-sicherheit.webp",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "modell": "gpt_image_2_5",
+      "job": "c4edaf90-6bb8-4401-92a2-979077ec324a",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-rolle.webp",
+      "track": "fde",
+      "thema": "Rolle",
+      "modell": "gpt_image_2_5",
+      "job": "85d1fb39-4dac-4058-839b-371f77d24e5e",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-discovery.webp",
+      "track": "fde",
+      "thema": "Discovery",
+      "modell": "gpt_image_2_5",
+      "job": "5706a9d7-246b-4f00-a647-41e7db58b6aa",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-business-case.webp",
+      "track": "fde",
+      "thema": "Business Case",
+      "modell": "gpt_image_2_5",
+      "job": "969d1c01-2532-462c-8464-14bd44fa8a7e",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-recht-und-regulierung.webp",
+      "track": "fde",
+      "thema": "Recht & Regulierung",
+      "modell": "gpt_image_2_5",
+      "job": "3b68c1bd-e296-4255-9a8e-09c6bb6ba009",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-wiya.webp",
+      "track": "fde",
+      "thema": "wiya",
+      "modell": "gpt_image_2_5",
+      "job": "2b2a4d88-36cb-4d35-b1d2-42129df65d05",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-terminal-und-cli.webp",
+      "track": "fde",
+      "thema": "Terminal & CLI",
+      "modell": "gpt_image_2_5",
+      "job": "a54d5c72-a51a-4b9b-aadd-71f566ec1c0d",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-git-und-ablauf.webp",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "modell": "gpt_image_2_5",
+      "job": "468cce41-267b-4233-b3cd-a051cfe2566c",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-repo-struktur.webp",
+      "track": "fde",
+      "thema": "Repo-Struktur",
+      "modell": "gpt_image_2_5",
+      "job": "45da20ba-a57e-46cb-bc4e-aee9931bb63e",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-fehler-lesen.webp",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "modell": "gpt_image_2_5",
+      "job": "72bd64e9-cd67-4ee2-9416-a1a8d6f08bef",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-schnittstellen.webp",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "modell": "gpt_image_2_5",
+      "job": "98055d2d-b25d-429f-bc3c-a8a77077f23c",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-daten.webp",
+      "track": "fde",
+      "thema": "Daten",
+      "modell": "gpt_image_2_5",
+      "job": "aba12848-941f-4468-8371-597212ca3e61",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-integration.webp",
+      "track": "fde",
+      "thema": "Integration",
+      "modell": "gpt_image_2_5",
+      "job": "cce2d110-3551-410a-a862-3cd7892548d6",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-architektur-entscheidung.webp",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "modell": "gpt_image_2_5",
+      "job": "5be4e177-8d16-446c-b9d2-f696505c7cc2",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-sicherheit.webp",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "modell": "gpt_image_2_5",
+      "job": "973b1f42-4601-499c-bcc3-a4ef4125b730",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-betrieb.webp",
+      "track": "fde",
+      "thema": "Betrieb",
+      "modell": "gpt_image_2_5",
+      "job": "d062ca22-db8d-411c-a061-2d2711809250",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    },
+    {
+      "datei": "themen/fde-pilot-und-rollout.webp",
+      "track": "fde",
+      "thema": "Pilot & Rollout",
+      "modell": "gpt_image_2_5",
+      "job": "4ac0fd5c-725d-41ad-be5e-ca9f4b4ee323",
+      "erstellt": "2026-10-28",
+      "ki_generiert": true
+    }
+  ]
+}

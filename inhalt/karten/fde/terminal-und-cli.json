@@ -1,0 +1,60 @@
+{
+  "track": "fde",
+  "thema": "Terminal & CLI",
+  "karten": [
+    {
+      "id": "fde-b-terminal-was",
+      "track": "fde",
+      "thema": "Terminal & CLI",
+      "stufe": 1,
+      "frage": "Was ist ein Terminal?",
+      "antwort": "Ein Textfenster, in dem man den Computer mit Befehlen steuert. Die Shell nimmt sie entgegen und führt sie aus. Ergebnisse erscheinen als Text.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-pfad",
+      "track": "fde",
+      "thema": "Terminal & CLI",
+      "stufe": 1,
+      "frage": "Was ist ein Pfad, und was ist der Unterschied zwischen absolut und relativ?",
+      "antwort": "Die Adresse einer Datei oder eines Ordners. Absolut beginnt bei der Wurzel, z. B. `/Users/karol/projekt`. Relativ gilt vom aktuellen Ordner aus, z. B. `../daten`.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-cd-ls",
+      "track": "fde",
+      "thema": "Terminal & CLI",
+      "stufe": 1,
+      "frage": "Wie wechselst du in einen Ordner und siehst, was darin liegt?",
+      "antwort": "`cd ordner` wechselt hinein, `pwd` zeigt, wo du bist. `ls -la` listet alles, auch versteckte Dateien wie `.env`, mit Rechten und Größe.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-path-variable",
+      "track": "fde",
+      "thema": "Terminal & CLI",
+      "stufe": 2,
+      "frage": "Was ist die Umgebungsvariable PATH, und was heißt \"command not found\"?",
+      "antwort": "PATH ist die Liste der Ordner, in denen die Shell nach Programmen sucht. \"command not found\" heißt meist: nicht installiert oder nicht im PATH. `which docker` zeigt, ob und wo es gefunden wird.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-prozesse-ports",
+      "track": "fde",
+      "thema": "Terminal & CLI",
+      "stufe": 3,
+      "frage": "Wie findest du heraus, welche Prozesse laufen und wer Port 3000 belegt?",
+      "antwort": "`ps aux` listet Prozesse, `docker ps` laufende Container. `lsof -i :3000` zeigt den Prozess, der Port 3000 belegt, samt PID.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-tail-log",
+      "track": "fde",
+      "thema": "Terminal & CLI",
+      "stufe": 2,
+      "frage": "Wie siehst du das Ende einer Logdatei live mit?",
+      "antwort": "`tail -f app.log` zeigt neue Zeilen laufend an, `tail -n 50 app.log` die letzten 50. Beenden mit Strg+C.",
+      "quelle": "https://roadmap.sh/devops"
+    }
+  ]
+}

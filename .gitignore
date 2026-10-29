@@ -1,0 +1,11 @@
+node_modules/
+dist/
+coverage/
+apps/web/public/inhalt/
+apps/web/dev-dist/
+test-results/
+playwright-report/
+agents/video-tutor/laeufe/*.json
+*.tsbuildinfo
+.env
+.DS_Store

@@ -1,0 +1,96 @@
+{
+  "track": "fde",
+  "thema": "Sicherheit",
+  "karten": [
+    {
+      "id": "fde-oauth",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Was ist OAuth?",
+      "antwort": "Ein Verfahren, mit dem ein Nutzer einer App Zugriff auf sein Konto gibt (z. B. Gmail), ohne sein Passwort zu teilen. Die App bekommt ein Token mit festgelegtem Umfang.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-scope",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist ein Scope?",
+      "antwort": "Der Umfang einer OAuth-Erlaubnis, z. B. nur Mails lesen statt auch senden. Laut wiya-Pitch ist OAuth oft zu breit für Agenten.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-b-oauth-access-refresh",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Access Token und Refresh Token: Was ist der Unterschied?",
+      "antwort": "Das Access Token ist kurzlebig und wird für die Aufrufe genutzt. Das Refresh Token ist langlebig und holt nur neue Access Tokens. Das Refresh Token muss besonders geschützt werden.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-token-ablauf",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 3,
+      "frage": "Eine Integration lief gestern, heute kommt 401. Das Access Token ist von gestern. Was tust du?",
+      "antwort": "Wahrscheinlich ist es abgelaufen. Mit dem Refresh Token ein neues holen. Meldet auch das einen Fehler wie `invalid_grant`, muss der Nutzer die Verbindung neu freigeben.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-secret-manager",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist ein Secret Manager?",
+      "antwort": "Ein Tresor für Zugangsdaten, z. B. Vault oder der Dienst eines Cloud-Anbieters. Die App holt Werte zur Laufzeit, Zugriffe sind steuerbar und werden protokolliert.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-least-privilege",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was heißt Least Privilege?",
+      "antwort": "Jeder Nutzer und jedes System bekommt nur die Rechte, die er wirklich braucht. Ein Reporting-Zugang bekommt Lesen, nicht Löschen. Geht etwas schief, bleibt der Schaden klein.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-tls-https",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist TLS, und was ist HTTPS?",
+      "antwort": "TLS verschlüsselt die Verbindung und prüft per Zertifikat, wer die Gegenseite ist. HTTPS ist HTTP über TLS, erkennbar am Schloss im Browser.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-tls-abgelaufen",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 3,
+      "frage": "Ein Aufruf scheitert mit \"certificate has expired\". Was bedeutet das, und was tust du nicht?",
+      "antwort": "Das TLS-Zertifikat der Gegenseite ist abgelaufen. Der Betreiber muss es erneuern, oft ist eine automatische Erneuerung ausgefallen. Die Prüfung nicht abschalten, etwa mit `curl -k`.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-geleakter-key",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 3,
+      "frage": "Ein Kunde hat einen API-Key versehentlich auf GitHub gepusht. Was machst du zuerst?",
+      "antwort": "Den Key beim Anbieter sofort widerrufen und einen neuen erstellen. Dann den neuen im Secret Manager ablegen und Nutzung des alten prüfen. Den Commit zu löschen reicht nicht.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-env-nie-committen",
+      "track": "fde",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Warum darf `.env` nie ins Repository?",
+      "antwort": "Git behält jeden Commit. Ein einmal eingecheckter Schlüssel bleibt in der Historie auslesbar, auch wenn er später gelöscht wird. Die Datei gehört in `.gitignore`, im Repo liegt nur `.env.example` ohne echte Werte.",
+      "quelle": "https://docs.github.com"
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "track": "fde",
+  "thema": "wiya",
+  "karten": [
+    {
+      "id": "fde-wiya-rolle",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 1,
+      "frage": "Was ist Karols Rolle bei wiya laut Pitch?",
+      "antwort": "Co-Founder & CSO, Forward Deployed Engineer: Prototyping und Custom Software für Kunden, baut Integrationen und passt wiya an deren Abläufe an.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-wiya-gateway",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 3,
+      "frage": "Wo sitzt wiyas Gateway im Agent Loop?",
+      "antwort": "Zwischen der Tool-Bitte des Modells und der Ausführung. Es prüft jede Bitte deterministisch gegen das signierte Mandat, erlaubt oder verweigert und schreibt eine Quittung. Der Agent hält selbst keine Schlüssel.",
+      "quelle": "wiya-Pitch 19.10.2026",
+      "skizze": "gateway-mandat"
+    },
+    {
+      "id": "fde-wiya-mandat-wo",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 3,
+      "frage": "Bringt der Agent sein Mandat zum Gateway mit?",
+      "antwort": "Nein. Der Agent weist sich nur aus (wer bin ich). Das signierte Mandat liegt beim Gateway, und das Gateway schlägt es nach. So kann der Agent sein Mandat weder fälschen noch ausweiten.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-deterministisch",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Was heißt deterministisch beim Gateway, und warum ist das wichtig?",
+      "antwort": "Gleiche Eingabe, immer gleiches Ergebnis, nach festen Regeln statt nach Modell-Einschätzung. Dadurch ist es schnell (0,017 s im Pitch), billig und vor Gericht nachvollziehbar, anders als LLM-Guards.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-wiya-vier-fragen",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Welche vier Fragen beantwortet wiya?",
+      "antwort": "WHO: Wer ist der Agent? WHOSE: In wessen Auftrag handelt er? WHAT: Was darf er (Mandat)? WHERE: In welchen Systemen und Tools handelt er?",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-quittung",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Was steht in einer wiya-Quittung?",
+      "antwort": "Modell, Agent, Organisation, verantwortliche Person, Zeit, aufgerufene Tools mit Argumenten, angewandtes Mandat, Entscheidung und Ergebnis.",
+      "quelle": "wiya-Pitch 19.10.2026",
+      "skizze": "gateway-mandat"
+    },
+    {
+      "id": "fde-k-wiya-problem",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 1,
+      "frage": "Was ist laut Pitch das Kernproblem, das wiya löst?",
+      "antwort": "Agents bekommen immer mehr Zugriff und werden gefährlicher. wiya stellt sicher, dass sie tun, was sie sollen, und liefert Beweise, falls etwas passiert.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-zahlen-ibm",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Welche IBM-Zahlen nennt der Pitch zu KI-Angriffen?",
+      "antwort": "21 Prozent der betroffenen Firmen wurden über eigene KI-Systeme getroffen, 92 Prozent hatten keine passende Zugriffskontrolle. Ein Prompt-Injection-Vorfall kostet im Schnitt 5,1 Mio. Euro.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-pass-mandat",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Was sind Passport und Mandat bei wiya?",
+      "antwort": "Der Passport verknüpft Agent und Organisation mit einer geprüften Identität. Im Mandat unterschreibt der Kunde, was der Agent tun darf.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-gateway",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Wie prüft das wiya-Gateway einen Aufruf?",
+      "antwort": "Es prüft jede Anfrage deterministisch gegen die Mandate und lässt sie zu oder lehnt sie ab. Jeder Aufruf wird protokolliert.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-keine-keys",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Was bedeutet: Mit wiya halten Agenten keine Schlüssel?",
+      "antwort": "Agenten greifen nicht direkt auf Tools zu, sondern nur über das Gateway. So kann ein direkter Zugriff die Prüfung nicht umgehen.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-schwaechen",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Welche Schwächen heutiger Schutzmaßnahmen nennt der Pitch?",
+      "antwort": "OAuth ist breit und für systemübergreifende Abläufe unpraktisch. LLM-Guards sind teuer, langsam und probabilistisch, menschliche Freigabe kostet Zeit und ermüdet.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-benchmark-angriff",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Welche Angriffserfolgsrate zeigt der Pitch im Benchmark?",
+      "antwort": "Ohne Schutz 71,5 Prozent, mit wiya C2 1,9 Prozent. Gemessen mit AgentDojo der ETH Zürich, Durchschnitt aus vier Welten.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-benchmark-zeit",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Wie schnell ist der wiya-Check laut Pitch?",
+      "antwort": "0,017 Sekunden pro Fall. Zum Vergleich nennt der Pitch bei Progent (eingeschaltet) 15,4 Sekunden.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-markt",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Welche Marktzahlen nennt der Pitch?",
+      "antwort": "Deutschland: etwa 1.450 beaufsichtigte Firmen zu je 30 Tsd. Euro, also 44 Mio. Euro. EU/EWR: etwa 7.000 Firmen, 210 Mio. Euro. Obergrenze: 1,6 Mrd. Euro.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-phasen",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Welche drei Phasen hat wiya laut Pitch?",
+      "antwort": "Jetzt: Runtime Control für regulierte Firmen mit laufenden Agents. Als Nächstes Werkzeuge für Underwriter, später versicherbare Nachweise (Insurable Attestation).",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-msg",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 2,
+      "frage": "Welche Rolle hat msg im Pitch?",
+      "antwort": "Design- und Implementierungspartner: Gemeinsam wird ein internes Pilotprojekt im November gebaut, dann folgen Einführungen bei regulierten Firmen. msg setzt um, wiya lizenziert.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "fde-k-wiya-kunde-fragt",
+      "track": "fde",
+      "thema": "wiya",
+      "stufe": 3,
+      "frage": "Ein Kunde fragt: Was bringt mir wiya, wenn mein Agent sowieso nur kleine Beträge freigibt? Was sagst du?",
+      "antwort": "Auch kleine Aktionen brauchen Mandat und Nachweis, denn die Firma haftet für ihren Agenten. Die Quittung beweist später, wer was wann durfte und tat.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    }
+  ]
+}

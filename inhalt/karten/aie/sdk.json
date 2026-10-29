@@ -1,0 +1,195 @@
+{
+  "track": "aie",
+  "thema": "SDK",
+  "karten": [
+    {
+      "id": "aie-sdk",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Was ist ein SDK?",
+      "antwort": "Software Development Kit: eine Bibliothek plus Werkzeuge, um bequem gegen eine Plattform zu programmieren. Ein SDK ist kein Harness, kann aber Harness-Teile enthalten.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-modell-sdk",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Was macht ein Modell-SDK (z. B. openai, anthropic)?",
+      "antwort": "Es schickt API-Anfragen an das Modell und gibt die Antwort zurück, ohne dass man HTTP von Hand baut. Die Schleife muss man selbst schreiben.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-agent-sdk",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Was ist ein Agent SDK?",
+      "antwort": "Ein SDK, das Harness-Teile fertig mitliefert: Schleife, Tool-Ausführung, Übergaben zwischen Agenten, Tracing, Guardrails. Beispiele: Claude Agent SDK, OpenAI Agents SDK.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-openai-trennt",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 3,
+      "frage": "OpenAI trennt Modellaufruf und Agent. Was heißt das?",
+      "antwort": "Es gibt die Modell-API (ein Aufruf, eine Antwort) und getrennt davon das Agents SDK (Schleife, Handoffs, Guardrails, Tracing). Wer nur die API nutzt, baut den Rest des Harness selbst. Bei Anthropic genauso: Messages API vs. Claude Agent SDK.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-handoff",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Was ist ein Handoff?",
+      "antwort": "Ein Agent übergibt die Aufgabe samt Kontext an einen spezialisierten Agenten. Beispiel: Ein Triage-Agent erkennt 'Erstattung' und übergibt an den Erstattungs-Agenten.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-tracing",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Was ist Tracing?",
+      "antwort": "Die Aufzeichnung jedes Schritts eines Laufs: Modellaufruf, Tool, Parameter, Dauer, Kosten. Damit lässt sich nachvollziehen, was passiert ist.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-guardrail",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Was ist eine Guardrail?",
+      "antwort": "Eine automatische Prüfung von Eingabe oder Ausgabe (z. B. keine personenbezogenen Daten, kein Betrag über Limit), die den Lauf stoppen kann.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-web-mobile-sdk",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Was sind Web- und Mobile-SDKs, und enthält eine Website einen Harness?",
+      "antwort": "SDKs zum Bauen der Oberfläche (z. B. Chat-Streaming im Browser, iOS-App). Eine Website enthält meist keinen Harness. Der Harness läuft im Backend oder Worker, die Website zeigt nur an.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-cloud-sdk",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Ist ein Cloud-SDK die Datenbank?",
+      "antwort": "Nein. Ein Cloud-SDK (z. B. AWS SDK) ist die Bibliothek, mit der dein Code Cloud-Dienste steuert: Datei hochladen, Funktion starten, Datenbank abfragen. Die Datenbank ist ein Dienst in der Cloud.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-modell-sdk-baut-nicht",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Baut man mit einem Modell-SDK ein Modell?",
+      "antwort": "Nein. Man benutzt damit ein fertiges Modell: Anfrage hin, Antwort zurück. Modelle trainieren die Anbieter.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-agent-sdk-harness",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Enthält ein Agent SDK einen Harness?",
+      "antwort": "Ja, Teile davon oder einen fast fertigen. Das Claude Agent SDK ist im Kern der Harness von Claude Code als Bibliothek.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-drei-ebenen",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Modell-SDK, Agent SDK, Framework: Wie unterscheiden sich die Ebenen?",
+      "antwort": "Ein Modell-SDK ruft das Modell auf. Ein Agent SDK bringt zusätzlich die Schleife mit Tools, und ein Framework liefert allgemeinere Bausteine, um Abläufe zu bauen.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-framework",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Was ist ein Framework im KI-Kontext?",
+      "antwort": "Ein Baukasten mit fertigen Bausteinen für Modellaufrufe, Tools, Speicher und Abläufe. Du baust damit schneller, ordnest dich aber seiner Struktur unter.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-langchain",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Wofür steht LangChain auf Konzeptebene?",
+      "antwort": "Ein Framework, das Bausteine zum Verbinden von Modellen, Tools und Datenquellen in Abläufen bereitstellt.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-langgraph",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Welche Grundidee hat LangGraph?",
+      "antwort": "Ein Agentenablauf wird als Graph beschrieben: Schritte sind Knoten, Übergänge die Verbindungen, und ein gemeinsamer Zustand wird weitergereicht.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-vercel-ai-sdk",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Wofür wird das Vercel AI SDK konzeptionell genutzt?",
+      "antwort": "Als Werkzeugkasten, um KI-Funktionen wie Modellaufrufe und Streaming in Web-Anwendungen einzubauen. Es ist ein Beispiel für ein Framework nahe an der Web-Anwendung.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-streaming",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Was ist Streaming bei Modellantworten?",
+      "antwort": "Die Antwort kommt Stück für Stück an, während das Modell sie erzeugt, nicht erst am Ende vollständig.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-streaming-warum",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 1,
+      "frage": "Warum nutzt man Streaming?",
+      "antwort": "Nutzer sehen sofort, dass etwas passiert, statt auf die ganze Antwort zu warten. Das wirkt deutlich schneller.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-tool-runner-sdk",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Was nimmt dir ein Tool Runner im SDK ab?",
+      "antwort": "Er führt die Schleife aus Modell, Tool-Aufruf und Ergebnis automatisch aus, bis das Modell fertig ist. Sonst müsstest du sie selbst schreiben.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-sdk-wahl",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 3,
+      "frage": "Wann nimmst du direkt das Modell-SDK, wann ein Framework?",
+      "antwort": "Für einfache, klar umrissene Abläufe reicht das SDK und du behältst Kontrolle. Bei komplexen Abläufen mit viel Zustand kann ein Framework Arbeit sparen.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-framework-bindung",
+      "track": "aie",
+      "thema": "SDK",
+      "stufe": 2,
+      "frage": "Welchen Nachteil kann ein Framework haben?",
+      "antwort": "Du bindest dich an seine Konzepte, und ein Wechsel wird aufwendig. Außerdem verbirgt es Details, die du bei Fehlern verstehen musst.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    }
+  ]
+}

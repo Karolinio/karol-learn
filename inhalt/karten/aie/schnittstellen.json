@@ -1,0 +1,51 @@
+{
+  "track": "aie",
+  "thema": "Schnittstellen",
+  "karten": [
+    {
+      "id": "aie-api",
+      "track": "aie",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was ist eine API?",
+      "antwort": "Eine feste Schnittstelle, über die ein Programm ein anderes aufruft. Meist HTTP: Anfrage an eine URL, Antwort als JSON.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-api-key",
+      "track": "aie",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was ist ein API-Key?",
+      "antwort": "Ein geheimer Schlüssel, der beweist, wer anfragt, und über den abgerechnet wird. Gehört in eine Umgebungsvariable oder einen Secret-Speicher, nie in den Code.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-sse",
+      "track": "aie",
+      "thema": "Schnittstellen",
+      "stufe": 2,
+      "frage": "Was ist SSE?",
+      "antwort": "Server-Sent Events: Der Server schickt dem Browser über eine offene Verbindung fortlaufend Ereignisse, z. B. jeden Suchschritt.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-port",
+      "track": "aie",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was ist ein Port (localhost:4700)?",
+      "antwort": "Die Nummer, unter der ein Programm auf dem Rechner erreichbar ist, wie eine Zimmernummer im selben Haus.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-api-vs-key",
+      "track": "aie",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Ist die Modell-API dasselbe wie der API-Key?",
+      "antwort": "Nein. Die API ist die Tür (die Adresse, an die man Anfragen schickt). Der Key ist dein Ausweis an dieser Tür. Über ihn wird pro Token abgerechnet.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}

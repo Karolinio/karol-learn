@@ -1,0 +1,189 @@
+{
+  "track": "aie",
+  "thema": "Tool-Schleife",
+  "karten": [
+    {
+      "id": "aie-loop",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Wie läuft die Tool-Calling-Schleife (Agent Loop)?",
+      "antwort": "1. Harness schickt Nachrichtenliste + Tool-Schemas ans Modell. 2. Antwort ist Text: fertig. 3. Antwort ist Tool-Aufruf: Harness führt aus, hängt Ergebnis an die Liste, ruft das Modell erneut. 4. Wiederholen bis fertig oder ein Limit greift.",
+      "quelle": "session-2026-10-27",
+      "skizze": "agent-loop"
+    },
+    {
+      "id": "aie-loop-text",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Die Antwort ist Text. Heißt das, es war ein lesendes Tool?",
+      "antwort": "Nein. Text heißt nur: Das Modell ist fertig und will kein weiteres Tool. Vorher kann es beliebig viele lesende und schreibende Tools aufgerufen haben. In der Anthropic-API steht dann stop_reason 'end_turn' statt 'tool_use'.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-stop",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 1,
+      "frage": "Wann hört eine Agenten-Schleife auf?",
+      "antwort": "Wenn das Modell mit Text antwortet, oder wenn ein Limit greift: maximale Schritte, Zeitlimit, Kostenbudget, Abbruch durch einen Menschen.",
+      "quelle": "session-2026-10-27",
+      "skizze": "agent-loop"
+    },
+    {
+      "id": "aie-tool-fehler",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Was passiert, wenn ein Tool fehlschlägt?",
+      "antwort": "Der Fehler geht als Tool-Ergebnis zurück ans Modell (bei Anthropic: tool_result mit is_error). Das Modell kann es anders versuchen. Nach zu vielen Fehlern bricht der Harness ab.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-tool-runner",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Was ist der Tool Runner?",
+      "antwort": "Der Teil des Harness, der eine Tool-Bitte des Modells wirklich ausführt und das Ergebnis zurückgibt. Das Anthropic-SDK hat dafür sogar einen fertigen Helfer namens tool_runner.",
+      "quelle": "session-2026-10-27",
+      "skizze": "schichten"
+    },
+    {
+      "id": "aie-react",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 1,
+      "frage": "Was bedeutet ReAct?",
+      "antwort": "Reasoning und Acting: Das Modell überlegt, ruft ein Tool auf, sieht das Ergebnis und überlegt weiter. Das wiederholt sich, bis die Aufgabe erledigt ist.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-react-ablauf",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Wie läuft ein ReAct-Durchgang konkret ab?",
+      "antwort": "Das Modell schreibt einen Gedanken und eine Tool-Bitte. Der Harness führt aus und gibt das Ergebnis zurück, dann folgt der nächste Gedanke.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-stop-max-schritte",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Warum braucht eine Schleife eine maximale Schrittzahl?",
+      "antwort": "Damit sie nicht endlos weiterläuft, wenn das Modell nie zu einem Ende kommt. Bei Erreichen bricht der Harness ab oder fragt nach.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-stop-arten",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Welche Stop-Kriterien kann ein Harness neben der Modellantwort haben?",
+      "antwort": "Maximale Schritte, Zeit- und Kostengrenze, ein Abbruch durch den Nutzer oder eine Freigabe-Ablehnung. Der Harness kann damit jederzeit stoppen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-parallel",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 1,
+      "frage": "Was sind parallele Tool-Aufrufe?",
+      "antwort": "Das Modell bittet in einem Schritt um mehrere Tool-Aufrufe zugleich. Der Harness kann sie nebeneinander ausführen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-parallel-wann",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Wann sind parallele Tool-Aufrufe geeignet?",
+      "antwort": "Wenn sie nicht voneinander abhängen, etwa drei Kundendaten gleichzeitig abfragen. Hängt der zweite vom Ergebnis des ersten ab, muss man nacheinander arbeiten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-ergebnis-zuordnung",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Wie weiß das Modell, zu welchem Aufruf ein Tool-Ergebnis gehört?",
+      "antwort": "Jede Tool-Bitte trägt eine ID, und das Ergebnis wird mit dieser ID als neue Nachricht zurückgegeben. So lässt es sich auch bei mehreren Aufrufen zuordnen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-endlosschleife",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Wie kommt es zu einer Endlosschleife im Agenten?",
+      "antwort": "Zum Beispiel, wenn derselbe fehlerhafte Aufruf immer wieder versucht wird, oder wenn das Modell nie entscheidet, fertig zu sein.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-endlos-erkennen",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 3,
+      "frage": "Wie erkennt und verhindert der Harness Endlosschleifen?",
+      "antwort": "Durch Schrittgrenzen, Zeit- und Kostenlimits und durch Erkennen identischer Wiederholungen. Greift eine Grenze, wird abgebrochen oder ein Mensch gefragt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-planner-executor",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 1,
+      "frage": "Was ist das Planner-Executor-Muster?",
+      "antwort": "Ein Teil, der Planer, zerlegt die Aufgabe in Schritte. Ein anderer, der Ausführer, arbeitet sie nacheinander ab.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-planner-vorteil",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Was ist der Vorteil, Planen und Ausführen zu trennen?",
+      "antwort": "Der Plan ist sichtbar und prüfbar, bevor etwas passiert. Der Ausführer kann ein günstigeres Modell sein.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-self-critique",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 1,
+      "frage": "Was ist Self-Critique?",
+      "antwort": "Das Modell prüft seine eigene Antwort und verbessert sie danach. Das ist ein zusätzlicher Schritt in der Schleife.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-self-critique-grenze",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 2,
+      "frage": "Warum ersetzt Self-Critique keine unabhängige Prüfung?",
+      "antwort": "Dasselbe Modell kann denselben Fehler zweimal übersehen. Verlässlicher ist eine Prüfung durch Code, Regeln oder eine andere Instanz.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-schleife-kosten",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 3,
+      "frage": "Warum steigen die Kosten bei langen Schleifen stärker als linear?",
+      "antwort": "Mit jeder Runde wächst der Verlauf, der erneut als Input mitgeht. Spätere Runden sind also teurer als frühere.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-schleife-szenario",
+      "track": "aie",
+      "thema": "Tool-Schleife",
+      "stufe": 3,
+      "frage": "Ein Agent ruft 40-mal dasselbe Such-Tool mit leicht anderer Frage auf. Was tust du?",
+      "antwort": "Schrittlimit setzen, die Tool-Beschreibung und das Ziel prüfen und gleiche Wiederholungen erkennen. Oft fehlt dem Modell ein klares Kriterium, wann die Suche genug ist.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "track": "aie",
+  "thema": "Harness",
+  "karten": [
+    {
+      "id": "aie-harness",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Was ist ein Harness?",
+      "antwort": "Der Code um das Modell, der einen Agenten laufen lässt: lädt die Konfiguration, baut den Kontext, bietet Tools an, ruft das Modell auf, steuert die Tool-Schleife, setzt Limits und Freigaben durch und schreibt Logs.",
+      "quelle": "session-2026-10-27",
+      "skizze": "schichten"
+    },
+    {
+      "id": "aie-harness-spielraum",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Ist der Harness nur der Spielraum, der dem Modell Grenzen setzt?",
+      "antwort": "Nicht nur. Er begrenzt (Regeln, Limits) und er arbeitet: Er führt die Tool-Aufrufe aus, die das Modell erbittet, und hängt die Ergebnisse an.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-harness-pro-agent",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Gibt es einen Harness pro Agent oder pro Anwendung?",
+      "antwort": "Üblich: ein Harness-Code für die ganze Anwendung, eine Konfiguration pro Agent. In HIS ist agenten.py der Harness-Teil, agent.json und prompt.md je Ordner die Konfiguration.",
+      "quelle": "~/dev/his/AGENTEN.md"
+    },
+    {
+      "id": "aie-system-prompt",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Was ist der System-Prompt, und ist das README einer App ihr System-Prompt?",
+      "antwort": "Der feste Anfangstext jedes Modellaufrufs: Rolle, Aufgabe, Regeln. Das README ist für Menschen. Bei Coding-Agenten werden AGENTS.md oder CLAUDE.md in den System-Prompt geladen.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-vier-wege",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 3,
+      "frage": "Welche vier Wege gibt es, an einen Harness zu kommen?",
+      "antwort": "A: fremden Harness per Kommandozeile starten (claude -p). B: Harness als Bibliothek einbinden (Agent SDK). C: eigene Schleife gegen die Modell-API. D: Router davor, der das Modell wählt. Deployment ist kein fünfter Weg, sondern die Frage, wo das Ganze läuft.",
+      "quelle": "session-2026-10-27",
+      "skizze": "vier-wege"
+    },
+    {
+      "id": "aie-claude-p",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Was macht claude -p?",
+      "antwort": "Startet Claude Code einmal ohne Chat: Prompt rein, Ergebnis raus, Programm beendet. So nutzt HIS Claude Code als fremden Harness.",
+      "quelle": "~/dev/his/AGENTEN.md"
+    },
+    {
+      "id": "aie-harness-1-config",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Harness-Schritt 1, Konfiguration laden: was passiert?",
+      "antwort": "Der Harness liest die Agenten-Datei: Name, Beschreibung, System-Prompt, Regeln, erlaubte Tools, Modell, Limits (Schritte, Zeit, Budget).",
+      "quelle": "Whiteboard Karol"
+    },
+    {
+      "id": "aie-harness-2-kontext",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Harness-Schritt 2, Kontext bauen: was passiert?",
+      "antwort": "Er stellt die Nachrichtenliste zusammen: System-Prompt + Regeln + Aufgabe + passende Daten (z. B. aus dem Brain) + bisherige Tool-Ergebnisse. Er entscheidet, was hineinkommt und was nicht.",
+      "quelle": "Whiteboard Karol"
+    },
+    {
+      "id": "aie-harness-3-tools",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Harness-Schritt 3, Tools bekanntgeben: was passiert?",
+      "antwort": "Er legt der Anfrage die Schemas der Tools bei, die dieser Agent benutzen darf. Ein Tool, das nicht auf der Liste steht, kann das Modell nicht erbitten.",
+      "quelle": "Whiteboard Karol"
+    },
+    {
+      "id": "aie-harness-4-aufruf",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Harness-Schritt 4, Modell aufrufen: was passiert?",
+      "antwort": "Er schickt über das Modell-SDK eine Anfrage an die API (oder an Ollama): Modellname, Nachrichtenliste, Tool-Schemas, maximale Antwortlänge.",
+      "quelle": "Whiteboard Karol"
+    },
+    {
+      "id": "aie-harness-5-loop",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Harness-Schritt 5, Tool-Loop steuern: was passiert?",
+      "antwort": "Er liest die Antwort. Tool-Bitte: prüfen, Tool Runner ausführen lassen, Ergebnis anhängen, zurück zu Schritt 4. Text: fertig. Dabei zählt er Schritte und Kosten und schreibt jeden Schritt ins Log.",
+      "quelle": "Whiteboard Karol"
+    },
+    {
+      "id": "aie-harness-wort",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Woher kommt das Wort Harness?",
+      "antwort": "Englisch für Geschirr oder Zaumzeug eines Pferdes: die Ausrüstung, mit der man die Kraft des Tiers lenkt und nutzt. Das Modell ist das Pferd, der Harness lenkt es. Harness Engineering = diese Ausrüstung entwerfen.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-app-vs-agent-harness",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Braucht eine Lern-App einen Harness?",
+      "antwort": "Die App selbst nicht: Sie zeigt Karten an und speichert Fortschritt. Ein Agent in der App (z. B. der Video-Tutor) braucht einen, denn er ruft ein Modell in einer Schleife mit Tools auf.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-system-prompt-inhalt",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Was steht im System-Prompt, und ist das 'alles, was die App macht'?",
+      "antwort": "Rolle, Aufgabe, Regeln, Antwortformat, manchmal Hinweise zu Tools. Nicht die Beschreibung der ganzen App; die steht im README für Menschen. Im Repo liegt der System-Prompt als Datei (in HIS: prompt.md je Agent).",
+      "quelle": "~/dev/his/AGENTEN.md"
+    },
+    {
+      "id": "aie-aufgaben",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Welche Aufgaben erledigt ein Harness, die das Modell nicht kann?",
+      "antwort": "Er führt Tools aus, speichert den Verlauf, setzt Limits, holt Freigaben und protokolliert. Das Modell erzeugt nur Text.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-limits",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Welche Limits setzt ein Harness typischerweise?",
+      "antwort": "Zum Beispiel höchstens eine Zahl von Schritten, eine Zeitgrenze und eine Token- oder Kostengrenze. Sie begrenzen den Schaden, wenn ein Lauf aus dem Ruder läuft.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-freigaben",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Was ist eine Freigabe im Harness?",
+      "antwort": "Vor bestimmten Aktionen, etwa Geld überweisen, hält der Harness an und fragt eine Person. Erst nach Zustimmung wird das Tool ausgeführt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-logs",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Was wird im Harness geloggt?",
+      "antwort": "Anfragen ans Modell, Tool-Aufrufe mit Parametern und Ergebnissen, Fehler und Kosten. So lässt sich ein Lauf später nachvollziehen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-logs-warum",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Warum sind Logs bei Agenten besonders wichtig?",
+      "antwort": "Agenten entscheiden selbst, welche Schritte sie gehen, und dieselbe Aufgabe läuft nicht immer gleich. Ohne Protokoll kannst du Fehler und Vorfälle nicht klären.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-config-inhalt",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Was steht in der Konfiguration eines Agenten?",
+      "antwort": "Zum Beispiel Modell, System-Prompt, erlaubte Tools, Limits und Freigabe-Regeln. Der Harness lädt sie bei jedem Lauf.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-harness-engineering",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Was ist Harness Engineering?",
+      "antwort": "Das Gestalten des Harness drumherum, damit ein Agent zuverlässig arbeitet: Kontext, Tools, Limits, Prüfungen und Fehlerbehandlung. Das Modell ist dabei nur ein Teil.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-harness-engineering-hebel",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 3,
+      "frage": "Ein Agent liefert schlechte Ergebnisse. Warum lohnt der Blick auf den Harness vor dem Modellwechsel?",
+      "antwort": "Oft liegt es an fehlendem Kontext, unklaren Tool-Beschreibungen oder fehlenden Prüfungen. Ein anderes Modell behebt das nicht.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-fehlerbehandlung",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Wie geht ein Harness mit Fehlern um?",
+      "antwort": "Er fängt sie ab, wiederholt bei vorübergehenden Fehlern und gibt dem Modell bei Tool-Fehlern eine verständliche Meldung. Bei gravierenden Fehlern bricht er sauber ab.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-retry",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Was ist ein Retry?",
+      "antwort": "Ein erneuter Versuch, nachdem ein Aufruf fehlgeschlagen ist, zum Beispiel wegen einer kurzen Netzstörung.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-retry-sinnvoll",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 2,
+      "frage": "Wann ist ein Retry sinnvoll, wann gefährlich?",
+      "antwort": "Sinnvoll bei vorübergehenden Fehlern wie Zeitüberschreitung. Gefährlich bei schreibenden Aktionen ohne Schutz, weil sie doppelt ausgeführt werden könnten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-timeout",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Was ist ein Timeout?",
+      "antwort": "Eine Zeitgrenze für einen Aufruf. Kommt keine Antwort rechtzeitig, bricht der Harness ab, statt ewig zu warten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-backoff",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Warum wartet man zwischen Retries immer länger (Backoff)?",
+      "antwort": "Damit ein überlasteter Dienst sich erholen kann, statt mit Wiederholungen bombardiert zu werden. Die Wartezeit steigt typischerweise von Versuch zu Versuch.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-rate-limit",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 1,
+      "frage": "Was ist ein Rate Limit?",
+      "antwort": "Eine Obergrenze, wie viele Anfragen oder Tokens ein Anbieter in einer Zeit zulässt. Wird sie überschritten, lehnt die API ab und der Harness muss warten und neu versuchen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-regeln-im-harness",
+      "track": "aie",
+      "thema": "Harness",
+      "stufe": 3,
+      "frage": "Warum setzt man harte Regeln im Harness durch und nicht nur im Prompt?",
+      "antwort": "Ein Prompt ist eine Bitte, an die sich das Modell meist, aber nicht garantiert hält. Der Harness ist Code und erzwingt die Regel jedes Mal gleich.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

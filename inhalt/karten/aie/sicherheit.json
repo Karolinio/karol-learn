@@ -1,0 +1,159 @@
+{
+  "track": "aie",
+  "thema": "Sicherheit",
+  "karten": [
+    {
+      "id": "aie-prompt-injection",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Was ist Prompt Injection?",
+      "antwort": "Ein Text in den Daten (Mail, Webseite) enthält versteckte Befehle an das Modell. Gefährlich, weil das Modell Daten und Anweisungen nicht sicher trennen kann.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-hitl",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist Human in the Loop?",
+      "antwort": "Ein Mensch bestätigt einen Schritt, bevor er ausgeführt wird (Karte mit Haken oder X). Sicher, aber langsam und ermüdend, laut wiya-Pitch der Engpass heute.",
+      "quelle": "wiya-Pitch 19.10.2026"
+    },
+    {
+      "id": "aie-s-sec-direkt",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist direkte Prompt Injection?",
+      "antwort": "Der Nutzer selbst schreibt eine Anweisung, die das Modell von seinen Regeln abbringen soll, etwa „Ignoriere alle vorherigen Anweisungen“.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-indirekt",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist indirekte Prompt Injection?",
+      "antwort": "Die Anweisung steckt in Inhalten, die der Agent liest, etwa einer Webseite, einer Mail oder einem Dokument. Der Angreifer muss nicht selbst mit dem Agenten sprechen.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-indirekt-szenario",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 3,
+      "frage": "Ein Agent fasst eingehende Mails zusammen und hat ein Tool zum Senden. Welche Gefahr besteht?",
+      "antwort": "Eine Mail kann versteckt anweisen, interne Daten an eine fremde Adresse zu senden, und das Modell kann ihr folgen. Wirksam ist, das Sendetool durch eine feste Prüfung und Rechtebegrenzung abzusichern.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-jailbreak",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Was unterscheidet Jailbreak von Prompt Injection?",
+      "antwort": "Ein Jailbreak umgeht die Schutzregeln des Modells selbst, damit es Verbotenes ausgibt. Bei einer Injection schleust jemand Anweisungen in die Aufgabe einer Anwendung ein.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-abfluss",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Wie können Daten über Tools abfließen?",
+      "antwort": "Das Modell wird dazu gebracht, Daten an einen externen Ort zu schicken, etwa per Mail, Webanfrage oder Link mit Daten in der Adresse. Jedes Tool mit Ausgang ist ein möglicher Kanal.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-sandbox",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist eine Tool-Sandbox?",
+      "antwort": "Eine abgeschottete Umgebung, in der ein Tool läuft und nur auf Erlaubtes zugreifen kann. Geht etwas schief, bleibt der Schaden dort begrenzt.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-least-privilege",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was heißt Least Privilege bei Agenten?",
+      "antwort": "Ein Agent bekommt nur die Rechte, die seine Aufgabe braucht. Ein Termin-Agent braucht keinen Zugriff auf die Buchhaltung.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-least-privilege-warum",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Warum ist Least Privilege bei Agenten besonders wichtig?",
+      "antwort": "Man kann das Modell nicht vollständig gegen Manipulation immunisieren. Was ihm technisch nicht erlaubt ist, kann auch ein erfolgreicher Angriff nicht auslösen.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-pii",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist PII-Schwärzung?",
+      "antwort": "Personenbezogene Daten werden vor der Weitergabe, etwa an ein Modell oder ins Log, entfernt oder durch Platzhalter ersetzt. Aus „Anna Meier“ wird „[PERSON_1]“.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-owasp",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 1,
+      "frage": "Was ist die OWASP Top 10 für LLM-Anwendungen?",
+      "antwort": "Eine Liste der zehn wichtigsten Sicherheitsrisiken von Anwendungen mit Sprachmodellen. Prompt Injection steht dort prominent.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-owasp-agency",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Was bedeutet „Excessive Agency“ in der OWASP-Liste für LLM-Anwendungen?",
+      "antwort": "Ein Modell bekommt zu viele Funktionen, Rechte oder zu viel Selbstständigkeit. Schaden entsteht dann, wenn es manipuliert wird oder sich irrt.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-guard-probabilistisch",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Warum ist ein LLM-Guard unsicherer als eine deterministische Prüfung?",
+      "antwort": "Ein LLM-Guard ist selbst ein Modell, das sich täuschen lassen kann und nicht jedes Mal gleich entscheidet. Eine feste Regel prüft immer gleich und lässt sich nicht überreden.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-wiya-gateway",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 3,
+      "frage": "Wie erklärst du einem Kunden, warum wiyas Gateway robuster ist als ein Prompt „Ignoriere böse Anweisungen“?",
+      "antwort": "Der Prompt ist nur eine Bitte an das Modell, das Gateway eine technische Prüfung zwischen Tool-Bitte und Ausführung. Ohne gültiges Mandat passiert nichts, egal was im Text steht.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-s-sec-secrets",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Warum gehören Passwörter und API-Schlüssel nie in den Kontext des Modells?",
+      "antwort": "Was im Kontext steht, kann das Modell ausgeben oder weiterreichen, auch nach einer Manipulation. Der Schlüssel gehört in die Ausführungsschicht, die das Tool aufruft.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-sec-ausgabe",
+      "track": "aie",
+      "thema": "Sicherheit",
+      "stufe": 2,
+      "frage": "Was ist unsichere Verarbeitung von Modell-Ausgaben?",
+      "antwort": "Eine Anwendung übernimmt Text des Modells ungeprüft, etwa als Befehl, Datenbankabfrage oder Webseite. Die Ausgabe muss wie jede externe Eingabe geprüft werden.",
+      "quelle": "https://owasp.org"
+    }
+  ]
+}

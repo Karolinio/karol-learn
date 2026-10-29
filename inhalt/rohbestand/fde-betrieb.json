@@ -1,0 +1,590 @@
+{
+ "karten": [
+  {
+   "id": "fde-b-compose-was",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 1,
+   "frage": "Was ist Docker Compose?",
+   "antwort": "Eine Datei (`compose.yaml`), die beschreibt, welche Container zusammen laufen, z. B. App plus Datenbank. Mit `docker compose up` startet alles auf einmal.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-volume-was",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 1,
+   "frage": "Was ist ein Volume bei Docker?",
+   "antwort": "Ein Speicherort außerhalb des Containers. Daten darin bleiben erhalten, auch wenn der Container gelöscht oder neu erstellt wird. Typisch für Datenbankdateien.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-volume-verlust",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 3,
+   "frage": "Kunde: \"Nach dem Update sind alle Datenbank-Einträge weg.\" In der Compose-Datei hat der Postgres-Dienst kein `volumes:`. Was ist wahrscheinlich passiert?",
+   "antwort": "Die Daten lagen nur im Container. Beim Neuerstellen (`docker compose down`, dann `up`) ist der Container samt Daten weg. Abhilfe: ein Volume für das Datenverzeichnis anlegen und vorher ein Backup ziehen.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-umgebungsvariable",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 1,
+   "frage": "Was ist eine Umgebungsvariable?",
+   "antwort": "Ein Wert, der außerhalb des Programms gesetzt ist und beim Start gelesen wird, z. B. `DATABASE_URL`. So ändert man Einstellungen pro Umgebung, ohne den Code anzufassen.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-env-in-container",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 2,
+   "frage": "Wie kommen Umgebungsvariablen in einen Container?",
+   "antwort": "In Compose unter `environment:` oder über `env_file:` aus einer `.env`-Datei. Bei `docker run` mit `-e NAME=wert`. Geheime Werte gehören nicht fest in die Compose-Datei.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-port-mapping",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 1,
+   "frage": "Was bedeutet `ports: \"8080:3000\"` in Compose?",
+   "antwort": "Port 8080 auf dem Rechner (Host) wird an Port 3000 im Container weitergeleitet. Links steht immer der Host-Port, rechts der Container-Port.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-port-mapping-fehler",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 3,
+   "frage": "Der Container läuft, die App lauscht intern auf 3000, das Mapping ist `\"8080:3000\"`. Im Browser antwortet `localhost:3000` nicht. Warum?",
+   "antwort": "Von außen ist der Dienst nur über den Host-Port erreichbar, also `localhost:8080`. Der Container-Port 3000 ist nur innen sichtbar. Mit `docker ps` siehst du die Zuordnung in der Spalte PORTS.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-image-bauen-ziehen",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 2,
+   "frage": "Image bauen oder ziehen: wann was?",
+   "antwort": "Ziehen (`docker pull`, `image:`) lädt ein fertiges Image aus einer Registry, z. B. Postgres. Bauen (`docker build`, `build:`) erzeugt ein Image aus dem eigenen Code per Dockerfile. Fremde Standarddienste zieht man, eigenen Code baut man.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-hosting-arten",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 2,
+   "frage": "Hosting-Arten: Was ist der Prinzip-Unterschied zwischen statisch, Server/VPS und Serverless?",
+   "antwort": "Statisch: fertige Dateien werden ausgeliefert, kein eigener Servercode. Server/VPS: du mietest einen Rechner und betreibst alles selbst. Serverless: dein Code läuft nur bei Aufrufen, der Anbieter betreibt die Server.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-health-check",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 2,
+   "frage": "Was ist ein Health Check, und woran sieht man ihn bei Docker?",
+   "antwort": "Eine regelmäßige Prüfung, ob ein Dienst gesund ist, z. B. ein Aufruf von `/health`, der 200 liefern muss. `docker ps` zeigt dann `healthy` oder `unhealthy`. Ein laufender Container ist nicht automatisch ein funktionierender.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-restart-policy",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 2,
+   "frage": "Was macht `restart: unless-stopped` in Compose?",
+   "antwort": "Der Container startet nach einem Absturz oder Rechner-Neustart automatisch wieder. Nur wenn du ihn selbst gestoppt hast, bleibt er aus. Weitere Werte: `no`, `always`, `on-failure`.",
+   "quelle": "https://docs.docker.com"
+  },
+  {
+   "id": "fde-b-backup-frage",
+   "track": "fde",
+   "thema": "Betrieb",
+   "stufe": 3,
+   "frage": "Der Kunde sagt: \"Wir haben jede Nacht ein Backup.\" Welche Frage stellst du?",
+   "antwort": "\"Wurde je ein Restore getestet?\" Ein Backup, das sich nicht einspielen lässt, ist wertlos. Zweite Frage: Liegt eine Kopie an einem anderen Ort als der Server?",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-git-repo",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 1,
+   "frage": "Was ist ein Git-Repository?",
+   "antwort": "Der Ordner eines Projekts samt seiner kompletten Änderungshistorie. Kurz: Repo. Jeder Klon enthält die ganze Geschichte.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-git-commit",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 1,
+   "frage": "Was ist ein Commit?",
+   "antwort": "Ein gespeicherter Stand des Projekts mit Nachricht, Autor und Zeitpunkt. `git log` zeigt die Liste aller Commits.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-git-branch",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 1,
+   "frage": "Was ist ein Branch?",
+   "antwort": "Eine parallele Arbeitslinie. Darauf kann man ändern, ohne `main` zu berühren, und später zusammenführen.",
+   "quelle": "https://docs.github.com",
+   "skizze": "git-ablauf"
+  },
+  {
+   "id": "fde-b-git-merge",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 2,
+   "frage": "Was passiert bei einem Merge?",
+   "antwort": "Die Änderungen eines Branches werden in einen anderen übernommen, meist in `main`. Auf GitHub geschieht das meist über einen Pull Request. Danach enthält `main` beide Arbeitsstände.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-git-konflikt-lesen",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 3,
+   "frage": "In einer Datei stehen `<<<<<<< HEAD`, `=======` und `>>>>>>> feature`. Was heißt das?",
+   "antwort": "Ein Merge-Konflikt: Beide Branches haben dieselbe Stelle geändert. Oben steht die Version des aktuellen Branches, unten die des anderen. Ein Mensch entscheidet, löscht die Markierungen und committet.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-git-rebase",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 1,
+   "frage": "Was ist ein Rebase (nur als Begriff)?",
+   "antwort": "Die Commits eines Branches werden auf einen neuen Ausgangspunkt gesetzt, sodass der Verlauf gerade aussieht. Dabei wird die Historie umgeschrieben. Auf geteilten Branches deshalb mit Vorsicht.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-git-main-schuetzen",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 2,
+   "frage": "Warum schützt man den Branch `main`, und was heißt das?",
+   "antwort": "Mit Branch Protection geht kein direkter Push mehr. Änderungen laufen nur über Pull Requests, mit Review und grünen Checks. So landet nichts Ungeprüftes in der Produktion.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-github-actions",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 2,
+   "frage": "Was ist GitHub Actions, und wie sieht man ein Ergebnis?",
+   "antwort": "Workflow-Dateien in `.github/workflows/` laufen bei Ereignissen wie Push oder Pull Request und führen z. B. Tests und Build aus. Am Pull Request zeigt ein grüner Haken Erfolg, ein rotes Kreuz einen fehlgeschlagenen Check.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-gitignore",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 1,
+   "frage": "Wozu dient `.gitignore`?",
+   "antwort": "Dort stehen Dateien und Ordner, die Git nicht erfassen soll, z. B. `.env`, `node_modules/`, Logs. Es hindert versehentliche Commits von Geheimnissen und Ballast.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-git-tags-releases",
+   "track": "fde",
+   "thema": "Git & Ablauf",
+   "stufe": 2,
+   "frage": "Was sind Tags und Releases, und wozu helfen sie beim Kunden?",
+   "antwort": "Ein Tag ist eine Namensmarke auf einem Commit, z. B. `v1.2.0`. Ein GitHub-Release macht daraus ein Paket mit Notizen. So lässt sich genau sagen, welcher Stand beim Kunden läuft.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-http-methoden",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 1,
+   "frage": "Wofür stehen GET, POST, PUT, PATCH und DELETE?",
+   "antwort": "GET liest, POST legt neu an oder löst eine Aktion aus, PUT ersetzt komplett, PATCH ändert teilweise, DELETE löscht. GET soll nichts verändern.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-rest",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 1,
+   "frage": "Was heißt REST-API?",
+   "antwort": "Ein Stil für Web-Schnittstellen: Dinge haben URLs, z. B. `/customers/42`, und die HTTP-Methode bestimmt die Aktion. `GET /customers/42` liest, `DELETE /customers/42` löscht.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-json",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 1,
+   "frage": "Was ist JSON?",
+   "antwort": "Ein Textformat für Daten: Schlüssel-Wert-Paare in `{}`, Listen in `[]`. Beispiel: `{\"name\": \"Anna\", \"alter\": 31}`. Fast jede API nutzt es.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-http-header",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 1,
+   "frage": "Was sind HTTP-Header?",
+   "antwort": "Zusatzinfos zu Anfrage oder Antwort, getrennt vom eigentlichen Inhalt. Beispiele: `Content-Type: application/json`, `Authorization: ...`.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-authorization-header",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 2,
+   "frage": "Was bedeutet `Authorization: Bearer abc123`?",
+   "antwort": "Die Anfrage trägt ein Token (`abc123`) als Ausweis. Fehlt es oder ist es falsch, antwortet der Server meist mit 401. Das Token ist ein Secret und gehört nicht in Logs oder Chats.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-webhook",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 2,
+   "frage": "Was ist ein Webhook?",
+   "antwort": "Der Dienst ruft deine URL an, sobald etwas passiert, z. B. eine Zahlung. Du musst nicht ständig nachfragen. Kommt nichts an, prüft man zuerst, ob die URL von außen erreichbar ist.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-rate-limit",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 2,
+   "frage": "Was ist ein Rate Limit, und woran erkennst du es?",
+   "antwort": "Eine Obergrenze an Anfragen pro Zeit. Wird sie überschritten, kommt Status 429, oft mit dem Header `Retry-After`. Dann langsamer senden oder warten.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-idempotenz",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 2,
+   "frage": "Was heißt idempotent, und warum ist es bei POST wichtig?",
+   "antwort": "Mehrfaches Senden hat dasselbe Ergebnis wie einmaliges. GET, PUT und DELETE sind es laut Spezifikation, POST nicht. Wird ein POST wiederholt, kann es doppelt gebucht werden.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-timeout-szenario",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 3,
+   "frage": "Ein POST an die Zahlungs-API bricht nach 30 s mit Timeout ab. Sendest du einfach nochmal?",
+   "antwort": "Nein: Ein Timeout heißt nur, dass keine Antwort kam, nicht dass nichts passiert ist. Erst prüfen, ob die Zahlung angelegt wurde, sonst droht Doppelbuchung. Sicherer sind APIs mit Idempotency-Key.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-cors",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 1,
+   "frage": "Was ist CORS, und wo taucht der Fehler auf?",
+   "antwort": "Eine Browser-Regel: Eine Webseite darf Daten einer anderen Domain nur abrufen, wenn diese es per Header erlaubt. Der Fehler \"blocked by CORS policy\" erscheint nur im Browser, ein `curl` auf dieselbe URL klappt.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-curl-lesen",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 3,
+   "frage": "Was macht `curl -X POST https://api.example.com/orders -H \"Authorization: Bearer abc\" -H \"Content-Type: application/json\" -d '{\"item\":\"X\"}'`?",
+   "antwort": "Es sendet einen POST an `/orders` mit Token und JSON-Inhalt `{\"item\":\"X\"}`. `-X` ist die Methode, `-H` ein Header, `-d` der Inhalt.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-url-parameter",
+   "track": "fde",
+   "thema": "Schnittstellen",
+   "stufe": 2,
+   "frage": "Was heißt `GET /orders?status=open&limit=10`?",
+   "antwort": "Gelesen werden Bestellungen, gefiltert mit den Query-Parametern `status=open` und `limit=10`. Nach dem `?` beginnen sie, getrennt durch `&`.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-db-tabelle-zeile-spalte",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 1,
+   "frage": "Was sind Tabelle, Zeile und Spalte?",
+   "antwort": "Eine Tabelle sammelt gleichartige Daten, z. B. `customers`. Eine Zeile ist ein Datensatz, z. B. ein Kunde. Eine Spalte ist eine Eigenschaft, z. B. `email`.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-db-primaerschluessel",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 1,
+   "frage": "Was ist ein Primärschlüssel?",
+   "antwort": "Eine Spalte, meist `id`, die jede Zeile eindeutig kennzeichnet. Sie darf nie doppelt oder leer sein. Andere Tabellen verweisen darauf.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-db-join",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 2,
+   "frage": "Was macht ein JOIN?",
+   "antwort": "Er verknüpft Tabellen über gemeinsame Werte, z. B. `orders.customer_id = customers.id`. So sieht man zu jeder Bestellung den Kundennamen.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-db-index",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 2,
+   "frage": "Was ist ein Index, und was kostet er?",
+   "antwort": "Ein Verzeichnis wie ein Stichwortverzeichnis, das die Suche über eine Spalte beschleunigt. Er braucht Speicher und macht Schreiben etwas langsamer.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-db-migration",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 2,
+   "frage": "Was ist eine Migration?",
+   "antwort": "Ein versioniertes Skript, das die Datenbankstruktur ändert, z. B. eine Spalte hinzufügt. Migrationen laufen der Reihe nach, damit alle Umgebungen dieselbe Struktur haben.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-db-transaktion",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 2,
+   "frage": "Was ist eine Transaktion?",
+   "antwort": "Mehrere Schritte, die ganz oder gar nicht gelten: `BEGIN; ...; COMMIT;`. Bei Fehlern macht `ROLLBACK` alles rückgängig. Klassisch: Geld abbuchen und gutschreiben.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-db-restore",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 2,
+   "frage": "Wie sichert und stellt man eine Postgres-Datenbank wieder her?",
+   "antwort": "`pg_dump` erzeugt die Sicherung. Eingespielt wird sie je nach Format mit `psql` oder `pg_restore`. Ein Restore-Test gehört zu jedem Backup.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-sql-select-lesen",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 3,
+   "frage": "Was liefert `SELECT name, email FROM customers WHERE city = 'Köln' ORDER BY name LIMIT 5;`?",
+   "antwort": "Name und E-Mail von Kunden aus Köln, nach Namen sortiert, höchstens die ersten fünf. Das ist nur lesend und ändert nichts.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-sql-join-lesen",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 3,
+   "frage": "Was liefert `SELECT c.name, COUNT(*) FROM orders o JOIN customers c ON c.id = o.customer_id GROUP BY c.name;`?",
+   "antwort": "Pro Kunde die Anzahl seiner Bestellungen. `JOIN` verbindet beide Tabellen, `GROUP BY` fasst je Kundenname zusammen.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-sql-update-ohne-where",
+   "track": "fde",
+   "thema": "Daten",
+   "stufe": 3,
+   "frage": "Ein Kollege will `UPDATE customers SET status = 'inactive';` ausführen. Was fällt dir auf?",
+   "antwort": "Es fehlt `WHERE`, also werden alle Zeilen geändert. Erst mit `SELECT` prüfen, welche Zeilen betroffen wären, und vorher ein Backup oder `BEGIN;` nutzen.",
+   "quelle": "https://www.postgresql.org/docs"
+  },
+  {
+   "id": "fde-b-oauth-access-refresh",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Access Token und Refresh Token: Was ist der Unterschied?",
+   "antwort": "Das Access Token ist kurzlebig und wird für die Aufrufe genutzt. Das Refresh Token ist langlebig und holt nur neue Access Tokens. Das Refresh Token muss besonders geschützt werden.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-token-ablauf",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 3,
+   "frage": "Eine Integration lief gestern, heute kommt 401. Das Access Token ist von gestern. Was tust du?",
+   "antwort": "Wahrscheinlich ist es abgelaufen. Mit dem Refresh Token ein neues holen. Meldet auch das einen Fehler wie `invalid_grant`, muss der Nutzer die Verbindung neu freigeben.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-secret-manager",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was ist ein Secret Manager?",
+   "antwort": "Ein Tresor für Zugangsdaten, z. B. Vault oder der Dienst eines Cloud-Anbieters. Die App holt Werte zur Laufzeit, Zugriffe sind steuerbar und werden protokolliert.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-least-privilege",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was heißt Least Privilege?",
+   "antwort": "Jeder Nutzer und jedes System bekommt nur die Rechte, die er wirklich braucht. Ein Reporting-Zugang bekommt Lesen, nicht Löschen. Geht etwas schief, bleibt der Schaden klein.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-tls-https",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was ist TLS, und was ist HTTPS?",
+   "antwort": "TLS verschlüsselt die Verbindung und prüft per Zertifikat, wer die Gegenseite ist. HTTPS ist HTTP über TLS, erkennbar am Schloss im Browser.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-tls-abgelaufen",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 3,
+   "frage": "Ein Aufruf scheitert mit \"certificate has expired\". Was bedeutet das, und was tust du nicht?",
+   "antwort": "Das TLS-Zertifikat der Gegenseite ist abgelaufen. Der Betreiber muss es erneuern, oft ist eine automatische Erneuerung ausgefallen. Die Prüfung nicht abschalten, etwa mit `curl -k`.",
+   "quelle": "https://developer.mozilla.org"
+  },
+  {
+   "id": "fde-b-geleakter-key",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 3,
+   "frage": "Ein Kunde hat einen API-Key versehentlich auf GitHub gepusht. Was machst du zuerst?",
+   "antwort": "Den Key beim Anbieter sofort widerrufen und einen neuen erstellen. Dann den neuen im Secret Manager ablegen und Nutzung des alten prüfen. Den Commit zu löschen reicht nicht.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-env-nie-committen",
+   "track": "fde",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Warum darf `.env` nie ins Repository?",
+   "antwort": "Git behält jeden Commit. Ein einmal eingecheckter Schlüssel bleibt in der Historie auslesbar, auch wenn er später gelöscht wird. Die Datei gehört in `.gitignore`, im Repo liegt nur `.env.example` ohne echte Werte.",
+   "quelle": "https://docs.github.com"
+  },
+  {
+   "id": "fde-b-terminal-was",
+   "track": "fde",
+   "thema": "Terminal & CLI",
+   "stufe": 1,
+   "frage": "Was ist ein Terminal?",
+   "antwort": "Ein Textfenster, in dem man den Computer mit Befehlen steuert. Die Shell nimmt sie entgegen und führt sie aus. Ergebnisse erscheinen als Text.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-pfad",
+   "track": "fde",
+   "thema": "Terminal & CLI",
+   "stufe": 1,
+   "frage": "Was ist ein Pfad, und was ist der Unterschied zwischen absolut und relativ?",
+   "antwort": "Die Adresse einer Datei oder eines Ordners. Absolut beginnt bei der Wurzel, z. B. `/Users/karol/projekt`. Relativ gilt vom aktuellen Ordner aus, z. B. `../daten`.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-cd-ls",
+   "track": "fde",
+   "thema": "Terminal & CLI",
+   "stufe": 1,
+   "frage": "Wie wechselst du in einen Ordner und siehst, was darin liegt?",
+   "antwort": "`cd ordner` wechselt hinein, `pwd` zeigt, wo du bist. `ls -la` listet alles, auch versteckte Dateien wie `.env`, mit Rechten und Größe.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-path-variable",
+   "track": "fde",
+   "thema": "Terminal & CLI",
+   "stufe": 2,
+   "frage": "Was ist die Umgebungsvariable PATH, und was heißt \"command not found\"?",
+   "antwort": "PATH ist die Liste der Ordner, in denen die Shell nach Programmen sucht. \"command not found\" heißt meist: nicht installiert oder nicht im PATH. `which docker` zeigt, ob und wo es gefunden wird.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-prozesse-ports",
+   "track": "fde",
+   "thema": "Terminal & CLI",
+   "stufe": 3,
+   "frage": "Wie findest du heraus, welche Prozesse laufen und wer Port 3000 belegt?",
+   "antwort": "`ps aux` listet Prozesse, `docker ps` laufende Container. `lsof -i :3000` zeigt den Prozess, der Port 3000 belegt, samt PID.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-tail-log",
+   "track": "fde",
+   "thema": "Terminal & CLI",
+   "stufe": 2,
+   "frage": "Wie siehst du das Ende einer Logdatei live mit?",
+   "antwort": "`tail -f app.log` zeigt neue Zeilen laufend an, `tail -n 50 app.log` die letzten 50. Beenden mit Strg+C.",
+   "quelle": "https://roadmap.sh/devops"
+  },
+  {
+   "id": "fde-b-stacktrace-lesen",
+   "track": "fde",
+   "thema": "Fehler lesen",
+   "stufe": 3,
+   "frage": "Wie liest du einen Stacktrace?",
+   "antwort": "Zuerst die Fehlermeldung, dann die Zeile, die in deinem Projektcode steht und nicht in einer Bibliothek. Bei Python steht der jüngste Aufruf unten, bei JavaScript und Java oben.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-b-log-level",
+   "track": "fde",
+   "thema": "Fehler lesen",
+   "stufe": 1,
+   "frage": "Welche Log-Level gibt es, und welche suchst du zuerst?",
+   "antwort": "Von harmlos bis ernst: DEBUG, INFO, WARN, ERROR. Bei einer Störung suchst du zuerst nach ERROR rund um den Zeitpunkt des Problems.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-b-exit-code",
+   "track": "fde",
+   "thema": "Fehler lesen",
+   "stufe": 2,
+   "frage": "Was ist ein Exit-Code?",
+   "antwort": "Eine Zahl, die ein Programm beim Beenden meldet. `0` heißt Erfolg, alles andere Fehler. `echo $?` zeigt den letzten, bei Docker steht z. B. `Exited (1)`.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-b-connection-refused",
+   "track": "fde",
+   "thema": "Fehler lesen",
+   "stufe": 3,
+   "frage": "In der App steht \"connection refused\" beim Zugriff auf `localhost:5432` im Container. Was heißt das?",
+   "antwort": "Unter dieser Adresse hört niemand zu. Im Container zeigt `localhost` auf den Container selbst, nicht auf die Datenbank. In Compose den Dienstnamen nutzen, z. B. `db:5432`, und prüfen, ob die Datenbank läuft.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-b-permission-denied",
+   "track": "fde",
+   "thema": "Fehler lesen",
+   "stufe": 3,
+   "frage": "Im Log steht \"permission denied\". Was bedeutet das, und wie prüfst du es?",
+   "antwort": "Der Prozess darf die Datei oder Aktion nicht. `ls -l` zeigt Besitzer und Rechte. Rechte gezielt korrigieren, nicht pauschal `chmod 777`.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-b-port-belegt",
+   "track": "fde",
+   "thema": "Fehler lesen",
+   "stufe": 3,
+   "frage": "Beim Start steht \"address already in use\" (oder `EADDRINUSE`). Was ist los?",
+   "antwort": "Ein anderer Prozess belegt den Port schon, oft eine alte Instanz. Mit `lsof -i :PORT` den Prozess finden und beenden, oder einen anderen Port nehmen.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-b-debug-vorgehen",
+   "track": "fde",
+   "thema": "Fehler lesen",
+   "stufe": 2,
+   "frage": "Wie gehst du beim Kunden bei einem Fehler vor?",
+   "antwort": "Fehlermeldung wörtlich und Uhrzeit festhalten, dann reproduzieren. Logs um den Zeitpunkt lesen und fragen, was sich zuletzt geändert hat. Immer nur eine Sache auf einmal ändern.",
+   "quelle": "session-2026-10-27"
+  }
+ ]
+}

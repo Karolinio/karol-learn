@@ -1,0 +1,168 @@
+{
+  "track": "fde",
+  "thema": "Betrieb",
+  "karten": [
+    {
+      "id": "fde-deployment",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was ist Deployment?",
+      "antwort": "Code dorthin bringen, wo er für Nutzer läuft (Server, Cloud), samt Konfiguration, Secrets, Start und Überwachung.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-docker",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was macht Docker?",
+      "antwort": "Verpackt eine Anwendung mit allem, was sie braucht, in ein Image. Daraus läuft ein Container, der auf jedem Rechner gleich funktioniert.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-image-container",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Image und Container: was ist der Unterschied?",
+      "antwort": "Image = das fertige, unveränderliche Paket. Container = eine laufende Instanz davon. Aus einem Image können viele Container laufen.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-secret",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was ist ein Secret, und wo gehört es hin?",
+      "antwort": "Ein geheimer Wert (API-Key, Passwort, Token). In Umgebungsvariablen oder einen Secret Manager, nie ins Git-Repo.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-log",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was ist ein Log?",
+      "antwort": "Zeitgestempelte Zeilen, die ein Programm über sein Tun schreibt. Die erste Quelle, wenn beim Kunden etwas kaputt ist.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-lesen-statt-schreiben",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Was muss ein FDE ohne AI können, auch wenn AI den Code schreibt?",
+      "antwort": "Lesen und prüfen: Fehlermeldungen, Logs, HTTP-Antworten, einfache SQL-Abfragen. Sonst kann man beim Kunden nicht beurteilen, ob ein Fix stimmt.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-compose-was",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was ist Docker Compose?",
+      "antwort": "Eine Datei (`compose.yaml`), die beschreibt, welche Container zusammen laufen, z. B. App plus Datenbank. Mit `docker compose up` startet alles auf einmal.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-volume-was",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was ist ein Volume bei Docker?",
+      "antwort": "Ein Speicherort außerhalb des Containers. Daten darin bleiben erhalten, auch wenn der Container gelöscht oder neu erstellt wird. Typisch für Datenbankdateien.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-volume-verlust",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 3,
+      "frage": "Kunde: \"Nach dem Update sind alle Datenbank-Einträge weg.\" In der Compose-Datei hat der Postgres-Dienst kein `volumes:`. Was ist wahrscheinlich passiert?",
+      "antwort": "Die Daten lagen nur im Container. Beim Neuerstellen (`docker compose down`, dann `up`) ist der Container samt Daten weg. Abhilfe: ein Volume für das Datenverzeichnis anlegen und vorher ein Backup ziehen.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-umgebungsvariable",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was ist eine Umgebungsvariable?",
+      "antwort": "Ein Wert, der außerhalb des Programms gesetzt ist und beim Start gelesen wird, z. B. `DATABASE_URL`. So ändert man Einstellungen pro Umgebung, ohne den Code anzufassen.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-env-in-container",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Wie kommen Umgebungsvariablen in einen Container?",
+      "antwort": "In Compose unter `environment:` oder über `env_file:` aus einer `.env`-Datei. Bei `docker run` mit `-e NAME=wert`. Geheime Werte gehören nicht fest in die Compose-Datei.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-port-mapping",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 1,
+      "frage": "Was bedeutet `ports: \"8080:3000\"` in Compose?",
+      "antwort": "Port 8080 auf dem Rechner (Host) wird an Port 3000 im Container weitergeleitet. Links steht immer der Host-Port, rechts der Container-Port.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-port-mapping-fehler",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 3,
+      "frage": "Der Container läuft, die App lauscht intern auf 3000, das Mapping ist `\"8080:3000\"`. Im Browser antwortet `localhost:3000` nicht. Warum?",
+      "antwort": "Von außen ist der Dienst nur über den Host-Port erreichbar, also `localhost:8080`. Der Container-Port 3000 ist nur innen sichtbar. Mit `docker ps` siehst du die Zuordnung in der Spalte PORTS.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-image-bauen-ziehen",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Image bauen oder ziehen: wann was?",
+      "antwort": "Ziehen (`docker pull`, `image:`) lädt ein fertiges Image aus einer Registry, z. B. Postgres. Bauen (`docker build`, `build:`) erzeugt ein Image aus dem eigenen Code per Dockerfile. Fremde Standarddienste zieht man, eigenen Code baut man.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-hosting-arten",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Hosting-Arten: Was ist der Prinzip-Unterschied zwischen statisch, Server/VPS und Serverless?",
+      "antwort": "Statisch: fertige Dateien werden ausgeliefert, kein eigener Servercode. Server/VPS: du mietest einen Rechner und betreibst alles selbst. Serverless: dein Code läuft nur bei Aufrufen, der Anbieter betreibt die Server.",
+      "quelle": "https://roadmap.sh/devops"
+    },
+    {
+      "id": "fde-b-health-check",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Was ist ein Health Check, und woran sieht man ihn bei Docker?",
+      "antwort": "Eine regelmäßige Prüfung, ob ein Dienst gesund ist, z. B. ein Aufruf von `/health`, der 200 liefern muss. `docker ps` zeigt dann `healthy` oder `unhealthy`. Ein laufender Container ist nicht automatisch ein funktionierender.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-restart-policy",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Was macht `restart: unless-stopped` in Compose?",
+      "antwort": "Der Container startet nach einem Absturz oder Rechner-Neustart automatisch wieder. Nur wenn du ihn selbst gestoppt hast, bleibt er aus. Weitere Werte: `no`, `always`, `on-failure`.",
+      "quelle": "https://docs.docker.com"
+    },
+    {
+      "id": "fde-b-backup-frage",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 3,
+      "frage": "Der Kunde sagt: \"Wir haben jede Nacht ein Backup.\" Welche Frage stellst du?",
+      "antwort": "\"Wurde je ein Restore getestet?\" Ein Backup, das sich nicht einspielen lässt, ist wertlos. Zweite Frage: Liegt eine Kopie an einem anderen Ort als der Server?",
+      "quelle": "https://roadmap.sh/devops"
+    }
+  ]
+}

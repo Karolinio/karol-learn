@@ -1,0 +1,249 @@
+{
+  "track": "aie",
+  "thema": "Modelle",
+  "karten": [
+    {
+      "id": "aie-modell",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was ist ein Sprachmodell (LLM)?",
+      "antwort": "Ein Programm, das aus dem Text, den es bekommt (Kontext), den wahrscheinlich nächsten Text erzeugt. Es hat kein Gedächtnis und führt selbst nichts aus.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-modell-fuehrt-nicht-aus",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Was heißt: Das Modell führt nie etwas aus?",
+      "antwort": "Es antwortet nur mit Text oder mit einer strukturierten Bitte: 'Rufe Tool X mit diesen Parametern auf.' Ausführen tut der Tool Runner im Harness.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-router",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Was ist ein Modell-Router?",
+      "antwort": "Eine Schicht zwischen Harness und Modellen, die je Anfrage ein Modell wählt, nach Regel, Preis oder Ausfall. OpenRouter ist ein Cloud-Dienst: ein Schlüssel für viele Modelle.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-router-lokal",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 3,
+      "frage": "Luis OS soll lokal laufen. Passt OpenRouter dazu?",
+      "antwort": "Nein, OpenRouter ist Cloud. Lokal heißt: Modelle über Ollama auf eigener Hardware, die Routing-Regel steht im eigenen Harness. Achtung: Kleine lokale Modelle rufen Tools unzuverlässiger auf, deshalb einfache Sammelaufgaben.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-ollama",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was ist Ollama?",
+      "antwort": "Ein Programm, das offene Modelle lokal auf dem Rechner laufen lässt und eine API dafür anbietet.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-inference",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was ist Inference?",
+      "antwort": "Das Rechnen eines fertigen Modells, um eine Antwort zu erzeugen, im Gegensatz zum Training. Inference Engineering = das schnell, günstig und zuverlässig machen.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-lokal-routen",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 3,
+      "frage": "Kann man zwischen lokalen Modellen routen?",
+      "antwort": "Ja. Man lädt mehrere Modelle in Ollama (klein für Sortieren, größer für Zusammenfassen). Ollama lädt sie bei Bedarf. Die Grenze ist der Arbeitsspeicher des Rechners: Große Modelle passen nicht gleichzeitig hinein.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-training-vs-inference",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Training und Inference: Was ist der Unterschied?",
+      "antwort": "Beim Training lernt das Modell aus riesigen Datenmengen und seine Parameter werden festgelegt. Bei der Inference wird das fertige Modell nur noch benutzt. Wenn du einen Agenten laufen lässt, lernt das Modell dabei nichts dazu.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-parameter",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was sind die Parameter eines Modells?",
+      "antwort": "Parameter sind die Zahlenwerte im Modell, die beim Training eingestellt werden. Sie speichern gewissermaßen, was das Modell gelernt hat. Man spricht oft von der Größe eines Modells nach seiner Parameterzahl.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-open-weights",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Was bedeutet Open Weights, und ist das dasselbe wie Open Source?",
+      "antwort": "Bei Open Weights sind die Parameter des Modells herunterladbar, du kannst es selbst betreiben. Das ist nicht automatisch Open Source, denn Trainingsdaten und Lizenzbedingungen können trotzdem eingeschränkt sein.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-closed-weights",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was bedeutet Closed Weights?",
+      "antwort": "Die Parameter des Modells werden nicht veröffentlicht. Du kannst es nur über die API des Anbieters nutzen, nicht selbst betreiben.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-temperature",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was steuert die Temperature?",
+      "antwort": "Sie steuert, wie stark der Zufall bei der Wahl des nächsten Tokens ist. Niedrig heißt vorhersehbarer, hoch heißt abwechslungsreicher.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-temperature-null",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Liefert Temperature 0 garantiert immer dieselbe Antwort?",
+      "antwort": "Nein, nicht garantiert. Sie macht die Antworten meist gleichförmiger, aber kleine Abweichungen bleiben möglich. Für harte Verlässlichkeit brauchst du Prüfungen außerhalb des Modells.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-top-p",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was ist Top-p (Nucleus Sampling)?",
+      "antwort": "Das Modell wählt das nächste Token nur aus den wahrscheinlichsten Kandidaten, deren Wahrscheinlichkeiten zusammen einen Schwellwert p ergeben. Ein kleineres p macht die Auswahl enger und vorsichtiger.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-halluzination",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was ist eine Halluzination?",
+      "antwort": "Das Modell gibt etwas überzeugend formuliert aus, das nicht stimmt oder erfunden ist. Es merkt den Fehler nicht, weil es Text nach Wahrscheinlichkeit erzeugt und keine Fakten nachschlägt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-halluzination-gegenmittel",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Was hilft gegen Halluzinationen, und was nicht?",
+      "antwort": "Es hilft, dem Modell die Quellen in den Kontext zu geben, Fakten per Tool abzufragen und Ergebnisse zu prüfen. Ein bloßes 'Erfinde nichts' im Prompt reicht nicht als Schutz.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-reasoning-modell",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was ist ein Reasoning-Modell?",
+      "antwort": "Ein Modell, das vor der eigentlichen Antwort ausführlich in Zwischenschritten nachdenkt. Das kostet mehr Tokens und Zeit, hilft aber oft bei schwierigen Aufgaben.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-reasoning-wann",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 3,
+      "frage": "Ein Kunde fragt, ob er für alles ein Reasoning-Modell nehmen soll. Was antwortest du?",
+      "antwort": "Nein. Für knifflige Aufgaben wie Planung oder Mathe lohnt es sich, für einfache Routine wie Sortieren oder Umformulieren ist es langsamer und teurer als nötig.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-multimodal",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was heißt multimodal?",
+      "antwort": "Das Modell kann mehrere Arten von Eingaben verarbeiten, zum Beispiel Text und Bilder, je nach Modell auch Audio. Die Ausgabe ist je nach Modell meist Text.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-modellgroesse",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Was ist der typische Unterschied zwischen einem großen und einem kleinen Modell?",
+      "antwort": "Große Modelle sind meist fähiger bei schwierigen Aufgaben, aber langsamer und teurer. Kleine Modelle sind schnell und günstig und reichen für einfache, klar umrissene Aufgaben.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-modellwahl-aufgabe",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 3,
+      "frage": "Du sollst eingehende Mails nach Thema sortieren, tausendfach am Tag. Welche Modellart passt?",
+      "antwort": "Ein kleines, schnelles Modell. Die Aufgabe ist einfach und klar, der Preis pro Aufruf zählt bei großer Menge.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-modellwahl-agent",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 3,
+      "frage": "Warum können in einem Agenten verschiedene Modelle für verschiedene Schritte sinnvoll sein?",
+      "antwort": "Schwierige Schritte wie Planen brauchen ein starkes Modell, einfache wie Zusammenfassen oder Sortieren ein günstiges. So sparst du Kosten, ohne an Qualität zu verlieren, wo sie zählt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-quantisierung",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Was heißt Quantisierung bei Modellen?",
+      "antwort": "Die Parameter werden mit weniger Genauigkeit gespeichert, also mit weniger Bits pro Zahl. Das Modell wird dadurch kleiner und braucht weniger Speicher.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-quantisierung-trade",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 2,
+      "frage": "Was ist der Preis der Quantisierung?",
+      "antwort": "Etwas Qualität kann verloren gehen, weil die Zahlen gröber sind. Dafür läuft das Modell auf schwächerer Hardware.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-lokal-ram",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Warum braucht ein lokales Modell so viel Arbeitsspeicher?",
+      "antwort": "Alle Parameter müssen beim Betrieb im Speicher liegen. Je mehr Parameter, desto mehr Speicher.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-lokal-ram-abwaegen",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 3,
+      "frage": "Dein Laptop hat wenig Speicher, du willst trotzdem ein Modell lokal nutzen. Welche Hebel hast du?",
+      "antwort": "Ein Modell mit weniger Parametern oder eine stärker quantisierte Fassung wählen. Beides spart Speicher, kostet aber meist etwas Qualität.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-wissensstand",
+      "track": "aie",
+      "thema": "Modelle",
+      "stufe": 1,
+      "frage": "Warum kennt ein Modell aktuelle Ereignisse oft nicht?",
+      "antwort": "Seine Trainingsdaten enden an einem Stichtag, dem Knowledge Cutoff. Neuere Infos muss man per Kontext oder Tool-Abfrage liefern.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

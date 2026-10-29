@@ -1,0 +1,96 @@
+{
+  "track": "aie",
+  "thema": "Observability",
+  "karten": [
+    {
+      "id": "aie-s-obs-trace",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 1,
+      "frage": "Was ist ein Trace bei Agenten?",
+      "antwort": "Die lückenlose Aufzeichnung eines Laufs: Modellaufrufe, Tool-Aufrufe, Ergebnisse und Dauer in zeitlicher Reihenfolge. Man sieht, was der Agent wann getan hat.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-obs-span",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 1,
+      "frage": "Was ist ein Span?",
+      "antwort": "Ein einzelner Abschnitt innerhalb eines Traces, etwa ein Modellaufruf oder ein Tool-Aufruf, mit Start, Ende und Daten. Mehrere Spans bilden zusammen den Trace.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-obs-log-strukturiert",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 2,
+      "frage": "Warum sind strukturierte Logs besser als Freitext-Logs?",
+      "antwort": "Sie haben feste Felder wie Zeit, Tool und Status und lassen sich filtern und auswerten. Freitext muss man mühsam durchlesen.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-obs-trace-id",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 2,
+      "frage": "Wozu dient eine Trace-ID oder Korrelations-ID?",
+      "antwort": "Sie hängt alle Einträge eines Laufs zusammen, auch über mehrere Dienste. So kann man später genau einen Lauf nachverfolgen.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-obs-kosten",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 2,
+      "frage": "Warum überwacht man Token und Kosten je Lauf?",
+      "antwort": "Agenten können in Schleifen geraten oder unerwartet viel Kontext verbrauchen. Ohne Messung merkt man das erst auf der Rechnung.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-obs-latenz",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 2,
+      "frage": "Warum schaut man bei Latenz auf p50 und p90 statt nur auf den Durchschnitt?",
+      "antwort": "p50 ist der Mittelwert der typischen Anfrage, p90 zeigt, wie langsam die langsamsten zehn Prozent sind. Der Durchschnitt versteckt solche Ausreißer.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-obs-tools",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 1,
+      "frage": "Welche Tools gibt es für Agenten-Tracing?",
+      "antwort": "Beispiele sind Langfuse und LangSmith. Sie sammeln Traces, zeigen Kosten und erlauben, Läufe zu vergleichen.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-obs-tool-aufruf",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 2,
+      "frage": "Was sollte man bei jedem Tool-Aufruf festhalten?",
+      "antwort": "Welches Tool, mit welchen Eingaben, wer es ausgelöst hat, was zurückkam und wie lange es dauerte. Das braucht man für Fehlersuche und Nachweis.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-obs-pii-logs",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 3,
+      "frage": "Warum müssen Logs und Traces auf personenbezogene Daten geprüft werden?",
+      "antwort": "Prompts und Tool-Ergebnisse enthalten oft Namen, Adressen oder Mails. Landen sie unbehandelt im Logsystem, entsteht dort eine zweite, schlecht geschützte Datenkopie.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-obs-trace-vs-quittung",
+      "track": "aie",
+      "thema": "Observability",
+      "stufe": 3,
+      "frage": "Was unterscheidet einen Trace von wiyas Quittung?",
+      "antwort": "Ein Trace hilft Entwicklern, Läufe zu verstehen. Die Quittung ist ein Nachweis je Aufruf, der festhält, was erlaubt und ausgeführt wurde.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}

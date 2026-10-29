@@ -1,0 +1,141 @@
+{
+  "track": "aie",
+  "thema": "Prompting",
+  "karten": [
+    {
+      "id": "aie-system-vs-user",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "System-Prompt und User-Prompt: Wer schreibt was, und wofür?",
+      "antwort": "Den System-Prompt schreibt der Entwickler, er legt Rolle, Regeln und Format dauerhaft fest. Der User-Prompt ist die konkrete Anfrage der Person im jeweiligen Moment.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-few-shot",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 1,
+      "frage": "Was ist Few-Shot-Prompting?",
+      "antwort": "Du gibst im Prompt einige Beispiele mit Eingabe und gewünschter Ausgabe mit. Das Modell ahmt das Muster nach.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-few-shot-wann",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 3,
+      "frage": "Wann nimmst du Beispiele statt längerer Erklärungen?",
+      "antwort": "Wenn ein Format oder Stil schwer zu beschreiben ist, etwa ein bestimmter Tonfall. Ein gutes Beispiel zeigt es schneller, als es Regeln erklären.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-cot",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 1,
+      "frage": "Was ist Chain of Thought?",
+      "antwort": "Das Modell soll vor der Antwort seine Gedankenschritte ausschreiben. Das verbessert oft die Genauigkeit bei mehrstufigen Aufgaben.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-cot-vs-reasoning",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "Chain of Thought im Prompt oder ein Reasoning-Modell: Was ist der Unterschied?",
+      "antwort": "Bei Chain of Thought forderst du das Nachdenken per Prompt an. Ein Reasoning-Modell ist darauf trainiert und denkt von sich aus vor der Antwort.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-json-schema",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 1,
+      "frage": "Was ist ein JSON Schema?",
+      "antwort": "Eine Beschreibung, welche Felder ein JSON-Objekt haben darf und welchen Typ sie haben. Damit lässt sich die Form einer Ausgabe festlegen und prüfen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-strukturiert-warum",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "Warum verlangt man vom Modell strukturierte Ausgabe?",
+      "antwort": "Ein Programm kann Felder direkt weiterverarbeiten, statt Freitext zu deuten. Das macht Anwendungen stabiler.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-schema-nicht-wahrheit",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "Heißt eine gültige JSON-Ausgabe, dass der Inhalt stimmt?",
+      "antwort": "Nein. Das Schema sichert nur die Form, nicht die Wahrheit. Die Werte können trotzdem falsch sein und brauchen eine eigene Prüfung.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-rolle",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 1,
+      "frage": "Was bringt eine Rolle im Prompt, etwa 'Du bist Steuerberater'?",
+      "antwort": "Sie lenkt Ton, Fachsprache und Blickwinkel der Antwort. Sie ist eine Anweisung, keine echte Qualifikation.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-rolle-grenzen",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "Gibt eine Rolle im Prompt dem Modell neue Fähigkeiten oder Rechte?",
+      "antwort": "Nein. Sie ändert nur den Stil, nicht das Wissen und nicht, was ein Tool ausführen darf. Rechte regelt der Harness.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-format-vorgabe",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "Warum gehört eine klare Formatvorgabe in den Prompt?",
+      "antwort": "Ohne Vorgabe wählt das Modell selbst, mal Liste, mal Fließtext. Mit klarer Vorgabe, etwa 'drei Stichpunkte', sind Antworten einheitlich und besser weiterzuverarbeiten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-beispiele-nachgeahmt",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "Worauf musst du bei Beispielen im Prompt achten?",
+      "antwort": "Das Modell ahmt sie genau nach, auch ihre Zufälligkeiten. Nimm abwechslungsreiche Beispiele, sonst klingt jede Antwort wie das eine Beispiel.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-prompt-vs-context",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 2,
+      "frage": "Prompt Engineering und Context Engineering: Wie unterscheiden sie sich?",
+      "antwort": "Prompt Engineering formuliert die Anweisung gut. Context Engineering entscheidet, welche Informationen insgesamt in den Kontext kommen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-vage-prompt",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 3,
+      "frage": "Der Prompt lautet 'Mach die Mail besser'. Wie verbesserst du ihn?",
+      "antwort": "Sag, wofür und für wen: Ziel, Ton, Länge und was bleiben muss. Je klarer die Vorgabe, desto weniger muss das Modell raten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-prompt-testen",
+      "track": "aie",
+      "thema": "Prompting",
+      "stufe": 3,
+      "frage": "Wie weißt du, ob eine Prompt-Änderung wirklich besser ist?",
+      "antwort": "Teste sie gegen eine feste Reihe von Beispielfällen, eine Eval, und vergleiche mit vorher. Ein einzelner guter Versuch beweist wenig.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "track": "aie",
+  "thema": "Kosten",
+  "karten": [
+    {
+      "id": "aie-input-tokens",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 2,
+      "frage": "Was zählt als Input-Token: nur das, was ich schreibe?",
+      "antwort": "Nein. Input ist alles, was das Modell bei diesem Aufruf liest: System-Prompt, Tool-Schemas, die ganze bisherige Unterhaltung, Tool-Ergebnisse und deine neue Nachricht. Deine 20 Wörter in einer langen Sitzung kosten deshalb Tausende Input-Tokens.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-output-tokens",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 2,
+      "frage": "Was zählt als Output-Token, und was ist teurer?",
+      "antwort": "Output ist alles, was das Modell schreibt: Antwort, Reasoning, Tool-Bitten. Output kostet pro Token mehrfach so viel wie Input. Im Abo zahlst du nicht pro Token, die Limits werden aber ähnlich gemessen.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-abrechnung-token",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 1,
+      "frage": "Wonach rechnet eine Modell-API in der Regel ab?",
+      "antwort": "Nach verarbeiteten Tokens, getrennt für Eingabe und Ausgabe. Es zählt nicht die Zahl der Anfragen allein.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-verlauf-teurer",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 2,
+      "frage": "Warum wird in einem Agenten jede weitere Runde tendenziell teurer?",
+      "antwort": "Der gesamte bisherige Verlauf wird bei jedem Aufruf erneut als Input mitgeschickt. Je länger der Lauf, desto mehr Input-Tokens pro Runde.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-cache-praefix",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 2,
+      "frage": "Wann greift Prompt Caching, und wann nicht?",
+      "antwort": "Wenn der Anfang der Anfrage, das Präfix, identisch zu einer früheren Anfrage ist. Ändert sich etwas weit vorne, kann der Cache für den Rest nicht genutzt werden.",
+      "quelle": "https://docs.anthropic.com",
+      "skizze": "kontextfenster"
+    },
+    {
+      "id": "aie-batch",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 1,
+      "frage": "Was ist ein Batch-Aufruf bei Modell-APIs?",
+      "antwort": "Du schickst viele Anfragen gesammelt ein und bekommst die Ergebnisse später, nicht sofort. Dafür ist die Verarbeitung meist günstiger.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-batch-wann",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 3,
+      "frage": "Wann ist Batch sinnvoll, wann nicht?",
+      "antwort": "Sinnvoll bei großen Mengen ohne Zeitdruck, etwa 10.000 Dokumente über Nacht klassifizieren. Nicht sinnvoll, wenn ein Mensch auf die Antwort wartet.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kosten-schaetzen",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 3,
+      "frage": "Wie schätzt du die Kosten eines Agenten-Laufs vorab?",
+      "antwort": "Rechne: Tokens pro Runde, mal Zahl der Runden, getrennt nach Input und Output, mal Preis pro Token. Dann mit einigen echten Probeläufen gegenprüfen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-budget-limit",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 2,
+      "frage": "Wozu dient ein Budget-Limit im Harness?",
+      "antwort": "Es bricht Läufe ab oder fragt nach, wenn Kosten eine Grenze überschreiten. So kann ein Fehler oder eine Endlosschleife nicht unbemerkt viel Geld kosten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-abo-vs-api",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 2,
+      "frage": "Abo oder API-Abrechnung: Was ist das Prinzip?",
+      "antwort": "Ein Abo ist ein fester Betrag für die Nutzung einer Oberfläche mit Nutzungsgrenzen. Bei der API zahlst du, was du an Tokens verbrauchst.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-tool-ergebnisse-kosten",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 2,
+      "frage": "Warum können große Tool-Ergebnisse die Kosten treiben?",
+      "antwort": "Sie landen im Kontext und werden in jeder weiteren Runde wieder als Input mitgeschickt. Ein ganzes Dokument statt eines Auszugs kostet also mehrfach.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kosten-routine-modell",
+      "track": "aie",
+      "thema": "Kosten",
+      "stufe": 3,
+      "frage": "Wie senkt man Kosten, ohne die Ergebnisqualität zu gefährden?",
+      "antwort": "Einfache Schritte auf ein kleineres Modell legen, Prompt Caching nutzen, Tool-Ergebnisse kürzen und Limits setzen. Zuerst messen, wo die meisten Tokens anfallen.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

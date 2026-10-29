@@ -1,0 +1,1129 @@
+{
+ "karten": [
+  {
+   "id": "aie-s-mcp-tools",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Was ist ein Tool bei MCP?",
+   "antwort": "Eine Funktion, die der MCP-Server anbietet und die das Modell aufrufen kann, etwa „E-Mail senden“ oder „Ticket anlegen“. Sie hat einen Namen, eine Beschreibung und ein Schema für die Eingaben.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-resources",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Was ist eine Resource bei MCP?",
+   "antwort": "Daten, die ein Server zum Lesen bereitstellt, zum Beispiel eine Datei oder ein Datenbankeintrag. Sie dienen als Kontext und lösen selbst keine Aktion aus.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-prompts",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Was ist ein Prompt bei MCP?",
+   "antwort": "Eine vom Server vorbereitete Vorlage für eine Anfrage, die der Nutzer gezielt auswählt. Zum Beispiel eine Vorlage „Fasse diesen Vertrag zusammen“.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-steuerung",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Wer entscheidet bei MCP, wann ein Tool, eine Resource oder ein Prompt zum Einsatz kommt?",
+   "antwort": "Tools sind modellgesteuert: das Modell entscheidet, sie aufzurufen. Resources steuert die Anwendung, Prompts wählt der Nutzer aus.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-jsonrpc",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Welches Nachrichtenformat nutzt MCP zwischen Client und Server?",
+   "antwort": "JSON-RPC. Das sind strukturierte JSON-Nachrichten mit Anfrage und Antwort, unabhängig davon, ob sie über stdio oder HTTP laufen.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-stdio",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Was ist der stdio-Transport bei MCP?",
+   "antwort": "Der Host startet den Server als lokalen Prozess und tauscht Nachrichten über dessen Standard-Ein- und -Ausgabe aus. Er läuft also auf dem eigenen Rechner.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-http",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Was ist der Streamable-HTTP-Transport bei MCP?",
+   "antwort": "Der Server läuft unabhängig und ist über eine HTTP-Adresse erreichbar, auch entfernt. Mehrere Clients können sich mit ihm verbinden.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-stdio-vs-http",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Wann nimmt man stdio, wann HTTP bei einem MCP-Server?",
+   "antwort": "stdio für lokale Werkzeuge wie Dateizugriff auf dem eigenen Rechner. HTTP, wenn der Server zentral oder bei einem Anbieter läuft und mehrere Nutzer bedient.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-stdout",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Warum darf ein stdio-MCP-Server keine Logs auf die Standardausgabe schreiben?",
+   "antwort": "Auf diesem Kanal laufen die MCP-Nachrichten selbst. Fremder Text würde sie zerstören, deshalb gehören Logs in die Fehlerausgabe (stderr).",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-capabilities",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Was heißt Capability Negotiation bei MCP?",
+   "antwort": "Beim Verbindungsaufbau teilen Client und Server mit, welche Funktionen sie unterstützen, etwa Tools oder Resources. Danach nutzen beide nur, was beide können.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-server-pflicht",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Was muss ein MCP-Server mindestens tun, damit ein Agent ihn nutzen kann?",
+   "antwort": "Er meldet seine Fähigkeiten, listet seine Tools mit Beschreibung und Eingabeschema auf und führt aufgerufene Tools aus. Das Ergebnis liefert er in der vereinbarten Form zurück.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-beschreibung",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Warum ist die Beschreibung eines Tools so wichtig?",
+   "antwort": "Das Modell entscheidet allein anhand von Name, Beschreibung und Schema, ob und wie es das Tool aufruft. Eine schlechte Beschreibung führt zu falschen oder ausbleibenden Aufrufen.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-iserror",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Wie meldet ein MCP-Tool, dass die Ausführung fehlgeschlagen ist?",
+   "antwort": "Es liefert ein normales Ergebnis, das als Fehler markiert ist (isError). So sieht das Modell die Fehlermeldung und kann darauf reagieren.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-ein-client-pro-server",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Wie viele Clients hat ein MCP-Host, wenn er mit drei Servern verbunden ist?",
+   "antwort": "Drei. Der Host hält für jeden Server einen eigenen Client mit einer eigenen Verbindung.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-auth-oauth",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 1,
+   "frage": "Wie wird der Zugriff auf einen entfernten MCP-Server abgesichert?",
+   "antwort": "Die MCP-Spezifikation sieht für HTTP eine Autorisierung auf Basis von OAuth vor. Der Client holt sich ein Token und legt es bei Anfragen vor.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-auth-lokal-remote",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Warum ist Authentifizierung bei entfernten Servern wichtiger als bei lokalen stdio-Servern?",
+   "antwort": "Ein entfernter Server ist über das Netz erreichbar, also kann jeder es versuchen. Ein lokaler stdio-Server läuft als Prozess des Nutzers und bekommt Zugangsdaten üblicherweise aus der Umgebung.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-vs-plugin",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Was unterscheidet MCP von einem klassischen Plugin?",
+   "antwort": "Ein Plugin ist an eine bestimmte Anwendung gebunden. Ein MCP-Server ist ein offener Standard und kann von vielen Hosts genutzt werden.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-tool-poisoning",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Was ist Tool Poisoning bei fremden MCP-Servern?",
+   "antwort": "Ein Server versteckt Anweisungen in der Tool-Beschreibung. Das Modell liest sie mit und kann sich davon steuern lassen.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-annotations",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 2,
+   "frage": "Darf man den Hinweisen eines Tools wie „nur lesend“ (readOnlyHint) vertrauen?",
+   "antwort": "Nein, nicht bei fremden Servern. Solche Annotationen sind Hinweise des Servers, keine Garantie, und ein Client soll sie bei nicht vertrauenswürdigen Servern nicht als gesichert behandeln.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-mcp-fremder-server",
+   "track": "aie",
+   "thema": "MCP",
+   "stufe": 3,
+   "frage": "Ein Kunde will einen Community-MCP-Server aus dem Internet anbinden. Was prüfst du zuerst?",
+   "antwort": "Wer ihn betreibt, welche Tools er anbietet und mit welchen Rechten er läuft. Danach begrenzt man seinen Zugriff auf das Nötigste und lässt riskante Aufrufe von einer Prüfinstanz freigeben.",
+   "quelle": "https://modelcontextprotocol.io"
+  },
+  {
+   "id": "aie-s-rag-dimension",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was bedeutet die Dimension eines Embeddings?",
+   "antwort": "Die Länge der Zahlenliste, die einen Text darstellt. Ein Modell liefert immer gleich lange Vektoren, und die Datenbank muss dazu passen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-rag-gleiches-modell",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Warum müssen Frage und Dokumente mit demselben Embedding-Modell umgewandelt werden?",
+   "antwort": "Nur dann liegen sie im selben Raum, und ihr Abstand sagt etwas über die Ähnlichkeit. Bei einem Modellwechsel muss man den gesamten Bestand neu einbetten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-rag-kosinus",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was misst die Kosinus-Ähnlichkeit?",
+   "antwort": "Den Winkel zwischen zwei Vektoren. Zeigen sie in dieselbe Richtung, sind die Texte inhaltlich ähnlich.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-rag-vektor-db",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was ist eine Vektor-Datenbank?",
+   "antwort": "Eine Datenbank, die Embeddings speichert und zu einem Such-Vektor schnell die ähnlichsten findet. Die Treffer verweisen auf die ursprünglichen Textstücke.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-pgvector",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was ist pgvector?",
+   "antwort": "Eine Erweiterung für Postgres, die Vektoren speichert und per Ähnlichkeit durchsucht. Man braucht dafür keine zweite Datenbank.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-faiss",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was ist FAISS?",
+   "antwort": "Eine Bibliothek von Meta für schnelle Ähnlichkeitssuche über Vektoren. Sie ist selbst keine vollständige Datenbank mit Nutzern, Rechten und Backup.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-pgvector-vs-spezial",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Wann reicht pgvector, wann lohnt eine spezialisierte Vektor-Datenbank?",
+   "antwort": "Wenn die Daten ohnehin in Postgres liegen und der Bestand überschaubar ist, reicht pgvector und spart Betrieb. Eine spezialisierte Lösung lohnt erst bei sehr großen Beständen oder besonderen Anforderungen.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-ann",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Warum nutzt man bei Vektorsuche oft näherungsweise Suche (ANN)?",
+   "antwort": "Der exakte Vergleich mit allen Vektoren wird bei großen Beständen zu langsam. ANN findet fast immer die besten Treffer, aber deutlich schneller.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-chunkgroesse",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Welcher Zielkonflikt steckt in der Chunk-Größe?",
+   "antwort": "Kleine Chunks treffen genauer, verlieren aber Zusammenhang. Große Chunks halten den Zusammenhang, verwässern aber das Suchsignal und kosten mehr Kontext.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-chunk-ueberschriften",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Warum chunkt man Texte oft nach Überschriften statt nach fester Zeichenzahl?",
+   "antwort": "Feste Schnitte reißen Absätze und Gedanken mitten durch. Überschriften folgen der Struktur des Dokuments, sodass ein Chunk meist ein zusammenhängendes Thema enthält.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-ueberlappung",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was ist Chunk-Überlappung?",
+   "antwort": "Benachbarte Chunks teilen sich ein Stück Text. So geht nichts verloren, wenn ein wichtiger Satz genau an der Schnittstelle liegt.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-kontext-header",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 3,
+   "frage": "Was bringt ein Kontext-Header (Pfad, Titel, Überschriften) vor jedem Chunk?",
+   "antwort": "Ein Chunk wie „Kündigung: 3 Monate“ weiß allein nicht, zu welchem Vertrag er gehört. Der Header kommt in Vektor und Stichwortindex und macht das für die Suche sichtbar.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-rag-hybrid-warum",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Warum kombiniert man Stichwortsuche und Vektorsuche?",
+   "antwort": "Vektoren finden Bedeutung, auch bei anderen Wörtern. Stichwortsuche findet exakte Begriffe wie Kennungen oder Namen, bei denen Vektoren oft danebenliegen.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-fusion",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was ist Fusion in der Hybrid-Suche?",
+   "antwort": "Das Zusammenführen mehrerer Trefferlisten zu einer. Dabei werden die Platzierungen oder Scores der einzelnen Suchen verrechnet.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-rrf",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Wie funktioniert Reciprocal Rank Fusion?",
+   "antwort": "Jeder Treffer bekommt je Liste Punkte, die mit schlechterem Rang kleiner werden (1 geteilt durch Rang plus Konstante). Die Punkte werden addiert, und ein Treffer, der in mehreren Listen weit oben steht, gewinnt.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-convex",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Was ist der Unterschied zwischen Rangfusion (RRF) und der gewichteten Fusion in Lucs Brain?",
+   "antwort": "RRF nutzt nur die Platzierung. Lucs Brain mischt die Scores gewichtet (α mal Vektor plus (1 minus α) mal BM25, α = 0,5) und addiert Boni für Status, Aktualität und Graph.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-rag-bi-cross",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Was unterscheidet Bi-Encoder und Cross-Encoder?",
+   "antwort": "Der Bi-Encoder macht Frage und Text getrennt zu Vektoren und ist schnell. Der Cross-Encoder liest beide gemeinsam, ist genauer, aber langsamer und eignet sich deshalb zum Neu-Sortieren weniger Kandidaten.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-metadatenfilter",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was ist ein Metadaten-Filter in der Suche?",
+   "antwort": "Eine Einschränkung nach Eigenschaften der Dokumente, etwa Kunde, Jahr oder Sprache. Nur passende Dokumente kommen überhaupt in Frage.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-filter-vor-ranking",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 3,
+   "frage": "Warum muss ein Rechte-Filter vor dem Ranking greifen und nicht danach?",
+   "antwort": "Danach hätte das System fremde Dokumente schon in die Auswahl gezogen, und sie könnten Reihenfolge oder Anzeige beeinflussen. Lucs Brain filtert deshalb vor dem Ranken.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-rag-recall-at-k",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was misst Recall@k?",
+   "antwort": "Welcher Anteil der relevanten Dokumente unter den ersten k Treffern auftaucht. Recall@10 von 0,9 heißt: 90 % der gesuchten Stücke sind in den Top 10.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-ndcg",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 1,
+   "frage": "Was misst nDCG@10?",
+   "antwort": "Wie gut die Rangfolge der ersten zehn Treffer ist: Relevante Treffer weit oben zählen mehr als weit unten. 1,0 wäre die ideale Reihenfolge.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-nicht-gefunden",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Warum muss ein RAG-System „nicht gefunden“ sagen können?",
+   "antwort": "Eine Suche liefert immer Treffer, auch wenn nichts Passendes existiert. Ohne Schwellenwert oder Prüfung belegt das Modell dann seine Antwort mit irrelevanten Texten.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-rag-zitieren",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "Was heißt Zitieren mit Beleg in RAG?",
+   "antwort": "Jede Aussage der Antwort verweist auf die Quelle, etwa Dokument, Version und Abschnitt. So kann ein Mensch sie nachprüfen.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-rag-vs-ft-lang",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 2,
+   "frage": "RAG, Fine-Tuning oder langer Kontext: wann was?",
+   "antwort": "RAG für Wissen, das sich ändert oder groß ist und belegt werden soll. Fine-Tuning für Stil oder Verhalten, langer Kontext für kleine Mengen, die komplett in die Anfrage passen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-rag-szenario-kennung",
+   "track": "aie",
+   "thema": "Wissen & RAG",
+   "stufe": 3,
+   "frage": "Ein Kunde sucht per Chatbot nach Rechnungsnummer „RE-2026-0412“, der Bot findet nichts. Was liegt nahe?",
+   "antwort": "Reine Vektorsuche kann exakte Kennungen schlecht treffen. Abhilfe ist Hybrid-Suche mit Stichwortanteil oder ein direkter Kennungs-Abgleich.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-sb-postgres",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Welche Rolle spielt Postgres in Lucs Brain?",
+   "antwort": "Es ist die einzige Quelle der Wahrheit: Notizen, Revisionen, Chunks mit Vektoren, Suchindizes, Beziehungen, Job-Queue und Läufe liegen dort.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-revisionen",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 1,
+   "frage": "Was ist eine Revision im Brain?",
+   "antwort": "Eine unveränderliche Fassung einer Notiz. Neues wird angehängt, nichts wird still überschrieben, daher ist jede Antwort bis zur Quelle zurückverfolgbar.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-approval",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Welche Freigabemodi gibt es im Brain, und was entscheiden sie?",
+   "antwort": "review_all, review_changes und auto. Sie bestimmen, ob ein Mensch neue Revisionen bestätigen muss.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-receive",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 1,
+   "frage": "Was passiert im Ingest-Schritt „receive“?",
+   "antwort": "Das Originalmaterial wird entgegengenommen und unverändert aufbewahrt. Damit bleibt die Herkunft später belegbar.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-convert",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 1,
+   "frage": "Was passiert im Ingest-Schritt „convert“?",
+   "antwort": "Das Material wird in Markdown umgewandelt. Agenten und Menschen arbeiten nur mit dieser Fassung, die auf das Original verweist.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-gate",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 1,
+   "frage": "Was macht der Schritt „gate“ in Lucs Ingest-Pipeline?",
+   "antwort": "Er entscheidet, ob Material behalten oder verworfen wird. So landet nicht alles ungefiltert im Brain.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-distill",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 1,
+   "frage": "Was macht der Schritt „distill“?",
+   "antwort": "Ein Sprachmodell zieht die wesentlichen Fakten aus dem Material heraus. Aus einem langen Dokument werden prüfbare Kernaussagen.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-resolve",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Was ist Entity Resolution im Schritt „resolve“?",
+   "antwort": "Namen im neuen Material werden den schon bekannten Personen, Firmen oder Dokumenten zugeordnet. So ist „Hr. Müller“ dieselbe Person wie in der bestehenden Notiz.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-reconcile",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Welche vier Ergebnisse kann der Schritt „reconcile“ je Fakt haben?",
+   "antwort": "Neu, bestätigt, widerspricht oder ersetzt. Der Fakt wird also mit dem verglichen, was das Brain schon weiß.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-propose",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Was passiert im letzten Ingest-Schritt „propose“?",
+   "antwort": "Aus den Fakten wird eine Revision vorgeschlagen und geht je nach Freigabemodus zur Bestätigung. Erst danach wird sie indexiert.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-aktualitaet",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Wie behandelt das Brain, was heute gilt und was überholt ist?",
+   "antwort": "Notizen tragen Status und Gültigkeitsdatum (valid_from), und ersetzte Fakten rutschen im Ranking nach unten. Laut README fehlt allerdings noch vieles, etwa Gültigkeitsdaten beim Ingest.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-stufen",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Welche Stufen durchläuft eine Suche im Brain?",
+   "antwort": "Kandidaten per Stichwort, Vektor, Graph und Aktualität, dann Fusion, dann die Top 20. Danach bewertet das Entscheidungsmodell Jev die Kandidaten, das Ergebnis wird mit dem Fusionsscore gemischt.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-blend",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 3,
+   "frage": "Warum mischt das Brain den Reranker-Score mit dem Fusionsscore, statt ihn allein zu nehmen?",
+   "antwort": "Jeder Reranker allein verschlechterte mindestens ein Szenario, der lokale Cross-Encoder etwa SciFact von 0,750 auf 0,719. Die Mischung behält das Suchsignal und verbessert trotzdem alle Suiten.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-holdout",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Was ist der Unterschied zwischen Tuning-Daten und Hold-out im Benchmark des Brains?",
+   "antwort": "Parameter werden nur auf Tuning-Daten gewählt. Eine Änderung bleibt nur, wenn der Gewinn auch auf Hold-out-Daten hält, die nie zum Abstimmen dienten.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-regeln",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 3,
+   "frage": "Welche Regeln verhindern im Brain-Benchmark Selbsttäuschung?",
+   "antwort": "Eine Änderung muss mindestens +0,005 im Zielszenario bringen und darf kein anderes um mehr als 0,01 verschlechtern. Die Hypothese wird vor dem Messen notiert, und es gilt eine Konfiguration für alle Suiten.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-mandate",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Was bedeuten die Mandate read, propose und commit im Brain?",
+   "antwort": "read darf nur lesen. propose schreibt nur als wartende Revision, commit übernimmt direkt innerhalb von Grenzen und sonst wartend.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-schwaeche-nichtgefunden",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Was ist laut README die größte Schwäche des Brains für Agenten?",
+   "antwort": "Es fehlt ein „nicht gefunden“-Signal: die Suche liefert immer zehn Treffer ohne Relevanzscore. Irrelevante Notizen können so als Beleg zitiert werden.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-schwaeche-unmarkiert",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 3,
+   "frage": "Welches Risiko entsteht, weil abgerufener Text im Brain ungekennzeichnet beim Agenten ankommt?",
+   "antwort": "Ein Text in einer Notiz könnte Anweisungen enthalten, die der Agent für echte hält (Prompt Injection). Geplant ist, Notiztext als nicht vertrauenswürdig zu markieren.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-schwaeche-schreiben",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Was heißt „Writes sind nicht read-your-writes“ in Lucs README?",
+   "antwort": "Schreibt ein Agent eine Notiz, wird sie erst asynchron indexiert und ist kurz nicht auffindbar. Er kann also nicht sofort wiederfinden, was er gerade gespeichert hat.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-sb-schwaeche-zeit",
+   "track": "aie",
+   "thema": "Second Brain",
+   "stufe": 2,
+   "frage": "Welche Schwäche hat das Brain bei der Zeit?",
+   "antwort": "Es gibt keinen „Stand zum Datum“-Filter, der Ingest setzt keine Gültigkeitsdaten, und überholte Fakten bleiben bis zur Prüfung aktiv. Ob eine Antwort aktuell ist, hängt daher teils vom Zufall ab.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-mem-kurz-lang",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 1,
+   "frage": "Was ist der Unterschied zwischen Kurz- und Langzeitgedächtnis bei Agenten?",
+   "antwort": "Kurzzeit ist der aktuelle Kontext einer Sitzung und verschwindet mit ihr. Langzeit wird außerhalb des Modells gespeichert und in späteren Sitzungen wieder geladen.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-mem-episodisch",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 1,
+   "frage": "Was ist episodisches Gedächtnis bei einem Agenten?",
+   "antwort": "Die Erinnerung an konkrete Ereignisse, etwa „am Dienstag hat der Kunde X das Angebot abgelehnt“. Es hat Zeit und Zusammenhang.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-mem-semantisch",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 1,
+   "frage": "Was ist semantisches Gedächtnis bei einem Agenten?",
+   "antwort": "Allgemeine Fakten ohne Zeitbezug, etwa „Kunde X zahlt nur per Überweisung“. Sie sind aus vielen Ereignissen verdichtet.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-mem-epi-vs-sem",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 2,
+   "frage": "Was ist der Unterschied zwischen episodisch und semantisch am Beispiel eines Support-Agenten?",
+   "antwort": "Episodisch: „Ticket 123 wurde gestern gelöst“. Semantisch: „Dieser Kunde nutzt die Windows-Version“.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-mem-vergessen",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 2,
+   "frage": "Warum braucht ein Langzeitgedächtnis Vergessen oder Altern?",
+   "antwort": "Sonst sammeln sich überholte und doppelte Einträge an und verdrängen Aktuelles. Gewichtung nach Alter oder Löschen alter Einträge hält die Treffer nützlich.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-mem-datei",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 1,
+   "frage": "Was ist eine Memory-Datei wie AGENTS.md oder CLAUDE.md?",
+   "antwort": "Eine Textdatei im Projekt, die der Harness bei jedem Start in den Kontext lädt. Sie enthält Regeln und Wissen, an die sich der Agent immer erinnern soll.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-mem-datei-grenze",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 2,
+   "frage": "Warum sollte eine Memory-Datei kurz und gepflegt bleiben?",
+   "antwort": "Sie belegt bei jedem Aufruf Platz im Kontext und kostet Aufmerksamkeit. Veraltete oder widersprüchliche Zeilen führen zu falschem Verhalten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-mem-vs-rag",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 2,
+   "frage": "Was unterscheidet Agenten-Memory von normalem RAG?",
+   "antwort": "RAG durchsucht einen vorhandenen Wissensbestand. Memory wird vom Agenten selbst geschrieben, wächst durch seine Arbeit und muss auf Aktualität und Dubletten achten.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-mem-schreibrechte",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 3,
+   "frage": "Ein Agent soll sich Dinge dauerhaft merken. Warum ist freies Schreiben ins Gedächtnis riskant?",
+   "antwort": "Ein eingeschleuster Text könnte sich als Erinnerung festsetzen und künftige Sitzungen beeinflussen. Deshalb sind Schreibrechte, Freigaben und Herkunftsangaben sinnvoll.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-mem-szenario",
+   "track": "aie",
+   "thema": "Memory",
+   "stufe": 3,
+   "frage": "Ein Kunde klagt, der Agent „vergisst“ morgens alles von gestern. Was erklärst du?",
+   "antwort": "Das Modell behält nichts zwischen Aufrufen. Was bleiben soll, muss gespeichert und beim Start wieder in den Kontext geladen werden, etwa per Memory-Datei oder Gedächtnis-Suche.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-orchestrator",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 1,
+   "frage": "Was ist ein Orchestrator in einem Multi-Agenten-System?",
+   "antwort": "Ein Agent, der Aufgaben zerlegt, an Unteragenten verteilt und deren Ergebnisse zusammenführt. Er koordiniert, statt alles selbst zu erledigen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-unteragent-kontext",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 2,
+   "frage": "Warum bekommt ein Unteragent einen eigenen Kontext?",
+   "antwort": "So bleibt der Kontext des Orchestrators schlank, und der Unteragent arbeitet fokussiert. Zurück kommt nur das verdichtete Ergebnis.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-handoff-vs-unter",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 2,
+   "frage": "Was unterscheidet Handoff und Unteragent?",
+   "antwort": "Beim Handoff übernimmt ein anderer Agent das Gespräch. Ein Unteragent erledigt eine Teilaufgabe und gibt das Ergebnis an den Orchestrator zurück.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-parallel",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 1,
+   "frage": "Warum lässt man Unteragenten parallel arbeiten?",
+   "antwort": "Unabhängige Teilaufgaben, etwa drei Recherchen, laufen gleichzeitig und sparen Zeit. Sie dürfen sich nicht gegenseitig brauchen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-kosten",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 2,
+   "frage": "Warum kosten Multi-Agenten-Systeme meist deutlich mehr als ein Agent?",
+   "antwort": "Jeder Agent hat eigene Modellaufrufe mit eigenem Kontext, und der Orchestrator liest zusätzlich Zusammenfassungen. Die Tokenzahl summiert sich.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-fehler",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 2,
+   "frage": "Welches Risiko entsteht, wenn Agenten Ergebnisse weiterreichen?",
+   "antwort": "Ein Fehler oder eine Halluzination wird vom nächsten Agenten als Tatsache übernommen. Fehler vervielfältigen sich, statt sich auszugleichen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-ein-agent",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 2,
+   "frage": "Wann reicht ein einzelner Agent?",
+   "antwort": "Wenn die Aufgabe klar, überschaubar und in einem Kontext lösbar ist. Anthropic rät, mit der einfachsten Lösung zu beginnen und Komplexität nur bei messbarem Nutzen zu ergänzen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-ma-rechte",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 3,
+   "frage": "Warum sollte jeder Unteragent eigene Rechte statt der Rechte des Orchestrators haben?",
+   "antwort": "So kann ein Recherche-Agent nichts versenden oder löschen, selbst wenn er manipuliert wird. Jeder bekommt nur, was seine Teilaufgabe braucht.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-ma-wiya",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 3,
+   "frage": "Wie passt wiya zu Multi-Agenten-Systemen?",
+   "antwort": "Jeder Agent braucht eine verifizierte Identität und ein eigenes Mandat, sonst weiß man nicht, wer was darf. Das Gateway prüft jeden Aufruf einzeln, und die Quittung hält fest, welcher Agent ihn ausgelöst hat.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "aie-s-ma-ergebnis",
+   "track": "aie",
+   "thema": "Multi-Agent",
+   "stufe": 2,
+   "frage": "Warum soll ein Unteragent sein Ergebnis knapp und strukturiert zurückgeben?",
+   "antwort": "Der Orchestrator muss es in seinen Kontext aufnehmen. Ein langes, ungeordnetes Ergebnis kostet Tokens und verwässert die Entscheidung.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-deterministisch",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 1,
+   "frage": "Was ist eine deterministische Eval?",
+   "antwort": "Eine Prüfung mit festem Ergebnis, die Code selbst auswertet, etwa „Wurde das Tool X mit Betrag 50 aufgerufen?“. Sie ist billig und liefert immer dasselbe Urteil.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-llm-judge",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 1,
+   "frage": "Was ist LLM as Judge?",
+   "antwort": "Ein zweites Sprachmodell bewertet die Antwort nach vorgegebenen Kriterien. Man nutzt es, wo Code allein nicht entscheiden kann, etwa bei Freitext.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-judge-bias",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Welche Schwächen hat LLM as Judge?",
+   "antwort": "Der Richter kann bestimmte Antworten bevorzugen, etwa längere, und ist selbst nicht völlig konsistent. Man prüft ihn deshalb stichprobenartig gegen menschliche Bewertung.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-det-vs-judge",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Wann nimmt man deterministische Evals, wann einen Judge?",
+   "antwort": "Deterministisch für alles Prüfbare: Format, aufgerufenes Tool, Zahlen. Judge für Qualität von Texten, die man nicht in eine feste Regel gießen kann.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-mensch",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Wozu braucht man menschliche Bewertung trotz automatischer Evals?",
+   "antwort": "Menschen erkennen, ob eine Antwort wirklich nützlich ist, und liefern die Referenz, an der man Judge-Modelle misst. Sie sind aber langsam und teuer, daher nur Stichproben.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-golden",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 1,
+   "frage": "Was ist ein Golden Set?",
+   "antwort": "Eine feste Sammlung von Testfällen mit bekannter richtiger Antwort. Jede Änderung am Agenten läuft dagegen und wird verglichen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-golden-aufbau",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Woher sollten die Fälle eines Golden Sets kommen?",
+   "antwort": "Aus echten Anfragen und echten Fehlern, nicht ausgedacht. Dazu gehören auch schwierige Fälle und solche, in denen die richtige Antwort „nicht gefunden“ lautet.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-tuning-holdout",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Was ist der Unterschied zwischen Tuning-Set und Hold-out-Set?",
+   "antwort": "Am Tuning-Set darf man ausprobieren und anpassen. Das Hold-out-Set bleibt unberührt und zeigt, ob eine Verbesserung auch auf neuen Fällen hält.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-test-overfit",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 3,
+   "frage": "Du verbesserst den Prompt, bis alle 30 Testfälle bestehen. Warum ist das nur begrenzt aussagekräftig?",
+   "antwort": "Der Prompt kann auf genau diese Fälle zugeschnitten sein und bei neuen versagen. Erst ein Hold-out-Set, das nie zum Anpassen diente, zeigt die echte Güte.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-test-regression",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Was ist ein Regressionstest für einen Agenten?",
+   "antwort": "Nach jeder Änderung an Prompt, Modell oder Tools läuft das Golden Set erneut. So sieht man, ob etwas Früheres jetzt schlechter funktioniert.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-unit-tool",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Warum bekommt jedes Tool einen eigenen Unit-Test?",
+   "antwort": "Ein Tool ist normaler Code und lässt sich ohne Modell prüfen. So findet man Fehler im Tool, bevor man sie mit Modell-Verhalten verwechselt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-nichtdeterminismus",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Warum sollte man Agenten-Tests mehrfach laufen lassen?",
+   "antwort": "Das Modell antwortet nicht jedes Mal gleich, ein einzelner Lauf kann Glück oder Pech sein. Mehrere Läufe zeigen, wie oft der Test besteht.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-trajektorie",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 2,
+   "frage": "Was heißt, nicht nur das Endergebnis, sondern auch den Weg des Agenten zu prüfen?",
+   "antwort": "Man kontrolliert, welche Tools in welcher Reihenfolge aufgerufen wurden. Ein richtiges Ergebnis auf riskantem Weg, etwa mit einem unnötigen Schreibzugriff, bleibt sonst unbemerkt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-test-kontamination",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 1,
+   "frage": "Was heißt Kontamination bei Benchmarks?",
+   "antwort": "Die Testdaten sind dem Modell oder System schon beim Training oder Abstimmen begegnet. Das Ergebnis wirkt dann besser, als es ist.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-test-modellwechsel",
+   "track": "aie",
+   "thema": "Testen",
+   "stufe": 3,
+   "frage": "Ein Kunde will das Modell wechseln, um Kosten zu sparen. Wie sicherst du das ab?",
+   "antwort": "Das Golden Set läuft mit beiden Modellen, und man vergleicht Qualität, Kosten und Dauer. Wechseln darf man erst, wenn die Ergebnisse auf Hold-out-Fällen nicht schlechter werden.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-obs-trace",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 1,
+   "frage": "Was ist ein Trace bei Agenten?",
+   "antwort": "Die lückenlose Aufzeichnung eines Laufs: Modellaufrufe, Tool-Aufrufe, Ergebnisse und Dauer in zeitlicher Reihenfolge. Man sieht, was der Agent wann getan hat.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-obs-span",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 1,
+   "frage": "Was ist ein Span?",
+   "antwort": "Ein einzelner Abschnitt innerhalb eines Traces, etwa ein Modellaufruf oder ein Tool-Aufruf, mit Start, Ende und Daten. Mehrere Spans bilden zusammen den Trace.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-obs-log-strukturiert",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 2,
+   "frage": "Warum sind strukturierte Logs besser als Freitext-Logs?",
+   "antwort": "Sie haben feste Felder wie Zeit, Tool und Status und lassen sich filtern und auswerten. Freitext muss man mühsam durchlesen.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-obs-trace-id",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 2,
+   "frage": "Wozu dient eine Trace-ID oder Korrelations-ID?",
+   "antwort": "Sie hängt alle Einträge eines Laufs zusammen, auch über mehrere Dienste. So kann man später genau einen Lauf nachverfolgen.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-obs-kosten",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 2,
+   "frage": "Warum überwacht man Token und Kosten je Lauf?",
+   "antwort": "Agenten können in Schleifen geraten oder unerwartet viel Kontext verbrauchen. Ohne Messung merkt man das erst auf der Rechnung.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-s-obs-latenz",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 2,
+   "frage": "Warum schaut man bei Latenz auf p50 und p90 statt nur auf den Durchschnitt?",
+   "antwort": "p50 ist der Mittelwert der typischen Anfrage, p90 zeigt, wie langsam die langsamsten zehn Prozent sind. Der Durchschnitt versteckt solche Ausreißer.",
+   "quelle": "~/dev/rb/brain/README.md"
+  },
+  {
+   "id": "aie-s-obs-tools",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 1,
+   "frage": "Welche Tools gibt es für Agenten-Tracing?",
+   "antwort": "Beispiele sind Langfuse und LangSmith. Sie sammeln Traces, zeigen Kosten und erlauben, Läufe zu vergleichen.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-obs-tool-aufruf",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 2,
+   "frage": "Was sollte man bei jedem Tool-Aufruf festhalten?",
+   "antwort": "Welches Tool, mit welchen Eingaben, wer es ausgelöst hat, was zurückkam und wie lange es dauerte. Das braucht man für Fehlersuche und Nachweis.",
+   "quelle": "https://roadmap.sh/ai-agents"
+  },
+  {
+   "id": "aie-s-obs-pii-logs",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 3,
+   "frage": "Warum müssen Logs und Traces auf personenbezogene Daten geprüft werden?",
+   "antwort": "Prompts und Tool-Ergebnisse enthalten oft Namen, Adressen oder Mails. Landen sie unbehandelt im Logsystem, entsteht dort eine zweite, schlecht geschützte Datenkopie.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-obs-trace-vs-quittung",
+   "track": "aie",
+   "thema": "Observability",
+   "stufe": 3,
+   "frage": "Was unterscheidet einen Trace von wiyas Quittung?",
+   "antwort": "Ein Trace hilft Entwicklern, Läufe zu verstehen. Die Quittung ist ein Nachweis je Aufruf, der festhält, was erlaubt und ausgeführt wurde.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "aie-s-sec-direkt",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was ist direkte Prompt Injection?",
+   "antwort": "Der Nutzer selbst schreibt eine Anweisung, die das Modell von seinen Regeln abbringen soll, etwa „Ignoriere alle vorherigen Anweisungen“.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-indirekt",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was ist indirekte Prompt Injection?",
+   "antwort": "Die Anweisung steckt in Inhalten, die der Agent liest, etwa einer Webseite, einer Mail oder einem Dokument. Der Angreifer muss nicht selbst mit dem Agenten sprechen.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-indirekt-szenario",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 3,
+   "frage": "Ein Agent fasst eingehende Mails zusammen und hat ein Tool zum Senden. Welche Gefahr besteht?",
+   "antwort": "Eine Mail kann versteckt anweisen, interne Daten an eine fremde Adresse zu senden, und das Modell kann ihr folgen. Wirksam ist, das Sendetool durch eine feste Prüfung und Rechtebegrenzung abzusichern.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-jailbreak",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Was unterscheidet Jailbreak von Prompt Injection?",
+   "antwort": "Ein Jailbreak umgeht die Schutzregeln des Modells selbst, damit es Verbotenes ausgibt. Bei einer Injection schleust jemand Anweisungen in die Aufgabe einer Anwendung ein.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-abfluss",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Wie können Daten über Tools abfließen?",
+   "antwort": "Das Modell wird dazu gebracht, Daten an einen externen Ort zu schicken, etwa per Mail, Webanfrage oder Link mit Daten in der Adresse. Jedes Tool mit Ausgang ist ein möglicher Kanal.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-sandbox",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was ist eine Tool-Sandbox?",
+   "antwort": "Eine abgeschottete Umgebung, in der ein Tool läuft und nur auf Erlaubtes zugreifen kann. Geht etwas schief, bleibt der Schaden dort begrenzt.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-least-privilege",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was heißt Least Privilege bei Agenten?",
+   "antwort": "Ein Agent bekommt nur die Rechte, die seine Aufgabe braucht. Ein Termin-Agent braucht keinen Zugriff auf die Buchhaltung.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-least-privilege-warum",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Warum ist Least Privilege bei Agenten besonders wichtig?",
+   "antwort": "Man kann das Modell nicht vollständig gegen Manipulation immunisieren. Was ihm technisch nicht erlaubt ist, kann auch ein erfolgreicher Angriff nicht auslösen.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-pii",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was ist PII-Schwärzung?",
+   "antwort": "Personenbezogene Daten werden vor der Weitergabe, etwa an ein Modell oder ins Log, entfernt oder durch Platzhalter ersetzt. Aus „Anna Meier“ wird „[PERSON_1]“.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-owasp",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 1,
+   "frage": "Was ist die OWASP Top 10 für LLM-Anwendungen?",
+   "antwort": "Eine Liste der zehn wichtigsten Sicherheitsrisiken von Anwendungen mit Sprachmodellen. Prompt Injection steht dort prominent.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-owasp-agency",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Was bedeutet „Excessive Agency“ in der OWASP-Liste für LLM-Anwendungen?",
+   "antwort": "Ein Modell bekommt zu viele Funktionen, Rechte oder zu viel Selbstständigkeit. Schaden entsteht dann, wenn es manipuliert wird oder sich irrt.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-guard-probabilistisch",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Warum ist ein LLM-Guard unsicherer als eine deterministische Prüfung?",
+   "antwort": "Ein LLM-Guard ist selbst ein Modell, das sich täuschen lassen kann und nicht jedes Mal gleich entscheidet. Eine feste Regel prüft immer gleich und lässt sich nicht überreden.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-wiya-gateway",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 3,
+   "frage": "Wie erklärst du einem Kunden, warum wiyas Gateway robuster ist als ein Prompt „Ignoriere böse Anweisungen“?",
+   "antwort": "Der Prompt ist nur eine Bitte an das Modell, das Gateway eine technische Prüfung zwischen Tool-Bitte und Ausführung. Ohne gültiges Mandat passiert nichts, egal was im Text steht.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "aie-s-sec-secrets",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Warum gehören Passwörter und API-Schlüssel nie in den Kontext des Modells?",
+   "antwort": "Was im Kontext steht, kann das Modell ausgeben oder weiterreichen, auch nach einer Manipulation. Der Schlüssel gehört in die Ausführungsschicht, die das Tool aufruft.",
+   "quelle": "https://owasp.org"
+  },
+  {
+   "id": "aie-s-sec-ausgabe",
+   "track": "aie",
+   "thema": "Sicherheit",
+   "stufe": 2,
+   "frage": "Was ist unsichere Verarbeitung von Modell-Ausgaben?",
+   "antwort": "Eine Anwendung übernimmt Text des Modells ungeprüft, etwa als Befehl, Datenbankabfrage oder Webseite. Die Ausgabe muss wie jede externe Eingabe geprüft werden.",
+   "quelle": "https://owasp.org"
+  }
+ ]
+}

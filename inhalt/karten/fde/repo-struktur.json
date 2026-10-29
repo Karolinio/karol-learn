@@ -1,0 +1,16 @@
+{
+  "track": "fde",
+  "thema": "Repo-Struktur",
+  "karten": [
+    {
+      "id": "fde-eigenes-repo",
+      "track": "fde",
+      "thema": "Repo-Struktur",
+      "stufe": 2,
+      "frage": "Wann bekommt ein Agent ein eigenes Repo?",
+      "antwort": "Nur wenn er eigene Daten oder einen eigenen Vertrag hat und unabhängig von der App lebt. Sonst ist er ein Ordner in der App, die er bedient (z. B. agents/video-tutor).",
+      "quelle": "~/dev/his/AGENTEN.md",
+      "skizze": "repo-struktur"
+    }
+  ]
+}

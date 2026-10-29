@@ -1,0 +1,123 @@
+{
+  "track": "fde",
+  "thema": "Daten",
+  "karten": [
+    {
+      "id": "fde-postgres",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 1,
+      "frage": "Was ist Postgres?",
+      "antwort": "Eine Datenbank. Speichert Daten dauerhaft in Tabellen und beantwortet Abfragen in SQL. Mit der Erweiterung pgvector auch Vektoren.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-supabase",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 1,
+      "frage": "Was ist Supabase?",
+      "antwort": "Ein Cloud-Dienst um Postgres herum, mit Login, Dateispeicher und fertiger API dazu.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-sql",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 1,
+      "frage": "Was ist SQL?",
+      "antwort": "Die Sprache für Datenbankabfragen. Beispiel: SELECT name FROM kunden WHERE stadt = 'Bonn';",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-db-tabelle-zeile-spalte",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 1,
+      "frage": "Was sind Tabelle, Zeile und Spalte?",
+      "antwort": "Eine Tabelle sammelt gleichartige Daten, z. B. `customers`. Eine Zeile ist ein Datensatz, z. B. ein Kunde. Eine Spalte ist eine Eigenschaft, z. B. `email`.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-db-primaerschluessel",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 1,
+      "frage": "Was ist ein Primärschlüssel?",
+      "antwort": "Eine Spalte, meist `id`, die jede Zeile eindeutig kennzeichnet. Sie darf nie doppelt oder leer sein. Andere Tabellen verweisen darauf.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-db-join",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 2,
+      "frage": "Was macht ein JOIN?",
+      "antwort": "Er verknüpft Tabellen über gemeinsame Werte, z. B. `orders.customer_id = customers.id`. So sieht man zu jeder Bestellung den Kundennamen.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-db-index",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 2,
+      "frage": "Was ist ein Index, und was kostet er?",
+      "antwort": "Ein Verzeichnis wie ein Stichwortverzeichnis, das die Suche über eine Spalte beschleunigt. Er braucht Speicher und macht Schreiben etwas langsamer.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-db-migration",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 2,
+      "frage": "Was ist eine Migration?",
+      "antwort": "Ein versioniertes Skript, das die Datenbankstruktur ändert, z. B. eine Spalte hinzufügt. Migrationen laufen der Reihe nach, damit alle Umgebungen dieselbe Struktur haben.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-db-transaktion",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 2,
+      "frage": "Was ist eine Transaktion?",
+      "antwort": "Mehrere Schritte, die ganz oder gar nicht gelten: `BEGIN; ...; COMMIT;`. Bei Fehlern macht `ROLLBACK` alles rückgängig. Klassisch: Geld abbuchen und gutschreiben.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-db-restore",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 2,
+      "frage": "Wie sichert und stellt man eine Postgres-Datenbank wieder her?",
+      "antwort": "`pg_dump` erzeugt die Sicherung. Eingespielt wird sie je nach Format mit `psql` oder `pg_restore`. Ein Restore-Test gehört zu jedem Backup.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-sql-select-lesen",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 3,
+      "frage": "Was liefert `SELECT name, email FROM customers WHERE city = 'Köln' ORDER BY name LIMIT 5;`?",
+      "antwort": "Name und E-Mail von Kunden aus Köln, nach Namen sortiert, höchstens die ersten fünf. Das ist nur lesend und ändert nichts.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-sql-join-lesen",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 3,
+      "frage": "Was liefert `SELECT c.name, COUNT(*) FROM orders o JOIN customers c ON c.id = o.customer_id GROUP BY c.name;`?",
+      "antwort": "Pro Kunde die Anzahl seiner Bestellungen. `JOIN` verbindet beide Tabellen, `GROUP BY` fasst je Kundenname zusammen.",
+      "quelle": "https://www.postgresql.org/docs"
+    },
+    {
+      "id": "fde-b-sql-update-ohne-where",
+      "track": "fde",
+      "thema": "Daten",
+      "stufe": 3,
+      "frage": "Ein Kollege will `UPDATE customers SET status = 'inactive';` ausführen. Was fällt dir auf?",
+      "antwort": "Es fehlt `WHERE`, also werden alle Zeilen geändert. Erst mit `SELECT` prüfen, welche Zeilen betroffen wären, und vorher ein Backup oder `BEGIN;` nutzen.",
+      "quelle": "https://www.postgresql.org/docs"
+    }
+  ]
+}

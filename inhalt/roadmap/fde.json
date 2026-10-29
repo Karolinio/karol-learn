@@ -1,0 +1,22 @@
+{
+  "track": "fde",
+  "titel": "Forward Deployed Engineer",
+  "themen": [
+    { "thema": "Rolle", "gruppe": "Die Rolle", "text": "Was ein FDE beim Kunden tut, und was nicht." },
+    { "thema": "Discovery", "gruppe": "Beim Kunden", "text": "Zuhören, Abläufe aufnehmen, das echte Problem finden." },
+    { "thema": "Business Case", "gruppe": "Beim Kunden", "text": "Rechnen, ob sich die Lösung für den Kunden lohnt." },
+    { "thema": "Recht & Regulierung", "gruppe": "Beim Kunden", "text": "DSGVO, AVV, AI Act: was du vor dem Bauen klärst." },
+    { "thema": "wiya", "gruppe": "Beim Kunden", "text": "Das Fallbeispiel: wie ein echter Einsatz aussieht." },
+    { "thema": "Terminal & CLI", "gruppe": "Handwerk", "text": "Die Kommandozeile ohne Angst bedienen.", "link": "https://roadmap.sh/devops" },
+    { "thema": "Git & Ablauf", "gruppe": "Handwerk", "text": "Änderungen sicher festhalten, teilen und zurückdrehen.", "link": "https://roadmap.sh/devops" },
+    { "thema": "Repo-Struktur", "gruppe": "Handwerk", "text": "Wo was im Projekt liegt, damit andere sich zurechtfinden.", "link": "https://roadmap.sh/backend" },
+    { "thema": "Fehler lesen", "gruppe": "Handwerk", "text": "Fehlermeldungen von oben nach unten entschlüsseln.", "link": "https://roadmap.sh/backend" },
+    { "thema": "Schnittstellen", "gruppe": "Bauen", "text": "APIs, Webhooks und Formate zwischen den Systemen.", "link": "https://roadmap.sh/backend" },
+    { "thema": "Daten", "gruppe": "Bauen", "text": "Datenbanken, Migrationen und saubere Datenflüsse.", "link": "https://roadmap.sh/backend" },
+    { "thema": "Integration", "gruppe": "Bauen", "text": "Die Lösung in die Systeme des Kunden einhängen.", "link": "https://roadmap.sh/backend" },
+    { "thema": "Architektur-Entscheidung", "gruppe": "Bauen", "text": "Optionen abwägen und die Entscheidung festhalten.", "link": "https://roadmap.sh/backend" },
+    { "thema": "Sicherheit", "gruppe": "Betrieb", "text": "Geheimnisse, Rechte und Angriffsflächen klein halten.", "link": "https://roadmap.sh/devops" },
+    { "thema": "Betrieb", "gruppe": "Betrieb", "text": "Deployen, überwachen und nachts ruhig schlafen.", "link": "https://roadmap.sh/devops" },
+    { "thema": "Pilot & Rollout", "gruppe": "Betrieb", "text": "Klein starten, messen, dann für alle ausrollen." }
+  ]
+}

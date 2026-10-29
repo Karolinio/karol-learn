@@ -1,0 +1,69 @@
+{
+  "track": "fde",
+  "thema": "Fehler lesen",
+  "karten": [
+    {
+      "id": "fde-b-stacktrace-lesen",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "stufe": 3,
+      "frage": "Wie liest du einen Stacktrace?",
+      "antwort": "Zuerst die Fehlermeldung, dann die Zeile, die in deinem Projektcode steht und nicht in einer Bibliothek. Bei Python steht der jüngste Aufruf unten, bei JavaScript und Java oben.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-log-level",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "stufe": 1,
+      "frage": "Welche Log-Level gibt es, und welche suchst du zuerst?",
+      "antwort": "Von harmlos bis ernst: DEBUG, INFO, WARN, ERROR. Bei einer Störung suchst du zuerst nach ERROR rund um den Zeitpunkt des Problems.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-exit-code",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "stufe": 2,
+      "frage": "Was ist ein Exit-Code?",
+      "antwort": "Eine Zahl, die ein Programm beim Beenden meldet. `0` heißt Erfolg, alles andere Fehler. `echo $?` zeigt den letzten, bei Docker steht z. B. `Exited (1)`.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-connection-refused",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "stufe": 3,
+      "frage": "In der App steht \"connection refused\" beim Zugriff auf `localhost:5432` im Container. Was heißt das?",
+      "antwort": "Unter dieser Adresse hört niemand zu. Im Container zeigt `localhost` auf den Container selbst, nicht auf die Datenbank. In Compose den Dienstnamen nutzen, z. B. `db:5432`, und prüfen, ob die Datenbank läuft.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-permission-denied",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "stufe": 3,
+      "frage": "Im Log steht \"permission denied\". Was bedeutet das, und wie prüfst du es?",
+      "antwort": "Der Prozess darf die Datei oder Aktion nicht. `ls -l` zeigt Besitzer und Rechte. Rechte gezielt korrigieren, nicht pauschal `chmod 777`.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-port-belegt",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "stufe": 3,
+      "frage": "Beim Start steht \"address already in use\" (oder `EADDRINUSE`). Was ist los?",
+      "antwort": "Ein anderer Prozess belegt den Port schon, oft eine alte Instanz. Mit `lsof -i :PORT` den Prozess finden und beenden, oder einen anderen Port nehmen.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-debug-vorgehen",
+      "track": "fde",
+      "thema": "Fehler lesen",
+      "stufe": 2,
+      "frage": "Wie gehst du beim Kunden bei einem Fehler vor?",
+      "antwort": "Fehlermeldung wörtlich und Uhrzeit festhalten, dann reproduzieren. Logs um den Zeitpunkt lesen und fragen, was sich zuletzt geändert hat. Immer nur eine Sache auf einmal ändern.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}

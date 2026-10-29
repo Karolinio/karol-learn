@@ -1,0 +1,150 @@
+{
+  "track": "aie",
+  "thema": "Testen",
+  "karten": [
+    {
+      "id": "aie-eval",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 1,
+      "frage": "Was ist eine Eval?",
+      "antwort": "Eine wiederholbare Prüfung, wie gut ein Agent oder eine Suche ist: feste Testfragen, fester Messwert, Vergleich vorher/nachher.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-s-test-deterministisch",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 1,
+      "frage": "Was ist eine deterministische Eval?",
+      "antwort": "Eine Prüfung mit festem Ergebnis, die Code selbst auswertet, etwa „Wurde das Tool X mit Betrag 50 aufgerufen?“. Sie ist billig und liefert immer dasselbe Urteil.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-llm-judge",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 1,
+      "frage": "Was ist LLM as Judge?",
+      "antwort": "Ein zweites Sprachmodell bewertet die Antwort nach vorgegebenen Kriterien. Man nutzt es, wo Code allein nicht entscheiden kann, etwa bei Freitext.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-judge-bias",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Welche Schwächen hat LLM as Judge?",
+      "antwort": "Der Richter kann bestimmte Antworten bevorzugen, etwa längere, und ist selbst nicht völlig konsistent. Man prüft ihn deshalb stichprobenartig gegen menschliche Bewertung.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-det-vs-judge",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Wann nimmt man deterministische Evals, wann einen Judge?",
+      "antwort": "Deterministisch für alles Prüfbare: Format, aufgerufenes Tool, Zahlen. Judge für Qualität von Texten, die man nicht in eine feste Regel gießen kann.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-mensch",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Wozu braucht man menschliche Bewertung trotz automatischer Evals?",
+      "antwort": "Menschen erkennen, ob eine Antwort wirklich nützlich ist, und liefern die Referenz, an der man Judge-Modelle misst. Sie sind aber langsam und teuer, daher nur Stichproben.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-golden",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 1,
+      "frage": "Was ist ein Golden Set?",
+      "antwort": "Eine feste Sammlung von Testfällen mit bekannter richtiger Antwort. Jede Änderung am Agenten läuft dagegen und wird verglichen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-golden-aufbau",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Woher sollten die Fälle eines Golden Sets kommen?",
+      "antwort": "Aus echten Anfragen und echten Fehlern, nicht ausgedacht. Dazu gehören auch schwierige Fälle und solche, in denen die richtige Antwort „nicht gefunden“ lautet.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-tuning-holdout",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Was ist der Unterschied zwischen Tuning-Set und Hold-out-Set?",
+      "antwort": "Am Tuning-Set darf man ausprobieren und anpassen. Das Hold-out-Set bleibt unberührt und zeigt, ob eine Verbesserung auch auf neuen Fällen hält.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-test-overfit",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 3,
+      "frage": "Du verbesserst den Prompt, bis alle 30 Testfälle bestehen. Warum ist das nur begrenzt aussagekräftig?",
+      "antwort": "Der Prompt kann auf genau diese Fälle zugeschnitten sein und bei neuen versagen. Erst ein Hold-out-Set, das nie zum Anpassen diente, zeigt die echte Güte.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-test-regression",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Was ist ein Regressionstest für einen Agenten?",
+      "antwort": "Nach jeder Änderung an Prompt, Modell oder Tools läuft das Golden Set erneut. So sieht man, ob etwas Früheres jetzt schlechter funktioniert.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-unit-tool",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Warum bekommt jedes Tool einen eigenen Unit-Test?",
+      "antwort": "Ein Tool ist normaler Code und lässt sich ohne Modell prüfen. So findet man Fehler im Tool, bevor man sie mit Modell-Verhalten verwechselt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-nichtdeterminismus",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Warum sollte man Agenten-Tests mehrfach laufen lassen?",
+      "antwort": "Das Modell antwortet nicht jedes Mal gleich, ein einzelner Lauf kann Glück oder Pech sein. Mehrere Läufe zeigen, wie oft der Test besteht.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-trajektorie",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 2,
+      "frage": "Was heißt, nicht nur das Endergebnis, sondern auch den Weg des Agenten zu prüfen?",
+      "antwort": "Man kontrolliert, welche Tools in welcher Reihenfolge aufgerufen wurden. Ein richtiges Ergebnis auf riskantem Weg, etwa mit einem unnötigen Schreibzugriff, bleibt sonst unbemerkt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-test-kontamination",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 1,
+      "frage": "Was heißt Kontamination bei Benchmarks?",
+      "antwort": "Die Testdaten sind dem Modell oder System schon beim Training oder Abstimmen begegnet. Das Ergebnis wirkt dann besser, als es ist.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-test-modellwechsel",
+      "track": "aie",
+      "thema": "Testen",
+      "stufe": 3,
+      "frage": "Ein Kunde will das Modell wechseln, um Kosten zu sparen. Wie sicherst du das ab?",
+      "antwort": "Das Golden Set läuft mit beiden Modellen, und man vergleicht Qualität, Kosten und Dauer. Wechseln darf man erst, wenn die Ergebnisse auf Hold-out-Fällen nicht schlechter werden.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

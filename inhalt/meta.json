@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "stand": "2026-10-28",
+  "karten": {
+    "aie": 333,
+    "fde": 166
+  },
+  "legende": {
+    "offen": "Box 0, noch nie gelernt",
+    "lerne": "Box 1–3",
+    "kann": "Box 4–5"
+  }
+}

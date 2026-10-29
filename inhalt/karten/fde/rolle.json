@@ -1,0 +1,105 @@
+{
+  "track": "fde",
+  "thema": "Rolle",
+  "karten": [
+    {
+      "id": "fde-rolle",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 1,
+      "frage": "Was macht ein Forward Deployed Engineer?",
+      "antwort": "Beim Kunden das Problem verstehen, eine Lösung bauen, sie in der Umgebung des Kunden in Betrieb bringen und bleiben, bis eine vereinbarte Kennzahl erreicht ist.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-sale",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 1,
+      "frage": "Wofür steht SALE?",
+      "antwort": "Software Engineering, AI Engineering, Infrastructure, Liaison. Eine Merkhilfe aus einem Video, keine Norm.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-liaison",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 2,
+      "frage": "Was heißt Liaison im FDE-Job?",
+      "antwort": "Übersetzen in beide Richtungen: Kundensprache ('Support dauert zu lang') in Technik (z. B. RAG über Tickets) und zurück in Nutzen und Kosten.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-titel",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 1,
+      "frage": "Unter welchen Titeln laufen FDE-Stellen noch?",
+      "antwort": "Forward Deployed Software Engineer, Deployment Engineer, Applied AI Engineer, Solutions Engineer, Solutions Architect.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-verantwortung",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 2,
+      "frage": "Vibe Coder oder AI Engineer: wo ist der Unterschied laut Leon van Zyl?",
+      "antwort": "Beide lassen den Agenten schreiben. Der AI Engineer versteht aber den Stack und übernimmt Verantwortung für Sicherheit, Tests und Betrieb.",
+      "quelle": "YouTube: Leon van Zyl, AI Engineer Roadmap"
+    },
+    {
+      "id": "fde-k-rolle-vs-swe",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 2,
+      "frage": "Was unterscheidet einen FDE von einem normalen Software Engineer?",
+      "antwort": "Der Software Engineer baut ein Produkt für viele Kunden. Der FDE sitzt beim einzelnen Kunden und macht das Produkt dort im echten Ablauf nutzbar.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-k-rolle-vs-solutions",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 2,
+      "frage": "Wo liegt der Unterschied zwischen FDE und Solutions Engineer?",
+      "antwort": "Der Solutions Engineer zeigt und beantwortet technische Fragen vor dem Kauf, meist mit Demos. Der FDE baut und bringt es nach dem Kauf beim Kunden zum Laufen.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-k-rolle-vs-berater",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 2,
+      "frage": "Wie unterscheidet sich ein FDE von einem klassischen Berater?",
+      "antwort": "Der Berater liefert Empfehlungen und Folien. Der FDE liefert eine laufende Lösung, an der man sieht, ob sie wirkt.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-k-rolle-kennzahl",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 2,
+      "frage": "Woran wird ein FDE gemessen?",
+      "antwort": "An einer Kennzahl des Kunden, nicht an der Zahl gebauter Funktionen. Zum Beispiel gesparte Stunden pro Woche oder weniger Fehler im Ablauf.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-k-rolle-palantir",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 1,
+      "frage": "Woher kommt die Rolle des Forward Deployed Engineer?",
+      "antwort": "Sie wurde bei Palantir bekannt: Ingenieure arbeiteten direkt beim Kunden, oft vor Ort, und passten die Software an dessen Probleme an.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    },
+    {
+      "id": "fde-k-rolle-erstes-gespraech",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 3,
+      "frage": "Der Kunde fragt am Anfang: Was baust du uns denn? Was antwortest du?",
+      "antwort": "Noch nichts, zuerst frage ich nach dem Ablauf, der wehtut, und woran wir Erfolg messen. Gebaut wird erst, wenn Problem und Kennzahl klar sind.",
+      "quelle": "YouTube: FDE Hottest AI Job of 2026"
+    }
+  ]
+}

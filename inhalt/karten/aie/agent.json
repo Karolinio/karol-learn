@@ -1,0 +1,78 @@
+{
+  "track": "aie",
+  "thema": "Agent",
+  "karten": [
+    {
+      "id": "aie-agent",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 1,
+      "frage": "Woraus besteht ein Agent?",
+      "antwort": "Modell (das Gehirn) + Harness (der Körper mit Regeln) + Konfiguration und Aufgabe.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-modell-nicht-gedaechtnis",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 2,
+      "frage": "Ist das Modell das Gedächtnis des Agenten?",
+      "antwort": "Nein. Das Modell ist das Denken. Das Gedächtnis hält der Harness: Nachrichtenliste, Dateien, Datenbank. Er gibt dem Modell bei jedem Aufruf mit, was es wissen muss.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-aufgabe-jeder-aufruf",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 2,
+      "frage": "Hat das Modell eines Agenten seine Aufgabe dauerhaft?",
+      "antwort": "Nein. Der Harness gibt Aufgabe, Regeln und Tool-Liste bei jedem einzelnen Aufruf neu mit. 'Agent' heißt: Das passiert in einer Schleife, bis die Aufgabe erledigt ist.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-agent-vs-workflow",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 2,
+      "frage": "Agent oder Workflow: Was ist der Unterschied?",
+      "antwort": "Im Workflow legt der Entwickler die Schritte fest. Beim Agenten entscheidet das Modell selbst, welche Schritte es als Nächstes geht.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-workflow-wann",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 3,
+      "frage": "Wann reicht ein Workflow, wann braucht es einen Agenten?",
+      "antwort": "Ist der Ablauf bekannt und immer gleich, reicht ein Workflow und ist verlässlicher. Ein Agent lohnt sich, wenn der Weg vorab nicht feststeht.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-einzelaufruf",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 1,
+      "frage": "Was ist ein einzelner Modellaufruf im Vergleich zu einem Agenten?",
+      "antwort": "Eine Anfrage, eine Antwort, ohne Schleife und ohne Tools. Das reicht für Aufgaben wie Zusammenfassen oder Übersetzen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-autonom-vs-freigabe",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 2,
+      "frage": "Was heißt autonom, was heißt mit Freigabe?",
+      "antwort": "Autonom führt der Agent Aktionen selbst aus. Mit Freigabe wartet er vor bestimmten Aktionen auf die Zustimmung eines Menschen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-autonomie-grad",
+      "track": "aie",
+      "thema": "Agent",
+      "stufe": 3,
+      "frage": "Wie wählst du, wie viel Autonomie ein Agent bekommt?",
+      "antwort": "Je schwerer eine Aktion rückgängig zu machen ist, desto eher Freigabe. Lesen kann autonom laufen, Zahlen oder Löschen nicht ohne Prüfung.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

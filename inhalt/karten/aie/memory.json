@@ -1,0 +1,96 @@
+{
+  "track": "aie",
+  "thema": "Memory",
+  "karten": [
+    {
+      "id": "aie-s-mem-kurz-lang",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 1,
+      "frage": "Was ist der Unterschied zwischen Kurz- und Langzeitgedächtnis bei Agenten?",
+      "antwort": "Kurzzeit ist der aktuelle Kontext einer Sitzung und verschwindet mit ihr. Langzeit wird außerhalb des Modells gespeichert und in späteren Sitzungen wieder geladen.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-mem-episodisch",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 1,
+      "frage": "Was ist episodisches Gedächtnis bei einem Agenten?",
+      "antwort": "Die Erinnerung an konkrete Ereignisse, etwa „am Dienstag hat der Kunde X das Angebot abgelehnt“. Es hat Zeit und Zusammenhang.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-mem-semantisch",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 1,
+      "frage": "Was ist semantisches Gedächtnis bei einem Agenten?",
+      "antwort": "Allgemeine Fakten ohne Zeitbezug, etwa „Kunde X zahlt nur per Überweisung“. Sie sind aus vielen Ereignissen verdichtet.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-mem-epi-vs-sem",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 2,
+      "frage": "Was ist der Unterschied zwischen episodisch und semantisch am Beispiel eines Support-Agenten?",
+      "antwort": "Episodisch: „Ticket 123 wurde gestern gelöst“. Semantisch: „Dieser Kunde nutzt die Windows-Version“.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-mem-vergessen",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 2,
+      "frage": "Warum braucht ein Langzeitgedächtnis Vergessen oder Altern?",
+      "antwort": "Sonst sammeln sich überholte und doppelte Einträge an und verdrängen Aktuelles. Gewichtung nach Alter oder Löschen alter Einträge hält die Treffer nützlich.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-mem-datei",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 1,
+      "frage": "Was ist eine Memory-Datei wie AGENTS.md oder CLAUDE.md?",
+      "antwort": "Eine Textdatei im Projekt, die der Harness bei jedem Start in den Kontext lädt. Sie enthält Regeln und Wissen, an die sich der Agent immer erinnern soll.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-mem-datei-grenze",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 2,
+      "frage": "Warum sollte eine Memory-Datei kurz und gepflegt bleiben?",
+      "antwort": "Sie belegt bei jedem Aufruf Platz im Kontext und kostet Aufmerksamkeit. Veraltete oder widersprüchliche Zeilen führen zu falschem Verhalten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-mem-vs-rag",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 2,
+      "frage": "Was unterscheidet Agenten-Memory von normalem RAG?",
+      "antwort": "RAG durchsucht einen vorhandenen Wissensbestand. Memory wird vom Agenten selbst geschrieben, wächst durch seine Arbeit und muss auf Aktualität und Dubletten achten.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-mem-schreibrechte",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 3,
+      "frage": "Ein Agent soll sich Dinge dauerhaft merken. Warum ist freies Schreiben ins Gedächtnis riskant?",
+      "antwort": "Ein eingeschleuster Text könnte sich als Erinnerung festsetzen und künftige Sitzungen beeinflussen. Deshalb sind Schreibrechte, Freigaben und Herkunftsangaben sinnvoll.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-mem-szenario",
+      "track": "aie",
+      "thema": "Memory",
+      "stufe": 3,
+      "frage": "Ein Kunde klagt, der Agent „vergisst“ morgens alles von gestern. Was erklärst du?",
+      "antwort": "Das Modell behält nichts zwischen Aufrufen. Was bleiben soll, muss gespeichert und beim Start wieder in den Kontext geladen werden, etwa per Memory-Datei oder Gedächtnis-Suche.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "track": "fde",
+  "thema": "Git & Ablauf",
+  "karten": [
+    {
+      "id": "fde-ci-cd",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 2,
+      "frage": "Was ist CI/CD?",
+      "antwort": "Continuous Integration und Deployment: Bei jedem Pull Request laufen automatisch Tests. Nur was grün ist, wird zusammengeführt und ausgerollt.",
+      "quelle": "YouTube: Leon van Zyl, AI Engineer Roadmap"
+    },
+    {
+      "id": "fde-pull-request",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Was ist ein Pull Request?",
+      "antwort": "Ein Antrag, Änderungen aus einem Branch nach main zu übernehmen. Der Ort für Review und automatische Prüfungen.",
+      "quelle": "YouTube: Leon van Zyl, AI Engineer Roadmap",
+      "skizze": "git-ablauf"
+    },
+    {
+      "id": "fde-worktree",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 2,
+      "frage": "Was ist ein Worktree?",
+      "antwort": "Eine zweite Arbeitskopie desselben Repos auf einem anderen Branch. Mehrere Agenten können parallel arbeiten, ohne sich und main zu stören.",
+      "quelle": "YouTube: Leon van Zyl, AI Engineer Roadmap"
+    },
+    {
+      "id": "fde-github-issues",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 2,
+      "frage": "Warum Arbeit als GitHub-Issues statt als Feature-Dateien im Repo?",
+      "antwort": "Issues lassen sich beschriften, verknüpfen und kommentieren, auch vom Agenten mit Testbelegen. Alles offene Arbeit ist in einer Ansicht sichtbar.",
+      "quelle": "YouTube: Leon van Zyl, AI Engineer Roadmap"
+    },
+    {
+      "id": "fde-agents-md",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Was ist AGENTS.md bzw. CLAUDE.md?",
+      "antwort": "Eine Memory-Datei im Repo mit Regeln, die der Coding-Agent in jeder Sitzung lädt. Kurz halten, nur Regeln, die wirklich gebraucht werden.",
+      "quelle": "YouTube: Leon van Zyl, AI Engineer Roadmap"
+    },
+    {
+      "id": "fde-skill",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Was ist ein Agent Skill?",
+      "antwort": "Ein wiederverwendbarer Prompt mit Anleitung, den der Agent bei passender Aufgabe lädt. Rat von Leon: eigene schreiben, fremde lesen und verstehen statt blind kopieren.",
+      "quelle": "YouTube: Leon van Zyl, AI Engineer Roadmap"
+    },
+    {
+      "id": "fde-b-git-repo",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Was ist ein Git-Repository?",
+      "antwort": "Der Ordner eines Projekts samt seiner kompletten Änderungshistorie. Kurz: Repo. Jeder Klon enthält die ganze Geschichte.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-git-commit",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Was ist ein Commit?",
+      "antwort": "Ein gespeicherter Stand des Projekts mit Nachricht, Autor und Zeitpunkt. `git log` zeigt die Liste aller Commits.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-git-branch",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Was ist ein Branch?",
+      "antwort": "Eine parallele Arbeitslinie. Darauf kann man ändern, ohne `main` zu berühren, und später zusammenführen.",
+      "quelle": "https://docs.github.com",
+      "skizze": "git-ablauf"
+    },
+    {
+      "id": "fde-b-git-merge",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 2,
+      "frage": "Was passiert bei einem Merge?",
+      "antwort": "Die Änderungen eines Branches werden in einen anderen übernommen, meist in `main`. Auf GitHub geschieht das meist über einen Pull Request. Danach enthält `main` beide Arbeitsstände.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-git-konflikt-lesen",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 3,
+      "frage": "In einer Datei stehen `<<<<<<< HEAD`, `=======` und `>>>>>>> feature`. Was heißt das?",
+      "antwort": "Ein Merge-Konflikt: Beide Branches haben dieselbe Stelle geändert. Oben steht die Version des aktuellen Branches, unten die des anderen. Ein Mensch entscheidet, löscht die Markierungen und committet.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-git-rebase",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Was ist ein Rebase (nur als Begriff)?",
+      "antwort": "Die Commits eines Branches werden auf einen neuen Ausgangspunkt gesetzt, sodass der Verlauf gerade aussieht. Dabei wird die Historie umgeschrieben. Auf geteilten Branches deshalb mit Vorsicht.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-git-main-schuetzen",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 2,
+      "frage": "Warum schützt man den Branch `main`, und was heißt das?",
+      "antwort": "Mit Branch Protection geht kein direkter Push mehr. Änderungen laufen nur über Pull Requests, mit Review und grünen Checks. So landet nichts Ungeprüftes in der Produktion.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-github-actions",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 2,
+      "frage": "Was ist GitHub Actions, und wie sieht man ein Ergebnis?",
+      "antwort": "Workflow-Dateien in `.github/workflows/` laufen bei Ereignissen wie Push oder Pull Request und führen z. B. Tests und Build aus. Am Pull Request zeigt ein grüner Haken Erfolg, ein rotes Kreuz einen fehlgeschlagenen Check.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-gitignore",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 1,
+      "frage": "Wozu dient `.gitignore`?",
+      "antwort": "Dort stehen Dateien und Ordner, die Git nicht erfassen soll, z. B. `.env`, `node_modules/`, Logs. Es hindert versehentliche Commits von Geheimnissen und Ballast.",
+      "quelle": "https://docs.github.com"
+    },
+    {
+      "id": "fde-b-git-tags-releases",
+      "track": "fde",
+      "thema": "Git & Ablauf",
+      "stufe": 2,
+      "frage": "Was sind Tags und Releases, und wozu helfen sie beim Kunden?",
+      "antwort": "Ein Tag ist eine Namensmarke auf einem Commit, z. B. `v1.2.0`. Ein GitHub-Release macht daraus ein Paket mit Notizen. So lässt sich genau sagen, welcher Stand beim Kunden läuft.",
+      "quelle": "https://docs.github.com"
+    }
+  ]
+}

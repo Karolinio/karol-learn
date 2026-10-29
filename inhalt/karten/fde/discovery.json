@@ -1,0 +1,114 @@
+{
+  "track": "fde",
+  "thema": "Discovery",
+  "karten": [
+    {
+      "id": "fde-k-disc-prozessaufnahme",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 1,
+      "frage": "Was ist eine Prozessaufnahme?",
+      "antwort": "Eine strukturierte Erfassung, wie ein Ablauf heute wirklich läuft: wer tut was, womit, in welcher Reihenfolge. Sie ist die Grundlage für jede Automatisierung.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-ist-ablauf",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 2,
+      "frage": "Warum zeichnest du den Ist-Ablauf, bevor du etwas baust?",
+      "antwort": "Weil man nur automatisieren kann, was man versteht. Beim Zeichnen zeigen sich Umwege, Sonderfälle und Übergaben, die niemand aufgeschrieben hat.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-zeigen-lassen",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 3,
+      "frage": "Der Chef beschreibt den Ablauf glatt, aber seine Mitarbeiterin macht es anders. Was tust du?",
+      "antwort": "Ich lasse mir den Ablauf von der Mitarbeiterin am Bildschirm zeigen. Der echte Ablauf steckt bei denen, die ihn täglich machen, nicht in der Beschreibung.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-schmerz-wunsch",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 2,
+      "frage": "Schmerzpunkt oder Wunsch: was ist der Unterschied?",
+      "antwort": "Ein Schmerzpunkt kostet heute messbar Zeit, Geld oder Nerven. Ein Wunsch ist eine Idee, die nett klingt. Gebaut wird zuerst gegen Schmerzpunkte.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-wunsch-ki",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 3,
+      "frage": "Der Kunde sagt: Wir wollen irgendwas mit KI machen. Was fragst du?",
+      "antwort": "Wo im Alltag verliert ihr am meisten Zeit oder macht die meisten Fehler? Aus der Antwort entsteht ein konkreter Anwendungsfall statt eines Schlagworts.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-erfolgskriterium",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 2,
+      "frage": "Was ist ein Erfolgskriterium, und wann wird es vereinbart?",
+      "antwort": "Eine messbare Aussage, wann das Projekt gelungen ist, zum Beispiel: Bearbeitungszeit pro Fall von 20 auf 5 Minuten. Es wird vor dem Bau schriftlich vereinbart.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-messbar",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 3,
+      "frage": "Der Kunde sagt: Es soll einfach besser laufen. Wie gehst du vor?",
+      "antwort": "Ich frage, woran er morgens merken würde, dass es besser läuft, und lege eine Zahl fest. Dazu messen wir vorher den heutigen Stand als Vergleich.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-stakeholder",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 1,
+      "frage": "Wer sind die Stakeholder in einem Kundenprojekt?",
+      "antwort": "Alle, die vom Projekt betroffen sind oder es beeinflussen: Auftraggeber, Fachabteilung, IT, Datenschutz und die Nutzer im Alltag.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-entscheider",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 3,
+      "frage": "Der Fachbereich ist begeistert, aber die IT bremst. Was tust du?",
+      "antwort": "Ich hole die IT früh ins Gespräch und frage nach ihren Bedingungen, etwa Sicherheit und Betrieb. Ein Projekt ohne die IT scheitert meist spät und teuer.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-datenlage",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 2,
+      "frage": "Warum prüfst du die Datenlage, bevor du zusagst?",
+      "antwort": "Ein Agent ist nur so gut wie die Daten, an die er kommt. Sind sie verstreut, veraltet oder gesperrt, ist das die eigentliche Aufgabe.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-datenfragen",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 3,
+      "frage": "Welche drei Fragen stellst du zu den Daten eines Kunden?",
+      "antwort": "Wo liegen sie, wer darf sie sehen, und sind personenbezogene Daten dabei? Dazu: Wie aktuell und sauber sind sie?",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-disc-sonderfaelle",
+      "track": "fde",
+      "thema": "Discovery",
+      "stufe": 2,
+      "frage": "Warum fragst du nach Ausnahmen und Sonderfällen?",
+      "antwort": "Der Normalfall ist schnell automatisiert, die Ausnahmen machen den Aufwand und das Risiko. Wer sie kennt, schätzt den Aufwand ehrlich.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}

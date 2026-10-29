@@ -1,0 +1,88 @@
+{
+  "laufId": "20261028-130234-2d3a2b",
+  "quelle": "YouTube: Forward Deployed Engineer Explained",
+  "erstellt": "2026-10-28T13:03:54.541Z",
+  "vorschlaege": [
+    {
+      "id": "fde-v-ai-gap",
+      "track": "fde",
+      "thema": "Business Case",
+      "stufe": 2,
+      "frage": "Was ist die Lücke zwischen Zugang zu KI-Modellen und echtem Erfolg mit KI im Unternehmen?",
+      "antwort": "Firmen haben Zugriff auf leistungsfähige Modelle, aber kaum eine schafft es, damit tatsächlich Geld zu sparen oder zu verdienen. Der Grund ist meist fehlende Anpassung an den echten Arbeitsablauf, nicht das Modell selbst. Genau diese Lücke zu schließen ist die Kernaufgabe eines FDE.",
+      "erklaerhilfe": "Wie ein teures Fitnessgerät, das ungenutzt im Keller steht: Zugang allein bringt keine Ergebnisse.",
+      "quelle": "YouTube: Forward Deployed Engineer Explained",
+      "begruendung": "Erklärt Karol, warum FDEs überhaupt gebraucht werden und wie er das Grundproblem beim Kunden benennt.",
+      "status": "offen",
+      "vorschlagId": "20261028-130234-2d3a2b-1"
+    },
+    {
+      "id": "fde-v-portfolio-echte-kunden",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 3,
+      "frage": "Warum zählt ein geklontes Projekt von GitHub kaum als FDE-Portfolio-Projekt?",
+      "antwort": "Ein Klon zeigt nur, dass man Code kopieren kann, nicht dass man mit einem echten Kunden ein Problem lösen kann. Wertvoll ist ein Projekt mit echtem Ansprechpartner, echtem Problem und einem messbaren Ergebnis wie Zeit- oder Kostenersparnis. Genau das trainiert Discovery, Umsetzung und Liaison-Rolle gleichzeitig.",
+      "erklaerhilfe": "Wie ein Rezept nachkochen im Vergleich zu einem echten Gast nach seinem Geschmack ein Menü zusammenstellen.",
+      "quelle": "YouTube: Forward Deployed Engineer Explained",
+      "begruendung": "Hilft Karol einzuschätzen, welche Art von Übungsprojekten für seinen eigenen Werdegang wirklich zählt.",
+      "status": "offen",
+      "vorschlagId": "20261028-130234-2d3a2b-2"
+    },
+    {
+      "id": "fde-v-infrastruktur-warum",
+      "track": "fde",
+      "thema": "Betrieb",
+      "stufe": 2,
+      "frage": "Warum reicht reines Programmieren für einen FDE nicht aus?",
+      "antwort": "Eine fertige Lösung muss am Ende beim Kunden laufen, nicht nur auf dem eigenen Laptop. Dafür braucht man Grundwissen zu Containern, Skalierung und mindestens einer Cloud-Plattform. Ohne dieses Wissen bleibt die Lösung eine Demo statt ein produktives System.",
+      "erklaerhilfe": "Wie ein Koch, der nicht nur kochen, sondern auch eine fremde Küche bedienen können muss.",
+      "quelle": "YouTube: Forward Deployed Engineer Explained",
+      "begruendung": "Begründet, warum Karol auch Betriebsthemen wie Container verstehen muss, nicht nur Code lesen.",
+      "status": "offen",
+      "vorschlagId": "20261028-130234-2d3a2b-3"
+    },
+    {
+      "id": "fde-v-liaison-wichtiger-skaliert",
+      "track": "fde",
+      "thema": "Rolle",
+      "stufe": 3,
+      "frage": "Warum ist die Fähigkeit zu übersetzen zwischen Kunde und Technik oft wichtiger als reines technisches Wissen?",
+      "antwort": "Technisches Wissen lässt sich nachholen, aber ohne Übersetzung zwischen Kundensprache und Technik bleibt jede Lösung am Bedarf vorbei. Wer das Kundenproblem in eine technische Lösung übersetzen kann, schafft erst den Wert, für den bezahlt wird. Reine Coding-Fähigkeit ohne diese Brücke bleibt oft ungenutzt.",
+      "erklaerhilfe": "Wie ein Dolmetscher: Ohne beide Sprachen zu verstehen, nützt die beste Rede nichts.",
+      "quelle": "YouTube: Forward Deployed Engineer Explained",
+      "begruendung": "Zeigt Karol, warum seine Fähigkeit, Technik für Kunden zu übersetzen, zentraler Teil seines Werts ist, nicht nur ein Soft Skill am Rand.",
+      "status": "offen",
+      "vorschlagId": "20261028-130234-2d3a2b-4"
+    }
+  ],
+  "ideen": [
+    {
+      "titel": "Zugang vs. Erfolg: die Fitnessgerät-Analogie",
+      "art": "vergleich",
+      "beschreibung": "Nutze das Bild vom teuren, ungenutzten Fitnessgerät im Keller, um den Unterschied zwischen 'Zugang zu KI haben' und 'Erfolg mit KI haben' zu verankern. Zieh die Analogie weiter: der FDE ist der Personal Trainer, der das Gerät tatsächlich in den Alltag einbaut, statt es nur zu liefern.",
+      "track": "fde",
+      "thema": "Business Case",
+      "id": "20261028-130234-2d3a2b-i1",
+      "quelle": "YouTube: Forward Deployed Engineer Explained"
+    },
+    {
+      "titel": "SALE-Schaubild: vier Bausteine einer FDE-Rolle",
+      "art": "skizze",
+      "beschreibung": "Zeichne vier Kästen nebeneinander: Software Engineering, AI Engineering, Infrastruktur. Darunter ein breiter Kasten 'Liaison', der alle drei mit zwei Figuren links (Kunde) und rechts (Tech-Team) verbindet. Baue Schritt für Schritt auf: erst die drei technischen Kästen, dann den Liaison-Kasten als Brücke, zuletzt Pfeile von Kunde und Team zum Liaison-Kasten.",
+      "track": "fde",
+      "thema": "Rolle",
+      "id": "20261028-130234-2d3a2b-i2",
+      "quelle": "YouTube: Forward Deployed Engineer Explained"
+    },
+    {
+      "titel": "Drei-Sätze-Erklärung für einen Laien",
+      "art": "uebung",
+      "beschreibung": "Erkläre einem Freund ohne Tech-Hintergrund in genau drei Sätzen, warum ein Forward Deployed Engineer nicht einfach 'noch ein Programmierer' ist. Nutze dabei kein einziges Fachwort wie API, Pipeline oder Deployment.",
+      "track": "fde",
+      "thema": "Rolle",
+      "id": "20261028-130234-2d3a2b-i3",
+      "quelle": "YouTube: Forward Deployed Engineer Explained"
+    }
+  ]
+}

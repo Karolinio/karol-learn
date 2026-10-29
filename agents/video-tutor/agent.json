@@ -1,0 +1,10 @@
+{
+  "name": "video-tutor",
+  "beschreibung": "Macht aus einem Video-Transkript Kartenvorschläge für den Eingang.",
+  "max_vorschlaege": 25,
+  "erlaubter_schreibpfad": "inhalt/vorschlaege/",
+  "log_pfad": "agents/video-tutor/laeufe/",
+  "timeout_s": 300,
+  "max_transkript_kb": 400,
+  "modell": "sonnet"
+}

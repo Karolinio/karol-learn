@@ -1,0 +1,96 @@
+{
+  "track": "aie",
+  "thema": "Multi-Agent",
+  "karten": [
+    {
+      "id": "aie-s-ma-orchestrator",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 1,
+      "frage": "Was ist ein Orchestrator in einem Multi-Agenten-System?",
+      "antwort": "Ein Agent, der Aufgaben zerlegt, an Unteragenten verteilt und deren Ergebnisse zusammenführt. Er koordiniert, statt alles selbst zu erledigen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-ma-unteragent-kontext",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 2,
+      "frage": "Warum bekommt ein Unteragent einen eigenen Kontext?",
+      "antwort": "So bleibt der Kontext des Orchestrators schlank, und der Unteragent arbeitet fokussiert. Zurück kommt nur das verdichtete Ergebnis.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-ma-handoff-vs-unter",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 2,
+      "frage": "Was unterscheidet Handoff und Unteragent?",
+      "antwort": "Beim Handoff übernimmt ein anderer Agent das Gespräch. Ein Unteragent erledigt eine Teilaufgabe und gibt das Ergebnis an den Orchestrator zurück.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-ma-parallel",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 1,
+      "frage": "Warum lässt man Unteragenten parallel arbeiten?",
+      "antwort": "Unabhängige Teilaufgaben, etwa drei Recherchen, laufen gleichzeitig und sparen Zeit. Sie dürfen sich nicht gegenseitig brauchen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-ma-kosten",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 2,
+      "frage": "Warum kosten Multi-Agenten-Systeme meist deutlich mehr als ein Agent?",
+      "antwort": "Jeder Agent hat eigene Modellaufrufe mit eigenem Kontext, und der Orchestrator liest zusätzlich Zusammenfassungen. Die Tokenzahl summiert sich.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-ma-fehler",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 2,
+      "frage": "Welches Risiko entsteht, wenn Agenten Ergebnisse weiterreichen?",
+      "antwort": "Ein Fehler oder eine Halluzination wird vom nächsten Agenten als Tatsache übernommen. Fehler vervielfältigen sich, statt sich auszugleichen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-ma-ein-agent",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 2,
+      "frage": "Wann reicht ein einzelner Agent?",
+      "antwort": "Wenn die Aufgabe klar, überschaubar und in einem Kontext lösbar ist. Anthropic rät, mit der einfachsten Lösung zu beginnen und Komplexität nur bei messbarem Nutzen zu ergänzen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-ma-rechte",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 3,
+      "frage": "Warum sollte jeder Unteragent eigene Rechte statt der Rechte des Orchestrators haben?",
+      "antwort": "So kann ein Recherche-Agent nichts versenden oder löschen, selbst wenn er manipuliert wird. Jeder bekommt nur, was seine Teilaufgabe braucht.",
+      "quelle": "https://owasp.org"
+    },
+    {
+      "id": "aie-s-ma-wiya",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 3,
+      "frage": "Wie passt wiya zu Multi-Agenten-Systemen?",
+      "antwort": "Jeder Agent braucht eine verifizierte Identität und ein eigenes Mandat, sonst weiß man nicht, wer was darf. Das Gateway prüft jeden Aufruf einzeln, und die Quittung hält fest, welcher Agent ihn ausgelöst hat.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-s-ma-ergebnis",
+      "track": "aie",
+      "thema": "Multi-Agent",
+      "stufe": 2,
+      "frage": "Warum soll ein Unteragent sein Ergebnis knapp und strukturiert zurückgeben?",
+      "antwort": "Der Orchestrator muss es in seinen Kontext aufnehmen. Ein langes, ungeordnetes Ergebnis kostet Tokens und verwässert die Entscheidung.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

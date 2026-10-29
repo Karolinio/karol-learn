@@ -1,0 +1,96 @@
+{
+  "track": "fde",
+  "thema": "Architektur-Entscheidung",
+  "karten": [
+    {
+      "id": "fde-cloud-lokal",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 3,
+      "frage": "Cloud oder lokal: welche Fragen stellst du beim Kunden zuerst?",
+      "antwort": "Wohin dürfen die Daten (DSGVO, Auftragsverarbeitung, Branche)? Welche Hardware ist da? Wie viel Last? Welches Budget? Danach das Modell: API-Anbieter, EU-gehostet (z. B. Bedrock Frankfurt) oder lokal (Ollama).",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-harness-bleibt",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 2,
+      "frage": "Wenn das Modell lokal läuft statt in der Cloud: was ändert sich am Harness?",
+      "antwort": "Fast nichts. Der Harness bleibt deiner. Es ändert sich der Modell-Adapter (wohin die Anfrage geht) und damit Qualität, Tempo und Kosten.",
+      "quelle": "Whiteboard Karol"
+    },
+    {
+      "id": "fde-k-arch-cloud-lokal-hybrid",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 1,
+      "frage": "Was bedeutet Cloud, lokal und hybrid beim Betrieb?",
+      "antwort": "Cloud: läuft beim Anbieter im Internet. Lokal: läuft auf Rechnern des Kunden. Hybrid: ein Teil, etwa sensible Daten, bleibt lokal, der Rest läuft in der Cloud.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-arch-wann-lokal",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 2,
+      "frage": "Wann spricht viel für einen lokalen Betrieb?",
+      "antwort": "Wenn Daten das Haus nicht verlassen dürfen oder der Kunde es vertraglich ausschließt. Auch bei schlechter Internetanbindung vor Ort.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-arch-eu-hosting",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 1,
+      "frage": "Was heißt EU-Hosting?",
+      "antwort": "Die Daten werden auf Servern in der EU gespeichert und verarbeitet. Das hilft bei den Anforderungen der DSGVO, ersetzt aber nicht die übrigen Pflichten.",
+      "quelle": "https://gdpr-info.eu"
+    },
+    {
+      "id": "fde-k-arch-datenresidenz",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 1,
+      "frage": "Was ist Datenresidenz?",
+      "antwort": "Die Festlegung, in welchem Land oder welcher Region Daten liegen dürfen. Manche Kunden, etwa Banken oder Behörden, fordern sie ausdrücklich.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-arch-hardware-grenze",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 2,
+      "frage": "Warum ist lokale KI durch Hardware begrenzt?",
+      "antwort": "Große Modelle brauchen viel Grafikspeicher und Rechenleistung. Auf kleiner Hardware laufen nur kleinere Modelle, die oft schwächer sind.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-arch-build-buy",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 1,
+      "frage": "Was heißt Build vs. Buy?",
+      "antwort": "Selbst bauen oder fertig kaufen. Kaufen ist schneller und meist günstiger, wenn das Produkt zum Bedarf passt. Bauen lohnt, wenn es den Kern des Geschäfts betrifft.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-arch-build-buy-szenario",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 3,
+      "frage": "Der Kunde will eine Eigenentwicklung für Rechnungsprüfung. Es gibt fertige Tools. Was prüfst du?",
+      "antwort": "Passt ein fertiges Tool zu 80 Prozent des Ablaufs und den Datenregeln, kaufen wir. Nur die Lücke bauen wir, etwa die Anbindung an sein System.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-arch-bank-lokal",
+      "track": "fde",
+      "thema": "Architektur-Entscheidung",
+      "stufe": 3,
+      "frage": "Eine Bank sagt: Kundendaten dürfen nicht an US-Anbieter. Was schlägst du vor?",
+      "antwort": "Ich kläre, welche Daten wirklich ans Modell müssen. Dann prüfe ich ein Modell in EU-Rechenzentren oder lokal und trenne sensible Teile ab, also hybrid.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}

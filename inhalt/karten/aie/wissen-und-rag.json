@@ -1,0 +1,286 @@
+{
+  "track": "aie",
+  "thema": "Wissen & RAG",
+  "karten": [
+    {
+      "id": "aie-embedding",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist ein Embedding?",
+      "antwort": "Ein Zahlenvektor, der die Bedeutung eines Textes abbildet. Texte mit ähnlicher Bedeutung liegen nahe beieinander.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-vektorsuche",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Was ist Vektorsuche?",
+      "antwort": "Suche nach Bedeutung: Man vergleicht den Abstand zwischen dem Embedding der Frage und denen der Texte. pgvector macht das direkt in Postgres.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-bm25",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist BM25?",
+      "antwort": "Klassische Stichwortsuche, die seltene Wörter stärker gewichtet. Gut für Namen, Nummern und Fachbegriffe.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-rag",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist RAG?",
+      "antwort": "Retrieval-Augmented Generation: erst passende Textstücke suchen, dann in den Kontext geben, damit das Modell mit Beleg antwortet statt aus dem Gedächtnis.",
+      "quelle": "session-2026-10-27",
+      "skizze": "rag"
+    },
+    {
+      "id": "aie-chunking",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist Chunking?",
+      "antwort": "Dokumente in handliche Stücke zerlegen, damit Suche und Kontext funktionieren. Lucs Brain schneidet an Überschriften, etwa 400 Tokens pro Stück.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-reranker",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Was ist ein Reranker?",
+      "antwort": "Eine zweite, genauere Bewertung der besten Kandidaten einer Suche. Teurer pro Treffer, deshalb nur für die Top-Kandidaten (bei Luc: 20).",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-rag-dimension",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was bedeutet die Dimension eines Embeddings?",
+      "antwort": "Die Länge der Zahlenliste, die einen Text darstellt. Ein Modell liefert immer gleich lange Vektoren, und die Datenbank muss dazu passen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-rag-gleiches-modell",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Warum müssen Frage und Dokumente mit demselben Embedding-Modell umgewandelt werden?",
+      "antwort": "Nur dann liegen sie im selben Raum, und ihr Abstand sagt etwas über die Ähnlichkeit. Bei einem Modellwechsel muss man den gesamten Bestand neu einbetten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-rag-kosinus",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was misst die Kosinus-Ähnlichkeit?",
+      "antwort": "Den Winkel zwischen zwei Vektoren. Zeigen sie in dieselbe Richtung, sind die Texte inhaltlich ähnlich.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-rag-vektor-db",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist eine Vektor-Datenbank?",
+      "antwort": "Eine Datenbank, die Embeddings speichert und zu einem Such-Vektor schnell die ähnlichsten findet. Die Treffer verweisen auf die ursprünglichen Textstücke.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-pgvector",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist pgvector?",
+      "antwort": "Eine Erweiterung für Postgres, die Vektoren speichert und per Ähnlichkeit durchsucht. Man braucht dafür keine zweite Datenbank.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-faiss",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist FAISS?",
+      "antwort": "Eine Bibliothek von Meta für schnelle Ähnlichkeitssuche über Vektoren. Sie ist selbst keine vollständige Datenbank mit Nutzern, Rechten und Backup.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-pgvector-vs-spezial",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Wann reicht pgvector, wann lohnt eine spezialisierte Vektor-Datenbank?",
+      "antwort": "Wenn die Daten ohnehin in Postgres liegen und der Bestand überschaubar ist, reicht pgvector und spart Betrieb. Eine spezialisierte Lösung lohnt erst bei sehr großen Beständen oder besonderen Anforderungen.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-ann",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Warum nutzt man bei Vektorsuche oft näherungsweise Suche (ANN)?",
+      "antwort": "Der exakte Vergleich mit allen Vektoren wird bei großen Beständen zu langsam. ANN findet fast immer die besten Treffer, aber deutlich schneller.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-chunkgroesse",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Welcher Zielkonflikt steckt in der Chunk-Größe?",
+      "antwort": "Kleine Chunks treffen genauer, verlieren aber Zusammenhang. Große Chunks halten den Zusammenhang, verwässern aber das Suchsignal und kosten mehr Kontext.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-chunk-ueberschriften",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Warum chunkt man Texte oft nach Überschriften statt nach fester Zeichenzahl?",
+      "antwort": "Feste Schnitte reißen Absätze und Gedanken mitten durch. Überschriften folgen der Struktur des Dokuments, sodass ein Chunk meist ein zusammenhängendes Thema enthält.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-ueberlappung",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist Chunk-Überlappung?",
+      "antwort": "Benachbarte Chunks teilen sich ein Stück Text. So geht nichts verloren, wenn ein wichtiger Satz genau an der Schnittstelle liegt.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-kontext-header",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 3,
+      "frage": "Was bringt ein Kontext-Header (Pfad, Titel, Überschriften) vor jedem Chunk?",
+      "antwort": "Ein Chunk wie „Kündigung: 3 Monate“ weiß allein nicht, zu welchem Vertrag er gehört. Der Header kommt in Vektor und Stichwortindex und macht das für die Suche sichtbar.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-rag-hybrid-warum",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Warum kombiniert man Stichwortsuche und Vektorsuche?",
+      "antwort": "Vektoren finden Bedeutung, auch bei anderen Wörtern. Stichwortsuche findet exakte Begriffe wie Kennungen oder Namen, bei denen Vektoren oft danebenliegen.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-fusion",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist Fusion in der Hybrid-Suche?",
+      "antwort": "Das Zusammenführen mehrerer Trefferlisten zu einer. Dabei werden die Platzierungen oder Scores der einzelnen Suchen verrechnet.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-rrf",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Wie funktioniert Reciprocal Rank Fusion?",
+      "antwort": "Jeder Treffer bekommt je Liste Punkte, die mit schlechterem Rang kleiner werden (1 geteilt durch Rang plus Konstante). Die Punkte werden addiert, und ein Treffer, der in mehreren Listen weit oben steht, gewinnt.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-convex",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Was ist der Unterschied zwischen Rangfusion (RRF) und der gewichteten Fusion in Lucs Brain?",
+      "antwort": "RRF nutzt nur die Platzierung. Lucs Brain mischt die Scores gewichtet (α mal Vektor plus (1 minus α) mal BM25, α = 0,5) und addiert Boni für Status, Aktualität und Graph.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-rag-bi-cross",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Was unterscheidet Bi-Encoder und Cross-Encoder?",
+      "antwort": "Der Bi-Encoder macht Frage und Text getrennt zu Vektoren und ist schnell. Der Cross-Encoder liest beide gemeinsam, ist genauer, aber langsamer und eignet sich deshalb zum Neu-Sortieren weniger Kandidaten.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-metadatenfilter",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was ist ein Metadaten-Filter in der Suche?",
+      "antwort": "Eine Einschränkung nach Eigenschaften der Dokumente, etwa Kunde, Jahr oder Sprache. Nur passende Dokumente kommen überhaupt in Frage.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-filter-vor-ranking",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 3,
+      "frage": "Warum muss ein Rechte-Filter vor dem Ranking greifen und nicht danach?",
+      "antwort": "Danach hätte das System fremde Dokumente schon in die Auswahl gezogen, und sie könnten Reihenfolge oder Anzeige beeinflussen. Lucs Brain filtert deshalb vor dem Ranken.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-rag-recall-at-k",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was misst Recall@k?",
+      "antwort": "Welcher Anteil der relevanten Dokumente unter den ersten k Treffern auftaucht. Recall@10 von 0,9 heißt: 90 % der gesuchten Stücke sind in den Top 10.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-ndcg",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 1,
+      "frage": "Was misst nDCG@10?",
+      "antwort": "Wie gut die Rangfolge der ersten zehn Treffer ist: Relevante Treffer weit oben zählen mehr als weit unten. 1,0 wäre die ideale Reihenfolge.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-nicht-gefunden",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Warum muss ein RAG-System „nicht gefunden“ sagen können?",
+      "antwort": "Eine Suche liefert immer Treffer, auch wenn nichts Passendes existiert. Ohne Schwellenwert oder Prüfung belegt das Modell dann seine Antwort mit irrelevanten Texten.",
+      "quelle": "~/dev/rb/brain/README.md"
+    },
+    {
+      "id": "aie-s-rag-zitieren",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "Was heißt Zitieren mit Beleg in RAG?",
+      "antwort": "Jede Aussage der Antwort verweist auf die Quelle, etwa Dokument, Version und Abschnitt. So kann ein Mensch sie nachprüfen.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    },
+    {
+      "id": "aie-s-rag-vs-ft-lang",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 2,
+      "frage": "RAG, Fine-Tuning oder langer Kontext: wann was?",
+      "antwort": "RAG für Wissen, das sich ändert oder groß ist und belegt werden soll. Fine-Tuning für Stil oder Verhalten, langer Kontext für kleine Mengen, die komplett in die Anfrage passen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-s-rag-szenario-kennung",
+      "track": "aie",
+      "thema": "Wissen & RAG",
+      "stufe": 3,
+      "frage": "Ein Kunde sucht per Chatbot nach Rechnungsnummer „RE-2026-0412“, der Bot findet nichts. Was liegt nahe?",
+      "antwort": "Reine Vektorsuche kann exakte Kennungen schlecht treffen. Abhilfe ist Hybrid-Suche mit Stichwortanteil oder ein direkter Kennungs-Abgleich.",
+      "quelle": "https://roadmap.sh/ai-agents"
+    }
+  ]
+}

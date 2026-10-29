@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["vorschlaege", "ideen"],
+  "properties": {
+    "vorschlaege": {
+      "type": "array",
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "track", "thema", "stufe", "frage", "antwort", "erklaerhilfe", "begruendung"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^(aie|fde)-[a-z0-9-]+$" },
+          "track": { "type": "string", "enum": ["aie", "fde"] },
+          "thema": { "type": "string" },
+          "stufe": { "type": "integer", "enum": [1, 2, 3] },
+          "frage": { "type": "string", "maxLength": 160 },
+          "antwort": { "type": "string", "maxLength": 400 },
+          "erklaerhilfe": { "type": "string", "maxLength": 300 },
+          "begruendung": { "type": "string", "maxLength": 300 }
+        }
+      }
+    },
+    "ideen": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["titel", "art", "beschreibung", "track", "thema"],
+        "properties": {
+          "titel": { "type": "string", "maxLength": 80 },
+          "art": { "type": "string", "enum": ["skizze", "vergleich", "uebung"] },
+          "beschreibung": { "type": "string", "maxLength": 400 },
+          "track": { "type": "string", "enum": ["aie", "fde"] },
+          "thema": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "track": "aie",
+  "thema": "Tools",
+  "karten": [
+    {
+      "id": "aie-tool",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Was ist ein Tool?",
+      "antwort": "Eine Funktion, die der Harness dem Modell anbietet: Name, Beschreibung und Parameter-Schema. Beispiel: kalender_lesen(datum).",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-tool-vs-dienst",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 2,
+      "frage": "Ist Gmail ein Tool?",
+      "antwort": "Nein. Gmail ist ein Dienst. mail_lesen und mail_senden sind Tools. Ein Gmail-MCP-Server bietet mehrere Tools an.",
+      "quelle": "session-2026-10-27",
+      "skizze": "hierarchie"
+    },
+    {
+      "id": "aie-tool-lesend-schreibend",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Lesendes und schreibendes Tool: was ist der Unterschied?",
+      "antwort": "Lesend ändert nichts (suchen, Kalender lesen). Schreibend verändert die Welt (Mail senden, Bestellung anlegen). Bei schreibenden Tools greifen Limits und Freigabe.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-tool-schema",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 2,
+      "frage": "Was ist das Tool-Schema, und ist es dasselbe wie die Tool-Schleife?",
+      "antwort": "Das Schema beschreibt ein einzelnes Tool in JSON Schema: welche Parameter, welcher Typ, was Pflicht ist. Es legt fest, wie das Modell um einen Aufruf bitten darf. Die Schleife ist der Ablauf im Harness. Zwei verschiedene Dinge.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-tool-arten",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 2,
+      "frage": "Welche Arten von Tools gibt es?",
+      "antwort": "Lesen (suchen, abrufen, auflisten). Ändern (anlegen, bearbeiten, löschen). Senden (Mail, Slack). Transaktion (bestellen, zahlen, erstatten; höchstes Risiko). Ausführen (Code, Terminal, Rechner). Browser bedienen. Übergeben (Unteragent, Handoff). Merken (Notiz speichern oder abrufen).",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-dienst-api-endpoint-tool",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 3,
+      "frage": "Dienst, API, Endpoint, Tool: wie hängen die zusammen?",
+      "antwort": "Dienst = Gmail. API = die Programmier-Tür von Gmail. Endpoint = eine einzelne Adresse dieser Tür, z. B. 'Nachricht senden'. Tool = die Funktion, die ein Agent sieht (gmail_senden) und die meist genau einen Endpoint aufruft. 'Senden' ist die Aktion, nicht der Dienst.",
+      "quelle": "session-2026-10-27",
+      "skizze": "hierarchie"
+    },
+    {
+      "id": "aie-beschreibung-gut",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 2,
+      "frage": "Was macht eine gute Tool-Beschreibung aus?",
+      "antwort": "Sie sagt klar, was das Tool tut, wann man es nutzt und was die Parameter bedeuten. Das Modell wählt Tools nur anhand dieser Beschreibung.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-tool-name",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Warum ist ein sprechender Tool-Name wichtig?",
+      "antwort": "Das Modell entscheidet anhand von Name und Beschreibung, welches Tool es ruft. 'sende_rechnung_per_mail' ist klarer als 'tool7'.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-validierung",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Was ist Parameter-Validierung?",
+      "antwort": "Der Harness prüft, ob die vom Modell gelieferten Parameter zum Schema passen, etwa Typ und Pflichtfelder. Nur gültige Aufrufe gehen weiter.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-validierung-wo",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 2,
+      "frage": "Warum validiert man Parameter im Code und vertraut nicht dem Modell?",
+      "antwort": "Das Modell kann falsche, fehlende oder erfundene Werte liefern. Eine Prüfung im Code ist verlässlich, ein Prompt-Hinweis nicht.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-idempotent",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Was heißt idempotent bei einem Tool?",
+      "antwort": "Mehrfaches Ausführen mit denselben Parametern hat dasselbe Ergebnis wie einmaliges. Etwa 'setze Status auf bezahlt'.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-idempotent-warum",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 3,
+      "frage": "Warum sind idempotente Tools bei Retries wichtig?",
+      "antwort": "Wird ein Aufruf wiederholt, weil unklar ist, ob er geklappt hat, entsteht keine Doppelbuchung. Ohne Schutz könnte eine Zahlung zweimal ausgelöst werden.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-gefaehrliche-tools",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Welche Tools gelten als gefährlich?",
+      "antwort": "Solche, die Dinge löschen, Geld bewegen, Nachrichten senden oder Rechte ändern. Fehler lassen sich dort schwer rückgängig machen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-sandbox",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Was ist eine Sandbox?",
+      "antwort": "Eine abgeschirmte Umgebung, in der Code oder Tools laufen, ohne an den Rest des Systems zu kommen. Fehler und Missbrauch bleiben dort begrenzt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-least-privilege",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 1,
+      "frage": "Was bedeutet Least Privilege?",
+      "antwort": "Ein Agent bekommt nur die Rechte, die er für seine Aufgabe braucht, und nicht mehr. So begrenzt ein Fehler den Schaden.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-least-privilege-szenario",
+      "track": "aie",
+      "thema": "Tools",
+      "stufe": 3,
+      "frage": "Ein Agent soll Rechnungen lesen und zusammenfassen. Welche Rechte gibst du ihm?",
+      "antwort": "Nur Lesezugriff auf Rechnungen. Kein Senden, Löschen oder Zahlen, denn das braucht die Aufgabe nicht.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

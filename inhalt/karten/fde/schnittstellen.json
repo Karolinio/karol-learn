@@ -1,0 +1,123 @@
+{
+  "track": "fde",
+  "thema": "Schnittstellen",
+  "karten": [
+    {
+      "id": "fde-http-codes",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was bedeuten die HTTP-Codes 200, 401, 403, 404, 429, 500?",
+      "antwort": "200 ok. 401 nicht angemeldet. 403 angemeldet, aber verboten. 404 nicht gefunden. 429 zu viele Anfragen. 500 Fehler im Server.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-b-http-methoden",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Wofür stehen GET, POST, PUT, PATCH und DELETE?",
+      "antwort": "GET liest, POST legt neu an oder löst eine Aktion aus, PUT ersetzt komplett, PATCH ändert teilweise, DELETE löscht. GET soll nichts verändern.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-rest",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was heißt REST-API?",
+      "antwort": "Ein Stil für Web-Schnittstellen: Dinge haben URLs, z. B. `/customers/42`, und die HTTP-Methode bestimmt die Aktion. `GET /customers/42` liest, `DELETE /customers/42` löscht.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-json",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was ist JSON?",
+      "antwort": "Ein Textformat für Daten: Schlüssel-Wert-Paare in `{}`, Listen in `[]`. Beispiel: `{\"name\": \"Anna\", \"alter\": 31}`. Fast jede API nutzt es.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-http-header",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was sind HTTP-Header?",
+      "antwort": "Zusatzinfos zu Anfrage oder Antwort, getrennt vom eigentlichen Inhalt. Beispiele: `Content-Type: application/json`, `Authorization: ...`.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-authorization-header",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 2,
+      "frage": "Was bedeutet `Authorization: Bearer abc123`?",
+      "antwort": "Die Anfrage trägt ein Token (`abc123`) als Ausweis. Fehlt es oder ist es falsch, antwortet der Server meist mit 401. Das Token ist ein Secret und gehört nicht in Logs oder Chats.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-webhook",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 2,
+      "frage": "Was ist ein Webhook?",
+      "antwort": "Der Dienst ruft deine URL an, sobald etwas passiert, z. B. eine Zahlung. Du musst nicht ständig nachfragen. Kommt nichts an, prüft man zuerst, ob die URL von außen erreichbar ist.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-rate-limit",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 2,
+      "frage": "Was ist ein Rate Limit, und woran erkennst du es?",
+      "antwort": "Eine Obergrenze an Anfragen pro Zeit. Wird sie überschritten, kommt Status 429, oft mit dem Header `Retry-After`. Dann langsamer senden oder warten.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-idempotenz",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 2,
+      "frage": "Was heißt idempotent, und warum ist es bei POST wichtig?",
+      "antwort": "Mehrfaches Senden hat dasselbe Ergebnis wie einmaliges. GET, PUT und DELETE sind es laut Spezifikation, POST nicht. Wird ein POST wiederholt, kann es doppelt gebucht werden.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-timeout-szenario",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 3,
+      "frage": "Ein POST an die Zahlungs-API bricht nach 30 s mit Timeout ab. Sendest du einfach nochmal?",
+      "antwort": "Nein: Ein Timeout heißt nur, dass keine Antwort kam, nicht dass nichts passiert ist. Erst prüfen, ob die Zahlung angelegt wurde, sonst droht Doppelbuchung. Sicherer sind APIs mit Idempotency-Key.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-cors",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 1,
+      "frage": "Was ist CORS, und wo taucht der Fehler auf?",
+      "antwort": "Eine Browser-Regel: Eine Webseite darf Daten einer anderen Domain nur abrufen, wenn diese es per Header erlaubt. Der Fehler \"blocked by CORS policy\" erscheint nur im Browser, ein `curl` auf dieselbe URL klappt.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-curl-lesen",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 3,
+      "frage": "Was macht `curl -X POST https://api.example.com/orders -H \"Authorization: Bearer abc\" -H \"Content-Type: application/json\" -d '{\"item\":\"X\"}'`?",
+      "antwort": "Es sendet einen POST an `/orders` mit Token und JSON-Inhalt `{\"item\":\"X\"}`. `-X` ist die Methode, `-H` ein Header, `-d` der Inhalt.",
+      "quelle": "https://developer.mozilla.org"
+    },
+    {
+      "id": "fde-b-url-parameter",
+      "track": "fde",
+      "thema": "Schnittstellen",
+      "stufe": 2,
+      "frage": "Was heißt `GET /orders?status=open&limit=10`?",
+      "antwort": "Gelesen werden Bestellungen, gefiltert mit den Query-Parametern `status=open` und `limit=10`. Nach dem `?` beginnen sie, getrennt durch `&`.",
+      "quelle": "https://developer.mozilla.org"
+    }
+  ]
+}

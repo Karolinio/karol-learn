@@ -1,0 +1,151 @@
+{
+  "track": "aie",
+  "thema": "Runtime",
+  "karten": [
+    {
+      "id": "aie-cli",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Was ist eine CLI (Kommandozeile)?",
+      "antwort": "Command Line Interface: ein Programm, das man im Terminal per Text-Befehl startet statt per Klick. In VS Code ist das das Terminal-Feld. Beispiele: claude, git, gh, npm.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-harness-dauernd",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 2,
+      "frage": "Läuft ein Harness dauernd?",
+      "antwort": "Nicht zwingend. Bei HIS läuft dauernd der Dienst (die Runtime). Für jeden Agenten-Lauf startet er claude -p als eigenes Programm, das nach dem Lauf endet.",
+      "quelle": "~/dev/his/AGENTEN.md"
+    },
+    {
+      "id": "aie-runtime",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Was ist die Runtime bzw. der Worker?",
+      "antwort": "Der laufende Prozess auf einem Rechner, in dem der Agenten-Job ausgeführt wird. In HIS: der Dienst dienst.py. Die Programmiersprache ist dafür egal.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-prozess",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Was ist ein Prozess?",
+      "antwort": "Ein gestartetes Programm im Arbeitsspeicher. Wird es beendet oder stürzt es ab, ist es weg. Was es nicht gespeichert hat, ist verloren.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-trigger",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Was startet einen Agenten-Lauf?",
+      "antwort": "Ein Auslöser (Trigger): manuell per Klick, ein Zeitplan (z. B. 6:00), oder ein Ereignis (neue Mail, Webhook).",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-runtime-vs-runner",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 3,
+      "frage": "Runtime und Tool Runner führen beide aus. Wo ist der Unterschied?",
+      "antwort": "Die Runtime ist der Maschinenraum: der Prozess, in dem der ganze Agenten-Job läuft. Der Tool Runner ist die Hand im Harness, die einen einzelnen Tool-Aufruf ausführt. Die Runtime enthält den Harness, der Harness enthält den Tool Runner.",
+      "quelle": "session-2026-10-27",
+      "skizze": "schichten"
+    },
+    {
+      "id": "aie-queue",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Was ist eine Queue?",
+      "antwort": "Eine Warteschlange für Aufträge. Neue Aufgaben werden hinten eingereiht und Worker holen sie vorne ab.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-queue-warum",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Warum setzt man bei Agenten eine Queue ein?",
+      "antwort": "Aufgaben können schneller eintreffen, als sie bearbeitet werden. Die Queue puffert sie, und mehrere Worker können parallel arbeiten.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-scheduler",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Was ist ein Scheduler bzw. Cron?",
+      "antwort": "Er startet Aufgaben zu festen Zeiten, etwa jeden Morgen um sieben. Cron ist die klassische Schreibweise solcher Zeitpläne.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-scheduler-vs-webhook",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 2,
+      "frage": "Scheduler oder Webhook: Wann startet was?",
+      "antwort": "Der Scheduler startet nach der Uhr, der Webhook durch ein Ereignis von außen. Zeitplan für den Morgenbericht, Webhook für 'neue Mail eingetroffen'.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-webhook",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 1,
+      "frage": "Was ist ein Webhook?",
+      "antwort": "Ein anderes System ruft eine Adresse bei dir auf, sobald etwas passiert ist. Du fragst nicht ständig nach, du wirst benachrichtigt.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-webhook-signatur",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 3,
+      "frage": "Warum sollte ein Webhook-Eingang die Herkunft prüfen?",
+      "antwort": "Sonst könnte jeder die Adresse aufrufen und einen Agenten auslösen. Üblich ist eine Signatur, die der Absender mitschickt und die du prüfst.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-lange-laeufe",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 2,
+      "frage": "Was ist bei langen Agenten-Läufen anders als bei kurzen?",
+      "antwort": "Sie können Minuten oder Stunden dauern, also kann etwas dazwischen ausfallen. Sie brauchen Zeitgrenzen, Zwischenstände und Sicht auf den Fortschritt.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-neustart",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 2,
+      "frage": "Was passiert bei einem Absturz mitten im Lauf?",
+      "antwort": "Ohne gespeicherten Zustand fängt der Lauf von vorn an oder geht verloren. Mit Zwischenständen kann er an der Stelle weitermachen.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-zustand-speichern",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 2,
+      "frage": "Warum speichert man den Zustand eines Laufs außerhalb des Prozesses?",
+      "antwort": "Ein Prozess kann abstürzen oder neu starten und verliert dann seinen Arbeitsspeicher. In Datenbank oder Datei bleibt der Zustand erhalten.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-zustand-szenario",
+      "track": "aie",
+      "thema": "Runtime",
+      "stufe": 3,
+      "frage": "Ein Lauf stürzt nach dem Mailversand ab und startet neu. Was droht, und was hilft?",
+      "antwort": "Die Mail könnte doppelt rausgehen. Es hilft, jeden erledigten Schritt zu speichern und Aktionen idempotent zu machen.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    }
+  ]
+}

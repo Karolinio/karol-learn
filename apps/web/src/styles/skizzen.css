@@ -1,0 +1,90 @@
+/* Skizzen: handgezeichnete SVG-Bausteine, Steuerung, Liste. Farben nur über Tokens. */
+
+.sk { font-family: var(--font-sans); }
+.sk [role='button'] { cursor: pointer; }
+.sk-kasten, .sk-teil, .sk-notiz, .sk-pfeil { transition: opacity var(--duration-normal) var(--ease-out); }
+.ist-geist { opacity: 0.22; }
+.ist-weg { opacity: 0; pointer-events: none; }
+
+/* Kästen */
+.sk-kasten path { fill: var(--color-surface); stroke: color-mix(in srgb, var(--color-text) 38%, transparent); stroke-width: 1.4; stroke-linejoin: round; filter: var(--drop-diagram); }
+.sk-titel { font-size: 14px; font-weight: 700; fill: var(--color-text); pointer-events: none; }
+.sk-unter { font-size: 12px; font-weight: 500; fill: var(--color-text-2); pointer-events: none; }
+.sk-unter--stark { font-weight: 700; fill: var(--akzent); }
+.sk-rahmentitel { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; fill: var(--color-text-2); pointer-events: none; }
+.sk-kasten--rahmen path { fill: var(--color-surface-2); stroke-dasharray: 6 5; filter: none; }
+.sk-kasten--leise path { fill: none; stroke: var(--color-fill-strong); stroke-dasharray: 4 5; filter: none; }
+.sk-kasten--leise .sk-titel { fill: var(--color-text-3); font-weight: 600; }
+.sk-kasten--ok path { stroke: var(--color-green-ink); stroke-width: 2; }
+.sk-kasten--ok .sk-titel { fill: var(--color-green-ink); }
+.sk-kasten--nein path { stroke: var(--color-red-ink); stroke-width: 2; stroke-dasharray: 6 4; }
+.sk-kasten--nein .sk-titel { fill: var(--color-red-ink); }
+
+.sk-kasten.ist-fokus path { fill: var(--akzent); stroke: var(--akzent); }
+.sk-kasten.ist-fokus .sk-titel { fill: var(--color-on-accent); }
+.sk-kasten.ist-fokus .sk-unter { fill: var(--color-on-accent); opacity: 0.86; }
+.sk-kasten--rahmen.ist-fokus path { fill: var(--akzent-tint); stroke: var(--akzent); stroke-dasharray: none; }
+.sk-kasten--rahmen.ist-fokus .sk-rahmentitel { fill: var(--akzent); }
+.sk-kasten--ok.ist-fokus path { fill: var(--color-green-ink); stroke: var(--color-green-ink); }
+.sk-kasten--nein.ist-fokus path { fill: var(--color-red-ink); stroke: var(--color-red-ink); }
+.sk-kasten--leise.ist-fokus path { fill: var(--color-green-tint); stroke: var(--color-green-ink); }
+.sk-kasten--leise.ist-fokus .sk-titel { fill: var(--color-green-ink); }
+.sk-kasten:hover:not(.ist-fokus) path { stroke: var(--akzent); }
+.sk-kasten:focus-visible { box-shadow: none; }
+.sk-kasten:focus-visible path { stroke: var(--color-action); stroke-width: 3; }
+
+/* Pfeile, Punkte, Flächen, Notizen */
+.sk-pfeil { fill: none; stroke: var(--color-gray); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.sk-pfeil--gestrichelt { stroke-dasharray: 5 6; }
+.sk-pfeil.ist-fokus { stroke: var(--akzent); stroke-width: 3; }
+.sk-spitze { fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sk-spitze--kalt { stroke: var(--color-gray); }
+.sk-spitze--heiss { stroke: var(--akzent); }
+.sk-punkt { fill: var(--color-surface); stroke: color-mix(in srgb, var(--color-text) 38%, transparent); stroke-width: 2; }
+.sk-teil.ist-fokus .sk-punkt { fill: var(--akzent); stroke: var(--akzent); }
+.sk-flaeche--akzent { fill: var(--akzent-tint); stroke: var(--akzent); stroke-width: 1.2; }
+.sk-flaeche--deck { fill: var(--color-surface); stroke: none; }
+.sk-flaeche--frei { fill: var(--color-surface); stroke: var(--color-fill-strong); stroke-width: 1.4; stroke-dasharray: 4 4; }
+.sk-notiz { font-size: 12.5px; font-weight: 500; fill: var(--color-text-2); }
+.sk-notiz--stark { fill: var(--color-text); font-weight: 600; }
+.sk-notiz--akzent { fill: var(--akzent); font-weight: 700; }
+.sk-notiz--code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; fill: var(--color-text-2); }
+.sk-notiz--nein { fill: var(--color-red-ink); font-weight: 700; }
+.sk-notiz.ist-fokus:not(.sk-notiz--nein) { fill: var(--akzent); }
+
+/* Steuerung: bleibt über der Tab-Leiste sichtbar, auch auf 375 px */
+.skizze__steuerung {
+  position: sticky; bottom: calc(88px + env(safe-area-inset-bottom)); z-index: 5;
+  padding: 6px; border-radius: var(--radius-pill);
+  background: var(--color-glass);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 0 0 0.5px var(--color-separator), var(--shadow-card);
+}
+.skizze__steuerung .knopf { border-radius: var(--radius-pill); }
+.skizze__steuerung .knopf:first-child { width: var(--hit); padding: 0; }
+.skizze--eingebettet .skizze__steuerung { bottom: 0; }
+@media (max-width: 1023px) {
+  .skizze__svg { max-height: 36dvh; }
+  .skizze__schritt { min-height: 0; }
+}
+@media (min-width: 1024px) {
+  .skizze__steuerung { position: static; background: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 0; }
+  .skizze--eingebettet { grid-template-columns: 1fr; }
+  .skizze--eingebettet .skizze__seite { position: static; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .skizze__steuerung { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--color-surface); }
+}
+
+/* Großes Sheet (Skizze aus dem Stapel) */
+.sheet--gross { width: min(100%, 720px); height: 92dvh; max-height: 92dvh; touch-action: pan-y; }
+.sheet--gross .skizze__svg { max-height: 44dvh; }
+
+/* Liste */
+.skizzenliste__zeile { align-items: flex-start; padding-top: var(--space-4); padding-bottom: var(--space-4); }
+.skizzenliste__zeile > svg:last-child { align-self: center; }
+.skizzenliste__nummer { width: 28px; flex: none; padding-top: 1px; font-size: var(--text-subhead); font-weight: 700; color: var(--akzent); font-variant-numeric: tabular-nums; }
+.skizzenliste__titel { font-weight: 600; }
+.skizzenliste .liste__text small { line-height: 1.35; }
+.skizzenliste .liste__text small.skizzenliste__meta { color: var(--color-text-3); }

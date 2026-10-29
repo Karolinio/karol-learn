@@ -1,0 +1,1131 @@
+{
+ "karten": [
+  {
+   "id": "aie-training-vs-inference",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 2,
+   "frage": "Training und Inference: Was ist der Unterschied?",
+   "antwort": "Beim Training lernt das Modell aus riesigen Datenmengen und seine Parameter werden festgelegt. Bei der Inference wird das fertige Modell nur noch benutzt. Wenn du einen Agenten laufen lässt, lernt das Modell dabei nichts dazu.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-parameter",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was sind die Parameter eines Modells?",
+   "antwort": "Parameter sind die Zahlenwerte im Modell, die beim Training eingestellt werden. Sie speichern gewissermaßen, was das Modell gelernt hat. Man spricht oft von der Größe eines Modells nach seiner Parameterzahl.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-open-weights",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 2,
+   "frage": "Was bedeutet Open Weights, und ist das dasselbe wie Open Source?",
+   "antwort": "Bei Open Weights sind die Parameter des Modells herunterladbar, du kannst es selbst betreiben. Das ist nicht automatisch Open Source, denn Trainingsdaten und Lizenzbedingungen können trotzdem eingeschränkt sein.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-closed-weights",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was bedeutet Closed Weights?",
+   "antwort": "Die Parameter des Modells werden nicht veröffentlicht. Du kannst es nur über die API des Anbieters nutzen, nicht selbst betreiben.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-temperature",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was steuert die Temperature?",
+   "antwort": "Sie steuert, wie stark der Zufall bei der Wahl des nächsten Tokens ist. Niedrig heißt vorhersehbarer, hoch heißt abwechslungsreicher.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-temperature-null",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 2,
+   "frage": "Liefert Temperature 0 garantiert immer dieselbe Antwort?",
+   "antwort": "Nein, nicht garantiert. Sie macht die Antworten meist gleichförmiger, aber kleine Abweichungen bleiben möglich. Für harte Verlässlichkeit brauchst du Prüfungen außerhalb des Modells.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-top-p",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was ist Top-p (Nucleus Sampling)?",
+   "antwort": "Das Modell wählt das nächste Token nur aus den wahrscheinlichsten Kandidaten, deren Wahrscheinlichkeiten zusammen einen Schwellwert p ergeben. Ein kleineres p macht die Auswahl enger und vorsichtiger.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-halluzination",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was ist eine Halluzination?",
+   "antwort": "Das Modell gibt etwas überzeugend formuliert aus, das nicht stimmt oder erfunden ist. Es merkt den Fehler nicht, weil es Text nach Wahrscheinlichkeit erzeugt und keine Fakten nachschlägt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-halluzination-gegenmittel",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 2,
+   "frage": "Was hilft gegen Halluzinationen, und was nicht?",
+   "antwort": "Es hilft, dem Modell die Quellen in den Kontext zu geben, Fakten per Tool abzufragen und Ergebnisse zu prüfen. Ein bloßes 'Erfinde nichts' im Prompt reicht nicht als Schutz.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-reasoning-modell",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was ist ein Reasoning-Modell?",
+   "antwort": "Ein Modell, das vor der eigentlichen Antwort ausführlich in Zwischenschritten nachdenkt. Das kostet mehr Tokens und Zeit, hilft aber oft bei schwierigen Aufgaben.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-reasoning-wann",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 3,
+   "frage": "Ein Kunde fragt, ob er für alles ein Reasoning-Modell nehmen soll. Was antwortest du?",
+   "antwort": "Nein. Für knifflige Aufgaben wie Planung oder Mathe lohnt es sich, für einfache Routine wie Sortieren oder Umformulieren ist es langsamer und teurer als nötig.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-multimodal",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was heißt multimodal?",
+   "antwort": "Das Modell kann mehrere Arten von Eingaben verarbeiten, zum Beispiel Text und Bilder, je nach Modell auch Audio. Die Ausgabe ist je nach Modell meist Text.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-modellgroesse",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 2,
+   "frage": "Was ist der typische Unterschied zwischen einem großen und einem kleinen Modell?",
+   "antwort": "Große Modelle sind meist fähiger bei schwierigen Aufgaben, aber langsamer und teurer. Kleine Modelle sind schnell und günstig und reichen für einfache, klar umrissene Aufgaben.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-modellwahl-aufgabe",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 3,
+   "frage": "Du sollst eingehende Mails nach Thema sortieren, tausendfach am Tag. Welche Modellart passt?",
+   "antwort": "Ein kleines, schnelles Modell. Die Aufgabe ist einfach und klar, der Preis pro Aufruf zählt bei großer Menge.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-modellwahl-agent",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 3,
+   "frage": "Warum können in einem Agenten verschiedene Modelle für verschiedene Schritte sinnvoll sein?",
+   "antwort": "Schwierige Schritte wie Planen brauchen ein starkes Modell, einfache wie Zusammenfassen oder Sortieren ein günstiges. So sparst du Kosten, ohne an Qualität zu verlieren, wo sie zählt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-quantisierung",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Was heißt Quantisierung bei Modellen?",
+   "antwort": "Die Parameter werden mit weniger Genauigkeit gespeichert, also mit weniger Bits pro Zahl. Das Modell wird dadurch kleiner und braucht weniger Speicher.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-quantisierung-trade",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 2,
+   "frage": "Was ist der Preis der Quantisierung?",
+   "antwort": "Etwas Qualität kann verloren gehen, weil die Zahlen gröber sind. Dafür läuft das Modell auf schwächerer Hardware.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-lokal-ram",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Warum braucht ein lokales Modell so viel Arbeitsspeicher?",
+   "antwort": "Alle Parameter müssen beim Betrieb im Speicher liegen. Je mehr Parameter, desto mehr Speicher.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-lokal-ram-abwaegen",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 3,
+   "frage": "Dein Laptop hat wenig Speicher, du willst trotzdem ein Modell lokal nutzen. Welche Hebel hast du?",
+   "antwort": "Ein Modell mit weniger Parametern oder eine stärker quantisierte Fassung wählen. Beides spart Speicher, kostet aber meist etwas Qualität.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-wissensstand",
+   "track": "aie",
+   "thema": "Modelle",
+   "stufe": 1,
+   "frage": "Warum kennt ein Modell aktuelle Ereignisse oft nicht?",
+   "antwort": "Seine Trainingsdaten enden an einem Stichtag, dem Knowledge Cutoff. Neuere Infos muss man per Kontext oder Tool-Abfrage liefern.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-abrechnung-token",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 1,
+   "frage": "Wonach rechnet eine Modell-API in der Regel ab?",
+   "antwort": "Nach verarbeiteten Tokens, getrennt für Eingabe und Ausgabe. Es zählt nicht die Zahl der Anfragen allein.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-verlauf-teurer",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 2,
+   "frage": "Warum wird in einem Agenten jede weitere Runde tendenziell teurer?",
+   "antwort": "Der gesamte bisherige Verlauf wird bei jedem Aufruf erneut als Input mitgeschickt. Je länger der Lauf, desto mehr Input-Tokens pro Runde.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-cache-praefix",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 2,
+   "frage": "Wann greift Prompt Caching, und wann nicht?",
+   "antwort": "Wenn der Anfang der Anfrage, das Präfix, identisch zu einer früheren Anfrage ist. Ändert sich etwas weit vorne, kann der Cache für den Rest nicht genutzt werden.",
+   "quelle": "https://docs.anthropic.com",
+   "skizze": "kontextfenster"
+  },
+  {
+   "id": "aie-batch",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 1,
+   "frage": "Was ist ein Batch-Aufruf bei Modell-APIs?",
+   "antwort": "Du schickst viele Anfragen gesammelt ein und bekommst die Ergebnisse später, nicht sofort. Dafür ist die Verarbeitung meist günstiger.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-batch-wann",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 3,
+   "frage": "Wann ist Batch sinnvoll, wann nicht?",
+   "antwort": "Sinnvoll bei großen Mengen ohne Zeitdruck, etwa 10.000 Dokumente über Nacht klassifizieren. Nicht sinnvoll, wenn ein Mensch auf die Antwort wartet.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kosten-schaetzen",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 3,
+   "frage": "Wie schätzt du die Kosten eines Agenten-Laufs vorab?",
+   "antwort": "Rechne: Tokens pro Runde, mal Zahl der Runden, getrennt nach Input und Output, mal Preis pro Token. Dann mit einigen echten Probeläufen gegenprüfen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-budget-limit",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 2,
+   "frage": "Wozu dient ein Budget-Limit im Harness?",
+   "antwort": "Es bricht Läufe ab oder fragt nach, wenn Kosten eine Grenze überschreiten. So kann ein Fehler oder eine Endlosschleife nicht unbemerkt viel Geld kosten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-abo-vs-api",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 2,
+   "frage": "Abo oder API-Abrechnung: Was ist das Prinzip?",
+   "antwort": "Ein Abo ist ein fester Betrag für die Nutzung einer Oberfläche mit Nutzungsgrenzen. Bei der API zahlst du, was du an Tokens verbrauchst.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-tool-ergebnisse-kosten",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 2,
+   "frage": "Warum können große Tool-Ergebnisse die Kosten treiben?",
+   "antwort": "Sie landen im Kontext und werden in jeder weiteren Runde wieder als Input mitgeschickt. Ein ganzes Dokument statt eines Auszugs kostet also mehrfach.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kosten-routine-modell",
+   "track": "aie",
+   "thema": "Kosten",
+   "stufe": 3,
+   "frage": "Wie senkt man Kosten, ohne die Ergebnisqualität zu gefährden?",
+   "antwort": "Einfache Schritte auf ein kleineres Modell legen, Prompt Caching nutzen, Tool-Ergebnisse kürzen und Limits setzen. Zuerst messen, wo die meisten Tokens anfallen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-fenster-grenze",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 1,
+   "frage": "Was ist das Kontextfenster?",
+   "antwort": "Die maximale Menge an Tokens, die das Modell bei einem Aufruf auf einmal berücksichtigen kann. Dazu zählen Anweisungen, Verlauf, Tool-Ergebnisse und die Antwort.",
+   "quelle": "https://docs.anthropic.com",
+   "skizze": "kontextfenster"
+  },
+  {
+   "id": "aie-fehler-zu-viel",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 2,
+   "frage": "Warum kann zu viel Kontext die Antworten verschlechtern?",
+   "antwort": "Wichtiges geht zwischen viel Unwichtigem unter, und das Modell lenkt sich leichter ab. Mehr Text ist nicht automatisch besser.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-fehler-veraltet",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 1,
+   "frage": "Was ist veralteter Kontext, und was richtet er an?",
+   "antwort": "Informationen im Verlauf, die inzwischen nicht mehr stimmen, etwa ein alter Kontostand. Das Modell nutzt sie weiter, als wären sie aktuell.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-fehler-widerspruch",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 1,
+   "frage": "Was passiert bei widersprüchlichem Kontext?",
+   "antwort": "Das Modell muss sich für eine Seite entscheiden oder mischt beide, und du kannst nicht vorhersagen, welche. Anweisungen sollten sich daher nicht widersprechen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-lost-in-middle",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 1,
+   "frage": "Was meint der Begriff Lost in the Middle?",
+   "antwort": "Modelle beachten Informationen mitten in einem langen Kontext oft schlechter als solche am Anfang oder Ende.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-reihenfolge",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 2,
+   "frage": "Was folgt praktisch aus Lost in the Middle für die Reihenfolge?",
+   "antwort": "Wichtige Anweisungen und Fragen gehören an den Anfang oder ans Ende, nicht in die Mitte eines langen Textblocks.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-unteragent-isolation",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 2,
+   "frage": "Wie hilft ein Unteragent, den Kontext sauber zu halten?",
+   "antwort": "Er arbeitet in einem eigenen, frischen Kontext an einer Teilaufgabe. Der Hauptagent bekommt nur das Ergebnis, nicht den ganzen Zwischenverlauf.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-unteragent-zusammenfassung",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 3,
+   "frage": "Ein Agent soll 50 Dateien durchsuchen. Wie hältst du den Hauptkontext klein?",
+   "antwort": "Ein Unteragent liest und durchsucht die Dateien und liefert nur eine kurze Zusammenfassung zurück. Die vielen Rohtexte bleiben im Kontext des Unteragenten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kontext-notizen",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 2,
+   "frage": "Wie bleibt Wissen über lange Läufe erhalten, auch wenn der Kontext gekürzt wird?",
+   "antwort": "Der Agent schreibt Wichtiges in eine Datei oder einen Speicher und liest es bei Bedarf zurück. Das Modell selbst behält nichts zwischen Aufrufen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kontext-bei-bedarf",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 2,
+   "frage": "Was heißt: Kontext erst bei Bedarf laden?",
+   "antwort": "Statt alles vorab hineinzulegen, holt der Agent Informationen per Tool, wenn er sie braucht. Das hält den Kontext klein und aktuell.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kontext-antwort-zaehlt",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 1,
+   "frage": "Zählt die Antwort des Modells auch zum Kontextfenster?",
+   "antwort": "Ja, Eingabe und Ausgabe müssen gemeinsam in das Fenster passen. Ein sehr voller Input lässt weniger Platz für die Antwort.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kontext-vergisst",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 3,
+   "frage": "Ein Agent hält sich nach langem Lauf nicht mehr an Regeln vom Anfang. Was prüfst du zuerst?",
+   "antwort": "Ob der Kontext sehr voll ist oder die Regeln durch Kürzung verloren gingen. Wichtige Regeln gehören in den System-Prompt, den der Harness bei jedem Aufruf neu mitschickt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kontext-aufraeumen",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 2,
+   "frage": "Wie kann ein Harness den Kontext aufräumen?",
+   "antwort": "Alte, nicht mehr nötige Tool-Ergebnisse entfernen oder kürzen und den Verlauf bei Bedarf zusammenfassen. Die Regeln und das Ziel bleiben erhalten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kontext-nicht-alles",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 3,
+   "frage": "Ein Kunde sagt: Wir geben dem Agenten einfach alle unsere Dokumente. Was wendest du ein?",
+   "antwort": "Es kostet bei jedem Aufruf Tokens und das Wichtige geht unter. Besser ist, gezielt das Relevante zu suchen und zu laden.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-kontext-vergiftung",
+   "track": "aie",
+   "thema": "Kontext",
+   "stufe": 1,
+   "frage": "Was ist ein vergifteter Kontext (Context Poisoning)?",
+   "antwort": "Ein Fehler oder eine Halluzination steht einmal im Verlauf und wird danach als Tatsache weiterverwendet. Der Fehler zieht sich durch die Folgeschritte.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-system-vs-user",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "System-Prompt und User-Prompt: Wer schreibt was, und wofür?",
+   "antwort": "Den System-Prompt schreibt der Entwickler, er legt Rolle, Regeln und Format dauerhaft fest. Der User-Prompt ist die konkrete Anfrage der Person im jeweiligen Moment.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-few-shot",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 1,
+   "frage": "Was ist Few-Shot-Prompting?",
+   "antwort": "Du gibst im Prompt einige Beispiele mit Eingabe und gewünschter Ausgabe mit. Das Modell ahmt das Muster nach.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-few-shot-wann",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 3,
+   "frage": "Wann nimmst du Beispiele statt längerer Erklärungen?",
+   "antwort": "Wenn ein Format oder Stil schwer zu beschreiben ist, etwa ein bestimmter Tonfall. Ein gutes Beispiel zeigt es schneller, als es Regeln erklären.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-cot",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 1,
+   "frage": "Was ist Chain of Thought?",
+   "antwort": "Das Modell soll vor der Antwort seine Gedankenschritte ausschreiben. Das verbessert oft die Genauigkeit bei mehrstufigen Aufgaben.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-cot-vs-reasoning",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "Chain of Thought im Prompt oder ein Reasoning-Modell: Was ist der Unterschied?",
+   "antwort": "Bei Chain of Thought forderst du das Nachdenken per Prompt an. Ein Reasoning-Modell ist darauf trainiert und denkt von sich aus vor der Antwort.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-json-schema",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 1,
+   "frage": "Was ist ein JSON Schema?",
+   "antwort": "Eine Beschreibung, welche Felder ein JSON-Objekt haben darf und welchen Typ sie haben. Damit lässt sich die Form einer Ausgabe festlegen und prüfen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-strukturiert-warum",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "Warum verlangt man vom Modell strukturierte Ausgabe?",
+   "antwort": "Ein Programm kann Felder direkt weiterverarbeiten, statt Freitext zu deuten. Das macht Anwendungen stabiler.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-schema-nicht-wahrheit",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "Heißt eine gültige JSON-Ausgabe, dass der Inhalt stimmt?",
+   "antwort": "Nein. Das Schema sichert nur die Form, nicht die Wahrheit. Die Werte können trotzdem falsch sein und brauchen eine eigene Prüfung.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-rolle",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 1,
+   "frage": "Was bringt eine Rolle im Prompt, etwa 'Du bist Steuerberater'?",
+   "antwort": "Sie lenkt Ton, Fachsprache und Blickwinkel der Antwort. Sie ist eine Anweisung, keine echte Qualifikation.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-rolle-grenzen",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "Gibt eine Rolle im Prompt dem Modell neue Fähigkeiten oder Rechte?",
+   "antwort": "Nein. Sie ändert nur den Stil, nicht das Wissen und nicht, was ein Tool ausführen darf. Rechte regelt der Harness.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-format-vorgabe",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "Warum gehört eine klare Formatvorgabe in den Prompt?",
+   "antwort": "Ohne Vorgabe wählt das Modell selbst, mal Liste, mal Fließtext. Mit klarer Vorgabe, etwa 'drei Stichpunkte', sind Antworten einheitlich und besser weiterzuverarbeiten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-beispiele-nachgeahmt",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "Worauf musst du bei Beispielen im Prompt achten?",
+   "antwort": "Das Modell ahmt sie genau nach, auch ihre Zufälligkeiten. Nimm abwechslungsreiche Beispiele, sonst klingt jede Antwort wie das eine Beispiel.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-prompt-vs-context",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 2,
+   "frage": "Prompt Engineering und Context Engineering: Wie unterscheiden sie sich?",
+   "antwort": "Prompt Engineering formuliert die Anweisung gut. Context Engineering entscheidet, welche Informationen insgesamt in den Kontext kommen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-vage-prompt",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 3,
+   "frage": "Der Prompt lautet 'Mach die Mail besser'. Wie verbesserst du ihn?",
+   "antwort": "Sag, wofür und für wen: Ziel, Ton, Länge und was bleiben muss. Je klarer die Vorgabe, desto weniger muss das Modell raten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-prompt-testen",
+   "track": "aie",
+   "thema": "Prompting",
+   "stufe": 3,
+   "frage": "Wie weißt du, ob eine Prompt-Änderung wirklich besser ist?",
+   "antwort": "Teste sie gegen eine feste Reihe von Beispielfällen, eine Eval, und vergleiche mit vorher. Ein einzelner guter Versuch beweist wenig.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-aufgaben",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 2,
+   "frage": "Welche Aufgaben erledigt ein Harness, die das Modell nicht kann?",
+   "antwort": "Er führt Tools aus, speichert den Verlauf, setzt Limits, holt Freigaben und protokolliert. Das Modell erzeugt nur Text.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-limits",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 1,
+   "frage": "Welche Limits setzt ein Harness typischerweise?",
+   "antwort": "Zum Beispiel höchstens eine Zahl von Schritten, eine Zeitgrenze und eine Token- oder Kostengrenze. Sie begrenzen den Schaden, wenn ein Lauf aus dem Ruder läuft.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-freigaben",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 2,
+   "frage": "Was ist eine Freigabe im Harness?",
+   "antwort": "Vor bestimmten Aktionen, etwa Geld überweisen, hält der Harness an und fragt eine Person. Erst nach Zustimmung wird das Tool ausgeführt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-logs",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 1,
+   "frage": "Was wird im Harness geloggt?",
+   "antwort": "Anfragen ans Modell, Tool-Aufrufe mit Parametern und Ergebnissen, Fehler und Kosten. So lässt sich ein Lauf später nachvollziehen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-logs-warum",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 2,
+   "frage": "Warum sind Logs bei Agenten besonders wichtig?",
+   "antwort": "Agenten entscheiden selbst, welche Schritte sie gehen, und dieselbe Aufgabe läuft nicht immer gleich. Ohne Protokoll kannst du Fehler und Vorfälle nicht klären.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-config-inhalt",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 2,
+   "frage": "Was steht in der Konfiguration eines Agenten?",
+   "antwort": "Zum Beispiel Modell, System-Prompt, erlaubte Tools, Limits und Freigabe-Regeln. Der Harness lädt sie bei jedem Lauf.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-harness-engineering",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 1,
+   "frage": "Was ist Harness Engineering?",
+   "antwort": "Das Gestalten des Harness drumherum, damit ein Agent zuverlässig arbeitet: Kontext, Tools, Limits, Prüfungen und Fehlerbehandlung. Das Modell ist dabei nur ein Teil.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-harness-engineering-hebel",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 3,
+   "frage": "Ein Agent liefert schlechte Ergebnisse. Warum lohnt der Blick auf den Harness vor dem Modellwechsel?",
+   "antwort": "Oft liegt es an fehlendem Kontext, unklaren Tool-Beschreibungen oder fehlenden Prüfungen. Ein anderes Modell behebt das nicht.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-fehlerbehandlung",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 2,
+   "frage": "Wie geht ein Harness mit Fehlern um?",
+   "antwort": "Er fängt sie ab, wiederholt bei vorübergehenden Fehlern und gibt dem Modell bei Tool-Fehlern eine verständliche Meldung. Bei gravierenden Fehlern bricht er sauber ab.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-retry",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 1,
+   "frage": "Was ist ein Retry?",
+   "antwort": "Ein erneuter Versuch, nachdem ein Aufruf fehlgeschlagen ist, zum Beispiel wegen einer kurzen Netzstörung.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-retry-sinnvoll",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 2,
+   "frage": "Wann ist ein Retry sinnvoll, wann gefährlich?",
+   "antwort": "Sinnvoll bei vorübergehenden Fehlern wie Zeitüberschreitung. Gefährlich bei schreibenden Aktionen ohne Schutz, weil sie doppelt ausgeführt werden könnten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-timeout",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 1,
+   "frage": "Was ist ein Timeout?",
+   "antwort": "Eine Zeitgrenze für einen Aufruf. Kommt keine Antwort rechtzeitig, bricht der Harness ab, statt ewig zu warten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-backoff",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 1,
+   "frage": "Warum wartet man zwischen Retries immer länger (Backoff)?",
+   "antwort": "Damit ein überlasteter Dienst sich erholen kann, statt mit Wiederholungen bombardiert zu werden. Die Wartezeit steigt typischerweise von Versuch zu Versuch.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-rate-limit",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 1,
+   "frage": "Was ist ein Rate Limit?",
+   "antwort": "Eine Obergrenze, wie viele Anfragen oder Tokens ein Anbieter in einer Zeit zulässt. Wird sie überschritten, lehnt die API ab und der Harness muss warten und neu versuchen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-regeln-im-harness",
+   "track": "aie",
+   "thema": "Harness",
+   "stufe": 3,
+   "frage": "Warum setzt man harte Regeln im Harness durch und nicht nur im Prompt?",
+   "antwort": "Ein Prompt ist eine Bitte, an die sich das Modell meist, aber nicht garantiert hält. Der Harness ist Code und erzwingt die Regel jedes Mal gleich.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-react",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 1,
+   "frage": "Was bedeutet ReAct?",
+   "antwort": "Reasoning und Acting: Das Modell überlegt, ruft ein Tool auf, sieht das Ergebnis und überlegt weiter. Das wiederholt sich, bis die Aufgabe erledigt ist.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-react-ablauf",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Wie läuft ein ReAct-Durchgang konkret ab?",
+   "antwort": "Das Modell schreibt einen Gedanken und eine Tool-Bitte. Der Harness führt aus und gibt das Ergebnis zurück, dann folgt der nächste Gedanke.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-stop-max-schritte",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Warum braucht eine Schleife eine maximale Schrittzahl?",
+   "antwort": "Damit sie nicht endlos weiterläuft, wenn das Modell nie zu einem Ende kommt. Bei Erreichen bricht der Harness ab oder fragt nach.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-stop-arten",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Welche Stop-Kriterien kann ein Harness neben der Modellantwort haben?",
+   "antwort": "Maximale Schritte, Zeit- und Kostengrenze, ein Abbruch durch den Nutzer oder eine Freigabe-Ablehnung. Der Harness kann damit jederzeit stoppen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-parallel",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 1,
+   "frage": "Was sind parallele Tool-Aufrufe?",
+   "antwort": "Das Modell bittet in einem Schritt um mehrere Tool-Aufrufe zugleich. Der Harness kann sie nebeneinander ausführen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-parallel-wann",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Wann sind parallele Tool-Aufrufe geeignet?",
+   "antwort": "Wenn sie nicht voneinander abhängen, etwa drei Kundendaten gleichzeitig abfragen. Hängt der zweite vom Ergebnis des ersten ab, muss man nacheinander arbeiten.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-ergebnis-zuordnung",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Wie weiß das Modell, zu welchem Aufruf ein Tool-Ergebnis gehört?",
+   "antwort": "Jede Tool-Bitte trägt eine ID, und das Ergebnis wird mit dieser ID als neue Nachricht zurückgegeben. So lässt es sich auch bei mehreren Aufrufen zuordnen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-endlosschleife",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Wie kommt es zu einer Endlosschleife im Agenten?",
+   "antwort": "Zum Beispiel, wenn derselbe fehlerhafte Aufruf immer wieder versucht wird, oder wenn das Modell nie entscheidet, fertig zu sein.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-endlos-erkennen",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 3,
+   "frage": "Wie erkennt und verhindert der Harness Endlosschleifen?",
+   "antwort": "Durch Schrittgrenzen, Zeit- und Kostenlimits und durch Erkennen identischer Wiederholungen. Greift eine Grenze, wird abgebrochen oder ein Mensch gefragt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-planner-executor",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 1,
+   "frage": "Was ist das Planner-Executor-Muster?",
+   "antwort": "Ein Teil, der Planer, zerlegt die Aufgabe in Schritte. Ein anderer, der Ausführer, arbeitet sie nacheinander ab.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-planner-vorteil",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Was ist der Vorteil, Planen und Ausführen zu trennen?",
+   "antwort": "Der Plan ist sichtbar und prüfbar, bevor etwas passiert. Der Ausführer kann ein günstigeres Modell sein.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-self-critique",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 1,
+   "frage": "Was ist Self-Critique?",
+   "antwort": "Das Modell prüft seine eigene Antwort und verbessert sie danach. Das ist ein zusätzlicher Schritt in der Schleife.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-self-critique-grenze",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 2,
+   "frage": "Warum ersetzt Self-Critique keine unabhängige Prüfung?",
+   "antwort": "Dasselbe Modell kann denselben Fehler zweimal übersehen. Verlässlicher ist eine Prüfung durch Code, Regeln oder eine andere Instanz.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-schleife-kosten",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 3,
+   "frage": "Warum steigen die Kosten bei langen Schleifen stärker als linear?",
+   "antwort": "Mit jeder Runde wächst der Verlauf, der erneut als Input mitgeht. Spätere Runden sind also teurer als frühere.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-schleife-szenario",
+   "track": "aie",
+   "thema": "Tool-Schleife",
+   "stufe": 3,
+   "frage": "Ein Agent ruft 40-mal dasselbe Such-Tool mit leicht anderer Frage auf. Was tust du?",
+   "antwort": "Schrittlimit setzen, die Tool-Beschreibung und das Ziel prüfen und gleiche Wiederholungen erkennen. Oft fehlt dem Modell ein klares Kriterium, wann die Suche genug ist.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-beschreibung-gut",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 2,
+   "frage": "Was macht eine gute Tool-Beschreibung aus?",
+   "antwort": "Sie sagt klar, was das Tool tut, wann man es nutzt und was die Parameter bedeuten. Das Modell wählt Tools nur anhand dieser Beschreibung.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-tool-name",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 1,
+   "frage": "Warum ist ein sprechender Tool-Name wichtig?",
+   "antwort": "Das Modell entscheidet anhand von Name und Beschreibung, welches Tool es ruft. 'sende_rechnung_per_mail' ist klarer als 'tool7'.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-validierung",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 1,
+   "frage": "Was ist Parameter-Validierung?",
+   "antwort": "Der Harness prüft, ob die vom Modell gelieferten Parameter zum Schema passen, etwa Typ und Pflichtfelder. Nur gültige Aufrufe gehen weiter.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-validierung-wo",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 2,
+   "frage": "Warum validiert man Parameter im Code und vertraut nicht dem Modell?",
+   "antwort": "Das Modell kann falsche, fehlende oder erfundene Werte liefern. Eine Prüfung im Code ist verlässlich, ein Prompt-Hinweis nicht.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-idempotent",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 1,
+   "frage": "Was heißt idempotent bei einem Tool?",
+   "antwort": "Mehrfaches Ausführen mit denselben Parametern hat dasselbe Ergebnis wie einmaliges. Etwa 'setze Status auf bezahlt'.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-idempotent-warum",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 3,
+   "frage": "Warum sind idempotente Tools bei Retries wichtig?",
+   "antwort": "Wird ein Aufruf wiederholt, weil unklar ist, ob er geklappt hat, entsteht keine Doppelbuchung. Ohne Schutz könnte eine Zahlung zweimal ausgelöst werden.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-gefaehrliche-tools",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 1,
+   "frage": "Welche Tools gelten als gefährlich?",
+   "antwort": "Solche, die Dinge löschen, Geld bewegen, Nachrichten senden oder Rechte ändern. Fehler lassen sich dort schwer rückgängig machen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-sandbox",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 1,
+   "frage": "Was ist eine Sandbox?",
+   "antwort": "Eine abgeschirmte Umgebung, in der Code oder Tools laufen, ohne an den Rest des Systems zu kommen. Fehler und Missbrauch bleiben dort begrenzt.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-least-privilege",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 1,
+   "frage": "Was bedeutet Least Privilege?",
+   "antwort": "Ein Agent bekommt nur die Rechte, die er für seine Aufgabe braucht, und nicht mehr. So begrenzt ein Fehler den Schaden.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-least-privilege-szenario",
+   "track": "aie",
+   "thema": "Tools",
+   "stufe": 3,
+   "frage": "Ein Agent soll Rechnungen lesen und zusammenfassen. Welche Rechte gibst du ihm?",
+   "antwort": "Nur Lesezugriff auf Rechnungen. Kein Senden, Löschen oder Zahlen, denn das braucht die Aufgabe nicht.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-drei-ebenen",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 2,
+   "frage": "Modell-SDK, Agent SDK, Framework: Wie unterscheiden sich die Ebenen?",
+   "antwort": "Ein Modell-SDK ruft das Modell auf. Ein Agent SDK bringt zusätzlich die Schleife mit Tools, und ein Framework liefert allgemeinere Bausteine, um Abläufe zu bauen.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-framework",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 1,
+   "frage": "Was ist ein Framework im KI-Kontext?",
+   "antwort": "Ein Baukasten mit fertigen Bausteinen für Modellaufrufe, Tools, Speicher und Abläufe. Du baust damit schneller, ordnest dich aber seiner Struktur unter.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-langchain",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 1,
+   "frage": "Wofür steht LangChain auf Konzeptebene?",
+   "antwort": "Ein Framework, das Bausteine zum Verbinden von Modellen, Tools und Datenquellen in Abläufen bereitstellt.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-langgraph",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 1,
+   "frage": "Welche Grundidee hat LangGraph?",
+   "antwort": "Ein Agentenablauf wird als Graph beschrieben: Schritte sind Knoten, Übergänge die Verbindungen, und ein gemeinsamer Zustand wird weitergereicht.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-vercel-ai-sdk",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 1,
+   "frage": "Wofür wird das Vercel AI SDK konzeptionell genutzt?",
+   "antwort": "Als Werkzeugkasten, um KI-Funktionen wie Modellaufrufe und Streaming in Web-Anwendungen einzubauen. Es ist ein Beispiel für ein Framework nahe an der Web-Anwendung.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-streaming",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 1,
+   "frage": "Was ist Streaming bei Modellantworten?",
+   "antwort": "Die Antwort kommt Stück für Stück an, während das Modell sie erzeugt, nicht erst am Ende vollständig.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-streaming-warum",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 1,
+   "frage": "Warum nutzt man Streaming?",
+   "antwort": "Nutzer sehen sofort, dass etwas passiert, statt auf die ganze Antwort zu warten. Das wirkt deutlich schneller.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-tool-runner-sdk",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 2,
+   "frage": "Was nimmt dir ein Tool Runner im SDK ab?",
+   "antwort": "Er führt die Schleife aus Modell, Tool-Aufruf und Ergebnis automatisch aus, bis das Modell fertig ist. Sonst müsstest du sie selbst schreiben.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-sdk-wahl",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 3,
+   "frage": "Wann nimmst du direkt das Modell-SDK, wann ein Framework?",
+   "antwort": "Für einfache, klar umrissene Abläufe reicht das SDK und du behältst Kontrolle. Bei komplexen Abläufen mit viel Zustand kann ein Framework Arbeit sparen.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-framework-bindung",
+   "track": "aie",
+   "thema": "SDK",
+   "stufe": 2,
+   "frage": "Welchen Nachteil kann ein Framework haben?",
+   "antwort": "Du bindest dich an seine Konzepte, und ein Wechsel wird aufwendig. Außerdem verbirgt es Details, die du bei Fehlern verstehen musst.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-queue",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 1,
+   "frage": "Was ist eine Queue?",
+   "antwort": "Eine Warteschlange für Aufträge. Neue Aufgaben werden hinten eingereiht und Worker holen sie vorne ab.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-queue-warum",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 1,
+   "frage": "Warum setzt man bei Agenten eine Queue ein?",
+   "antwort": "Aufgaben können schneller eintreffen, als sie bearbeitet werden. Die Queue puffert sie, und mehrere Worker können parallel arbeiten.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-scheduler",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 1,
+   "frage": "Was ist ein Scheduler bzw. Cron?",
+   "antwort": "Er startet Aufgaben zu festen Zeiten, etwa jeden Morgen um sieben. Cron ist die klassische Schreibweise solcher Zeitpläne.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-scheduler-vs-webhook",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 2,
+   "frage": "Scheduler oder Webhook: Wann startet was?",
+   "antwort": "Der Scheduler startet nach der Uhr, der Webhook durch ein Ereignis von außen. Zeitplan für den Morgenbericht, Webhook für 'neue Mail eingetroffen'.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-webhook",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 1,
+   "frage": "Was ist ein Webhook?",
+   "antwort": "Ein anderes System ruft eine Adresse bei dir auf, sobald etwas passiert ist. Du fragst nicht ständig nach, du wirst benachrichtigt.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-webhook-signatur",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 3,
+   "frage": "Warum sollte ein Webhook-Eingang die Herkunft prüfen?",
+   "antwort": "Sonst könnte jeder die Adresse aufrufen und einen Agenten auslösen. Üblich ist eine Signatur, die der Absender mitschickt und die du prüfst.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-lange-laeufe",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 2,
+   "frage": "Was ist bei langen Agenten-Läufen anders als bei kurzen?",
+   "antwort": "Sie können Minuten oder Stunden dauern, also kann etwas dazwischen ausfallen. Sie brauchen Zeitgrenzen, Zwischenstände und Sicht auf den Fortschritt.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-neustart",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 2,
+   "frage": "Was passiert bei einem Absturz mitten im Lauf?",
+   "antwort": "Ohne gespeicherten Zustand fängt der Lauf von vorn an oder geht verloren. Mit Zwischenständen kann er an der Stelle weitermachen.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-zustand-speichern",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 2,
+   "frage": "Warum speichert man den Zustand eines Laufs außerhalb des Prozesses?",
+   "antwort": "Ein Prozess kann abstürzen oder neu starten und verliert dann seinen Arbeitsspeicher. In Datenbank oder Datei bleibt der Zustand erhalten.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-zustand-szenario",
+   "track": "aie",
+   "thema": "Runtime",
+   "stufe": 3,
+   "frage": "Ein Lauf stürzt nach dem Mailversand ab und startet neu. Was droht, und was hilft?",
+   "antwort": "Die Mail könnte doppelt rausgehen. Es hilft, jeden erledigten Schritt zu speichern und Aktionen idempotent zu machen.",
+   "quelle": "https://roadmap.sh/ai-engineer"
+  },
+  {
+   "id": "aie-agent-vs-workflow",
+   "track": "aie",
+   "thema": "Agent",
+   "stufe": 2,
+   "frage": "Agent oder Workflow: Was ist der Unterschied?",
+   "antwort": "Im Workflow legt der Entwickler die Schritte fest. Beim Agenten entscheidet das Modell selbst, welche Schritte es als Nächstes geht.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-workflow-wann",
+   "track": "aie",
+   "thema": "Agent",
+   "stufe": 3,
+   "frage": "Wann reicht ein Workflow, wann braucht es einen Agenten?",
+   "antwort": "Ist der Ablauf bekannt und immer gleich, reicht ein Workflow und ist verlässlicher. Ein Agent lohnt sich, wenn der Weg vorab nicht feststeht.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-einzelaufruf",
+   "track": "aie",
+   "thema": "Agent",
+   "stufe": 1,
+   "frage": "Was ist ein einzelner Modellaufruf im Vergleich zu einem Agenten?",
+   "antwort": "Eine Anfrage, eine Antwort, ohne Schleife und ohne Tools. Das reicht für Aufgaben wie Zusammenfassen oder Übersetzen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-autonom-vs-freigabe",
+   "track": "aie",
+   "thema": "Agent",
+   "stufe": 2,
+   "frage": "Was heißt autonom, was heißt mit Freigabe?",
+   "antwort": "Autonom führt der Agent Aktionen selbst aus. Mit Freigabe wartet er vor bestimmten Aktionen auf die Zustimmung eines Menschen.",
+   "quelle": "https://docs.anthropic.com"
+  },
+  {
+   "id": "aie-autonomie-grad",
+   "track": "aie",
+   "thema": "Agent",
+   "stufe": 3,
+   "frage": "Wie wählst du, wie viel Autonomie ein Agent bekommt?",
+   "antwort": "Je schwerer eine Aktion rückgängig zu machen ist, desto eher Freigabe. Lesen kann autonom laufen, Zahlen oder Löschen nicht ohne Prüfung.",
+   "quelle": "https://docs.anthropic.com"
+  }
+ ]
+}

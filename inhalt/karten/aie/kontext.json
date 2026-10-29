@@ -1,0 +1,206 @@
+{
+  "track": "aie",
+  "thema": "Kontext",
+  "karten": [
+    {
+      "id": "aie-kontext",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was ist der Kontext eines Modellaufrufs?",
+      "antwort": "Alles, was das Modell bei diesem einen Aufruf sieht: System-Prompt, Tool-Beschreibungen, bisherige Nachrichten, Tool-Ergebnisse. Nur das, sonst nichts.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-kein-gedaechtnis",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Was heißt: Der Harness baut bei jedem Aufruf die komplette Nachrichtenliste neu?",
+      "antwort": "Das Modell ist ein Goldfisch. Bei jedem Schritt gibt der Harness ihm das ganze Tagebuch nochmal zu lesen. Teurer wird es, weil jedes Mal alles gelesen und bezahlt wird, nicht weil das Modell mehr nachdenkt.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-lesen-vs-denken",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 3,
+      "frage": "Lesen und Nachdenken: wo ist der Unterschied bei den Kosten?",
+      "antwort": "Lesen = Input-Tokens: die ganze Liste, bei jedem Aufruf. Nachdenken (Reasoning) = zusätzliche Output-Tokens, die das Modell vor der Antwort erzeugt. Beides kostet, es sind zwei getrennte Posten.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-prompt-caching",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Was ist Prompt Caching?",
+      "antwort": "Der Anbieter merkt sich einen gleichbleibenden Anfang der Nachrichtenliste (z. B. System-Prompt + Tools). Wiederholte Aufrufe mit demselben Anfang werden billiger und schneller.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-context-engineering",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Was ist Context Engineering?",
+      "antwort": "Entscheiden, was in die Nachrichtenliste kommt: welche Daten, wie viel, wann gekürzt wird, was an Unteragenten ausgelagert wird. Eine Aufgabe des Harness.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-compaction",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was passiert, wenn das Kontextfenster voll ist?",
+      "antwort": "Es kommt ein Fehler, oder der Harness kürzt bzw. fasst ältere Teile zusammen (Compaction, wie /compact).",
+      "quelle": "session-2026-10-27",
+      "skizze": "kontextfenster"
+    },
+    {
+      "id": "aie-token",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was ist ein Token?",
+      "antwort": "Ein Wortstück. Modelle lesen, schreiben und rechnen in Tokens. Fenstergröße und Preis werden in Tokens angegeben.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-fenster-grenze",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was ist das Kontextfenster?",
+      "antwort": "Die maximale Menge an Tokens, die das Modell bei einem Aufruf auf einmal berücksichtigen kann. Dazu zählen Anweisungen, Verlauf, Tool-Ergebnisse und die Antwort.",
+      "quelle": "https://docs.anthropic.com",
+      "skizze": "kontextfenster"
+    },
+    {
+      "id": "aie-fehler-zu-viel",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Warum kann zu viel Kontext die Antworten verschlechtern?",
+      "antwort": "Wichtiges geht zwischen viel Unwichtigem unter, und das Modell lenkt sich leichter ab. Mehr Text ist nicht automatisch besser.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-fehler-veraltet",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was ist veralteter Kontext, und was richtet er an?",
+      "antwort": "Informationen im Verlauf, die inzwischen nicht mehr stimmen, etwa ein alter Kontostand. Das Modell nutzt sie weiter, als wären sie aktuell.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-fehler-widerspruch",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was passiert bei widersprüchlichem Kontext?",
+      "antwort": "Das Modell muss sich für eine Seite entscheiden oder mischt beide, und du kannst nicht vorhersagen, welche. Anweisungen sollten sich daher nicht widersprechen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-lost-in-middle",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was meint der Begriff Lost in the Middle?",
+      "antwort": "Modelle beachten Informationen mitten in einem langen Kontext oft schlechter als solche am Anfang oder Ende.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-reihenfolge",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Was folgt praktisch aus Lost in the Middle für die Reihenfolge?",
+      "antwort": "Wichtige Anweisungen und Fragen gehören an den Anfang oder ans Ende, nicht in die Mitte eines langen Textblocks.",
+      "quelle": "https://roadmap.sh/ai-engineer"
+    },
+    {
+      "id": "aie-unteragent-isolation",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Wie hilft ein Unteragent, den Kontext sauber zu halten?",
+      "antwort": "Er arbeitet in einem eigenen, frischen Kontext an einer Teilaufgabe. Der Hauptagent bekommt nur das Ergebnis, nicht den ganzen Zwischenverlauf.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-unteragent-zusammenfassung",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 3,
+      "frage": "Ein Agent soll 50 Dateien durchsuchen. Wie hältst du den Hauptkontext klein?",
+      "antwort": "Ein Unteragent liest und durchsucht die Dateien und liefert nur eine kurze Zusammenfassung zurück. Die vielen Rohtexte bleiben im Kontext des Unteragenten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kontext-notizen",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Wie bleibt Wissen über lange Läufe erhalten, auch wenn der Kontext gekürzt wird?",
+      "antwort": "Der Agent schreibt Wichtiges in eine Datei oder einen Speicher und liest es bei Bedarf zurück. Das Modell selbst behält nichts zwischen Aufrufen.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kontext-bei-bedarf",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Was heißt: Kontext erst bei Bedarf laden?",
+      "antwort": "Statt alles vorab hineinzulegen, holt der Agent Informationen per Tool, wenn er sie braucht. Das hält den Kontext klein und aktuell.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kontext-antwort-zaehlt",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Zählt die Antwort des Modells auch zum Kontextfenster?",
+      "antwort": "Ja, Eingabe und Ausgabe müssen gemeinsam in das Fenster passen. Ein sehr voller Input lässt weniger Platz für die Antwort.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kontext-vergisst",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 3,
+      "frage": "Ein Agent hält sich nach langem Lauf nicht mehr an Regeln vom Anfang. Was prüfst du zuerst?",
+      "antwort": "Ob der Kontext sehr voll ist oder die Regeln durch Kürzung verloren gingen. Wichtige Regeln gehören in den System-Prompt, den der Harness bei jedem Aufruf neu mitschickt.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kontext-aufraeumen",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 2,
+      "frage": "Wie kann ein Harness den Kontext aufräumen?",
+      "antwort": "Alte, nicht mehr nötige Tool-Ergebnisse entfernen oder kürzen und den Verlauf bei Bedarf zusammenfassen. Die Regeln und das Ziel bleiben erhalten.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kontext-nicht-alles",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 3,
+      "frage": "Ein Kunde sagt: Wir geben dem Agenten einfach alle unsere Dokumente. Was wendest du ein?",
+      "antwort": "Es kostet bei jedem Aufruf Tokens und das Wichtige geht unter. Besser ist, gezielt das Relevante zu suchen und zu laden.",
+      "quelle": "https://docs.anthropic.com"
+    },
+    {
+      "id": "aie-kontext-vergiftung",
+      "track": "aie",
+      "thema": "Kontext",
+      "stufe": 1,
+      "frage": "Was ist ein vergifteter Kontext (Context Poisoning)?",
+      "antwort": "Ein Fehler oder eine Halluzination steht einmal im Verlauf und wird danach als Tatsache weiterverwendet. Der Fehler zieht sich durch die Folgeschritte.",
+      "quelle": "https://docs.anthropic.com"
+    }
+  ]
+}

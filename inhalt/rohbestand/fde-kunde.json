@@ -1,0 +1,635 @@
+{
+ "karten": [
+  {
+   "id": "fde-k-rolle-vs-swe",
+   "track": "fde",
+   "thema": "Rolle",
+   "stufe": 2,
+   "frage": "Was unterscheidet einen FDE von einem normalen Software Engineer?",
+   "antwort": "Der Software Engineer baut ein Produkt für viele Kunden. Der FDE sitzt beim einzelnen Kunden und macht das Produkt dort im echten Ablauf nutzbar.",
+   "quelle": "YouTube: FDE Hottest AI Job of 2026"
+  },
+  {
+   "id": "fde-k-rolle-vs-solutions",
+   "track": "fde",
+   "thema": "Rolle",
+   "stufe": 2,
+   "frage": "Wo liegt der Unterschied zwischen FDE und Solutions Engineer?",
+   "antwort": "Der Solutions Engineer zeigt und beantwortet technische Fragen vor dem Kauf, meist mit Demos. Der FDE baut und bringt es nach dem Kauf beim Kunden zum Laufen.",
+   "quelle": "YouTube: FDE Hottest AI Job of 2026"
+  },
+  {
+   "id": "fde-k-rolle-vs-berater",
+   "track": "fde",
+   "thema": "Rolle",
+   "stufe": 2,
+   "frage": "Wie unterscheidet sich ein FDE von einem klassischen Berater?",
+   "antwort": "Der Berater liefert Empfehlungen und Folien. Der FDE liefert eine laufende Lösung, an der man sieht, ob sie wirkt.",
+   "quelle": "YouTube: FDE Hottest AI Job of 2026"
+  },
+  {
+   "id": "fde-k-rolle-kennzahl",
+   "track": "fde",
+   "thema": "Rolle",
+   "stufe": 2,
+   "frage": "Woran wird ein FDE gemessen?",
+   "antwort": "An einer Kennzahl des Kunden, nicht an der Zahl gebauter Funktionen. Zum Beispiel gesparte Stunden pro Woche oder weniger Fehler im Ablauf.",
+   "quelle": "YouTube: FDE Hottest AI Job of 2026"
+  },
+  {
+   "id": "fde-k-rolle-palantir",
+   "track": "fde",
+   "thema": "Rolle",
+   "stufe": 1,
+   "frage": "Woher kommt die Rolle des Forward Deployed Engineer?",
+   "antwort": "Sie wurde bei Palantir bekannt: Ingenieure arbeiteten direkt beim Kunden, oft vor Ort, und passten die Software an dessen Probleme an.",
+   "quelle": "YouTube: FDE Hottest AI Job of 2026"
+  },
+  {
+   "id": "fde-k-rolle-erstes-gespraech",
+   "track": "fde",
+   "thema": "Rolle",
+   "stufe": 3,
+   "frage": "Der Kunde fragt am Anfang: Was baust du uns denn? Was antwortest du?",
+   "antwort": "Noch nichts, zuerst frage ich nach dem Ablauf, der wehtut, und woran wir Erfolg messen. Gebaut wird erst, wenn Problem und Kennzahl klar sind.",
+   "quelle": "YouTube: FDE Hottest AI Job of 2026"
+  },
+  {
+   "id": "fde-k-disc-prozessaufnahme",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 1,
+   "frage": "Was ist eine Prozessaufnahme?",
+   "antwort": "Eine strukturierte Erfassung, wie ein Ablauf heute wirklich läuft: wer tut was, womit, in welcher Reihenfolge. Sie ist die Grundlage für jede Automatisierung.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-ist-ablauf",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 2,
+   "frage": "Warum zeichnest du den Ist-Ablauf, bevor du etwas baust?",
+   "antwort": "Weil man nur automatisieren kann, was man versteht. Beim Zeichnen zeigen sich Umwege, Sonderfälle und Übergaben, die niemand aufgeschrieben hat.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-zeigen-lassen",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 3,
+   "frage": "Der Chef beschreibt den Ablauf glatt, aber seine Mitarbeiterin macht es anders. Was tust du?",
+   "antwort": "Ich lasse mir den Ablauf von der Mitarbeiterin am Bildschirm zeigen. Der echte Ablauf steckt bei denen, die ihn täglich machen, nicht in der Beschreibung.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-schmerz-wunsch",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 2,
+   "frage": "Schmerzpunkt oder Wunsch: was ist der Unterschied?",
+   "antwort": "Ein Schmerzpunkt kostet heute messbar Zeit, Geld oder Nerven. Ein Wunsch ist eine Idee, die nett klingt. Gebaut wird zuerst gegen Schmerzpunkte.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-wunsch-ki",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 3,
+   "frage": "Der Kunde sagt: Wir wollen irgendwas mit KI machen. Was fragst du?",
+   "antwort": "Wo im Alltag verliert ihr am meisten Zeit oder macht die meisten Fehler? Aus der Antwort entsteht ein konkreter Anwendungsfall statt eines Schlagworts.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-erfolgskriterium",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 2,
+   "frage": "Was ist ein Erfolgskriterium, und wann wird es vereinbart?",
+   "antwort": "Eine messbare Aussage, wann das Projekt gelungen ist, zum Beispiel: Bearbeitungszeit pro Fall von 20 auf 5 Minuten. Es wird vor dem Bau schriftlich vereinbart.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-messbar",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 3,
+   "frage": "Der Kunde sagt: Es soll einfach besser laufen. Wie gehst du vor?",
+   "antwort": "Ich frage, woran er morgens merken würde, dass es besser läuft, und lege eine Zahl fest. Dazu messen wir vorher den heutigen Stand als Vergleich.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-stakeholder",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 1,
+   "frage": "Wer sind die Stakeholder in einem Kundenprojekt?",
+   "antwort": "Alle, die vom Projekt betroffen sind oder es beeinflussen: Auftraggeber, Fachabteilung, IT, Datenschutz und die Nutzer im Alltag.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-entscheider",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 3,
+   "frage": "Der Fachbereich ist begeistert, aber die IT bremst. Was tust du?",
+   "antwort": "Ich hole die IT früh ins Gespräch und frage nach ihren Bedingungen, etwa Sicherheit und Betrieb. Ein Projekt ohne die IT scheitert meist spät und teuer.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-datenlage",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 2,
+   "frage": "Warum prüfst du die Datenlage, bevor du zusagst?",
+   "antwort": "Ein Agent ist nur so gut wie die Daten, an die er kommt. Sind sie verstreut, veraltet oder gesperrt, ist das die eigentliche Aufgabe.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-datenfragen",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 3,
+   "frage": "Welche drei Fragen stellst du zu den Daten eines Kunden?",
+   "antwort": "Wo liegen sie, wer darf sie sehen, und sind personenbezogene Daten dabei? Dazu: Wie aktuell und sauber sind sie?",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-disc-sonderfaelle",
+   "track": "fde",
+   "thema": "Discovery",
+   "stufe": 2,
+   "frage": "Warum fragst du nach Ausnahmen und Sonderfällen?",
+   "antwort": "Der Normalfall ist schnell automatisiert, die Ausnahmen machen den Aufwand und das Risiko. Wer sie kennt, schätzt den Aufwand ehrlich.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-roi",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 1,
+   "frage": "Was ist ROI?",
+   "antwort": "Return on Investment: was ein Projekt einbringt im Verhältnis zu dem, was es kostet. Eingespartes oder zusätzlich verdientes Geld geteilt durch die Kosten.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-tco",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 1,
+   "frage": "Was ist TCO?",
+   "antwort": "Total Cost of Ownership: alle Kosten über die Lebensdauer, nicht nur der Kaufpreis. Dazu zählen Betrieb, Pflege, Schulung und Modellkosten.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-stundenersparnis",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 2,
+   "frage": "Wie rechnest du die Stunden-Ersparnis eines Agenten?",
+   "antwort": "Fälle pro Monat mal gesparte Minuten pro Fall, umgerechnet in Stunden, mal Stundenkosten der Mitarbeiter. Davon ziehe ich die Kosten des Agenten ab.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-rechenbeispiel",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 3,
+   "frage": "Der Kunde bearbeitet 500 Anfragen im Monat, je 10 Minuten. Der Agent spart die Hälfte. Wie viel Zeit ist das?",
+   "antwort": "500 mal 5 Minuten sind 2.500 Minuten, also gut 41 Stunden im Monat. Mal den Stundensatz ergibt die Ersparnis, die ich den Betriebskosten gegenüberstelle.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-kosten-pro-lauf",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 2,
+   "frage": "Was sind Kosten pro Lauf?",
+   "antwort": "Was ein einzelner Durchlauf des Agenten kostet, vor allem Modell-Tokens und Tool-Aufrufe. Mal Läufe pro Monat ergibt die laufenden Kosten.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-risiko",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 2,
+   "frage": "Wie preist man Risiko in einen Business Case ein?",
+   "antwort": "Man schätzt, was ein Fehler kostet und wie oft er vorkommt. Dazu rechnet man Kontrollen, etwa menschliche Freigabe, als laufende Kosten dazu.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-lohnt-nicht",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 3,
+   "frage": "Der Ablauf kommt zweimal im Monat vor und dauert 15 Minuten. Der Kunde will einen Agenten. Was sagst du?",
+   "antwort": "Das lohnt sich nicht: Bauen und Betrieb kosten mehr als die gesparte halbe Stunde. Ich schlage eine einfache Checkliste vor.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-bc-wann-nicht",
+   "track": "fde",
+   "thema": "Business Case",
+   "stufe": 2,
+   "frage": "Wann lohnt sich ein Agent eher nicht?",
+   "antwort": "Bei seltenen Abläufen, bei sehr hohen Fehlerkosten ohne Kontrolle oder bei schlechter Datenlage. Auch wenn der Ablauf selbst noch unklar ist.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-arch-cloud-lokal-hybrid",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 1,
+   "frage": "Was bedeutet Cloud, lokal und hybrid beim Betrieb?",
+   "antwort": "Cloud: läuft beim Anbieter im Internet. Lokal: läuft auf Rechnern des Kunden. Hybrid: ein Teil, etwa sensible Daten, bleibt lokal, der Rest läuft in der Cloud.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-arch-wann-lokal",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 2,
+   "frage": "Wann spricht viel für einen lokalen Betrieb?",
+   "antwort": "Wenn Daten das Haus nicht verlassen dürfen oder der Kunde es vertraglich ausschließt. Auch bei schlechter Internetanbindung vor Ort.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-arch-eu-hosting",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 1,
+   "frage": "Was heißt EU-Hosting?",
+   "antwort": "Die Daten werden auf Servern in der EU gespeichert und verarbeitet. Das hilft bei den Anforderungen der DSGVO, ersetzt aber nicht die übrigen Pflichten.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-arch-datenresidenz",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 1,
+   "frage": "Was ist Datenresidenz?",
+   "antwort": "Die Festlegung, in welchem Land oder welcher Region Daten liegen dürfen. Manche Kunden, etwa Banken oder Behörden, fordern sie ausdrücklich.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-arch-hardware-grenze",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 2,
+   "frage": "Warum ist lokale KI durch Hardware begrenzt?",
+   "antwort": "Große Modelle brauchen viel Grafikspeicher und Rechenleistung. Auf kleiner Hardware laufen nur kleinere Modelle, die oft schwächer sind.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-arch-build-buy",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 1,
+   "frage": "Was heißt Build vs. Buy?",
+   "antwort": "Selbst bauen oder fertig kaufen. Kaufen ist schneller und meist günstiger, wenn das Produkt zum Bedarf passt. Bauen lohnt, wenn es den Kern des Geschäfts betrifft.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-arch-build-buy-szenario",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 3,
+   "frage": "Der Kunde will eine Eigenentwicklung für Rechnungsprüfung. Es gibt fertige Tools. Was prüfst du?",
+   "antwort": "Passt ein fertiges Tool zu 80 Prozent des Ablaufs und den Datenregeln, kaufen wir. Nur die Lücke bauen wir, etwa die Anbindung an sein System.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-arch-bank-lokal",
+   "track": "fde",
+   "thema": "Architektur-Entscheidung",
+   "stufe": 3,
+   "frage": "Eine Bank sagt: Kundendaten dürfen nicht an US-Anbieter. Was schlägst du vor?",
+   "antwort": "Ich kläre, welche Daten wirklich ans Modell müssen. Dann prüfe ich ein Modell in EU-Rechenzentren oder lokal und trenne sensible Teile ab, also hybrid.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-recht-dsgvo-personenbezug",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 1,
+   "frage": "Was sind personenbezogene Daten?",
+   "antwort": "Alle Angaben, die sich auf eine bestimmte oder bestimmbare Person beziehen, etwa Name, E-Mail oder Kundennummer. Auch wenn man sie nur mit Zusatzwissen zuordnen kann.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-zweckbindung",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 1,
+   "frage": "Was heißt Zweckbindung in der DSGVO?",
+   "antwort": "Daten dürfen nur für den Zweck genutzt werden, für den sie erhoben wurden. Ein neuer Zweck braucht eine eigene Grundlage.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-datenminimierung",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 1,
+   "frage": "Was heißt Datenminimierung?",
+   "antwort": "Es werden nur die Daten verarbeitet, die für den Zweck nötig sind. Beim Agenten heißt das: nur das ins Modell geben, was die Aufgabe braucht.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-minimierung-szenario",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 3,
+   "frage": "Der Kunde will dem Agenten die komplette Kundendatei geben. Was sagst du?",
+   "antwort": "Ich frage, welche Felder der Agent für die Aufgabe braucht, und gebe nur diese frei. Je weniger Daten, desto kleiner das Risiko.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-avv",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 1,
+   "frage": "Was ist ein AVV?",
+   "antwort": "Ein Auftragsverarbeitungsvertrag. Er regelt, wie ein Dienstleister personenbezogene Daten im Auftrag des Kunden verarbeiten darf.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-avv-wann",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 2,
+   "frage": "Wann braucht man einen AVV?",
+   "antwort": "Wenn ein Dienstleister personenbezogene Daten im Auftrag verarbeitet, etwa ein Cloud-Anbieter oder wir selbst. Ohne ihn ist die Weitergabe in der Regel nicht in Ordnung.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-modellanbieter",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 2,
+   "frage": "Was ist wichtig, wenn personenbezogene Daten an einen Modell-Anbieter gehen?",
+   "antwort": "Es braucht einen Vertrag zur Auftragsverarbeitung und Klarheit, wo die Daten verarbeitet werden. Auch, ob der Anbieter sie zum Training nutzt.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-modell-szenario",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 3,
+   "frage": "Ein Mitarbeiter fügt Kundendaten in ein Chat-Tool ein. Was empfiehlst du dem Kunden?",
+   "antwort": "Klare Regeln, welche Tools erlaubt sind, und nur Zugänge mit Vertrag zur Auftragsverarbeitung. Die Frage geht außerdem an den Datenschutzbeauftragten.",
+   "quelle": "https://gdpr-info.eu"
+  },
+  {
+   "id": "fde-k-recht-ai-act-idee",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 1,
+   "frage": "Was ist die Grundidee des EU AI Act?",
+   "antwort": "Ein EU-Gesetz, das KI nach Risiko regelt. Je höher das Risiko für Menschen, desto strenger die Pflichten.",
+   "quelle": "https://eur-lex.europa.eu"
+  },
+  {
+   "id": "fde-k-recht-ai-act-stufen",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 2,
+   "frage": "Was heißt risikobasiert beim AI Act?",
+   "antwort": "KI-Systeme werden in Risikostufen eingeteilt, von verbotenen Anwendungen über Hochrisiko bis zu geringem Risiko. Hochrisiko-Systeme müssen mehr Anforderungen erfüllen.",
+   "quelle": "https://eur-lex.europa.eu"
+  },
+  {
+   "id": "fde-k-recht-dora-pitch",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 2,
+   "frage": "Was sagt der wiya-Pitch zu DORA?",
+   "antwort": "DORA gilt laut Pitch seit Januar 2025: Firmen haften für jeden IT-Dienstleister, den sie nutzen. Das macht Nachweise zu eingesetzten Systemen wichtig.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-recht-produkthaftung-pitch",
+   "track": "fde",
+   "thema": "Recht & Regulierung",
+   "stufe": 2,
+   "frage": "Was sagt der wiya-Pitch zur Produkthaftung?",
+   "antwort": "Laut Pitch gilt die EU-Produkthaftung ab dem 9. Dezember 2026. Das Gesetz macht Firmen für ihre eigenen Agenten verantwortlich, und Versicherer schreiben KI aus Policen heraus.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-problem",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 1,
+   "frage": "Was ist laut Pitch das Kernproblem, das wiya löst?",
+   "antwort": "Agents bekommen immer mehr Zugriff und werden gefährlicher. wiya stellt sicher, dass sie tun, was sie sollen, und liefert Beweise, falls etwas passiert.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-zahlen-ibm",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Welche IBM-Zahlen nennt der Pitch zu KI-Angriffen?",
+   "antwort": "21 Prozent der betroffenen Firmen wurden über eigene KI-Systeme getroffen, 92 Prozent hatten keine passende Zugriffskontrolle. Ein Prompt-Injection-Vorfall kostet im Schnitt 5,1 Mio. Euro.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-pass-mandat",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Was sind Passport und Mandat bei wiya?",
+   "antwort": "Der Passport verknüpft Agent und Organisation mit einer geprüften Identität. Im Mandat unterschreibt der Kunde, was der Agent tun darf.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-gateway",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Wie prüft das wiya-Gateway einen Aufruf?",
+   "antwort": "Es prüft jede Anfrage deterministisch gegen die Mandate und lässt sie zu oder lehnt sie ab. Jeder Aufruf wird protokolliert.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-keine-keys",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Was bedeutet: Mit wiya halten Agenten keine Schlüssel?",
+   "antwort": "Agenten greifen nicht direkt auf Tools zu, sondern nur über das Gateway. So kann ein direkter Zugriff die Prüfung nicht umgehen.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-schwaechen",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Welche Schwächen heutiger Schutzmaßnahmen nennt der Pitch?",
+   "antwort": "OAuth ist breit und für systemübergreifende Abläufe unpraktisch. LLM-Guards sind teuer, langsam und probabilistisch, menschliche Freigabe kostet Zeit und ermüdet.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-benchmark-angriff",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Welche Angriffserfolgsrate zeigt der Pitch im Benchmark?",
+   "antwort": "Ohne Schutz 71,5 Prozent, mit wiya C2 1,9 Prozent. Gemessen mit AgentDojo der ETH Zürich, Durchschnitt aus vier Welten.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-benchmark-zeit",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Wie schnell ist der wiya-Check laut Pitch?",
+   "antwort": "0,017 Sekunden pro Fall. Zum Vergleich nennt der Pitch bei Progent (eingeschaltet) 15,4 Sekunden.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-markt",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Welche Marktzahlen nennt der Pitch?",
+   "antwort": "Deutschland: etwa 1.450 beaufsichtigte Firmen zu je 30 Tsd. Euro, also 44 Mio. Euro. EU/EWR: etwa 7.000 Firmen, 210 Mio. Euro. Obergrenze: 1,6 Mrd. Euro.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-phasen",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Welche drei Phasen hat wiya laut Pitch?",
+   "antwort": "Jetzt: Runtime Control für regulierte Firmen mit laufenden Agents. Als Nächstes Werkzeuge für Underwriter, später versicherbare Nachweise (Insurable Attestation).",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-msg",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 2,
+   "frage": "Welche Rolle hat msg im Pitch?",
+   "antwort": "Design- und Implementierungspartner: Gemeinsam wird ein internes Pilotprojekt im November gebaut, dann folgen Einführungen bei regulierten Firmen. msg setzt um, wiya lizenziert.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-wiya-kunde-fragt",
+   "track": "fde",
+   "thema": "wiya",
+   "stufe": 3,
+   "frage": "Ein Kunde fragt: Was bringt mir wiya, wenn mein Agent sowieso nur kleine Beträge freigibt? Was sagst du?",
+   "antwort": "Auch kleine Aktionen brauchen Mandat und Nachweis, denn die Firma haftet für ihren Agenten. Die Quittung beweist später, wer was wann durfte und tat.",
+   "quelle": "wiya-Pitch 19.10.2026"
+  },
+  {
+   "id": "fde-k-int-sso",
+   "track": "fde",
+   "thema": "Integration",
+   "stufe": 1,
+   "frage": "Was ist SSO?",
+   "antwort": "Single Sign-on: Nutzer melden sich einmal an und kommen damit in mehrere Anwendungen. Kunden verlangen es, weil die IT Zugänge zentral steuert.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-int-oidc-saml",
+   "track": "fde",
+   "thema": "Integration",
+   "stufe": 1,
+   "frage": "Was sind OIDC und SAML?",
+   "antwort": "Zwei Standards, mit denen eine Anwendung die Anmeldung einem zentralen Anmeldedienst überlässt. SAML ist älter und im Firmenumfeld verbreitet, OIDC moderner.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-int-legacy",
+   "track": "fde",
+   "thema": "Integration",
+   "stufe": 2,
+   "frage": "Was ist ein Legacy-System, und warum ist es eine Hürde?",
+   "antwort": "Ein altes System, das noch im Betrieb ist. Es hat oft keine moderne Schnittstelle, kaum Dokumentation und niemand traut sich, es zu ändern.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-int-api-vs-rpa",
+   "track": "fde",
+   "thema": "Integration",
+   "stufe": 2,
+   "frage": "API oder RPA: was ist der Unterschied?",
+   "antwort": "Eine API ist die vorgesehene Schnittstelle zwischen Systemen. RPA bedient die Oberfläche wie ein Mensch mit Mausklicks und bricht leichter, wenn sich die Oberfläche ändert.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-int-webhook",
+   "track": "fde",
+   "thema": "Integration",
+   "stufe": 2,
+   "frage": "Was ist ein Webhook?",
+   "antwort": "Ein System meldet von sich aus, wenn etwas passiert, indem es eine Adresse aufruft. So muss man nicht ständig nachfragen.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-int-legacy-szenario",
+   "track": "fde",
+   "thema": "Integration",
+   "stufe": 3,
+   "frage": "Das System des Kunden hat keine API. Was schlägst du vor?",
+   "antwort": "Ich kläre, ob es Export, Datenbankzugriff oder Importdateien gibt. Nur wenn nichts davon geht, kommt RPA in Frage, mit dem Wissen, dass es fragil ist.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-pilot-poc-pilot-prod",
+   "track": "fde",
+   "thema": "Pilot & Rollout",
+   "stufe": 2,
+   "frage": "Was ist der Unterschied zwischen PoC, Pilot und Produktion?",
+   "antwort": "Ein PoC zeigt, dass es technisch geht. Ein Pilot testet mit echten Nutzern im kleinen Rahmen, Produktion ist der Regelbetrieb mit Verantwortlichen und Support.",
+   "quelle": "session-2026-10-27",
+   "skizze": "einsatz"
+  },
+  {
+   "id": "fde-k-pilot-erfolg",
+   "track": "fde",
+   "thema": "Pilot & Rollout",
+   "stufe": 3,
+   "frage": "Der Pilot läuft seit Wochen, aber niemand sagt, ob er erfolgreich ist. Was fehlt?",
+   "antwort": "Ein Erfolgskriterium mit Zahl und Enddatum. Ich lege es mit dem Kunden fest und messe den Pilot daran.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-pilot-change",
+   "track": "fde",
+   "thema": "Pilot & Rollout",
+   "stufe": 2,
+   "frage": "Was ist Change Management im Kundenprojekt?",
+   "antwort": "Der Teil, der Menschen mitnimmt: erklären, warum, Sorgen ernst nehmen, Gewohnheiten ändern. Ohne ihn wird eine gute Lösung nicht genutzt.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-pilot-widerstand",
+   "track": "fde",
+   "thema": "Pilot & Rollout",
+   "stufe": 3,
+   "frage": "Die Sachbearbeiter nutzen den neuen Agenten nicht. Was tust du?",
+   "antwort": "Ich frage sie, was sie stört, und beobachte, wo sie aussteigen. Oft fehlen Vertrauen oder Schulung, und Wünsche aus dem Team gehören in die nächste Version.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-pilot-uebergabe",
+   "track": "fde",
+   "thema": "Pilot & Rollout",
+   "stufe": 2,
+   "frage": "Was gehört zur Übergabe an den Kunden?",
+   "antwort": "Dokumentation, Zugänge, ein benannter Verantwortlicher beim Kunden und eine Einweisung des Teams. Dazu klare Regeln, wer bei Störungen wen anruft.",
+   "quelle": "session-2026-10-27"
+  },
+  {
+   "id": "fde-k-pilot-betrieb",
+   "track": "fde",
+   "thema": "Pilot & Rollout",
+   "stufe": 2,
+   "frage": "Was passiert nach dem Go-live?",
+   "antwort": "Betrieb: Fehler beobachten, Kosten prüfen, Ausnahmen nachbessern und regelmäßig messen, ob die Kennzahl noch stimmt.",
+   "quelle": "session-2026-10-27"
+  }
+ ]
+}

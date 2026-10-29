@@ -1,0 +1,10 @@
+{
+  "name": "@karol-learn/video-tutor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@karol-learn/karten-kern": "*",
+    "zod": "^3.23.8"
+  }
+}

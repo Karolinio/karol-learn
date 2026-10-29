@@ -1,0 +1,61 @@
+{
+  "track": "fde",
+  "thema": "Pilot & Rollout",
+  "karten": [
+    {
+      "id": "fde-k-pilot-poc-pilot-prod",
+      "track": "fde",
+      "thema": "Pilot & Rollout",
+      "stufe": 2,
+      "frage": "Was ist der Unterschied zwischen PoC, Pilot und Produktion?",
+      "antwort": "Ein PoC zeigt, dass es technisch geht. Ein Pilot testet mit echten Nutzern im kleinen Rahmen, Produktion ist der Regelbetrieb mit Verantwortlichen und Support.",
+      "quelle": "session-2026-10-27",
+      "skizze": "einsatz"
+    },
+    {
+      "id": "fde-k-pilot-erfolg",
+      "track": "fde",
+      "thema": "Pilot & Rollout",
+      "stufe": 3,
+      "frage": "Der Pilot läuft seit Wochen, aber niemand sagt, ob er erfolgreich ist. Was fehlt?",
+      "antwort": "Ein Erfolgskriterium mit Zahl und Enddatum. Ich lege es mit dem Kunden fest und messe den Pilot daran.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-pilot-change",
+      "track": "fde",
+      "thema": "Pilot & Rollout",
+      "stufe": 2,
+      "frage": "Was ist Change Management im Kundenprojekt?",
+      "antwort": "Der Teil, der Menschen mitnimmt: erklären, warum, Sorgen ernst nehmen, Gewohnheiten ändern. Ohne ihn wird eine gute Lösung nicht genutzt.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-pilot-widerstand",
+      "track": "fde",
+      "thema": "Pilot & Rollout",
+      "stufe": 3,
+      "frage": "Die Sachbearbeiter nutzen den neuen Agenten nicht. Was tust du?",
+      "antwort": "Ich frage sie, was sie stört, und beobachte, wo sie aussteigen. Oft fehlen Vertrauen oder Schulung, und Wünsche aus dem Team gehören in die nächste Version.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-pilot-uebergabe",
+      "track": "fde",
+      "thema": "Pilot & Rollout",
+      "stufe": 2,
+      "frage": "Was gehört zur Übergabe an den Kunden?",
+      "antwort": "Dokumentation, Zugänge, ein benannter Verantwortlicher beim Kunden und eine Einweisung des Teams. Dazu klare Regeln, wer bei Störungen wen anruft.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-pilot-betrieb",
+      "track": "fde",
+      "thema": "Pilot & Rollout",
+      "stufe": 2,
+      "frage": "Was passiert nach dem Go-live?",
+      "antwort": "Betrieb: Fehler beobachten, Kosten prüfen, Ausnahmen nachbessern und regelmäßig messen, ob die Kennzahl noch stimmt.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}

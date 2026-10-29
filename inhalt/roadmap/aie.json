@@ -1,0 +1,25 @@
+{
+  "track": "aie",
+  "titel": "AI Engineer",
+  "themen": [
+    { "thema": "Modelle", "gruppe": "Fundament", "text": "Was ein Sprachmodell kann und was nicht. Tokens, Größen, Auswahl.", "link": "https://roadmap.sh/ai-engineer" },
+    { "thema": "Kosten", "gruppe": "Fundament", "text": "Woher die Rechnung kommt und wie du sie klein hältst.", "link": "https://roadmap.sh/ai-engineer" },
+    { "thema": "Prompting", "gruppe": "Fundament", "text": "Klare Aufträge schreiben, die das Modell zuverlässig erfüllt.", "link": "https://roadmap.sh/ai-engineer" },
+    { "thema": "Kontext", "gruppe": "Fundament", "text": "Was das Modell gerade sieht, und warum weniger oft mehr ist.", "link": "https://roadmap.sh/ai-engineer" },
+    { "thema": "Schnittstellen", "gruppe": "Fundament", "text": "Wie Programme miteinander reden: APIs, Anfragen, Antworten.", "link": "https://roadmap.sh/backend" },
+    { "thema": "Agent", "gruppe": "Agenten bauen", "text": "Ein Modell, das in einer Schleife selbst Schritte wählt.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "Tools", "gruppe": "Agenten bauen", "text": "Werkzeuge geben dem Agenten Hände: lesen, schreiben, suchen.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "Tool-Schleife", "gruppe": "Agenten bauen", "text": "Denken, Werkzeug rufen, Ergebnis lesen, wieder von vorn.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "Harness", "gruppe": "Agenten bauen", "text": "Das Gerüst um das Modell, das die Schleife steuert.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "Runtime", "gruppe": "Agenten bauen", "text": "Wo der Agent wirklich läuft: Prozesse, Sandbox, Grenzen.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "SDK", "gruppe": "Agenten bauen", "text": "Bausteine, mit denen du Agenten nicht von null schreibst.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "MCP", "gruppe": "Wissen anbinden", "text": "Ein Standard-Stecker, über den Agenten an Werkzeuge kommen.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "Wissen & RAG", "gruppe": "Wissen anbinden", "text": "Erst das Passende suchen, dann damit antworten.", "link": "https://roadmap.sh/ai-engineer" },
+    { "thema": "Memory", "gruppe": "Wissen anbinden", "text": "Was ein Agent sich über eine Sitzung hinaus merkt.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "Second Brain", "gruppe": "Wissen anbinden", "text": "Dein eigenes Wissen als Notizen, die ein Agent pflegt." },
+    { "thema": "Multi-Agent", "gruppe": "Produktion", "text": "Mehrere Agenten teilen sich die Arbeit und reichen weiter.", "link": "https://roadmap.sh/ai-agents" },
+    { "thema": "Testen", "gruppe": "Produktion", "text": "Evals zeigen, ob eine Änderung besser oder schlechter ist.", "link": "https://roadmap.sh/ai-engineer" },
+    { "thema": "Observability", "gruppe": "Produktion", "text": "Sehen, was der Agent getan hat: Traces, Spans, Logs.", "link": "https://roadmap.sh/devops" },
+    { "thema": "Sicherheit", "gruppe": "Produktion", "text": "Prompt Injection, Rechte und Sandboxen im Griff behalten.", "link": "https://roadmap.sh/ai-engineer" }
+  ]
+}

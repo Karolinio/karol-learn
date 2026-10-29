@@ -1,0 +1,225 @@
+{
+  "track": "aie",
+  "thema": "MCP",
+  "karten": [
+    {
+      "id": "aie-mcp",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Was ist MCP?",
+      "antwort": "Model Context Protocol: ein offener Standard, mit dem ein Harness Tools, Daten und Prompts von MCP-Servern findet und aufruft. Ein standardisierter Stecker statt eigener Verkabelung pro Dienst.",
+      "quelle": "https://modelcontextprotocol.io",
+      "skizze": "mcp"
+    },
+    {
+      "id": "aie-mcp-rollen",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Host, Client, Server bei MCP?",
+      "antwort": "Host = die App mit Modell (z. B. Claude Code). Client = eine Verbindung im Host, je Server eine. Server = Programm, das Tools anbietet (z. B. Gmail-MCP).",
+      "quelle": "https://modelcontextprotocol.io",
+      "skizze": "mcp"
+    },
+    {
+      "id": "aie-mcp-einer-fuer-alles",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Greift ein Agent über einen MCP auf Gmail, Kalender, Canva und CRM zu?",
+      "antwort": "Meist gibt es einen MCP-Server pro Dienst, und der Host verbindet sich mit mehreren gleichzeitig. Ein Server kann aber auch mehrere Dienste bündeln (z. B. ein Google-Workspace-Server).",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "aie-mcp-vs-api",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "MCP oder API: was ist was?",
+      "antwort": "Die API ist die eigentliche Tür eines Dienstes. Ein MCP-Server übersetzt sie in Tools, die Agenten automatisch finden und aufrufen können. Hinter dem MCP-Server liegt meist dieselbe API.",
+      "quelle": "session-2026-10-27",
+      "skizze": "mcp"
+    },
+    {
+      "id": "aie-s-mcp-tools",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Was ist ein Tool bei MCP?",
+      "antwort": "Eine Funktion, die der MCP-Server anbietet und die das Modell aufrufen kann, etwa „E-Mail senden“ oder „Ticket anlegen“. Sie hat einen Namen, eine Beschreibung und ein Schema für die Eingaben.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-resources",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Was ist eine Resource bei MCP?",
+      "antwort": "Daten, die ein Server zum Lesen bereitstellt, zum Beispiel eine Datei oder ein Datenbankeintrag. Sie dienen als Kontext und lösen selbst keine Aktion aus.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-prompts",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Was ist ein Prompt bei MCP?",
+      "antwort": "Eine vom Server vorbereitete Vorlage für eine Anfrage, die der Nutzer gezielt auswählt. Zum Beispiel eine Vorlage „Fasse diesen Vertrag zusammen“.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-steuerung",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Wer entscheidet bei MCP, wann ein Tool, eine Resource oder ein Prompt zum Einsatz kommt?",
+      "antwort": "Tools sind modellgesteuert: das Modell entscheidet, sie aufzurufen. Resources steuert die Anwendung, Prompts wählt der Nutzer aus.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-jsonrpc",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Welches Nachrichtenformat nutzt MCP zwischen Client und Server?",
+      "antwort": "JSON-RPC. Das sind strukturierte JSON-Nachrichten mit Anfrage und Antwort, unabhängig davon, ob sie über stdio oder HTTP laufen.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-stdio",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Was ist der stdio-Transport bei MCP?",
+      "antwort": "Der Host startet den Server als lokalen Prozess und tauscht Nachrichten über dessen Standard-Ein- und -Ausgabe aus. Er läuft also auf dem eigenen Rechner.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-http",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Was ist der Streamable-HTTP-Transport bei MCP?",
+      "antwort": "Der Server läuft unabhängig und ist über eine HTTP-Adresse erreichbar, auch entfernt. Mehrere Clients können sich mit ihm verbinden.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-stdio-vs-http",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Wann nimmt man stdio, wann HTTP bei einem MCP-Server?",
+      "antwort": "stdio für lokale Werkzeuge wie Dateizugriff auf dem eigenen Rechner. HTTP, wenn der Server zentral oder bei einem Anbieter läuft und mehrere Nutzer bedient.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-stdout",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Warum darf ein stdio-MCP-Server keine Logs auf die Standardausgabe schreiben?",
+      "antwort": "Auf diesem Kanal laufen die MCP-Nachrichten selbst. Fremder Text würde sie zerstören, deshalb gehören Logs in die Fehlerausgabe (stderr).",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-capabilities",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Was heißt Capability Negotiation bei MCP?",
+      "antwort": "Beim Verbindungsaufbau teilen Client und Server mit, welche Funktionen sie unterstützen, etwa Tools oder Resources. Danach nutzen beide nur, was beide können.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-server-pflicht",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Was muss ein MCP-Server mindestens tun, damit ein Agent ihn nutzen kann?",
+      "antwort": "Er meldet seine Fähigkeiten, listet seine Tools mit Beschreibung und Eingabeschema auf und führt aufgerufene Tools aus. Das Ergebnis liefert er in der vereinbarten Form zurück.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-beschreibung",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Warum ist die Beschreibung eines Tools so wichtig?",
+      "antwort": "Das Modell entscheidet allein anhand von Name, Beschreibung und Schema, ob und wie es das Tool aufruft. Eine schlechte Beschreibung führt zu falschen oder ausbleibenden Aufrufen.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-iserror",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Wie meldet ein MCP-Tool, dass die Ausführung fehlgeschlagen ist?",
+      "antwort": "Es liefert ein normales Ergebnis, das als Fehler markiert ist (isError). So sieht das Modell die Fehlermeldung und kann darauf reagieren.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-ein-client-pro-server",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Wie viele Clients hat ein MCP-Host, wenn er mit drei Servern verbunden ist?",
+      "antwort": "Drei. Der Host hält für jeden Server einen eigenen Client mit einer eigenen Verbindung.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-auth-oauth",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 1,
+      "frage": "Wie wird der Zugriff auf einen entfernten MCP-Server abgesichert?",
+      "antwort": "Die MCP-Spezifikation sieht für HTTP eine Autorisierung auf Basis von OAuth vor. Der Client holt sich ein Token und legt es bei Anfragen vor.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-auth-lokal-remote",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Warum ist Authentifizierung bei entfernten Servern wichtiger als bei lokalen stdio-Servern?",
+      "antwort": "Ein entfernter Server ist über das Netz erreichbar, also kann jeder es versuchen. Ein lokaler stdio-Server läuft als Prozess des Nutzers und bekommt Zugangsdaten üblicherweise aus der Umgebung.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-vs-plugin",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Was unterscheidet MCP von einem klassischen Plugin?",
+      "antwort": "Ein Plugin ist an eine bestimmte Anwendung gebunden. Ein MCP-Server ist ein offener Standard und kann von vielen Hosts genutzt werden.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-tool-poisoning",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Was ist Tool Poisoning bei fremden MCP-Servern?",
+      "antwort": "Ein Server versteckt Anweisungen in der Tool-Beschreibung. Das Modell liest sie mit und kann sich davon steuern lassen.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-annotations",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 2,
+      "frage": "Darf man den Hinweisen eines Tools wie „nur lesend“ (readOnlyHint) vertrauen?",
+      "antwort": "Nein, nicht bei fremden Servern. Solche Annotationen sind Hinweise des Servers, keine Garantie, und ein Client soll sie bei nicht vertrauenswürdigen Servern nicht als gesichert behandeln.",
+      "quelle": "https://modelcontextprotocol.io"
+    },
+    {
+      "id": "aie-s-mcp-fremder-server",
+      "track": "aie",
+      "thema": "MCP",
+      "stufe": 3,
+      "frage": "Ein Kunde will einen Community-MCP-Server aus dem Internet anbinden. Was prüfst du zuerst?",
+      "antwort": "Wer ihn betreibt, welche Tools er anbietet und mit welchen Rechten er läuft. Danach begrenzt man seinen Zugriff auf das Nötigste und lässt riskante Aufrufe von einer Prüfinstanz freigeben.",
+      "quelle": "https://modelcontextprotocol.io"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "track": "fde",
+  "thema": "Integration",
+  "karten": [
+    {
+      "id": "fde-k-int-sso",
+      "track": "fde",
+      "thema": "Integration",
+      "stufe": 1,
+      "frage": "Was ist SSO?",
+      "antwort": "Single Sign-on: Nutzer melden sich einmal an und kommen damit in mehrere Anwendungen. Kunden verlangen es, weil die IT Zugänge zentral steuert.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-int-oidc-saml",
+      "track": "fde",
+      "thema": "Integration",
+      "stufe": 1,
+      "frage": "Was sind OIDC und SAML?",
+      "antwort": "Zwei Standards, mit denen eine Anwendung die Anmeldung einem zentralen Anmeldedienst überlässt. SAML ist älter und im Firmenumfeld verbreitet, OIDC moderner.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-int-legacy",
+      "track": "fde",
+      "thema": "Integration",
+      "stufe": 2,
+      "frage": "Was ist ein Legacy-System, und warum ist es eine Hürde?",
+      "antwort": "Ein altes System, das noch im Betrieb ist. Es hat oft keine moderne Schnittstelle, kaum Dokumentation und niemand traut sich, es zu ändern.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-int-api-vs-rpa",
+      "track": "fde",
+      "thema": "Integration",
+      "stufe": 2,
+      "frage": "API oder RPA: was ist der Unterschied?",
+      "antwort": "Eine API ist die vorgesehene Schnittstelle zwischen Systemen. RPA bedient die Oberfläche wie ein Mensch mit Mausklicks und bricht leichter, wenn sich die Oberfläche ändert.",
+      "quelle": "session-2026-10-27"
+    },
+    {
+      "id": "fde-k-int-legacy-szenario",
+      "track": "fde",
+      "thema": "Integration",
+      "stufe": 3,
+      "frage": "Das System des Kunden hat keine API. Was schlägst du vor?",
+      "antwort": "Ich kläre, ob es Export, Datenbankzugriff oder Importdateien gibt. Nur wenn nichts davon geht, kommt RPA in Frage, mit dem Wissen, dass es fragil ist.",
+      "quelle": "session-2026-10-27"
+    }
+  ]
+}
