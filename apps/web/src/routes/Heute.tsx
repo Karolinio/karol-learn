@@ -35,7 +35,7 @@ function Woche({ tage }: { tage: ReadonlySet<string> }) {
 }
 
 export function Heute() {
-  const { staende, sessions, einstellungen, setzeTrack } = useApp();
+  const { staende, sessions, einstellungen, setzeTrack, labor } = useApp();
   const inhalt = useInhalt();
   const navigate = useNavigate();
   const track = einstellungen.track;
@@ -49,6 +49,8 @@ export function Heute() {
     ? themenReihenfolge(inhalt, track).find((t) => (f.jeThema.find((x) => x.thema === t)?.offen ?? 0) > 0)
     : undefined;
   const naechstesBild = naechstesThema ? themenBildUrl(roadmapThema(inhalt, track, naechstesThema)) : undefined;
+  const geloest = new Set(labor.filter((e) => e.geloest).map((e) => e.szenarioId));
+  const stoerfall = inhalt.labor.find((s) => s.track === track && !geloest.has(s.id));
   const exportAlt = sessions.length > 2 && (!einstellungen.exportErinnert || tageBis(heute(), einstellungen.exportErinnert) > EXPORT_ERINNERUNG_TAGE);
 
   return (
@@ -74,6 +76,14 @@ export function Heute() {
             {session.length ? `${session.length} Karten starten` : 'Morgen geht es weiter'}
           </Button>
         </section>
+
+        {stoerfall ? (
+          <Link to={`/labor/fall/${stoerfall.id}`} className="karte zeile-link" data-testid="naechster-stoerfall">
+            <span className="zeile-link__icon" aria-hidden><Icon name="uebung" size={20} /></span>
+            <span className="zeile-link__text"><small>Nächster Störfall</small>{stoerfall.titel}</span>
+            <Icon name="weiter" size={18} className="zeile-link__pfeil" />
+          </Link>
+        ) : null}
 
         <section className="kachelreihe" aria-label="Lernstand">
           <Link to={`/fortschritt/${track}`} className="kachel kachel--kann"><strong>{f.kann}</strong><span>kann ich</span></Link>

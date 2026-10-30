@@ -33,6 +33,10 @@ describe('pruefeStruktur', () => {
     expect(pruefeStruktur([...sauber, 'inhalt/bilder/themen/foto.png'])[0]).toMatch(/<track>-<slug>\.webp/);
     expect(pruefeStruktur([...sauber, 'inhalt/entwuerfe/a.json'])[0]).toMatch(/nicht vorgesehen/);
   });
+  test('inhalt/labor erlaubt flache Szenario-Dateien, keine Unterordner', () => {
+    expect(pruefeStruktur([...sauber, 'inhalt/labor/aie-labor-x.json'])).toEqual([]);
+    expect(pruefeStruktur([...sauber, 'inhalt/labor/a/b.json'])[0]).toMatch(/flache JSON-Dateien/);
+  });
   test('Skripte flach, docs nur Markdown und Screenshots', () => {
     expect(pruefeStruktur([...sauber, 'scripts/alt/x.ts'])).toHaveLength(1);
     expect(pruefeStruktur([...sauber, 'docs/notiz.txt'])).toHaveLength(1);

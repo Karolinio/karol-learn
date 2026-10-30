@@ -1,6 +1,6 @@
 import { createStore, get, set, del } from 'idb-keyval';
 import { z } from 'zod';
-import { lernstandSchema, MAX_NEUE, sessionSchema, trackSchema } from '@karol-learn/karten-kern';
+import { laborErgebnisSchema, lernstandSchema, MAX_NEUE, sessionSchema, trackSchema } from '@karol-learn/karten-kern';
 
 export type SpeicherArt = 'idb' | 'local' | 'ram';
 
@@ -87,12 +87,17 @@ export const einstellungenSchema = z.object({
 });
 export type Einstellungen = z.infer<typeof einstellungenSchema>;
 
+/** Mehr gelöste Störfälle gibt es nicht; schützt den Import vor aufgeblähten Dateien. */
+export const MAX_LABOR_ERGEBNISSE = 500;
+
 export const exportSchema = z.object({
   version: z.literal(1),
   exportiert: z.string(),
   lernstand: z.record(lernstandSchema),
   sessions: z.array(sessionSchema),
   einstellungen: einstellungenSchema,
+  /** Gelöste Störfälle im Agent-Labor. Fehlt in Exporten vor dem 29.10.2026. */
+  labor: z.array(laborErgebnisSchema).max(MAX_LABOR_ERGEBNISSE).default([]),
 });
 export type SpeicherExport = z.infer<typeof exportSchema>;
 

@@ -1,0 +1,370 @@
+{
+  "id": "fde-labor-fehler-verschluckt",
+  "track": "fde",
+  "themen": [
+    "Fehler lesen",
+    "Betrieb",
+    "Schnittstellen"
+  ],
+  "titel": "Der Kunde ist angeblich weg",
+  "symptom": "Die CRM-API des Kunden antwortet mit 401. Der Harness macht daraus eine leere Liste []. Der Agent sagt: „Der Kunde existiert nicht.“ Der Trace ist grün, weil der Harness den Fehler verschluckt. Im Log steht nichts.",
+  "skript": {
+    "system": {
+      "text": "Du bist der Vertriebs-Assistent der Großbäckerei-Zulieferung Mehlwerk. Beantworte Fragen zu Kunden und Verträgen mit Daten aus dem CRM.",
+      "tokens": 700
+    },
+    "user": {
+      "text": "Hat die Bäckerei Heinemann (Kundennummer K-10482) ihren Rahmenvertrag schon verlängert?",
+      "tokens": 35
+    },
+    "tools": [
+      {
+        "name": "crm_kunde_lesen",
+        "beschreibung": "Liest einen Kunden aus dem CRM nach Kundennummer, mit Verträgen und Laufzeiten.",
+        "tokens": 180
+      },
+      {
+        "name": "crm_notiz_anlegen",
+        "beschreibung": "Legt eine Notiz am Kunden an.",
+        "tokens": 120
+      },
+      {
+        "name": "sende_mail",
+        "beschreibung": "Schickt eine interne Mail.",
+        "tokens": 110
+      }
+    ],
+    "runden": [
+      {
+        "denken": {
+          "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+          "tokens": 30
+        },
+        "bitte": {
+          "tool": "crm_kunde_lesen",
+          "args": "{\"kundennummer\": \"K-10482\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "[]",
+          "tokens": 5,
+          "fehler": {
+            "status": 401,
+            "text": "Unauthorized: access token expired"
+          }
+        }
+      },
+      {
+        "denken": {
+          "text": "Ich finde keinen Kunden mit der Nummer K-10482. Die Bäckerei Heinemann existiert im CRM nicht.",
+          "tokens": 50
+        },
+        "fertig": true
+      }
+    ]
+  },
+  "regler": {
+    "toolAnzahl": 3,
+    "maxRunden": null,
+    "kontextLimit": 200000,
+    "gateway": false,
+    "caching": false,
+    "fehlerDurchreichen": false
+  },
+  "ursachen": [
+    {
+      "id": "verschluckt",
+      "text": "Der Harness reicht den Fehlerstatus nicht durch und loggt ihn nicht.",
+      "richtig": true,
+      "warum": "Die API sagte 401, der Harness machte daraus eine leere Liste. Das Modell konnte nur „nichts gefunden“ sehen."
+    },
+    {
+      "id": "geloescht",
+      "text": "Der Kunde wurde wirklich gelöscht.",
+      "richtig": false,
+      "warum": "401 heißt „nicht angemeldet“, nicht „gibt es nicht“. Ein fehlender Kunde wäre ein 404 oder eine echte leere Liste."
+    },
+    {
+      "id": "luegt",
+      "text": "Das Modell lügt.",
+      "richtig": false,
+      "warum": "Das Modell hat ehrlich wiedergegeben, was es bekam: []. Falsch war die Eingabe, nicht die Antwort."
+    }
+  ],
+  "reparaturen": [
+    {
+      "id": "durchreichen",
+      "text": "Fehler durchreichen: Status 401 ins Ergebnis und in den Trace",
+      "richtig": true,
+      "warum": "Jetzt sieht das Modell den 401 und sagt ehrlich: kein Zugang. Im Trace ist der Span rot, und du weißt: Token erneuern.",
+      "regler": {
+        "fehlerDurchreichen": true
+      },
+      "skript": {
+        "system": {
+          "text": "Du bist der Vertriebs-Assistent der Großbäckerei-Zulieferung Mehlwerk. Beantworte Fragen zu Kunden und Verträgen mit Daten aus dem CRM.",
+          "tokens": 700
+        },
+        "user": {
+          "text": "Hat die Bäckerei Heinemann (Kundennummer K-10482) ihren Rahmenvertrag schon verlängert?",
+          "tokens": 35
+        },
+        "tools": [
+          {
+            "name": "crm_kunde_lesen",
+            "beschreibung": "Liest einen Kunden aus dem CRM nach Kundennummer, mit Verträgen und Laufzeiten.",
+            "tokens": 180
+          },
+          {
+            "name": "crm_notiz_anlegen",
+            "beschreibung": "Legt eine Notiz am Kunden an.",
+            "tokens": 120
+          },
+          {
+            "name": "sende_mail",
+            "beschreibung": "Schickt eine interne Mail.",
+            "tokens": 110
+          }
+        ],
+        "runden": [
+          {
+            "denken": {
+              "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "crm_kunde_lesen",
+              "args": "{\"kundennummer\": \"K-10482\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "[]",
+              "tokens": 5,
+              "fehler": {
+                "status": 401,
+                "text": "Unauthorized: access token expired"
+              }
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich komme gerade nicht ins CRM: Die Schnittstelle meldet 401, der Zugang ist abgelaufen. Das heißt nicht, dass der Kunde fehlt. Bitte das API-Token erneuern lassen, dann prüfe ich K-10482 sofort.",
+              "tokens": 80
+            },
+            "fertig": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "retry",
+      "text": "Bei leerem Ergebnis 5-mal wiederholen",
+      "richtig": false,
+      "warum": "Mit abgelaufenem Token scheitert jeder Versuch gleich. Fünfmal [], dieselbe falsche Antwort.",
+      "skript": {
+        "system": {
+          "text": "Du bist der Vertriebs-Assistent der Großbäckerei-Zulieferung Mehlwerk. Beantworte Fragen zu Kunden und Verträgen mit Daten aus dem CRM.",
+          "tokens": 700
+        },
+        "user": {
+          "text": "Hat die Bäckerei Heinemann (Kundennummer K-10482) ihren Rahmenvertrag schon verlängert?",
+          "tokens": 35
+        },
+        "tools": [
+          {
+            "name": "crm_kunde_lesen",
+            "beschreibung": "Liest einen Kunden aus dem CRM nach Kundennummer, mit Verträgen und Laufzeiten.",
+            "tokens": 180
+          },
+          {
+            "name": "crm_notiz_anlegen",
+            "beschreibung": "Legt eine Notiz am Kunden an.",
+            "tokens": 120
+          },
+          {
+            "name": "sende_mail",
+            "beschreibung": "Schickt eine interne Mail.",
+            "tokens": 110
+          }
+        ],
+        "runden": [
+          {
+            "denken": {
+              "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "crm_kunde_lesen",
+              "args": "{\"kundennummer\": \"K-10482\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "[]",
+              "tokens": 5,
+              "fehler": {
+                "status": 401,
+                "text": "Unauthorized: access token expired"
+              }
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "crm_kunde_lesen",
+              "args": "{\"kundennummer\": \"K-10482\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "[]",
+              "tokens": 5,
+              "fehler": {
+                "status": 401,
+                "text": "Unauthorized: access token expired"
+              }
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "crm_kunde_lesen",
+              "args": "{\"kundennummer\": \"K-10482\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "[]",
+              "tokens": 5,
+              "fehler": {
+                "status": 401,
+                "text": "Unauthorized: access token expired"
+              }
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "crm_kunde_lesen",
+              "args": "{\"kundennummer\": \"K-10482\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "[]",
+              "tokens": 5,
+              "fehler": {
+                "status": 401,
+                "text": "Unauthorized: access token expired"
+              }
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "crm_kunde_lesen",
+              "args": "{\"kundennummer\": \"K-10482\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "[]",
+              "tokens": 5,
+              "fehler": {
+                "status": 401,
+                "text": "Unauthorized: access token expired"
+              }
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich finde keinen Kunden mit der Nummer K-10482. Die Bäckerei Heinemann existiert im CRM nicht.",
+              "tokens": 50
+            },
+            "fertig": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "ehrlich",
+      "text": "System-Prompt ergänzen: „Sei immer ehrlich.“",
+      "richtig": false,
+      "warum": "Das Modell war ehrlich. Ohne den Fehler im Ergebnis kann es ihn nicht nennen.",
+      "skript": {
+        "system": {
+          "text": "Du bist der Vertriebs-Assistent der Großbäckerei-Zulieferung Mehlwerk. Beantworte Fragen zu Kunden und Verträgen mit Daten aus dem CRM. Sei immer ehrlich.",
+          "tokens": 706
+        },
+        "user": {
+          "text": "Hat die Bäckerei Heinemann (Kundennummer K-10482) ihren Rahmenvertrag schon verlängert?",
+          "tokens": 35
+        },
+        "tools": [
+          {
+            "name": "crm_kunde_lesen",
+            "beschreibung": "Liest einen Kunden aus dem CRM nach Kundennummer, mit Verträgen und Laufzeiten.",
+            "tokens": 180
+          },
+          {
+            "name": "crm_notiz_anlegen",
+            "beschreibung": "Legt eine Notiz am Kunden an.",
+            "tokens": 120
+          },
+          {
+            "name": "sende_mail",
+            "beschreibung": "Schickt eine interne Mail.",
+            "tokens": 110
+          }
+        ],
+        "runden": [
+          {
+            "denken": {
+              "text": "Ich lese den Kunden K-10482 aus dem CRM.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "crm_kunde_lesen",
+              "args": "{\"kundennummer\": \"K-10482\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "[]",
+              "tokens": 5,
+              "fehler": {
+                "status": 401,
+                "text": "Unauthorized: access token expired"
+              }
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich finde keinen Kunden mit der Nummer K-10482. Die Bäckerei Heinemann existiert im CRM nicht.",
+              "tokens": 50
+            },
+            "fertig": true
+          }
+        ]
+      }
+    }
+  ],
+  "karten": [
+    "fde-b-token-ablauf",
+    "fde-http-codes",
+    "fde-b-log-level",
+    "fde-log",
+    "fde-b-debug-vorgehen",
+    "fde-b-stacktrace-lesen"
+  ],
+  "beweis": {
+    "metrik": "fehlerSichtbar",
+    "erwartet": true
+  }
+}

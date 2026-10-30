@@ -38,6 +38,11 @@
   --color-yellow: #ffcc00;
   --color-pink: #ff2d55;
 
+  /* Agent-Labor: Rollen im Nachrichtenverlauf */
+  --color-bubble-modell: #e9e9eb;
+  --color-code-flaeche: #f5f5f8;
+  --color-code-text: #3a3a3f;
+
   /* Track-Akzente */
   --color-aie: #5856d6;
   --color-aie-pressed: #4644b8;

@@ -51,6 +51,16 @@ describe('Skizzen-Registry', () => {
       expect(s?.track, k.id).toBe(k.track);
     }
   });
+  test('jedes Feld skizze eines Labor-Störfalls zeigt auf eine Skizze desselben Tracks', () => {
+    const faelle = readdirSync(join(INHALT, 'labor')).filter((f) => f.includes('-labor-'))
+      .map((f) => JSON.parse(readFileSync(join(INHALT, 'labor', f), 'utf8')) as { id: string; track: Track; skizze?: string });
+    expect(faelle.filter((f) => f.skizze).length).toBeGreaterThanOrEqual(3);
+    for (const f of faelle.filter((x) => x.skizze)) {
+      const s = SKIZZEN.find((x) => x.id === f.skizze);
+      expect(s, `${f.id} → ${f.skizze}`).toBeDefined();
+      expect(s?.track, f.id).toBe(f.track);
+    }
+  });
   test('Agent-Loop bleibt unter seiner alten id erreichbar', () => {
     expect(findeSkizze('agent-loop', alle)?.titel).toBe('Agent-Loop');
   });

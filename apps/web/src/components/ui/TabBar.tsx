@@ -5,7 +5,7 @@ import { Icon, type IconName } from './Icon';
 const TABS: { zu: string; name: string; icon: IconName; ende?: boolean; auch?: string[] }[] = [
   { zu: '/', name: 'Heute', icon: 'heute', ende: true },
   { zu: '/roadmap', name: 'Roadmap', icon: 'roadmap', auch: ['/thema/'] },
-  { zu: '/skizzen', name: 'Skizzen', icon: 'diagramm', auch: ['/skizze/'] },
+  { zu: '/skizzen', name: 'Skizzen', icon: 'diagramm', auch: ['/skizze/', '/labor'] },
   { zu: '/lexikon', name: 'Lexikon', icon: 'lexikon' },
   { zu: '/mehr', name: 'Mehr', icon: 'mehr', auch: ['/einstellungen', '/fortschritt', '/eingang'] },
 ];

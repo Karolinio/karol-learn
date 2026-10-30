@@ -15,7 +15,7 @@ export const PAKET_PFLICHT: readonly string[] = ['package.json', 'src/index.ts']
 
 const TRACKS = ['aie', 'fde'];
 const NAME = /^[a-z0-9][a-z0-9-]*$/;
-const INHALT_ORDNER = ['bilder', 'karten', 'meldungen', 'roadmap', 'rohbestand', 'vorschlaege'];
+const INHALT_ORDNER = ['bilder', 'karten', 'labor', 'meldungen', 'roadmap', 'rohbestand', 'vorschlaege'];
 const INHALT_DATEIEN = ['meta.json', 'karten.json'];
 const DOCS_ORDNER = ['screenshots'];
 const SCRIPT_DATEI = /^[a-z0-9][a-z0-9-]*(\.test)?\.ts$/;

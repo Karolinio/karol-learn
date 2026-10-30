@@ -7,6 +7,9 @@ import { Einstellungen } from './routes/Einstellungen';
 import { Fertig } from './routes/Fertig';
 import { Fortschritt } from './routes/Fortschritt';
 import { Heute } from './routes/Heute';
+import { Labor } from './routes/Labor';
+import { LaborFall } from './routes/LaborFall';
+import { LaborSimulator } from './routes/LaborSimulator';
 import { Lexikon } from './routes/Lexikon';
 import { Mehr } from './routes/Mehr';
 import { Roadmap, RoadmapWeiche } from './routes/Roadmap';
@@ -44,6 +47,9 @@ function Rahmen() {
         <Route path="/thema/:track/:slug" element={<Thema />} />
         <Route path="/skizzen" element={<Skizzen />} />
         <Route path="/skizze/:id" element={<SkizzeSeite />} />
+        <Route path="/labor" element={<Labor />} />
+        <Route path="/labor/simulator" element={<LaborSimulator />} />
+        <Route path="/labor/fall/:id" element={<LaborFall />} />
         <Route path="/eingang" element={<Eingang />} />
         <Route path="/einstellungen" element={<Einstellungen />} />
         <Route path="/mehr" element={<Mehr />} />

@@ -58,19 +58,32 @@ describe('Export und Import', () => {
     einstellungen: { track: 'aie' as const, neueProSession: 10 as const },
   };
   test('Rundreise über JSON', () => {
-    const exp = baueExport(daten, new Date('2026-10-27T12:00:00Z'));
+    const exp = baueExport({ ...daten, labor: [] }, new Date('2026-10-27T12:00:00Z'));
     expect(exp.version).toBe(1);
     const r = pruefeImport(JSON.stringify(exp));
     expect(r.ok && r.daten.lernstand['aie-a']?.box).toBe(2);
   });
   test('alter Export ohne neueProSession wird mit 10 gelesen', () => {
-    const alt = { ...baueExport(daten), einstellungen: { track: 'fde' } };
+    const alt = { ...baueExport({ ...daten, labor: [] }), einstellungen: { track: 'fde' } };
     const r = pruefeImport(JSON.stringify(alt));
     expect(r.ok && r.daten.einstellungen.neueProSession).toBe(10);
   });
+  test('alter Export ohne labor bleibt importierbar, labor ist dann leer', () => {
+    const { labor: _weg, ...alt } = baueExport({ ...daten, labor: [] });
+    const r = pruefeImport(JSON.stringify(alt));
+    expect(r.ok && r.daten.labor).toEqual([]);
+  });
+  test('neuer Export trägt gelöste Störfälle hin und zurück, kaputte werden abgelehnt', () => {
+    const labor = [{ szenarioId: 'aie-labor-endlosschleife', track: 'aie' as const, geloest: true, versuche: 2, datum: '2026-10-29' }];
+    const r = pruefeImport(JSON.stringify(baueExport({ ...daten, labor })));
+    expect(r.ok && r.daten.labor).toEqual(labor);
+    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: [{ ...labor[0]!, versuche: 0 }] }))).ok).toBe(false);
+    const zuViele = Array.from({ length: 501 }, () => labor[0]!);
+    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: zuViele }))).ok).toBe(false);
+  });
   test('lehnt kaputtes JSON und falsches Schema ab', () => {
     expect(pruefeImport('{')).toEqual({ ok: false, fehler: 'Die Datei ist kein JSON.' });
-    const falsch = { ...baueExport(daten), lernstand: { x: { box: 9 } } };
+    const falsch = { ...baueExport({ ...daten, labor: [] }), lernstand: { x: { box: 9 } } };
     expect(pruefeImport(JSON.stringify(falsch)).ok).toBe(false);
   });
 });

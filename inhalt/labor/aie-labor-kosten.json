@@ -1,0 +1,526 @@
+{
+  "id": "aie-labor-kosten",
+  "track": "aie",
+  "themen": [
+    "Kosten",
+    "Kontext"
+  ],
+  "titel": "Die Rechnung ist viel zu hoch",
+  "symptom": "Ein Einkaufs-Agent prüft 11 Lieferanten, eine Runde pro Profil. Geschätzt waren 12 Runden mal 0,013 $, also 0,16 $. Die Rechnung zeigt 1,04 $, gut 6-mal so viel (Beispielpreise). Der Input wächst jede Runde.",
+  "skript": {
+    "system": {
+      "text": "Du bist ein Einkaufs-Agent der Stadtwerke. Prüfe Lieferanten für die Ausschreibung „Elektroinstallation Schule Nord“ nach Referenzen, Zertifikaten, Preis und Reaktionszeit.",
+      "tokens": 2000
+    },
+    "user": {
+      "text": "Bitte prüfe die 11 Bewerber und nenne mir die drei besten.",
+      "tokens": 30
+    },
+    "tools": [
+      {
+        "name": "lies_lieferant",
+        "beschreibung": "Liest das Profil eines Lieferanten aus dem Lieferantenportal.",
+        "tokens": 220
+      },
+      {
+        "name": "suche_lieferant",
+        "beschreibung": "Sucht Lieferanten nach Gewerk und Region.",
+        "tokens": 220
+      },
+      {
+        "name": "vergleiche_preise",
+        "beschreibung": "Vergleicht Stundensätze mehrerer Lieferanten.",
+        "tokens": 230
+      },
+      {
+        "name": "lies_ausschreibung",
+        "beschreibung": "Liest die Ausschreibungsunterlagen.",
+        "tokens": 210
+      },
+      {
+        "name": "pruefe_zertifikat",
+        "beschreibung": "Prüft ein Zertifikat beim Aussteller.",
+        "tokens": 220
+      },
+      {
+        "name": "schreibe_vermerk",
+        "beschreibung": "Legt einen Vergabevermerk an.",
+        "tokens": 230
+      },
+      {
+        "name": "lies_bewertungen",
+        "beschreibung": "Liest Bewertungen früherer Aufträge.",
+        "tokens": 220
+      },
+      {
+        "name": "sende_rueckfrage",
+        "beschreibung": "Schickt eine Rückfrage an einen Bieter.",
+        "tokens": 230
+      }
+    ],
+    "runden": [
+      {
+        "denken": {
+          "text": "Ich lese die Lieferantenprofile einzeln, zuerst Kaya.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Kaya Elektrotechnik\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Kaya Elektrotechnik: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Brandt & Söhne.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Brandt & Söhne\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Brandt & Söhne: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Nordlicht Solar.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Nordlicht Solar\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Nordlicht Solar: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Hessler Kabel.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Hessler Kabel\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Hessler Kabel: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Voss Gebäudetechnik.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Voss Gebäudetechnik\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Voss Gebäudetechnik: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Petrović Installation.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Petrović Installation\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Petrović Installation: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Weber Lichtsysteme.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Weber Lichtsysteme\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Weber Lichtsysteme: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Aydin Montage.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Aydin Montage\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Aydin Montage: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Schulte Energie.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Schulte Energie\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Schulte Energie: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Lang Elektro.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Lang Elektro\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Lang Elektro: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Weiter mit Rheinwerk Technik.",
+          "tokens": 110
+        },
+        "bitte": {
+          "tool": "lies_lieferant",
+          "args": "{\"name\": \"Rheinwerk Technik\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Profil Rheinwerk Technik: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+          "tokens": 4300
+        }
+      },
+      {
+        "denken": {
+          "text": "Die drei besten Angebote: Kaya Elektrotechnik, Voss Gebäudetechnik und Schulte Energie. Begründung: kürzeste Reaktionszeit, alle Zertifikate, Stundensatz unter 70 €.",
+          "tokens": 160
+        },
+        "fertig": true
+      }
+    ]
+  },
+  "regler": {
+    "toolAnzahl": 8,
+    "maxRunden": null,
+    "kontextLimit": 200000,
+    "gateway": false,
+    "caching": false,
+    "fehlerDurchreichen": false
+  },
+  "ursachen": [
+    {
+      "id": "historie",
+      "text": "Jede Runde liest die ganze Historie neu, ohne Cache.",
+      "richtig": true,
+      "warum": "Runde 12 bezahlt alle elf Profile davor noch einmal mit. Ohne Cache wird der gleiche Anfang jedes Mal voll berechnet."
+    },
+    {
+      "id": "ausgabe",
+      "text": "Die Antworten des Modells sind zu lang.",
+      "richtig": false,
+      "warum": "Die Antworten sind kurz, rund 130 Tokens pro Runde. Der Input wächst viel schneller."
+    },
+    {
+      "id": "parallel",
+      "text": "Es laufen zu viele Tool-Aufrufe parallel.",
+      "richtig": false,
+      "warum": "Der Agent ruft nacheinander je ein Tool auf, nichts parallel. Teuer ist, dass alles Alte jedes Mal mitgelesen wird."
+    }
+  ],
+  "reparaturen": [
+    {
+      "id": "caching",
+      "text": "Prompt Caching an: System und Tools vorn, stabil",
+      "richtig": true,
+      "warum": "Der gleiche Anfang kostet ab Runde 2 nur ein Zehntel. Darum gehört alles Feste nach vorn und darf sich nicht ändern.",
+      "regler": {
+        "caching": true
+      }
+    },
+    {
+      "id": "kuerzer",
+      "text": "Modell-Antworten kürzen",
+      "richtig": false,
+      "warum": "Das spart ein paar Cent. Der große Posten, der wachsende Input, bleibt.",
+      "skript": {
+        "system": {
+          "text": "Du bist ein Einkaufs-Agent der Stadtwerke. Prüfe Lieferanten für die Ausschreibung „Elektroinstallation Schule Nord“ nach Referenzen, Zertifikaten, Preis und Reaktionszeit.",
+          "tokens": 2000
+        },
+        "user": {
+          "text": "Bitte prüfe die 11 Bewerber und nenne mir die drei besten.",
+          "tokens": 30
+        },
+        "tools": [
+          {
+            "name": "lies_lieferant",
+            "beschreibung": "Liest das Profil eines Lieferanten aus dem Lieferantenportal.",
+            "tokens": 220
+          },
+          {
+            "name": "suche_lieferant",
+            "beschreibung": "Sucht Lieferanten nach Gewerk und Region.",
+            "tokens": 220
+          },
+          {
+            "name": "vergleiche_preise",
+            "beschreibung": "Vergleicht Stundensätze mehrerer Lieferanten.",
+            "tokens": 230
+          },
+          {
+            "name": "lies_ausschreibung",
+            "beschreibung": "Liest die Ausschreibungsunterlagen.",
+            "tokens": 210
+          },
+          {
+            "name": "pruefe_zertifikat",
+            "beschreibung": "Prüft ein Zertifikat beim Aussteller.",
+            "tokens": 220
+          },
+          {
+            "name": "schreibe_vermerk",
+            "beschreibung": "Legt einen Vergabevermerk an.",
+            "tokens": 230
+          },
+          {
+            "name": "lies_bewertungen",
+            "beschreibung": "Liest Bewertungen früherer Aufträge.",
+            "tokens": 220
+          },
+          {
+            "name": "sende_rueckfrage",
+            "beschreibung": "Schickt eine Rückfrage an einen Bieter.",
+            "tokens": 230
+          }
+        ],
+        "runden": [
+          {
+            "denken": {
+              "text": "Ich lese die Lieferantenprofile einzeln, zuerst Kaya.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Kaya Elektrotechnik\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Kaya Elektrotechnik: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Brandt & Söhne.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Brandt & Söhne\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Brandt & Söhne: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Nordlicht Solar.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Nordlicht Solar\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Nordlicht Solar: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Hessler Kabel.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Hessler Kabel\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Hessler Kabel: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Voss Gebäudetechnik.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Voss Gebäudetechnik\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Voss Gebäudetechnik: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Petrović Installation.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Petrović Installation\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Petrović Installation: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Weber Lichtsysteme.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Weber Lichtsysteme\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Weber Lichtsysteme: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Aydin Montage.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Aydin Montage\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Aydin Montage: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Schulte Energie.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Schulte Energie\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Schulte Energie: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Lang Elektro.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Lang Elektro\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Lang Elektro: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Weiter mit Rheinwerk Technik.",
+              "tokens": 40
+            },
+            "bitte": {
+              "tool": "lies_lieferant",
+              "args": "{\"name\": \"Rheinwerk Technik\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "Profil Rheinwerk Technik: Referenzen, Zertifikate (ISO 9001, VDE), Mitarbeitende, Preise je Stunde, Reaktionszeit, Bewertungen der letzten 24 Monate …",
+              "tokens": 4300
+            }
+          },
+          {
+            "denken": {
+              "text": "Die drei besten Angebote: Kaya Elektrotechnik, Voss Gebäudetechnik und Schulte Energie. Begründung: kürzeste Reaktionszeit, alle Zertifikate, Stundensatz unter 70 €.",
+              "tokens": 160
+            },
+            "fertig": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "batch",
+      "text": "Batch-Verarbeitung nutzen",
+      "richtig": false,
+      "warum": "Batch gibt Rabatt, aber Antworten dauern Minuten bis Stunden. Ein Agent wartet auf jede, und die Historie wächst trotzdem.",
+      "wirkungslos": true
+    }
+  ],
+  "karten": [
+    "aie-verlauf-teurer",
+    "aie-prompt-caching",
+    "aie-cache-praefix",
+    "aie-input-tokens",
+    "aie-schleife-kosten",
+    "aie-budget-limit"
+  ],
+  "beweis": {
+    "metrik": "usd",
+    "erwartet": 0.5
+  }
+}

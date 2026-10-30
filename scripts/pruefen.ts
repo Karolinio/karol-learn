@@ -1,6 +1,6 @@
-import { fehlendeBilder, pruefeBestand, type Karte } from '@karol-learn/karten-kern';
+import { fehlendeBilder, pruefeBestand, pruefeLabor, type Karte } from '@karol-learn/karten-kern';
 import { vorhandeneBilder } from './index-lib';
-import { INHALT, liesRoadmaps, liesThemenDateien } from './lib';
+import { INHALT, liesLabor, liesRoadmaps, liesThemenDateien } from './lib';
 
 const dateien = liesThemenDateien();
 const ergebnis = pruefeBestand(dateien);
@@ -20,6 +20,14 @@ for (const r of roadmaps) {
   for (const t of themen) if (!inRoadmap.has(t)) fehler.push(`roadmap/${r.track}: Thema "${t}" fehlt in der Roadmap`);
 }
 
+// Labor: jeder Störfall wird kaputt und mit allen drei Reparaturen simuliert.
+const labor = liesLabor();
+fehler.push(...labor.fehler, ...pruefeLabor(labor.roh, new Map(karten.map((k) => [k.id, k]))));
+for (const s of labor.szenarien) {
+  const themen = new Set(roadmaps.find((r) => r.track === s.track)?.themen.map((t) => t.thema) ?? []);
+  for (const t of s.themen) if (!themen.has(t)) fehler.push(`labor/${s.id}: Thema "${t}" fehlt in der Roadmap`);
+}
+
 // Fehlende Themenbilder sind nur eine Warnung: die App zeigt dann ein Symbol.
 const ohneBild = fehlendeBilder(roadmaps, vorhandeneBilder(INHALT));
 if (ohneBild.length) {
@@ -30,5 +38,5 @@ if (fehler.length) {
   process.stderr.write(`pruefen: ${fehler.length} Fehler\n${fehler.map((f) => `  ${f}`).join('\n')}\n`);
   process.exitCode = 1;
 } else {
-  process.stdout.write(`pruefen: grün, ${ergebnis.anzahl} Karten in ${dateien.length} Dateien, ${roadmaps.length} Roadmaps\n`);
+  process.stdout.write(`pruefen: grün, ${ergebnis.anzahl} Karten in ${dateien.length} Dateien, ${roadmaps.length} Roadmaps, ${labor.szenarien.length} Störfälle belegt\n`);
 }

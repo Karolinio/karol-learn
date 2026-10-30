@@ -1,0 +1,238 @@
+{
+  "id": "aie-labor-falsches-tool",
+  "track": "aie",
+  "themen": [
+    "Tools"
+  ],
+  "titel": "Der Agent greift zum falschen Tool",
+  "symptom": "Die Frage: Ist Rechnung RE-2026-0815 bezahlt? Der Agent ruft daten_holen auf, nicht rechnung_suchen. Er bekommt eine Bestellung mit ähnlicher Nummer zurück und antwortet: „noch offen“. In Wahrheit ist die Rechnung bezahlt.",
+  "skript": {
+    "system": {
+      "text": "Du bist der Buchhaltungs-Assistent der Kanzlei Berger. Beantworte Fragen zu Rechnungen, Bestellungen und Kunden.",
+      "tokens": 600
+    },
+    "user": {
+      "text": "Ist die Rechnung RE-2026-0815 von Elektro Kaya schon bezahlt?",
+      "tokens": 30
+    },
+    "tools": [
+      {
+        "name": "daten_holen",
+        "beschreibung": "Holt Daten.",
+        "tokens": 40
+      },
+      {
+        "name": "rechnung_suchen",
+        "beschreibung": "Sucht.",
+        "tokens": 40
+      },
+      {
+        "name": "kunde_daten",
+        "beschreibung": "Kundendaten.",
+        "tokens": 40
+      }
+    ],
+    "runden": [
+      {
+        "denken": {
+          "text": "Ich hole die Daten zu RE-2026-0815.",
+          "tokens": 30
+        },
+        "bitte": {
+          "tool": "daten_holen",
+          "args": "{\"query\": \"RE-2026-0815\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "{\"quelle\": \"Bestellungen\", \"treffer\": [{\"bestellung\": \"BE-2026-0815\", \"lieferant\": \"Elektro Kaya\", \"status\": \"offen\"}]}",
+          "tokens": 180
+        }
+      },
+      {
+        "denken": {
+          "text": "Die Rechnung RE-2026-0815 von Elektro Kaya ist noch offen. Sie wurde nicht bezahlt.",
+          "tokens": 60
+        },
+        "fertig": true
+      }
+    ]
+  },
+  "regler": {
+    "toolAnzahl": 3,
+    "maxRunden": null,
+    "kontextLimit": 200000,
+    "gateway": false,
+    "caching": false,
+    "fehlerDurchreichen": false
+  },
+  "ursachen": [
+    {
+      "id": "vage",
+      "text": "Die Tool-Beschreibungen sind vage, die Namen überlappen.",
+      "richtig": true,
+      "warum": "„Holt Daten“ passt auf alles. Das Modell wählt nach Name, Beschreibung und Parametern. Sind sie unklar, rät es."
+    },
+    {
+      "id": "halluziniert",
+      "text": "Das Modell halluziniert.",
+      "richtig": false,
+      "warum": "Das Modell hat nichts erfunden. Es hat ein echtes Ergebnis richtig wiedergegeben, nur vom falschen Tool."
+    },
+    {
+      "id": "zuordnung",
+      "text": "Das Ergebnis wurde dem falschen Aufruf zugeordnet.",
+      "richtig": false,
+      "warum": "Aufruf und Ergebnis tragen dieselbe Aufruf-id. Die Zuordnung stimmt, die Auswahl nicht."
+    }
+  ],
+  "reparaturen": [
+    {
+      "id": "beschreiben",
+      "text": "Klare Namen und Beschreibungen: wann nutzen, wann nicht",
+      "richtig": true,
+      "warum": "Jetzt steht drin, wofür rechnung_suchen da ist und wofür nicht. Das Modell greift zum richtigen Tool.",
+      "skript": {
+        "system": {
+          "text": "Du bist der Buchhaltungs-Assistent der Kanzlei Berger. Beantworte Fragen zu Rechnungen, Bestellungen und Kunden.",
+          "tokens": 600
+        },
+        "user": {
+          "text": "Ist die Rechnung RE-2026-0815 von Elektro Kaya schon bezahlt?",
+          "tokens": 30
+        },
+        "tools": [
+          {
+            "name": "rechnung_suchen",
+            "beschreibung": "Sucht Eingangsrechnungen nach Rechnungsnummer (Format RE-JJJJ-NNNN). Liefert Betrag, Fälligkeit und Zahlstatus. Nutzen bei Fragen zu Rechnungen und Zahlungen. Nicht für Bestellungen, dafür bestellung_suchen.",
+            "tokens": 160
+          },
+          {
+            "name": "bestellung_suchen",
+            "beschreibung": "Sucht Bestellungen nach Bestellnummer (Format BE-JJJJ-NNNN). Liefert Lieferant und Lieferstatus. Nicht für Rechnungen oder Zahlungen.",
+            "tokens": 120
+          },
+          {
+            "name": "kunde_lesen",
+            "beschreibung": "Liest Stammdaten eines Mandanten nach Mandantennummer. Nicht für Lieferanten.",
+            "tokens": 90
+          }
+        ],
+        "runden": [
+          {
+            "denken": {
+              "text": "Die Frage betrifft eine Rechnung und ihren Zahlstatus, also rechnung_suchen.",
+              "tokens": 35
+            },
+            "bitte": {
+              "tool": "rechnung_suchen",
+              "args": "{\"rechnungsnummer\": \"RE-2026-0815\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "{\"rechnung\": \"RE-2026-0815\", \"lieferant\": \"Elektro Kaya GmbH\", \"betrag\": \"2.380,00 €\", \"faellig\": \"2026-10-15\", \"status\": \"bezahlt\", \"bezahlt_am\": \"2026-10-12\"}",
+              "tokens": 90
+            }
+          },
+          {
+            "denken": {
+              "text": "Ja. Die Rechnung RE-2026-0815 von Elektro Kaya über 2.380,00 € wurde am 12.10.2026 bezahlt, drei Tage vor Fälligkeit.",
+              "tokens": 60
+            },
+            "fertig": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "mehr",
+      "text": "Mehr Tools anbieten (8 statt 3)",
+      "richtig": false,
+      "warum": "Mehr unklare Tools machen die Wahl schwerer, nicht leichter. Und jede Beschreibung kostet Tokens.",
+      "regler": {
+        "toolAnzahl": 8
+      }
+    },
+    {
+      "id": "retry",
+      "text": "Bei Zweifel einfach nochmal fragen (Retry)",
+      "richtig": false,
+      "warum": "Ein neuer Versuch ändert nichts an der Ursache. Das Modell kann wieder zum falschen Tool greifen.",
+      "skript": {
+        "system": {
+          "text": "Du bist der Buchhaltungs-Assistent der Kanzlei Berger. Beantworte Fragen zu Rechnungen, Bestellungen und Kunden.",
+          "tokens": 600
+        },
+        "user": {
+          "text": "Ist die Rechnung RE-2026-0815 von Elektro Kaya schon bezahlt?",
+          "tokens": 30
+        },
+        "tools": [
+          {
+            "name": "daten_holen",
+            "beschreibung": "Holt Daten.",
+            "tokens": 40
+          },
+          {
+            "name": "rechnung_suchen",
+            "beschreibung": "Sucht.",
+            "tokens": 40
+          },
+          {
+            "name": "kunde_daten",
+            "beschreibung": "Kundendaten.",
+            "tokens": 40
+          }
+        ],
+        "runden": [
+          {
+            "denken": {
+              "text": "Ich hole die Daten zu RE-2026-0815.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "daten_holen",
+              "args": "{\"query\": \"RE-2026-0815\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "{\"quelle\": \"Bestellungen\", \"treffer\": [{\"bestellung\": \"BE-2026-0815\", \"lieferant\": \"Elektro Kaya\", \"status\": \"offen\"}]}",
+              "tokens": 180
+            }
+          },
+          {
+            "denken": {
+              "text": "Ich hole die Daten zu RE-2026-0815.",
+              "tokens": 30
+            },
+            "bitte": {
+              "tool": "daten_holen",
+              "args": "{\"query\": \"RE-2026-0815\"}",
+              "tokens": 25
+            },
+            "ergebnis": {
+              "text": "{\"quelle\": \"Bestellungen\", \"treffer\": [{\"bestellung\": \"BE-2026-0815\", \"lieferant\": \"Elektro Kaya\", \"status\": \"offen\"}]}",
+              "tokens": 180
+            }
+          },
+          {
+            "denken": {
+              "text": "Die Rechnung RE-2026-0815 von Elektro Kaya ist noch offen. Sie wurde nicht bezahlt.",
+              "tokens": 60
+            },
+            "fertig": true
+          }
+        ]
+      }
+    }
+  ],
+  "karten": [
+    "aie-beschreibung-gut",
+    "aie-tool-name",
+    "aie-tool-schema",
+    "aie-tool-arten"
+  ],
+  "beweis": {
+    "metrik": "tool",
+    "erwartet": "rechnung_suchen"
+  }
+}

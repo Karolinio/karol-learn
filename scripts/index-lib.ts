@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { ordneBilderZu, themenBildDatei, type Karte, type Roadmap } from '@karol-learn/karten-kern';
-import { liesRoadmaps, liesThemenDateien, schreibeJson } from './lib';
+import { liesLabor, liesRoadmaps, liesThemenDateien, schreibeJson } from './lib';
 
 export interface IndexOptionen {
   /** Ordner `inhalt/` (Quelle). */
@@ -13,7 +13,7 @@ export interface IndexOptionen {
   jetzt?: Date;
 }
 
-export interface IndexErgebnis { karten: number; roadmaps: number; bilder: number }
+export interface IndexErgebnis { karten: number; roadmaps: number; bilder: number; labor: number }
 
 /** Liest die vorhandenen Themenbilder (nur `*.webp` direkt im Ordner). */
 export function vorhandeneBilder(inhalt: string): Set<string> {
@@ -42,6 +42,15 @@ export function baueIndex(o: IndexOptionen): IndexErgebnis {
   const roadmaps = liesRoadmaps(o.inhalt)
     .map((r) => ordneBilderZu({ ...r, themen: r.themen.filter((t) => !aus.has(t.thema)) }, bilder));
   const kopiert = kopiereBilder(o.inhalt, o.ziel, roadmaps);
-  schreibeJson(join(o.ziel, 'index.json'), { version: 1, stand: (o.jetzt ?? new Date()).toISOString(), karten, roadmaps });
-  return { karten: karten.length, roadmaps: roadmaps.length, bilder: kopiert };
+  // Labor: sichtbar, solange eines seiner Themen bleibt. Ausgeschlossene Themen und Karten,
+  // die nicht im Index stehen, verschwinden auch aus dem Szenario (sonst leaken ihre Namen).
+  const sichtbar = (x: { themen: readonly string[] }) => x.themen.some((t) => !aus.has(t));
+  const kartenIds = new Set(karten.map((k) => k.id));
+  const bestand = liesLabor(o.inhalt);
+  const labor = bestand.szenarien.filter(sichtbar).map((s) => ({
+    ...s, themen: s.themen.filter((t) => !aus.has(t)), karten: s.karten.filter((id) => kartenIds.has(id)),
+  }));
+  const grundlaeufe = bestand.grundlaeufe.filter(sichtbar).map((g) => ({ ...g, themen: g.themen.filter((t) => !aus.has(t)) }));
+  schreibeJson(join(o.ziel, 'index.json'), { version: 1, stand: (o.jetzt ?? new Date()).toISOString(), karten, roadmaps, labor, grundlaeufe });
+  return { karten: karten.length, roadmaps: roadmaps.length, bilder: kopiert, labor: labor.length };
 }

@@ -1,0 +1,150 @@
+{
+  "id": "aie-grundlauf",
+  "track": "aie",
+  "themen": [
+    "Harness",
+    "Agent"
+  ],
+  "titel": "Support-Agent: Wo ist mein Paket?",
+  "skript": {
+    "system": {
+      "text": "Du bist der Kundenservice-Agent des Online-Shops Gartenglück. Kläre Lieferfragen und erstatte Versandkosten nach Richtlinie.",
+      "tokens": 1100
+    },
+    "user": {
+      "text": "Meine Bestellung 48213 ist seit einer Woche nicht da. Wo ist sie, und bekomme ich die Versandkosten zurück?",
+      "tokens": 45
+    },
+    "tools": [
+      {
+        "name": "suche_bestellung",
+        "beschreibung": "Sucht eine Bestellung nach Nummer. Liefert Artikel, Versandart und Sendungsnummer.",
+        "tokens": 170
+      },
+      {
+        "name": "sendung_verfolgen",
+        "beschreibung": "Fragt den Paketdienst nach dem Status einer Sendung.",
+        "tokens": 150
+      },
+      {
+        "name": "lies_richtlinie",
+        "beschreibung": "Liest eine interne Richtlinie im Volltext.",
+        "tokens": 120
+      },
+      {
+        "name": "erstatte_betrag",
+        "beschreibung": "Erstattet einen Betrag auf das Zahlungsmittel des Kunden.",
+        "tokens": 160
+      },
+      {
+        "name": "sende_mail",
+        "beschreibung": "Schickt dem Kunden eine Mail.",
+        "tokens": 130
+      }
+    ],
+    "runden": [
+      {
+        "denken": {
+          "text": "Ich schaue mir die Bestellung an.",
+          "tokens": 20
+        },
+        "bitte": {
+          "tool": "suche_bestellung",
+          "args": "{\"nr\": \"48213\"}",
+          "tokens": 20
+        },
+        "ergebnis": {
+          "text": "{\"nr\": \"48213\", \"artikel\": [\"Hochbeet Lärche 120 cm\"], \"versand\": \"DHL Paket\", \"sendung\": \"00340434161094042557\", \"versandkosten\": \"4,90 €\"}",
+          "tokens": 400
+        }
+      },
+      {
+        "denken": {
+          "text": "Ich frage den Paketdienst.",
+          "tokens": 15
+        },
+        "bitte": {
+          "tool": "sendung_verfolgen",
+          "args": "{\"sendung\": \"00340434161094042557\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "{\"status\": \"unbekannt\"}",
+          "tokens": 20,
+          "fehler": {
+            "status": 503,
+            "text": "Service Unavailable: Paketdienst antwortet nicht"
+          }
+        }
+      },
+      {
+        "denken": {
+          "text": "Kein klarer Status. Ich frage noch einmal.",
+          "tokens": 15
+        },
+        "bitte": {
+          "tool": "sendung_verfolgen",
+          "args": "{\"sendung\": \"00340434161094042557\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Sendungsverlauf: 17.10. eingeliefert, 18.10. Paketzentrum Hamm, 23.10. Zustellversuch, Empfänger nicht angetroffen, 23.10. in Filiale Bahnhofstr. 12 zur Abholung, Frist bis 30.10. …",
+          "tokens": 1200
+        }
+      },
+      {
+        "denken": {
+          "text": "Jetzt prüfe ich, ob Versandkosten erstattet werden.",
+          "tokens": 20
+        },
+        "bitte": {
+          "tool": "lies_richtlinie",
+          "args": "{\"name\": \"Erstattungsrichtlinie 2026\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Erstattungsrichtlinie 2026, Volltext mit 14 Kapiteln: Geltungsbereich, Rückgabe, Umtausch, Versandkosten (Kapitel 9: Erstattung bei Lieferverzug über 5 Werktage), Zahlarten, Sonderfälle …",
+          "tokens": 18000
+        }
+      },
+      {
+        "denken": {
+          "text": "Der Verzug liegt über 5 Werktagen. Ich erstatte die Versandkosten.",
+          "tokens": 25
+        },
+        "bitte": {
+          "tool": "erstatte_betrag",
+          "args": "{\"bestellung\": \"48213\", \"betrag\": \"4,90 €\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "{\"erstattet\": \"4,90 €\", \"vorgang\": \"ER-77120\"}",
+          "tokens": 30
+        }
+      },
+      {
+        "denken": {
+          "text": "Ihr Hochbeet liegt seit dem 23.10. in der Filiale Bahnhofstr. 12 und wartet dort bis zum 30.10. auf Sie. Die Versandkosten von 4,90 € habe ich Ihnen erstattet (Vorgang ER-77120).",
+          "tokens": 90
+        },
+        "fertig": true
+      }
+    ]
+  },
+  "regler": {
+    "toolAnzahl": 5,
+    "maxRunden": null,
+    "kontextLimit": 32000,
+    "gateway": false,
+    "caching": false,
+    "fehlerDurchreichen": false,
+    "mandat": {
+      "tools": [
+        "suche_bestellung",
+        "sendung_verfolgen",
+        "lies_richtlinie",
+        "sende_mail"
+      ]
+    }
+  }
+}

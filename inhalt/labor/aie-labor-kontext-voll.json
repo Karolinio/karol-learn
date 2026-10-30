@@ -1,0 +1,162 @@
+{
+  "id": "aie-labor-kontext-voll",
+  "track": "aie",
+  "themen": [
+    "Kontext",
+    "Kosten"
+  ],
+  "skizze": "kontextfenster",
+  "titel": "Plötzlich ist das Fenster voll",
+  "symptom": "Ein Analyse-Agent soll drei Quartalsberichte vergleichen. Er liest jeden Bericht komplett, je 40.000 Tokens. In Runde 4 scheitert der Aufruf: Kontext voll. Eine Antwort gibt es nie.",
+  "skript": {
+    "system": {
+      "text": "Du bist ein Finanz-Analyst für die Geschäftsführung. Antworte mit Zahlen und nenne die Quelle.",
+      "tokens": 700
+    },
+    "user": {
+      "text": "Vergleiche die Umsätze von Q1 bis Q3 2026. In welchem Monat gab es den stärksten Rückgang?",
+      "tokens": 40
+    },
+    "tools": [
+      {
+        "name": "lies_bericht",
+        "beschreibung": "Liest einen Quartalsbericht als Text.",
+        "tokens": 180
+      },
+      {
+        "name": "suche_im_bericht",
+        "beschreibung": "Sucht eine Stelle in einem Bericht.",
+        "tokens": 190
+      },
+      {
+        "name": "rechne",
+        "beschreibung": "Rechnet einen Ausdruck aus.",
+        "tokens": 150
+      }
+    ],
+    "runden": [
+      {
+        "denken": {
+          "text": "Ich lese zuerst den Bericht für Q1.",
+          "tokens": 30
+        },
+        "bitte": {
+          "tool": "lies_bericht",
+          "args": "{\"datei\": \"Q1-2026.pdf\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Quartalsbericht Q1 2026, 86 Seiten: Vorwort der Geschäftsführung, Lagebericht, Personal, Investitionen. Umsatz nach Monaten: Januar 4,1 Mio. €, Februar 3,8 Mio. €, März 4,4 Mio. €. Anhang mit Bilanz, Kapitalfluss und Risikobericht …",
+          "tokens": 40000
+        }
+      },
+      {
+        "denken": {
+          "text": "Jetzt Q2.",
+          "tokens": 20
+        },
+        "bitte": {
+          "tool": "lies_bericht",
+          "args": "{\"datei\": \"Q2-2026.pdf\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Quartalsbericht Q2 2026, 86 Seiten: Vorwort der Geschäftsführung, Lagebericht, Personal, Investitionen. Umsatz nach Monaten: April 4,0 Mio. €, Mai 3,2 Mio. €, Juni 3,9 Mio. €. Anhang mit Bilanz, Kapitalfluss und Risikobericht …",
+          "tokens": 40000
+        }
+      },
+      {
+        "denken": {
+          "text": "Und Q3.",
+          "tokens": 20
+        },
+        "bitte": {
+          "tool": "lies_bericht",
+          "args": "{\"datei\": \"Q3-2026.pdf\"}",
+          "tokens": 25
+        },
+        "ergebnis": {
+          "text": "Quartalsbericht Q3 2026, 86 Seiten: Vorwort der Geschäftsführung, Lagebericht, Personal, Investitionen. Umsatz nach Monaten: Juli 3,7 Mio. €, August 3,5 Mio. €, September 4,2 Mio. €. Anhang mit Bilanz, Kapitalfluss und Risikobericht …",
+          "tokens": 40000
+        }
+      },
+      {
+        "denken": {
+          "text": "Den stärksten Rückgang gab es im Mai 2026: von 4,0 Mio. € im April auf 3,2 Mio. €, also minus 20 %. Quelle: Quartalsbericht Q2, Umsatz nach Monaten.",
+          "tokens": 120
+        },
+        "fertig": true
+      }
+    ]
+  },
+  "regler": {
+    "toolAnzahl": 3,
+    "maxRunden": null,
+    "kontextLimit": 100000,
+    "gateway": false,
+    "caching": false,
+    "fehlerDurchreichen": false
+  },
+  "ursachen": [
+    {
+      "id": "ungekuerzt",
+      "text": "Die Tool-Ergebnisse kommen ungekürzt in den Verlauf.",
+      "richtig": true,
+      "warum": "Jeder Bericht bringt 40.000 Tokens mit, und alle bleiben im Verlauf. Nach drei Berichten passt nichts mehr hinein."
+    },
+    {
+      "id": "tools",
+      "text": "Es werden zu viele Tools angeboten.",
+      "richtig": false,
+      "warum": "Die drei Tool-Beschreibungen sind zusammen nur rund 500 Tokens. Das ist nicht der Brocken."
+    },
+    {
+      "id": "frage",
+      "text": "Die Nutzerfrage ist zu lang.",
+      "richtig": false,
+      "warum": "Die Frage hat nur rund 40 Tokens. Gefüllt wird das Fenster von den Ergebnissen."
+    }
+  ],
+  "reparaturen": [
+    {
+      "id": "kuerzen",
+      "text": "Ergebnisse auf 8.000 Tokens kürzen, ab 70 % zusammenfassen",
+      "richtig": true,
+      "warum": "Der Harness gibt nur das Nötige weiter und fasst Altes zusammen, bevor es eng wird. So bleibt Platz.",
+      "regler": {
+        "ergebnisMaxTokens": 8000,
+        "kompaktierungAb": 0.7
+      }
+    },
+    {
+      "id": "runden",
+      "text": "Rundenlimit auf 3 senken",
+      "richtig": false,
+      "warum": "Dann bricht der Lauf eben nach Runde 3 ab. Eine Antwort gibt es trotzdem nicht.",
+      "regler": {
+        "maxRunden": 3
+      }
+    },
+    {
+      "id": "caching",
+      "text": "Prompt Caching einschalten",
+      "richtig": false,
+      "warum": "Caching macht Wiederholtes billiger, aber nicht kleiner. Das Fenster läuft genauso voll.",
+      "regler": {
+        "caching": true
+      }
+    }
+  ],
+  "karten": [
+    "aie-fenster-grenze",
+    "aie-compaction",
+    "aie-fehler-zu-viel",
+    "aie-lost-in-middle",
+    "aie-tool-ergebnisse-kosten",
+    "aie-kontext-aufraeumen"
+  ],
+  "beweis": {
+    "metrik": "ende",
+    "erwartet": "fertig"
+  }
+}

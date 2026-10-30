@@ -1,11 +1,13 @@
 import { z } from 'zod';
-import { karteSchema, roadmapSchema, type Karte, type Roadmap, type RoadmapThema, type Track } from '@karol-learn/karten-kern';
+import { grundlaufSchema, karteSchema, roadmapSchema, szenarioSchema, type Grundlauf, type Karte, type Roadmap, type RoadmapThema, type Szenario, type Track } from '@karol-learn/karten-kern';
 
 const indexSchema = z.object({
   version: z.literal(1),
   stand: z.string(),
   karten: z.array(karteSchema),
   roadmaps: z.array(roadmapSchema),
+  labor: z.array(szenarioSchema).default([]),
+  grundlaeufe: z.array(grundlaufSchema).default([]),
 });
 
 export interface Inhalt {
@@ -15,6 +17,10 @@ export interface Inhalt {
   nachId: ReadonlyMap<string, Karte>;
   /** Themen, die es im Index gibt (nach KL_AUSSCHLIESSEN), je Track. */
   themen: Readonly<Record<Track, ReadonlySet<string>>>;
+  /** Störfälle des Agent-Labors (nach KL_AUSSCHLIESSEN). */
+  labor: readonly Szenario[];
+  /** Sandbox-Läufe für den Simulator. */
+  grundlaeufe: readonly Grundlauf[];
 }
 
 /** Themen je Track aus Karten und Roadmaps: was hier fehlt, ist ausgeblendet. */
@@ -34,6 +40,7 @@ export async function ladeInhalt(fetcher: typeof fetch = fetch): Promise<Inhalt>
     stand: daten.stand, karten: daten.karten, roadmaps,
     nachId: new Map(daten.karten.map((k) => [k.id, k])),
     themen: themenImIndex(daten.karten, daten.roadmaps),
+    labor: daten.labor, grundlaeufe: daten.grundlaeufe,
   };
 }
 

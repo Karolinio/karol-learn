@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { bewerte, type Lernstand, type Session, type Track } from '@karol-learn/karten-kern';
+import { z } from 'zod';
+import { bewerte, laborErgebnisSchema, merkeLaborErgebnis, type LaborErgebnis, type Lernstand, type Session, type Track } from '@karol-learn/karten-kern';
 import { heute } from './datum';
 import { ladeInhalt, type Inhalt } from './inhalt';
 import { serverDa, meldeAnServer } from './server';
@@ -14,11 +15,14 @@ export interface AppZustand {
   inhalt?: Inhalt;
   staende: Staende;
   sessions: readonly Session[];
+  /** Gelöste Störfälle, höchstens einer je Szenario. */
+  labor: readonly LaborErgebnis[];
   einstellungen: Einstellungen;
   speicherArt?: Speicher['art'];
   server: boolean;
   bewerteKarte: (id: string, gewusst: boolean) => void;
   speichereSession: (s: Session) => void;
+  speichereLaborErgebnis: (e: LaborErgebnis) => void;
   setzeTrack: (t: Track) => void;
   setzeNeue: (n: Einstellungen['neueProSession']) => void;
   melde: (id: string, grund: string) => Promise<'server' | 'lokal'>;
@@ -31,6 +35,7 @@ export interface AppZustand {
 const Kontext = createContext<AppZustand | null>(null);
 const MAX_SESSIONS = 365;
 const STANDARD: Einstellungen = einstellungenSchema.parse({});
+const laborListe = z.array(laborErgebnisSchema).catch([]);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [inhalt, setInhalt] = useState<Inhalt>();
@@ -38,6 +43,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [fehler, setFehler] = useState<string>();
   const [staende, setStaende] = useState<Staende>({});
   const [sessions, setSessions] = useState<readonly Session[]>([]);
+  const [labor, setLabor] = useState<readonly LaborErgebnis[]>([]);
   const [einstellungen, setEinstellungen] = useState<Einstellungen>(STANDARD);
   const [server, setServer] = useState(false);
   const [speicherArt, setSpeicherArt] = useState<Speicher['art']>();
@@ -53,16 +59,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
       try {
         const sp = await oeffneSpeicher();
         speicher.current = sp;
-        const [i, st, se, ei] = await Promise.all([
+        const [i, st, se, ei, la] = await Promise.all([
           ladeInhalt(),
           sp.lies<Staende>('lernstand'),
           sp.lies<Session[]>('sessions'),
           sp.lies<unknown>('einstellungen'),
+          sp.lies<unknown>('labor'),
         ]);
         if (!aktiv) return;
         setInhalt(i);
         setStaende(st ?? {});
         setSessions(se ?? []);
+        setLabor(laborListe.parse(la ?? []));
         setEinstellungen(einstellungenSchema.catch(STANDARD).parse(ei ?? {}));
         setSpeicherArt(sp.art);
         setLaden('bereit');
@@ -93,6 +101,14 @@ export function AppProvider({ children }: { children: ReactNode }) {
     });
   }, [schreibe]);
 
+  const speichereLaborErgebnis = useCallback((e: LaborErgebnis) => {
+    setLabor((alt) => {
+      const neu = merkeLaborErgebnis(alt, e);
+      schreibe('labor', neu);
+      return neu;
+    });
+  }, [schreibe]);
+
   const setzeTrack = useCallback((track: Track) => {
     setEinstellungen((alt) => { const neu = { ...alt, track }; schreibe('einstellungen', neu); return neu; });
   }, [schreibe]);
@@ -115,26 +131,26 @@ export function AppProvider({ children }: { children: ReactNode }) {
     const ei = { ...einstellungen, exportErinnert: heute() };
     setEinstellungen(ei);
     schreibe('einstellungen', ei);
-    return baueExport({ lernstand: { ...staende }, sessions: [...sessions], einstellungen: ei });
-  }, [einstellungen, schreibe, sessions, staende]);
+    return baueExport({ lernstand: { ...staende }, sessions: [...sessions], einstellungen: ei, labor: [...labor] });
+  }, [einstellungen, labor, schreibe, sessions, staende]);
 
   const importiere = useCallback((d: SpeicherExport) => {
-    setStaende(d.lernstand); setSessions(d.sessions); setEinstellungen(d.einstellungen);
-    schreibe('lernstand', d.lernstand); schreibe('sessions', d.sessions); schreibe('einstellungen', d.einstellungen);
+    setStaende(d.lernstand); setSessions(d.sessions); setEinstellungen(d.einstellungen); setLabor(d.labor);
+    schreibe('lernstand', d.lernstand); schreibe('sessions', d.sessions); schreibe('einstellungen', d.einstellungen); schreibe('labor', d.labor);
   }, [schreibe]);
 
   const setzeZurueck = useCallback(() => {
-    setStaende({}); setSessions([]);
-    schreibe('lernstand', {}); schreibe('sessions', []);
+    setStaende({}); setSessions([]); setLabor([]);
+    schreibe('lernstand', {}); schreibe('sessions', []); schreibe('labor', []);
   }, [schreibe]);
 
   const pruefeServer = useCallback(async () => setServer(await serverDa()), []);
 
   const wert = useMemo<AppZustand>(() => ({
-    laden, fehler, inhalt, staende, sessions, einstellungen, speicherArt, server,
-    bewerteKarte, speichereSession, setzeTrack, setzeNeue, melde, exportiere, importiere, setzeZurueck, pruefeServer,
-  }), [laden, fehler, inhalt, staende, sessions, einstellungen, speicherArt, server,
-    bewerteKarte, speichereSession, setzeTrack, setzeNeue, melde, exportiere, importiere, setzeZurueck, pruefeServer]);
+    laden, fehler, inhalt, staende, sessions, labor, einstellungen, speicherArt, server,
+    bewerteKarte, speichereSession, speichereLaborErgebnis, setzeTrack, setzeNeue, melde, exportiere, importiere, setzeZurueck, pruefeServer,
+  }), [laden, fehler, inhalt, staende, sessions, labor, einstellungen, speicherArt, server,
+    bewerteKarte, speichereSession, speichereLaborErgebnis, setzeTrack, setzeNeue, melde, exportiere, importiere, setzeZurueck, pruefeServer]);
 
   return <Kontext.Provider value={wert}>{children}</Kontext.Provider>;
 }

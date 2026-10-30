@@ -15,7 +15,7 @@ Nur diese Dateien: `README.md`, `AGENTS.md`, `package.json`, `package-lock.json`
 | `apps/<name>/` | Programme, die laufen (`web`, `server`). Jede App hat `package.json`. | geteilte Logik, Inhalte |
 | `packages/<name>/` | geteilte, pure Logik mit Tests (`karten-kern`). Braucht `package.json` und `src/index.ts`. | UI, Dateizugriffe |
 | `agents/<name>/` | ein Agent pro Ordner. Pflicht: `agent.json`, `prompt.md`, `README.md`. Code, Tests, `laeufe/` daneben. | Agenten-Ausgaben außerhalb des eigenen Schreibpfads |
-| `inhalt/` | nur Daten: `rohbestand/` (Quelle), `karten/aie|fde/` (erzeugt), `roadmap/aie.json|fde.json`, `bilder/`, `vorschlaege/`, `meldungen/` | Code, lose Dateien außer `meta.json` |
+| `inhalt/` | nur Daten: `rohbestand/` (Quelle), `karten/aie|fde/` (erzeugt), `roadmap/aie.json|fde.json`, `bilder/`, `labor/` (Störfälle, flach), `vorschlaege/`, `meldungen/` | Code, lose Dateien außer `meta.json` |
 | `scripts/` | flache Werkzeuge `<name>.ts` und `<name>.test.ts`, gestartet über `npm run` | Unterordner |
 | `docs/` | `.md`-Dateien und `screenshots/<name>.png` | andere Formate |
 | `.githooks/` | Git-Hooks (`pre-commit`) | |
@@ -30,6 +30,8 @@ Nur diese Dateien: `README.md`, `AGENTS.md`, `package.json`, `package-lock.json`
   `registry.test.ts` prüft ids, Themen und verlinkte Karten.
 - **Neues Themenbild:** `inhalt/bilder/themen/<track>-<slug(thema)>.webp` (4:3, weißer Grund),
   Motiv in `motive.json`, Herkunft in `herkunft.json`. Fehlt ein Bild, warnt `pruefen` nur.
+- **Neuer Störfall:** `inhalt/labor/<track>-labor-<slug>.json`, dann `npm run pruefen`.
+  `pruefen` simuliert den kaputten und den reparierten Lauf und prüft, dass nur die richtige Reparatur wirkt.
 - **Neue Doku:** `docs/<NAME>.md`. Screenshots nach `docs/screenshots/`.
 
 ## Namensregeln

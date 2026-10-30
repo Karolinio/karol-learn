@@ -1,0 +1,163 @@
+{
+  "id": "aie-labor-endlosschleife",
+  "track": "aie",
+  "themen": [
+    "Tool-Schleife",
+    "Harness"
+  ],
+  "skizze": "agent-loop",
+  "titel": "Der Agent hört nicht auf",
+  "symptom": "Ein Support-Agent sucht die Kundin „Jana Schäfer“. suche_kunde meldet jedes Mal 0 Treffer, und der Agent sucht wieder genauso. Erst der Not-Aus nach Runde 30 stoppt ihn. Die Kosten steigen mit jeder Runde.",
+  "skript": {
+    "system": {
+      "text": "Du bist der Support-Agent von Lindner Haustechnik. Beantworte Kundenanfragen freundlich und knapp. Schlage Kundendaten und Aufträge mit den Tools nach.",
+      "tokens": 900
+    },
+    "user": {
+      "text": "Hallo, hier ist Jana Schäfer. Wann kommt der Techniker für meine Wärmepumpe? Angekündigt war Donnerstag.",
+      "tokens": 60
+    },
+    "tools": [
+      {
+        "name": "suche_kunde",
+        "beschreibung": "Sucht Kunden im CRM nach Namen. Liefert Kundennummer und offene Aufträge.",
+        "tokens": 220
+      },
+      {
+        "name": "lies_auftrag",
+        "beschreibung": "Liest einen Auftrag mit Termin und zugeteiltem Techniker.",
+        "tokens": 200
+      },
+      {
+        "name": "plane_termin",
+        "beschreibung": "Schlägt freie Techniker-Termine vor.",
+        "tokens": 210
+      }
+    ],
+    "runden": [],
+    "schleife": {
+      "denken": {
+        "text": "Ich suche die Kundin im CRM, um ihren Auftrag zu finden.",
+        "tokens": 40
+      },
+      "bitte": {
+        "tool": "suche_kunde",
+        "args": "{\"name\": \"Jana Schaefer\"}",
+        "tokens": 25
+      },
+      "ergebnis": {
+        "text": "{\"treffer\": 0, \"kunden\": []}",
+        "tokens": 30
+      }
+    }
+  },
+  "regler": {
+    "toolAnzahl": 3,
+    "maxRunden": null,
+    "kontextLimit": 200000,
+    "gateway": false,
+    "caching": false,
+    "fehlerDurchreichen": false
+  },
+  "ursachen": [
+    {
+      "id": "kein-limit",
+      "text": "Der Harness hat kein Rundenlimit und erkennt keine Wiederholung.",
+      "richtig": true,
+      "warum": "Das Modell probiert dieselbe Suche immer wieder. Nur der Harness kann sagen: Stopp, das hatten wir schon dreimal."
+    },
+    {
+      "id": "fenster",
+      "text": "Das Kontextfenster ist zu klein.",
+      "richtig": false,
+      "warum": "Der Kontextbalken ist längst nicht voll. Es fehlt kein Platz, es fehlt eine Bremse."
+    },
+    {
+      "id": "modell",
+      "text": "Das Modell ist zu schwach.",
+      "richtig": false,
+      "warum": "Auch starke Modelle wiederholen sich, wenn ein Tool immer dasselbe meldet. Vor Schleifen schützt der Harness."
+    }
+  ],
+  "reparaturen": [
+    {
+      "id": "limit",
+      "text": "Rundenlimit 8 und Stopp nach 3 gleichen Aufrufen",
+      "richtig": true,
+      "warum": "Beim vierten gleichen Aufruf greift die Wiederholungserkennung. Das Rundenlimit ist die zweite Sicherung.",
+      "regler": {
+        "maxRunden": 8,
+        "gleicheBitteMax": 3
+      }
+    },
+    {
+      "id": "groesser",
+      "text": "Größeres Kontextfenster (1 Mio. Tokens)",
+      "richtig": false,
+      "warum": "Mehr Platz verlängert nur die Schleife. Der Agent sucht weiter, bis der Not-Aus kommt.",
+      "regler": {
+        "kontextLimit": 1000000
+      }
+    },
+    {
+      "id": "prompt",
+      "text": "System-Prompt ergänzen: „Gib nicht auf!“",
+      "richtig": false,
+      "warum": "Eine Bitte im Prompt ist keine Stoppbedingung. Aufhören muss der Harness, mit Limit und Wiederholungserkennung.",
+      "skript": {
+        "system": {
+          "text": "Du bist der Support-Agent von Lindner Haustechnik. Beantworte Kundenanfragen freundlich und knapp. Schlage Kundendaten und Aufträge mit den Tools nach. Gib nicht auf, bis du die Kundin gefunden hast.",
+          "tokens": 915
+        },
+        "user": {
+          "text": "Hallo, hier ist Jana Schäfer. Wann kommt der Techniker für meine Wärmepumpe? Angekündigt war Donnerstag.",
+          "tokens": 60
+        },
+        "tools": [
+          {
+            "name": "suche_kunde",
+            "beschreibung": "Sucht Kunden im CRM nach Namen. Liefert Kundennummer und offene Aufträge.",
+            "tokens": 220
+          },
+          {
+            "name": "lies_auftrag",
+            "beschreibung": "Liest einen Auftrag mit Termin und zugeteiltem Techniker.",
+            "tokens": 200
+          },
+          {
+            "name": "plane_termin",
+            "beschreibung": "Schlägt freie Techniker-Termine vor.",
+            "tokens": 210
+          }
+        ],
+        "runden": [],
+        "schleife": {
+          "denken": {
+            "text": "Ich suche die Kundin im CRM, um ihren Auftrag zu finden.",
+            "tokens": 40
+          },
+          "bitte": {
+            "tool": "suche_kunde",
+            "args": "{\"name\": \"Jana Schaefer\"}",
+            "tokens": 25
+          },
+          "ergebnis": {
+            "text": "{\"treffer\": 0, \"kunden\": []}",
+            "tokens": 30
+          }
+        }
+      }
+    }
+  ],
+  "karten": [
+    "aie-endlosschleife",
+    "aie-endlos-erkennen",
+    "aie-stop-max-schritte",
+    "aie-stop-arten",
+    "aie-limits"
+  ],
+  "beweis": {
+    "metrik": "ende",
+    "erwartet": "wiederholung"
+  }
+}
