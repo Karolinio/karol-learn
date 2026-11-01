@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "apps/web/dist",
+  "env": {
+    "NODE_ENV": "production",
+    "KL_WURZEL": "@/inhalt"
+  },
+  "functions": {
+    "apps/server/src/main.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
+}

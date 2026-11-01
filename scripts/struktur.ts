@@ -5,7 +5,7 @@
 
 export const WURZEL_DATEIEN: readonly string[] = [
   '.env.example', '.gitignore', 'AGENTS.md', 'README.md',
-  'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.json', 'vitest.config.ts',
+  'package.json', 'package-lock.json', 'tsconfig.base.json', 'tsconfig.json', 'vercel.json', 'vitest.config.ts',
 ];
 export const WURZEL_ORDNER: readonly string[] = ['.githooks', 'agents', 'apps', 'docs', 'inhalt', 'packages', 'scripts'];
 

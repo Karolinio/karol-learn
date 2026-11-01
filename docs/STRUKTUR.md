@@ -8,7 +8,7 @@ Geprüft wird, was git versionieren würde; alles aus `.gitignore` zählt nicht.
 ## Wurzel
 
 Nur diese Dateien: `README.md`, `AGENTS.md`, `package.json`, `package-lock.json`, `tsconfig.base.json`,
-`tsconfig.json`, `vitest.config.ts`, `.gitignore`, `.env.example`. Keine Notizen, keine Exporte, keine Bilder.
+`tsconfig.json`, `vitest.config.ts`, `vercel.json`, `.gitignore`, `.env.example`. Keine Notizen, keine Exporte, keine Bilder.
 
 | Ordner | Was hinein darf | Was nicht |
 |---|---|---|
