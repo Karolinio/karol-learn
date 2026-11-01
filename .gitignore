@@ -6,6 +6,7 @@ apps/web/dev-dist/
 test-results/
 playwright-report/
 agents/video-tutor/laeufe/*.json
+agents/erklaer-coach/laeufe/*.json
 *.tsbuildinfo
 .env
 .DS_Store

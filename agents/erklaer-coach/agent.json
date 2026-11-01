@@ -1,0 +1,9 @@
+{
+  "name": "erklaer-coach",
+  "beschreibung": "Bewertet Karols eigene Erklärung eines Begriffs für eine Zielperson und stellt eine realistische Nachfrage.",
+  "erlaubter_schreibpfad": "agents/erklaer-coach/laeufe/",
+  "log_pfad": "agents/erklaer-coach/laeufe/",
+  "timeout_s": 60,
+  "max_text_zeichen": 1200,
+  "modell": "sonnet"
+}

@@ -3,7 +3,7 @@ import { Icon, type IconName } from './Icon';
 
 // Höchstens fünf Tabs (Apple HIG). Detailseiten lassen ihren Tab aktiv.
 const TABS: { zu: string; name: string; icon: IconName; ende?: boolean; auch?: string[] }[] = [
-  { zu: '/', name: 'Heute', icon: 'heute', ende: true },
+  { zu: '/', name: 'Heute', icon: 'heute', ende: true, auch: ['/erklaeren'] },
   { zu: '/roadmap', name: 'Roadmap', icon: 'roadmap', auch: ['/thema/'] },
   { zu: '/skizzen', name: 'Skizzen', icon: 'diagramm', auch: ['/skizze/', '/labor'] },
   { zu: '/lexikon', name: 'Lexikon', icon: 'lexikon' },

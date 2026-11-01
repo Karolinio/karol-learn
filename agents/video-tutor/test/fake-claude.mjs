@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// Fake-claude für Tests: liest stdin, schreibt Argumente und Prompt nach FAKE_CLAUDE_PROTOKOLL,
-// antwortet je nach FAKE_CLAUDE_MODUS.
+// Fake-claude für Tests: liest stdin, schreibt Argumente, Prompt, Arbeitsordner und Umgebungs-Schlüssel nach CLAUDE_FAKE_PROTOKOLL,
+// antwortet je nach CLAUDE_FAKE_MODUS. Präfix CLAUDE_, weil der Tutor claude nur eine Allowlist der Umgebung gibt.
 import { writeFileSync } from 'node:fs';
 let prompt = '';
 process.stdin.on('data', (d) => (prompt += d));
 process.stdin.on('end', () => {
-  if (process.env.FAKE_CLAUDE_PROTOKOLL) writeFileSync(process.env.FAKE_CLAUDE_PROTOKOLL, JSON.stringify({ args: process.argv.slice(2), prompt }));
-  const modus = process.env.FAKE_CLAUDE_MODUS ?? 'gut';
+  if (process.env.CLAUDE_FAKE_PROTOKOLL) writeFileSync(process.env.CLAUDE_FAKE_PROTOKOLL, JSON.stringify({ args: process.argv.slice(2), prompt, cwd: process.cwd(), env: Object.keys(process.env) }));
+  const modus = process.env.CLAUDE_FAKE_MODUS ?? 'gut';
   if (modus === 'absturz') { process.stderr.write('kaputt'); process.exit(3); }
   const vorschlaege = [
     { id: 'aie-v-caching', track: 'aie', thema: 'Kosten', stufe: 1, frage: 'Was spart Prompt Caching?', antwort: 'Wiederholte Prompt-Anfänge werden billiger.', erklaerhilfe: 'Wie ein Stammkunde, der seine Bestellung nicht neu erklären muss.', begruendung: 'Kosten.' },

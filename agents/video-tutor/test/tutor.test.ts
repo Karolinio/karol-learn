@@ -1,6 +1,6 @@
 import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 import { execFile } from 'node:child_process';
-import { chmodSync, copyFileSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { chmodSync, copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,7 +17,7 @@ let bin = '';
 
 function starte(args: string[], env: Record<string, string> = {}): Promise<{ code: number; out: string; err: string }> {
   return new Promise((ok) => {
-    execFile(TSX, [RUN, ...args], { env: { ...process.env, KL_WURZEL: wurzel, PATH: `${bin}:${process.env.PATH}`, ...env } }, (e, out, err) => {
+    execFile(TSX, [RUN, ...args], { env: { ...process.env, KL_WURZEL: wurzel, PATH: `${bin}:${process.env.PATH}`, KL_CLAUDE_BIN: join(bin, 'claude'), ...env } }, (e, out, err) => {
       ok({ code: e ? Number((e as { code?: number }).code ?? 1) : 0, out: String(out), err: String(err) });
     });
   });
@@ -40,13 +40,22 @@ afterAll(() => rmSync(wurzel, { recursive: true, force: true }));
 describe('Video-Tutor mit Fake-claude', () => {
   test('schreibt Vorschläge, markiert Dubletten, verwirft ungültige und loggt', async () => {
     const protokoll = join(wurzel, 'protokoll.json');
-    const r = await starte([join(wurzel, 'transkript.txt'), '--quelle', 'Video: Caching', '--track', 'aie'], { FAKE_CLAUDE_PROTOKOLL: protokoll });
+    const r = await starte([join(wurzel, 'transkript.txt'), '--quelle', 'Video: Caching', '--track', 'aie'], { CLAUDE_FAKE_PROTOKOLL: protokoll, GEHEIM: 'nicht weitergeben' });
     expect(r.err).toBe('');
     expect(r.code).toBe(0);
     expect(r.out).toContain('2 Vorschläge, 1 Dubletten, 1 Ideen → im Eingang prüfen');
     const aufruf = JSON.parse(readFileSync(protokoll, 'utf8'));
     expect(aufruf.args).toEqual(expect.arrayContaining(['-p', '--output-format', 'json', '--json-schema', '--model', 'sonnet', '--tools', '']));
     expect(aufruf.prompt).toContain('Heute geht es um Prompt Caching');
+    // Isolation: leerer Temp-Ordner (danach gelöscht), Umgebung nur als Allowlist.
+    expect(aufruf.args).toEqual(expect.arrayContaining(['--setting-sources', 'project', '--disable-slash-commands', '--strict-mcp-config', '--no-session-persistence']));
+    expect(aufruf.args).not.toContain('--bare');
+    expect(aufruf.cwd).toMatch(/kl-claude-/);
+    expect(aufruf.cwd.startsWith(resolve(HIER, '../../..'))).toBe(false);
+    expect(existsSync(aufruf.cwd)).toBe(false);
+    expect(aufruf.env).not.toContain('GEHEIM');
+    expect(aufruf.env).not.toContain('KL_WURZEL');
+    expect(aufruf.env.every((k: string) => /^(PATH|HOME|USER|LOGNAME|SHELL|LANG|TMPDIR|TERM|LC_.*|ANTHROPIC_.*|CLAUDE_.*|__CF_USER_TEXT_ENCODING)$/.test(k))).toBe(true);
     expect(aufruf.prompt).toContain('aie-token | Was ist ein Token?');
     const dateien = readdirSync(join(wurzel, 'inhalt/vorschlaege'));
     expect(dateien).toHaveLength(1);
@@ -68,12 +77,12 @@ describe('Video-Tutor mit Fake-claude', () => {
     expect(() => parseClaudeAusgabe(JSON.stringify({ is_error: true, result: 'Limit' }))).toThrow('Limit');
   });
   test('Absturz von claude wird geloggt und bricht ab', async () => {
-    const r = await starte([join(wurzel, 'transkript.txt'), '--quelle', 'x'], { FAKE_CLAUDE_MODUS: 'absturz' });
+    const r = await starte([join(wurzel, 'transkript.txt'), '--quelle', 'x'], { CLAUDE_FAKE_MODUS: 'absturz' });
     expect(r.code).toBe(3);
     expect(r.err).toContain('claude endete mit Code 3');
   });
   test('Fehlerantwort von claude bricht ab', async () => {
-    const r = await starte([join(wurzel, 'transkript.txt'), '--quelle', 'x'], { FAKE_CLAUDE_MODUS: 'fehler' });
+    const r = await starte([join(wurzel, 'transkript.txt'), '--quelle', 'x'], { CLAUDE_FAKE_MODUS: 'fehler' });
     expect(r.code).toBe(1);
     expect(r.err).toContain('Limit erreicht');
   });

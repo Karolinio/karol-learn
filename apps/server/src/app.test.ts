@@ -65,7 +65,7 @@ describe('Server', () => {
   test('GET /api/status liefert den Umschlag', async () => {
     const r = await rufe('GET', '/api/status');
     expect(r.status).toBe(200);
-    expect(r.json).toEqual({ success: true, data: { ok: true, version: '0.1.0' }, error: null });
+    expect(r.json).toEqual({ success: true, data: { ok: true, version: '0.1.0', erklaeren: false }, error: null });
   });
   test('CORS nur für die erlaubte Origin', async () => {
     expect((await rufe('GET', '/api/status', undefined, 'http://127.0.0.1:5180')).headers['access-control-allow-origin']).toBe('http://127.0.0.1:5180');

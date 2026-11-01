@@ -10,12 +10,12 @@ Kurzregeln für Agenten in diesem Repo. Der Plan in `docs/plan.md` ist verbindli
 ## Struktur
 - Was wohin gehört: `docs/STRUKTUR.md`. Neue Agenten nach `agents/<name>/` mit `agent.json`, `prompt.md`, `README.md`.
 - `packages/karten-kern`: pure Logik. Neue Logik zuerst hier, mit Test zuerst.
-- `apps/web`, `apps/server`, `agents/video-tutor`, `scripts` importieren nur karten-kern, nie einander.
+- `apps/web`, `apps/server`, `agents/*`, `scripts` importieren nur karten-kern, nie einander. Der Server startet Agenten nur als Kindprozess (fester Pfad, ohne Shell).
 - Inhalt: `inhalt/rohbestand/` ist die Quelle, `inhalt/karten/` wird von `aufteilen` erzeugt.
 
 ## Regeln
 - Server nur auf 127.0.0.1, Antworten `{success, data, error}`, zod an jedem Eingang, Pfade nur aus Slugs.
-- Der Video-Tutor schreibt nur nach `inhalt/vorschlaege/`. Echte `claude`-Läufe startet nur Karol.
+- Der Video-Tutor schreibt nur nach `inhalt/vorschlaege/`, der Erklär-Coach nur sein Lauf-Log. Echte `claude`-Läufe startet nur Karol: per `npm run tutor` oder per Knopf „Bewerten lassen“ in der App, ein Lauf je Klick, nie automatisch oder als Wiederholung ohne Klick. Agenten, Skripte und Tests starten keine echten Läufe, Tests nutzen Fake-claude.
 - Farben nur als Tokens in `apps/web/src/styles/tokens.css`. Nur helles Design.
 - Animation nur über transform und opacity, `prefers-reduced-motion` beachten, Trefferflächen ≥ 44 px.
 - Immutability, Dateien ≤ 400 Zeilen, kein `console.log` im App-Code.

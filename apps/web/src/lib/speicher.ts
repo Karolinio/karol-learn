@@ -1,6 +1,6 @@
 import { createStore, get, set, del } from 'idb-keyval';
 import { z } from 'zod';
-import { laborErgebnisSchema, lernstandSchema, MAX_NEUE, sessionSchema, trackSchema } from '@karol-learn/karten-kern';
+import { erklaerErgebnisSchema, laborErgebnisSchema, lernstandSchema, MAX_ERKLAER_ERGEBNISSE, MAX_NEUE, sessionSchema, trackSchema } from '@karol-learn/karten-kern';
 
 export type SpeicherArt = 'idb' | 'local' | 'ram';
 
@@ -77,6 +77,12 @@ export async function bitteUmDauer(): Promise<boolean> {
   }
 }
 
+/** Liest eine gespeicherte Liste Eintrag für Eintrag: nur ungültige fallen weg, der Rest bleibt. */
+export function gueltigeEintraege<T>(schema: z.ZodType<T, z.ZodTypeDef, unknown>, roh: unknown): T[] {
+  if (!Array.isArray(roh)) return [];
+  return roh.flatMap((e) => { const r = schema.safeParse(e); return r.success ? [r.data] : []; });
+}
+
 export const neueSchema = z.union([z.literal(5), z.literal(10), z.literal(20)]);
 
 export const einstellungenSchema = z.object({
@@ -98,6 +104,8 @@ export const exportSchema = z.object({
   einstellungen: einstellungenSchema,
   /** Gelöste Störfälle im Agent-Labor. Fehlt in Exporten vor dem 29.10.2026. */
   labor: z.array(laborErgebnisSchema).max(MAX_LABOR_ERGEBNISSE).default([]),
+  /** Erklär-Training: je Karte die letzten zehn Ergebnisse. Fehlt in Exporten vor dem 30.10.2026. */
+  erklaeren: z.array(erklaerErgebnisSchema).max(MAX_ERKLAER_ERGEBNISSE).default([]),
 });
 export type SpeicherExport = z.infer<typeof exportSchema>;
 

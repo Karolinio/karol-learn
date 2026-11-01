@@ -1,0 +1,169 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "urteil",
+    "kriterien",
+    "falscheAussagen",
+    "fehlendeKernpunkte",
+    "besserSatz",
+    "nachfrage"
+  ],
+  "properties": {
+    "urteil": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 320
+    },
+    "kriterien": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "richtigkeit",
+        "vollstaendigkeit",
+        "verstaendlichkeit",
+        "kuerze"
+      ],
+      "properties": {
+        "richtigkeit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "punkte",
+            "satz"
+          ],
+          "properties": {
+            "punkte": {
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "satz": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "vollstaendigkeit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "punkte",
+            "satz"
+          ],
+          "properties": {
+            "punkte": {
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "satz": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "verstaendlichkeit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "punkte",
+            "satz"
+          ],
+          "properties": {
+            "punkte": {
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "satz": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        },
+        "kuerze": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "punkte",
+            "satz"
+          ],
+          "properties": {
+            "punkte": {
+              "type": "integer",
+              "enum": [
+                0,
+                1,
+                2,
+                3
+              ]
+            },
+            "satz": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 400
+            }
+          }
+        }
+      }
+    },
+    "falscheAussagen": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "zitat",
+          "korrektur"
+        ],
+        "properties": {
+          "zitat": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 400
+          },
+          "korrektur": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 480
+          }
+        }
+      }
+    },
+    "fehlendeKernpunkte": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20
+      }
+    },
+    "besserSatz": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600
+    },
+    "nachfrage": {
+      "type": "string",
+      "maxLength": 400
+    }
+  }
+}

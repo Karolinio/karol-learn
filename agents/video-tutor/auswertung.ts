@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { findeDublette, pruefeKarte, type Karte, type Track, type Vorschlag } from '@karol-learn/karten-kern';
+import { entpackeClaudeAusgabe, findeDublette, pruefeKarte, type Karte, type Track, type Vorschlag } from '@karol-learn/karten-kern';
 
 const rohVorschlag = z.object({
   id: z.string(), track: z.enum(['aie', 'fde']), thema: z.string(), stufe: z.union([z.literal(1), z.literal(2), z.literal(3)]),
@@ -17,17 +17,9 @@ export type Idee = z.infer<typeof ideeSchema> & { id: string; quelle: string };
 const antwortSchema = z.object({ vorschlaege: z.array(z.unknown()), ideen: z.array(z.unknown()).default([]) });
 export interface ClaudeNutzlast { vorschlaege: unknown[]; ideen: unknown[] }
 
-function ohneZaun(text: string): string {
-  const m = /```(?:json)?\s*([\s\S]*?)```/.exec(text);
-  return (m?.[1] ?? text).trim();
-}
-
-/** Die eine Stelle, die das Ausgabeformat von `claude -p --output-format json` kennt. */
+/** Prüft die entpackte Nutzlast des Tutors. Hülle und Code-Zaun kennt nur karten-kern/claude-cli. */
 export function parseClaudeAusgabe(stdout: string): ClaudeNutzlast {
-  const huelle = JSON.parse(stdout) as { is_error?: boolean; result?: unknown; structured_output?: unknown };
-  if (huelle.is_error) throw new Error(`claude meldet Fehler: ${String(huelle.result ?? '')}`.slice(0, 500));
-  const nutzlast = huelle.structured_output ?? (typeof huelle.result === 'string' ? JSON.parse(ohneZaun(huelle.result)) : huelle.result);
-  return antwortSchema.parse(nutzlast);
+  return antwortSchema.parse(entpackeClaudeAusgabe(stdout));
 }
 
 /** Behält nur gültige Ideen des richtigen Tracks; höchstens acht. */
@@ -52,7 +44,7 @@ export function werteAus(roh: readonly unknown[], o: { laufId: string; quelle: s
     const vergleich = [...o.bestand.filter((b) => b.track === karte.track), ...vorschlaege.filter((v) => v.track === karte.track)];
     const dublettVon = findeDublette(karte, vergleich);
     vorschlaege.push({
-      ...(nurKarte as Karte), begruendung, status: 'offen',
+      ...(nurKarte as unknown as Karte), begruendung, status: 'offen',
       vorschlagId: `${o.laufId}-${vorschlaege.length + 1}`,
       ...(dublettVon ? { dublettVon } : {}),
     });

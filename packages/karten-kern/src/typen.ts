@@ -8,6 +8,7 @@ export type Lernstufe = 'kann' | 'lerne' | 'offen';
 export const MAX_FRAGE = 160;
 export const MAX_ANTWORT = 400;
 export const MAX_ERKLAERHILFE = 300;
+export const MAX_KERNPUNKT = 140;
 
 export const trackSchema = z.enum(TRACKS);
 
@@ -23,6 +24,8 @@ export const karteSchema = z.object({
   erklaerhilfe: z.string().trim().min(1).max(MAX_ERKLAERHILFE).optional(),
   /** id einer Skizze aus der Skizzen-Bibliothek der App. */
   skizze: z.string().regex(/^[a-z0-9-]+$/).optional(),
+  /** 2–5 Kernaussagen fürs Erklär-Training. Ohne: kernpunkteVon teilt die Antwort in Sätze. */
+  kernpunkte: z.array(z.string().trim().min(1).max(MAX_KERNPUNKT)).min(2).max(5).optional(),
 });
 export type Karte = z.infer<typeof karteSchema>;
 

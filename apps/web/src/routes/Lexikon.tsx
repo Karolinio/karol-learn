@@ -1,10 +1,11 @@
 import { useDeferredValue, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { baueSuchindex, stufeVon, suche, TRACKS, type Track } from '@karol-learn/karten-kern';
+import { Link, useSearchParams } from 'react-router-dom';
+import { baueSuchindex, letztesErklaerErgebnis, stufeVon, suche, TRACKS, type Track } from '@karol-learn/karten-kern';
 import { Icon } from '../components/ui/Icon';
 import { Seite } from '../components/ui/Seite';
 import { Sheet } from '../components/ui/Sheet';
 import { TRACK_KURZ } from '../components/ui/TrackSegment';
+import { STUFE } from '../erklaeren/texte';
 import { useApp, useInhalt } from '../lib/zustand';
 
 const SEITE = 60;
@@ -12,13 +13,14 @@ const STUFENTEXT = { kann: 'kann ich', lerne: 'lerne ich', offen: 'offen' } as c
 
 export function Lexikon() {
   const inhalt = useInhalt();
-  const { staende } = useApp();
+  const { staende, erklaeren } = useApp();
   const [params, setParams] = useSearchParams();
   const [anzahl, setAnzahl] = useState(SEITE);
   const q = params.get('q') ?? '';
   const track = (TRACKS as readonly string[]).includes(params.get('track') ?? '') ? (params.get('track') as Track) : undefined;
   const thema = params.get('thema') ?? undefined;
   const detail = params.get('karte') ? inhalt.nachId.get(params.get('karte')!) : undefined;
+  const erklaert = detail ? letztesErklaerErgebnis(erklaeren, detail.id) : undefined;
   const index = useMemo(() => baueSuchindex(inhalt.karten), [inhalt.karten]);
   const spaet = useDeferredValue(q);
   const treffer = useMemo(() => suche(index, spaet, { track, thema }), [index, spaet, track, thema]);
@@ -76,6 +78,20 @@ export function Lexikon() {
             <h3>{detail.frage}</h3>
             <p>{detail.antwort}</p>
             <footer><span className={`statuspunkt statuspunkt--${stufeVon(staende[detail.id])}`} />{STUFENTEXT[stufeVon(staende[detail.id])]} · Stufe {detail.stufe} · {detail.quelle}</footer>
+            {erklaert ? (
+              <p className="lexikonblatt__erklaert" data-testid="letztes-erklaeren">
+                Zuletzt erklärt: {STUFE[erklaert.stufe].titel} · {erklaert.punkte}/{erklaert.max}{erklaert.modus === 'selbst' ? ' (Selbstcheck)' : ''}
+              </p>
+            ) : null}
+            {erklaert?.text ? (
+              <details className="erkl-details erkl-details--blatt">
+                <summary><span>Deine letzte Fassung</span></summary>
+                <div className="erkl-details__inhalt"><p className="erkl-eigen">{erklaert.text}</p></div>
+              </details>
+            ) : null}
+            <Link className="knopf knopf--tint lexikonblatt__erklaeren" to={`/erklaeren/${encodeURIComponent(detail.id)}`} data-testid="erklaeren-starten">
+              <Icon name="sprechen" size={20} /><span>Erklären üben</span>
+            </Link>
           </article>
         ) : null} />
       </div>

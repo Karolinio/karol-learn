@@ -4,6 +4,7 @@ import { TabBar } from './components/ui/TabBar';
 import { useApp } from './lib/zustand';
 import { Eingang } from './routes/Eingang';
 import { Einstellungen } from './routes/Einstellungen';
+import { Erklaeren } from './routes/Erklaeren';
 import { Fertig } from './routes/Fertig';
 import { Fortschritt } from './routes/Fortschritt';
 import { Heute } from './routes/Heute';
@@ -50,6 +51,8 @@ function Rahmen() {
         <Route path="/labor" element={<Labor />} />
         <Route path="/labor/simulator" element={<LaborSimulator />} />
         <Route path="/labor/fall/:id" element={<LaborFall />} />
+        <Route path="/erklaeren" element={<Erklaeren />} />
+        <Route path="/erklaeren/:id" element={<Erklaeren />} />
         <Route path="/eingang" element={<Eingang />} />
         <Route path="/einstellungen" element={<Einstellungen />} />
         <Route path="/mehr" element={<Mehr />} />

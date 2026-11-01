@@ -29,6 +29,10 @@ Link oder Datei
 | `run.ts` | Einstieg, verbindet die Schritte |
 | `test/` | Tests mit einem nachgemachten `claude`, ohne Abo-Verbrauch |
 
+## Isolation
+
+`claude` läuft in einem frischen, leeren Temp-Ordner (danach gelöscht) mit `--setting-sources project` und `--disable-slash-commands`, also ohne Projekt- und User-Einstellungen, Hooks und Slash-Befehle, und bekommt nur eine Allowlist der Umgebung (PATH, HOME, Locale, `ANTHROPIC_*`, `CLAUDE_*` …).
+
 ## Wo er läuft
 
 Auf deinem Mac, über die Claude-Code-CLI und dein Abo. Er braucht kein API-Guthaben und keinen Server.

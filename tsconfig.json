@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["packages/*/src", "apps/server/src", "agents/video-tutor/*.ts", "agents/video-tutor/test", "scripts", "vitest.config.ts"]
+  "include": ["packages/*/src", "apps/server/src", "agents/video-tutor/*.ts", "agents/video-tutor/test", "agents/erklaer-coach/*.ts", "agents/erklaer-coach/test", "scripts", "vitest.config.ts"]
 }

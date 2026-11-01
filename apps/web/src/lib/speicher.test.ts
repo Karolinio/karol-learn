@@ -1,6 +1,7 @@
 import 'fake-indexeddb/auto';
 import { describe, expect, test } from 'vitest';
-import { baueExport, oeffneSpeicher, pruefeImport } from './speicher';
+import { erklaerErgebnisSchema, laborErgebnisSchema } from '@karol-learn/karten-kern';
+import { baueExport, gueltigeEintraege, oeffneSpeicher, pruefeImport } from './speicher';
 
 class FakeStorage implements Storage {
   private d = new Map<string, string>();
@@ -58,32 +59,45 @@ describe('Export und Import', () => {
     einstellungen: { track: 'aie' as const, neueProSession: 10 as const },
   };
   test('Rundreise über JSON', () => {
-    const exp = baueExport({ ...daten, labor: [] }, new Date('2026-10-27T12:00:00Z'));
+    const exp = baueExport({ ...daten, labor: [], erklaeren: [] }, new Date('2026-10-27T12:00:00Z'));
     expect(exp.version).toBe(1);
     const r = pruefeImport(JSON.stringify(exp));
     expect(r.ok && r.daten.lernstand['aie-a']?.box).toBe(2);
   });
   test('alter Export ohne neueProSession wird mit 10 gelesen', () => {
-    const alt = { ...baueExport({ ...daten, labor: [] }), einstellungen: { track: 'fde' } };
+    const alt = { ...baueExport({ ...daten, labor: [], erklaeren: [] }), einstellungen: { track: 'fde' } };
     const r = pruefeImport(JSON.stringify(alt));
     expect(r.ok && r.daten.einstellungen.neueProSession).toBe(10);
   });
   test('alter Export ohne labor bleibt importierbar, labor ist dann leer', () => {
-    const { labor: _weg, ...alt } = baueExport({ ...daten, labor: [] });
+    const { labor: _weg, erklaeren: _auchWeg, ...alt } = baueExport({ ...daten, labor: [], erklaeren: [] });
     const r = pruefeImport(JSON.stringify(alt));
     expect(r.ok && r.daten.labor).toEqual([]);
   });
   test('neuer Export trägt gelöste Störfälle hin und zurück, kaputte werden abgelehnt', () => {
     const labor = [{ szenarioId: 'aie-labor-endlosschleife', track: 'aie' as const, geloest: true, versuche: 2, datum: '2026-10-29' }];
-    const r = pruefeImport(JSON.stringify(baueExport({ ...daten, labor })));
+    const r = pruefeImport(JSON.stringify(baueExport({ ...daten, labor, erklaeren: [] })));
     expect(r.ok && r.daten.labor).toEqual(labor);
-    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: [{ ...labor[0]!, versuche: 0 }] }))).ok).toBe(false);
+    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: [{ ...labor[0]!, versuche: 0 }], erklaeren: [] }))).ok).toBe(false);
     const zuViele = Array.from({ length: 501 }, () => labor[0]!);
-    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: zuViele }))).ok).toBe(false);
+    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: zuViele, erklaeren: [] }))).ok).toBe(false);
+  });
+  test('alter Export ohne erklaeren bleibt importierbar, erklaeren ist dann leer', () => {
+    const { erklaeren: _weg, ...alt } = baueExport({ ...daten, labor: [], erklaeren: [] });
+    const r = pruefeImport(JSON.stringify(alt));
+    expect(r.ok && r.daten.erklaeren).toEqual([]);
+  });
+  test('neuer Export trägt Erklär-Ergebnisse mit Text hin und zurück, kaputte und zu viele werden abgelehnt', () => {
+    const erklaeren = [{ karteId: 'aie-a', track: 'aie' as const, zielperson: 'gf' as const, datum: '2026-10-30', modus: 'coach' as const, punkte: 9, max: 12, stufe: 'fast' as const, runden: 2 as const, text: 'Meine Fassung.' }];
+    const r = pruefeImport(JSON.stringify(baueExport({ ...daten, labor: [], erklaeren })));
+    expect(r.ok && r.daten.erklaeren).toEqual(erklaeren);
+    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: [], erklaeren: [{ ...erklaeren[0]!, punkte: 13 }] }))).ok).toBe(false);
+    const zuViele = Array.from({ length: 2001 }, () => erklaeren[0]!);
+    expect(pruefeImport(JSON.stringify(baueExport({ ...daten, labor: [], erklaeren: zuViele }))).ok).toBe(false);
   });
   test('lehnt kaputtes JSON und falsches Schema ab', () => {
     expect(pruefeImport('{')).toEqual({ ok: false, fehler: 'Die Datei ist kein JSON.' });
-    const falsch = { ...baueExport({ ...daten, labor: [] }), lernstand: { x: { box: 9 } } };
+    const falsch = { ...baueExport({ ...daten, labor: [], erklaeren: [] }), lernstand: { x: { box: 9 } } };
     expect(pruefeImport(JSON.stringify(falsch)).ok).toBe(false);
   });
 });
@@ -95,5 +109,19 @@ describe('Einstellungen: neue Karten pro Session', () => {
     expect(einstellungenSchema.parse({ neueProSession: 5 }).neueProSession).toBe(5);
     expect(einstellungenSchema.parse({ neueProSession: 20 }).neueProSession).toBe(20);
     expect(einstellungenSchema.parse({ neueProSession: 7 }).neueProSession).toBe(10);
+  });
+});
+
+describe('gueltigeEintraege', () => {
+  const labor = { szenarioId: 'aie-labor-endlosschleife', track: 'aie', geloest: true, versuche: 2, datum: '2026-10-29' };
+  const erkl = { karteId: 'aie-a', track: 'aie', zielperson: 'gf', datum: '2026-10-30', modus: 'coach', punkte: 9, max: 12, stufe: 'fast', runden: 1 };
+  test('verwirft nur ungültige Einträge, gültige bleiben in Reihenfolge', () => {
+    expect(gueltigeEintraege(laborErgebnisSchema, [labor, { ...labor, versuche: 0 }, 'müll', { ...labor, datum: '2026-10-30' }]))
+      .toEqual([labor, { ...labor, datum: '2026-10-30' }]);
+    expect(gueltigeEintraege(erklaerErgebnisSchema, [{ ...erkl, punkte: 99 }, erkl, null])).toEqual([erkl]);
+  });
+  test('kein Array ergibt eine leere Liste', () => {
+    expect(gueltigeEintraege(erklaerErgebnisSchema, undefined)).toEqual([]);
+    expect(gueltigeEintraege(erklaerErgebnisSchema, { a: 1 })).toEqual([]);
   });
 });

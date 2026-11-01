@@ -105,11 +105,12 @@ Tab-Leiste mit 5 Tabs: Heute, Roadmap, Skizzen, Lexikon, Mehr. Neu: `/thema/:tra
 
 | Methode | Pfad | Wirkung |
 |---|---|---|
-| GET | `/api/status` | `{ok, version}` |
+| GET | `/api/status` | `{ok, version, erklaeren}` (erklaeren: Coach eingerichtet) |
 | GET | `/api/vorschlaege` | offene Vorschläge |
 | POST | `/api/vorschlaege/:vid/annehmen` | validiert die Karte, hängt sie an die Themen-Datei an (atomar: tmp + rename) |
 | POST | `/api/vorschlaege/:vid/ablehnen` | setzt den Status, löscht nichts |
 | POST | `/api/meldungen` | `{id, grund}` → `inhalt/meldungen/<datum>.jsonl` |
+| POST | `/api/erklaeren` | `{karteId, zielperson, text, nachfrage?}` → startet `agents/erklaer-coach/run.ts` als Kindprozess (ein Lauf gleichzeitig, 30/Stunde, 75 s), liefert `{bewertung}`; siehe `docs/plan-erklaeren.md` |
 
 Antworten kommen immer als `{success, data, error}`. Eingaben werden mit zod geprüft. Pfade entstehen nur aus Slugs.
 

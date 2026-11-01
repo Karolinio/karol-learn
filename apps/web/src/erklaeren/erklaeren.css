@@ -1,0 +1,145 @@
+/* Erklär-Training: eine Sache pro Bildschirm, ruhig. Farben nur über Tokens. */
+
+/* Begriff oben */
+.erkl-frage { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); }
+.erkl-frage h2 { font-size: var(--text-title3); line-height: 1.25; font-weight: 700; letter-spacing: var(--tracking-tight); text-wrap: balance; }
+
+/* Zielperson: große Karten, Avatar mit Kürzel */
+.erkl-person { min-height: 76px; }
+.erkl-person__text { display: flex; flex-direction: column; gap: 2px; }
+.erkl-person__text strong { font-size: var(--text-headline); font-weight: 600; }
+.erkl-person__text small { font-size: var(--text-footnote); font-weight: 500; color: var(--color-text-2); line-height: 1.3; }
+.erkl-person__pfeil { flex: none; color: var(--color-gray); transition: transform var(--duration-fast) var(--ease-out); }
+.erkl-person:hover .erkl-person__pfeil { transform: translateX(2px); color: var(--akzent); }
+.erkl-person.ist-gewaehlt { box-shadow: inset 0 0 0 2px var(--akzent), var(--shadow-card); }
+.erkl-avatar {
+  display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 50%;
+  background: var(--akzent-tint); color: var(--akzent); font-family: var(--font-rounded);
+  font-size: var(--text-footnote); font-weight: 800; letter-spacing: 0.02em;
+}
+.erkl-avatar--klein { width: 30px; height: 30px; font-size: 0.6875rem; }
+
+/* Schreiben */
+.erkl-feld { display: flex; flex-direction: column; gap: var(--space-2); }
+.erkl-feld__kopf { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); padding: 0 var(--space-1); }
+.erkl-feld__label { font-size: var(--text-title2); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: 1.2; }
+.erkl-feld__wechsel { flex: none; font-size: var(--text-subhead); }
+.erkl-feld__text {
+  width: 100%; min-height: 11.5rem; padding: var(--space-4); resize: vertical;
+  border: 0; border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--shadow-card);
+  font: inherit; font-size: var(--text-body); line-height: 1.5; color: var(--color-text);
+  transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+.erkl-feld__text::placeholder { color: var(--color-text-3); }
+.erkl-feld__text:focus-visible, .erkl-feld__text:focus { outline: none; box-shadow: var(--shadow-focus), var(--shadow-card); border-radius: var(--radius-card); }
+.erkl-feld__fuss { display: flex; justify-content: space-between; gap: var(--space-3); padding: 0 var(--space-2); font-size: var(--text-footnote); color: var(--color-text-2); }
+.erkl-feld__zaehler { font-variant-numeric: tabular-nums; font-weight: 600; flex: none; }
+.erkl-knoepfe { display: grid; gap: var(--space-3); }
+.erkl-hinweis { min-height: 1.4em; text-align: center; font-size: var(--text-footnote); color: var(--color-text-2); }
+
+/* Warten: drei Punkte, die nur in der Deckkraft atmen */
+.erkl-warten { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-10) var(--space-5) var(--space-6); text-align: center; }
+.erkl-warten h2 { font-size: var(--text-title3); letter-spacing: var(--tracking-tight); }
+.erkl-warten p { color: var(--color-text-2); font-size: var(--text-subhead); }
+.erkl-warten__lang { min-height: 1.4em; margin-bottom: var(--space-3); }
+.erkl-warten__punkte { display: flex; gap: 10px; margin-bottom: var(--space-4); }
+.erkl-warten__punkte span { width: 12px; height: 12px; border-radius: 50%; background: var(--akzent); opacity: 0.25; animation: erkl-atmen 1.6s var(--ease-out) infinite; }
+.erkl-warten__punkte span:nth-child(2) { animation-delay: 0.2s; }
+.erkl-warten__punkte span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes erkl-atmen { 0%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .erkl-warten__punkte span { animation: none; opacity: 0.6; }
+}
+
+/* Urteil: groß die Stufe */
+.erkl-urteil { display: flex; align-items: center; gap: var(--space-5); padding: var(--space-5); }
+.erkl-urteil__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--space-1); }
+.erkl-urteil h2 { font-size: var(--text-title1); font-weight: 800; letter-spacing: var(--tracking-tight); line-height: 1.1; }
+.erkl-urteil--kundenreif h2 { color: var(--color-green-ink); }
+.erkl-urteil--fast h2 { color: var(--color-orange-ink); }
+.erkl-urteil--nochmal h2 { color: var(--akzent); }
+.erkl-urteil__satz { font-size: var(--text-subhead); line-height: 1.4; color: var(--color-text-2); overflow-wrap: anywhere; }
+
+/* Nachfrage als Sprechblase der Zielperson */
+.erkl-blase { margin: 0; display: flex; flex-direction: column; gap: var(--space-2); }
+.erkl-blase__wer { display: flex; align-items: center; gap: var(--space-2); padding-left: var(--space-1); font-size: var(--text-footnote); font-weight: 600; color: var(--color-text-2); }
+.erkl-blase__text {
+  position: relative; margin: 0 0 var(--space-2) var(--space-6); padding: var(--space-4) var(--space-5);
+  border-radius: 22px 22px 22px 6px; background: var(--color-surface); box-shadow: var(--shadow-card);
+  font-size: var(--text-headline); font-weight: 500; line-height: 1.4; overflow-wrap: anywhere;
+}
+.erkl-blase__knoepfe { display: grid; gap: var(--space-2); }
+
+/* Details zum Aufklappen */
+.erkl-detailliste { overflow: hidden; }
+.erkl-details + .erkl-details { box-shadow: inset 0 0.5px 0 var(--color-separator); }
+.erkl-details summary {
+  display: flex; align-items: center; gap: var(--space-3); min-height: 52px; padding: var(--space-3) var(--space-4);
+  cursor: pointer; list-style: none; font-weight: 600;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.erkl-details summary::-webkit-details-marker { display: none; }
+.erkl-details summary > span:first-child { flex: 1; }
+.erkl-details summary::after {
+  content: ''; width: 8px; height: 8px; flex: none; margin-right: 4px;
+  border-right: 2px solid var(--color-gray); border-bottom: 2px solid var(--color-gray);
+  transform: rotate(45deg) translateY(-2px); transition: transform var(--duration-normal) var(--ease-out);
+}
+.erkl-details[open] summary::after { transform: rotate(225deg) translateY(-2px); }
+.erkl-details summary:hover { background: var(--color-surface-2); }
+.erkl-details summary:focus-visible { box-shadow: inset var(--shadow-focus); border-radius: 0; }
+.erkl-details__zahl { min-width: 24px; padding: 0 8px; border-radius: var(--radius-pill); background: var(--color-fill); text-align: center; font-size: var(--text-footnote); font-variant-numeric: tabular-nums; color: var(--color-text-2); }
+.erkl-details__inhalt { padding: 0 var(--space-4) var(--space-4); font-size: var(--text-subhead); line-height: 1.45; }
+.erkl-details--blatt { border-radius: var(--radius-row); background: var(--color-surface-2); }
+
+.erkl-kriterien { display: flex; flex-direction: column; gap: var(--space-3); }
+.erkl-kriterien li { display: flex; flex-direction: column; gap: 2px; }
+.erkl-kriterien p { color: var(--color-text-2); overflow-wrap: anywhere; }
+.erkl-kriterien__kopf { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.erkl-punkte { display: inline-flex; gap: 4px; }
+.erkl-punkte span { width: 18px; height: 6px; border-radius: 3px; background: var(--color-fill-strong); }
+.erkl-punkte span.ist-voll { background: var(--akzent); }
+.erkl-falsch { display: flex; flex-direction: column; gap: var(--space-3); }
+.erkl-falsch q { display: block; color: var(--color-red-ink); font-style: italic; overflow-wrap: anywhere; }
+.erkl-falsch p { color: var(--color-text-2); overflow-wrap: anywhere; }
+.erkl-kernliste { display: flex; flex-direction: column; gap: var(--space-2); }
+.erkl-kernliste li { display: flex; gap: var(--space-2); }
+.erkl-kernliste li::before { content: ''; width: 6px; height: 6px; margin-top: 0.55em; flex: none; border-radius: 50%; background: var(--color-orange); }
+.erkl-besser { margin: 0; padding: var(--space-3) var(--space-4); border-radius: var(--radius-row); background: var(--color-green-tint); box-shadow: inset 3px 0 0 var(--color-green-ink); overflow-wrap: anywhere; }
+
+/* Selbstcheck */
+.erkl-grund { padding: 0 var(--space-2); font-size: var(--text-footnote); line-height: 1.4; color: var(--color-text-2); }
+.erkl-selbst { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-5); line-height: 1.5; }
+.erkl-selbst--eigen { background: var(--color-surface-2); box-shadow: var(--shadow-hair); }
+.erkl-eigen { color: var(--color-text-2); white-space: pre-wrap; overflow-wrap: anywhere; }
+.erkl-selbst__hilfe { display: flex; gap: var(--space-2); align-items: flex-start; color: var(--color-text-2); font-size: var(--text-subhead); }
+.erkl-selbst__hilfe svg { flex: none; margin-top: 3px; color: var(--akzent); }
+.erkl-check { margin: 0; padding: var(--space-2) 0; border: 0; overflow: hidden; min-width: 0; }
+.erkl-check__titel { float: left; width: 100%; padding: var(--space-3) var(--space-4) var(--space-1); font-weight: 700; font-size: var(--text-headline); }
+.erkl-check ul { clear: both; }
+.erkl-check li + li .erkl-check__zeile { box-shadow: inset 0 0.5px 0 var(--color-separator); }
+.erkl-check__zeile {
+  display: flex; align-items: flex-start; gap: var(--space-3); width: 100%; min-height: 52px; padding: var(--space-3) var(--space-4);
+  border: 0; background: none; text-align: left; font-size: var(--text-subhead); line-height: 1.4;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.erkl-check__zeile:hover { background: var(--color-surface-2); }
+.erkl-check__zeile:focus-visible { box-shadow: inset var(--shadow-focus); border-radius: 0; }
+.erkl-check__kasten {
+  display: grid; place-items: center; width: 24px; height: 24px; flex: none; border-radius: 7px;
+  box-shadow: inset 0 0 0 1.5px var(--color-gray); color: var(--color-on-accent);
+  transition: background-color var(--duration-fast), transform var(--duration-fast) var(--ease-spring);
+}
+.erkl-check__zeile.ist-an .erkl-check__kasten { background: var(--color-green-ink); box-shadow: none; transform: scale(1.04); }
+
+/* Fehler und Leer */
+.erkl-fehler, .erkl-leer { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-6) var(--space-5); text-align: center; }
+.erkl-fehler h2, .erkl-leer h2 { font-size: var(--text-title3); letter-spacing: var(--tracking-tight); }
+.erkl-fehler p, .erkl-leer p { color: var(--color-text-2); font-size: var(--text-subhead); line-height: 1.45; }
+.erkl-fehler__icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--color-orange-tint); color: var(--color-orange-ink); margin-bottom: var(--space-2); }
+.erkl-fehler .erkl-fehler__detail { font-size: var(--text-footnote); }
+.erkl-fehler .erkl-knoepfe { width: 100%; margin-top: var(--space-3); }
+
+/* Lexikon */
+.lexikonblatt .lexikonblatt__erklaert { font-size: var(--text-footnote); color: var(--color-text-2); }
+.lexikonblatt__erklaeren { align-self: stretch; }

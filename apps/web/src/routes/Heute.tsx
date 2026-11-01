@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { fortschritt, slug, tagesserie } from '@karol-learn/karten-kern';
+import { fortschritt, naechsteErklaerKarte, slug, tagesserie } from '@karol-learn/karten-kern';
 import { Button } from '../components/ui/Button';
 import { Icon } from '../components/ui/Icon';
 import { ProgressRing } from '../components/ui/ProgressRing';
@@ -35,7 +35,7 @@ function Woche({ tage }: { tage: ReadonlySet<string> }) {
 }
 
 export function Heute() {
-  const { staende, sessions, einstellungen, setzeTrack, labor } = useApp();
+  const { staende, sessions, einstellungen, setzeTrack, labor, erklaeren } = useApp();
   const inhalt = useInhalt();
   const navigate = useNavigate();
   const track = einstellungen.track;
@@ -51,6 +51,7 @@ export function Heute() {
   const naechstesBild = naechstesThema ? themenBildUrl(roadmapThema(inhalt, track, naechstesThema)) : undefined;
   const geloest = new Set(labor.filter((e) => e.geloest).map((e) => e.szenarioId));
   const stoerfall = inhalt.labor.find((s) => s.track === track && !geloest.has(s.id));
+  const erklaerKarte = naechsteErklaerKarte(inhalt.karten, staende, erklaeren, track, heute());
   const exportAlt = sessions.length > 2 && (!einstellungen.exportErinnert || tageBis(heute(), einstellungen.exportErinnert) > EXPORT_ERINNERUNG_TAGE);
 
   return (
@@ -81,6 +82,14 @@ export function Heute() {
           <Link to={`/labor/fall/${stoerfall.id}`} className="karte zeile-link" data-testid="naechster-stoerfall">
             <span className="zeile-link__icon" aria-hidden><Icon name="uebung" size={20} /></span>
             <span className="zeile-link__text"><small>Nächster Störfall</small>{stoerfall.titel}</span>
+            <Icon name="weiter" size={18} className="zeile-link__pfeil" />
+          </Link>
+        ) : null}
+
+        {erklaerKarte ? (
+          <Link to={`/erklaeren/${erklaerKarte.id}`} className="karte zeile-link" data-testid="erklaeren-ueben">
+            <span className="zeile-link__icon" aria-hidden><Icon name="sprechen" size={20} /></span>
+            <span className="zeile-link__text"><small>Erklären üben</small>{erklaerKarte.frage}</span>
             <Icon name="weiter" size={18} className="zeile-link__pfeil" />
           </Link>
         ) : null}

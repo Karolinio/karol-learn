@@ -1,12 +1,18 @@
 import { createServer, type IncomingMessage, type Server, type ServerResponse } from 'node:http';
 import { z } from 'zod';
 import { haengeZeileAn, imOrdner, PfadFehler } from './dateien';
+import { baueErklaerDienst, type CoachBefehl, type ErklaerDienst } from './erklaeren';
 import { FachFehler, ideen, lehneAb, nimmAn, offeneVorschlaege, vidSchema } from './vorschlaege';
 
 export const VERSION = '0.1.0';
 const MAX_BODY = 64 * 1024;
 
-export interface Optionen { inhalt: string; origins: readonly string[]; hosts?: readonly string[] }
+export type { CoachBefehl } from './erklaeren';
+export interface Optionen {
+  inhalt: string; origins: readonly string[]; hosts?: readonly string[];
+  /** Erklär-Coach als Kindprozess; ohne ihn meldet /api/status erklaeren: false. */
+  coach?: CoachBefehl;
+}
 
 const meldungSchema = z.object({
   id: z.string().regex(/^[a-z0-9][a-z0-9-]{0,99}$/),
@@ -52,12 +58,12 @@ function vidAusPfad(roh: string): string | undefined {
   }
 }
 
-async function route(req: IncomingMessage, opt: Optionen): Promise<Antwort> {
+async function route(req: IncomingMessage, opt: Optionen, erklaeren: ErklaerDienst, signal: AbortSignal): Promise<Antwort> {
   const pfad = (req.url ?? '/').split('?')[0] ?? '/';
   const m = req.method ?? 'GET';
   const abgewehrt = abwehr(req, opt);
   if (abgewehrt) return abgewehrt;
-  if (m === 'GET' && pfad === '/api/status') return ok({ ok: true, version: VERSION });
+  if (m === 'GET' && pfad === '/api/status') return ok({ ok: true, version: VERSION, erklaeren: !!opt.coach });
   if (m === 'GET' && pfad === '/api/vorschlaege') {
     const [vorschlaege, liste] = await Promise.all([offeneVorschlaege(opt.inhalt), ideen(opt.inhalt)]);
     return ok({ vorschlaege, ideen: liste });
@@ -75,6 +81,7 @@ async function route(req: IncomingMessage, opt: Optionen): Promise<Antwort> {
     await haengeZeileAn(imOrdner(opt.inhalt, 'meldungen', `${tag}.jsonl`), { ...r.data, zeit: new Date().toISOString() });
     return ok({ gespeichert: true }, 201);
   }
+  if (m === 'POST' && pfad === '/api/erklaeren') return ok(await erklaeren.bewerte(await liesBody(req), signal));
   return fehler(404, 'Nicht gefunden');
 }
 
@@ -89,10 +96,14 @@ function cors(req: IncomingMessage, res: ServerResponse, opt: Optionen): void {
 }
 
 export function baueServer(opt: Optionen, protokoll: (z: string) => void = () => {}): Server {
+  const erklaeren = baueErklaerDienst(opt.inhalt, opt.coach);
   return createServer((req, res) => {
     cors(req, res, opt);
     if (req.method === 'OPTIONS') { res.writeHead(204).end(); return; }
-    route(req, opt)
+    // Bricht der Client ab, endet auch ein laufender Kindprozess (Erklär-Coach).
+    const abbruch = new AbortController();
+    res.on('close', () => { if (!res.writableFinished) abbruch.abort(); });
+    route(req, opt, erklaeren, abbruch.signal)
       .catch((e: unknown): Antwort => {
         if (e instanceof FachFehler) return fehler(e.status, e.message);
         if (e instanceof PfadFehler) return fehler(400, 'Ungültiger Pfad');
@@ -100,6 +111,7 @@ export function baueServer(opt: Optionen, protokoll: (z: string) => void = () =>
         return fehler(500, 'Interner Fehler');
       })
       .then(({ status, body }) => {
+        if (res.destroyed) return;
         res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8', 'X-Content-Type-Options': 'nosniff' });
         res.end(JSON.stringify(body));
       });

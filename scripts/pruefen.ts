@@ -1,4 +1,4 @@
-import { fehlendeBilder, pruefeBestand, pruefeLabor, type Karte } from '@karol-learn/karten-kern';
+import { fehlendeBilder, kartenMitEinemKernpunkt, pruefeBestand, pruefeLabor, type Karte } from '@karol-learn/karten-kern';
 import { vorhandeneBilder } from './index-lib';
 import { INHALT, liesLabor, liesRoadmaps, liesThemenDateien } from './lib';
 
@@ -32,6 +32,12 @@ for (const s of labor.szenarien) {
 const ohneBild = fehlendeBilder(roadmaps, vorhandeneBilder(INHALT));
 if (ohneBild.length) {
   process.stderr.write(`pruefen: Warnung, ${ohneBild.length} Roadmap-Themen ohne Bild in inhalt/bilder/themen/\n${ohneBild.map((b) => `  ${b}`).join('\n')}\n`);
+}
+
+// Erklär-Training: Karten mit nur einem Kernpunkt sind erlaubt, aber dünn für die Rückmeldung (Info).
+const einPunkt = kartenMitEinemKernpunkt(karten);
+if (einPunkt.length) {
+  process.stdout.write(`pruefen: Info, ${einPunkt.length} Karten mit nur einem Kernpunkt fürs Erklären (Feld kernpunkte ergänzen)\n`);
 }
 
 if (fehler.length) {

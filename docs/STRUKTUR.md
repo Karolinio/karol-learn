@@ -23,6 +23,8 @@ Nur diese Dateien: `README.md`, `AGENTS.md`, `package.json`, `package-lock.json`
 ## Wohin gehört was
 
 - **Neuer Agent:** `agents/<name>/` mit `agent.json`, `prompt.md`, `README.md`. Er schreibt nur in seinen erlaubten Pfad.
+  Soll der Server ihn starten (Beispiel `agents/erklaer-coach/`), dann nur als Kindprozess mit festem Pfad aus
+  `apps/server/src/main.ts`, ohne Shell: stdin JSON rein, stdout genau eine JSON-Zeile raus. Kein Import zwischen Server und Agent.
 - **Neue App:** `apps/<name>/` mit eigenem `package.json`. Apps importieren nur `karten-kern`, nie einander.
 - **Neue Karten:** in `inhalt/rohbestand/*.json`, dann `npm run aufteilen && npm run pruefen`.
   Im Eingang angenommene Karten schreibt der Server nach `inhalt/rohbestand/eingang.json`.

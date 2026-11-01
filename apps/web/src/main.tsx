@@ -10,6 +10,7 @@ import './styles/seiten.css';
 import './styles/skizzen.css';
 import './styles/thema.css';
 import './labor/labor.css';
+import './erklaeren/erklaeren.css';
 
 const wurzel = document.getElementById('app');
 if (!wurzel) throw new Error('#app fehlt');

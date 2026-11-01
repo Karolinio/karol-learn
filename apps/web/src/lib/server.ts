@@ -21,13 +21,16 @@ async function rufe<T>(pfad: string, init: RequestInit = {}, timeoutMs = 8000): 
   }
 }
 
-/** Findet den lokalen Server; ohne Antwort in 800 ms gilt er als nicht da. */
-export async function serverDa(): Promise<boolean> {
+export interface ServerStatus { da: boolean; erklaeren: boolean }
+
+/** Findet den lokalen Server; ohne Antwort in 800 ms gilt er als nicht da. Ältere Server kennen erklaeren nicht. */
+export async function serverStatus(): Promise<ServerStatus> {
   try {
-    const d = await rufe<{ ok: boolean }>('/api/status', {}, STATUS_TIMEOUT_MS);
-    return d.ok === true;
+    const d = await rufe<{ ok: boolean; erklaeren?: unknown }>('/api/status', {}, STATUS_TIMEOUT_MS);
+    const da = d.ok === true;
+    return { da, erklaeren: da && d.erklaeren === true };
   } catch {
-    return false;
+    return { da: false, erklaeren: false };
   }
 }
 

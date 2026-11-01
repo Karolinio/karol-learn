@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { Icon } from '../components/ui/Icon';
-import { fortschritt, trackSchema } from '@karol-learn/karten-kern';
+import { erklaerFortschritt, fortschritt, trackSchema } from '@karol-learn/karten-kern';
 import { ProgressRing } from '../components/ui/ProgressRing';
 import { Seite } from '../components/ui/Seite';
 import { TRACK_NAME } from '../components/ui/TrackSegment';
@@ -9,7 +9,7 @@ import { useApp, useInhalt } from '../lib/zustand';
 
 export function Fortschritt() {
   const track = trackSchema.catch('aie').parse(useParams().track);
-  const { staende, labor } = useApp();
+  const { staende, labor, erklaeren } = useApp();
   const inhalt = useInhalt();
   const f = fortschritt(inhalt.karten.filter((k) => k.track === track), staende);
   const reihenfolge = themenReihenfolge(inhalt, track);
@@ -17,6 +17,7 @@ export function Fortschritt() {
   const themen = [...f.jeThema].sort((a, b) => rang(a.thema) - rang(b.thema));
   const faelle = inhalt.labor.filter((s) => s.track === track);
   const geloest = faelle.filter((s) => labor.some((e) => e.geloest && e.szenarioId === s.id)).length;
+  const erkl = erklaerFortschritt(erklaeren, track);
   const pz = (n: number, g: number) => `${g ? (n / g) * 100 : 0}%`;
 
   return (
@@ -39,6 +40,11 @@ export function Fortschritt() {
             <Icon name="weiter" size={18} className="zeile-link__pfeil" />
           </Link>
         ) : null}
+        <Link to="/erklaeren" className="karte zeile-link" data-testid="fortschritt-erklaeren">
+          <span className="zeile-link__icon" aria-hidden><Icon name="sprechen" size={20} /></span>
+          <span className="zeile-link__text"><small>Erklären</small>{erkl.geuebt} geübt, {erkl.kundenreif} kundenreif</span>
+          <Icon name="weiter" size={18} className="zeile-link__pfeil" />
+        </Link>
         <section aria-labelledby="themen-titel">
           <h2 id="themen-titel" className="abschnitt">Je Thema</h2>
           <ul className="karte themenbalken">
