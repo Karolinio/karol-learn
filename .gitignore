@@ -10,3 +10,4 @@ agents/erklaer-coach/laeufe/*.json
 *.tsbuildinfo
 .env
 .DS_Store
+.vercel/
